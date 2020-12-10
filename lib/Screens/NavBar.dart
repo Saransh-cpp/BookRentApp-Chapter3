@@ -1,0 +1,83 @@
+
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:test_app/Screens/YourOrders.dart';
+import 'package:test_app/Widgets.dart';
+import 'package:test_app/Widgets.dart';
+import 'package:test_app/Screens/AllBooks.dart';
+import 'package:test_app/Screens/Home.dart';
+
+class NavBar extends StatefulWidget {
+  @override
+  _NavBarState createState() => _NavBarState();
+}
+
+class _NavBarState extends State<NavBar> {
+  PageController pageController = PageController();
+  int currentIndex = 0;
+  var currentTab = [
+  Home(),
+  AllBooks(),
+
+    YourOrders(),
+
+
+  ];
+
+  //@override
+  //void initState(){
+    //super.initState();
+    //pageController = PageController(initialPage: currentIndex);
+  //}
+
+  //@override
+  //void dispose(){
+    //pageController.dispose();
+    //super.dispose();
+  //}
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+
+        body: PageView(
+          children: currentTab,
+          controller: pageController,
+          onPageChanged: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+        ),
+        bottomNavigationBar: CurvedNavigationBar(
+            height: 60.0,
+
+
+            backgroundColor: Colors.blueAccent,
+            items: <Widget>[
+              Icon(Icons.home_rounded, size: 30),
+              Icon(Icons.menu_book_rounded, size: 30),
+              Icon(Icons.favorite_border_rounded, size: 30),
+            ],
+            index: currentIndex,
+            animationCurve: Curves.easeInToLinear,
+
+            animationDuration: Duration(
+                milliseconds: 500
+            ),
+            onTap: (int index) {
+              setState(() {
+                currentIndex = index;
+                pageController.animateToPage(index,
+                    duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+              });
+            }
+
+        ),
+      ),
+    );
+  }
+}
