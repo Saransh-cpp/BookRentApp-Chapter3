@@ -16,9 +16,8 @@ class _NavBarState extends State<NavBar> {
   PageController pageController = PageController();
   int currentIndex = 0;
   var currentTab = [
-  Home(),
-  AllBooks(),
-
+    Home(),
+    AllBooks(),
     YourOrders(),
 
 
@@ -56,11 +55,11 @@ class _NavBarState extends State<NavBar> {
             height: 60.0,
 
 
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Colors.pink[50],
             items: <Widget>[
               Icon(Icons.home_rounded, size: 30),
               Icon(Icons.menu_book_rounded, size: 30),
-              Icon(Icons.favorite_border_rounded, size: 30),
+              Icon(Icons.shopping_cart_rounded, size: 30),
             ],
             index: currentIndex,
             animationCurve: Curves.easeInToLinear,

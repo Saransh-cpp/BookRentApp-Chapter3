@@ -12,7 +12,7 @@ class _YourOrdersState extends State<YourOrders> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.pink[50],
           body: Center(
             child: Container(
               child: Text(

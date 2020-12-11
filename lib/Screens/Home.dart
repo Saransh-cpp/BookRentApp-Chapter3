@@ -13,16 +13,16 @@ class _HomeState extends State<Home> {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.blueAccent
+        primaryColor: Colors.pink[50]
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.pink[50],
         body: SafeArea(
             child: Scaffold(
               key: _drawerKey,
               drawer: Drawer(
                 child: InkWell(
-
                   child: ListView(
                     children: [
                       UserAccountsDrawerHeader(
@@ -42,14 +42,14 @@ class _HomeState extends State<Home> {
                       ),
                       Container(
                         height: 1000,
-                        color: Colors.blueAccent,
+                        color: Colors.pink[50],
                         child: Column(
                         children: [
                           CustomListTile(
-                              Icons.person,
-                              'Profile',
-                                  () => {}
-                          ),
+                                Icons.person,
+                                'Profile',
+                                    () => {}
+                            ),
                           CustomListTile(
                               Icons.person,
                               'Profile',
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                     },
                   ),
                   backgroundColor: Colors.white,
-                  shadowColor: Colors.blueAccent,
+                  shadowColor: Colors.pink[50],
                   elevation: 0.0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
@@ -98,17 +98,13 @@ class _HomeState extends State<Home> {
                         onPressed:() {
                           showSearch(context: context, delegate: DataSearch());
                         },
-
                     ),
-
                   ]
+              ),
 
-
-                ),
-
-              backgroundColor: Colors.blueAccent,
+              backgroundColor: Colors.pink[50],
               body: Container(
-                color: Colors.blueAccent,
+                color: Colors.pink[50],
 
                 child: Column(
                   children: [
@@ -120,15 +116,15 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
 
                               border: Border.all(
-                                color: Colors.redAccent,
+                                color: Colors.pink[50],
                               ),
                             borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.redAccent
+                            color: Colors.pink[900]
                           ),
 
 
                         height: 550,
-                        width: 400,
+                        width: 380,
                         child: Column(
 
                           children: [
@@ -142,14 +138,24 @@ class _HomeState extends State<Home> {
                                   width: 30.0,
                                 ),
                                 CircleAvatar(
+                                  backgroundColor: Colors.pink[50],
                                   radius: 50.0,
-
+                                  backgroundImage: AssetImage('ProPic.jpeg'),
                                 ),
                                 SizedBox(
-                                  width: 50.0,
+                                  width: 35.0,
                                 ),
                                 Container(
-                                  color: Colors.blueGrey,
+                                  decoration: BoxDecoration(
+
+                                      border: Border.all(
+                                        color: Colors.pink[900],
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                                      color: Colors.pink[50]
+                                  ),
+
+
                                   height: 100.0,
                                   width: 200.0,
                                   child: Column(
@@ -166,44 +172,87 @@ class _HomeState extends State<Home> {
                             SizedBox(
                               height: 30.0,
                             ),
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: 50.0,
+                            InkWell(
+                              splashColor: Colors.greenAccent,
+                              onTap: () {},
+                              //Photo by Daniel Schludi on Unsplash
+                              child: Container(
+
+                                height: 100,
+                                width: 350,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+
+                                      image: AssetImage(
+                                          'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                      fit: BoxFit.fill,
+                                    ),
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.pink[900],
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
+                                  ),
+
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            InkWell(
+                              splashColor: Colors.greenAccent,
+                              onTap: () {},
+                              //Photo by Daniel Schludi on Unsplash
+                              child: Container(
+
+                                height: 100,
+                                width: 350,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+
+                                      image: AssetImage(
+                                          'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                      color: Colors.pink[900],
+                                    ),
+                                    borderRadius: BorderRadius.all(Radius.circular(20))
                                 ),
-                                FlatButton.icon(
 
-                                  onPressed: () {},
-                                  color: Colors.redAccent,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Ink(
+                              color: Colors.blueAccent,
+                              child: InkWell(
 
-                                  icon: Icon(
-                                    Icons.edit_rounded,
+                                onTap: () {},
+                                //Photo by Daniel Schludi on Unsplash
+                                child: Container(
 
+                                  height: 100,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+
+                                        image: AssetImage(
+                                            'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                        fit: BoxFit.fill,
+                                      ),
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: Colors.pink[900],
+                                      ),
+                                      borderRadius: BorderRadius.all(Radius.circular(20))
                                   ),
-                                  label: Text(
-                                    'EditProfile'
-                                  ),
-
-
 
                                 ),
-                                SizedBox(
-                                  width: 50,
-                                ),
-                                FlatButton.icon(
-                                  onPressed: () {},
-                                  color: Colors.redAccent,
-                                  height: 30.0,
-                                  icon: Icon(
-                                    Icons.book,
-                                  ),
-                                  label: Text(
-                                    'WishList'
-                                  ),
-                                )
-                              ],
+                              ),
                             )
-
 
                           ],
                         )

@@ -9,9 +9,12 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Container(
-        child: Text(
-          'Loading'
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Container(
+          child: Text(
+            'Loading'
+          ),
         ),
       ),
     );
