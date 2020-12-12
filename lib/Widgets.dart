@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:test_app/Screens/product_details.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 
 class AnimatedSearchBar extends StatefulWidget {
   @override
@@ -122,7 +123,7 @@ class _ProductsState extends State<Products> {
 
   var product_list = [
     {
-      "name": "Book 1",
+      "name": "Angel & Demons",
       "picture": "images/IMG_20201210_170910_696.jpg",
 
     },
@@ -141,13 +142,6 @@ class _ProductsState extends State<Products> {
       "picture": "images/IMG_20201210_171229_060.jpg",
 
     },
-
-
-
-
-
-
-
   ];
 
   @override
@@ -165,7 +159,7 @@ class _ProductsState extends State<Products> {
               itemBuilder: (BuildContext context, int index) {
                 return Single_prod(
                   prod_name: product_list[index]['name'],
-                  prod_pricture: product_list[index]['picture'],
+                  prod_picture: product_list[index]['picture'],
 
                 );
               }),
@@ -178,12 +172,12 @@ class _ProductsState extends State<Products> {
 
 class Single_prod extends StatelessWidget {
   final prod_name;
-  final prod_pricture;
+  final prod_picture;
 
 
   Single_prod({
     this.prod_name,
-    this.prod_pricture,
+    this.prod_picture,
 
   });
 
@@ -195,7 +189,10 @@ class Single_prod extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context)=>ProductDetails())),
+                  builder: (context)=>ProductDetails(
+                    product_detail_name: prod_name,
+                  product_detail_picture: prod_picture,
+                  ))),
               child: GridTile(
                   footer: Container(
                     height: 50,
@@ -214,7 +211,7 @@ class Single_prod extends StatelessWidget {
                     ),
                   ),
                   child: Image.asset(
-                    prod_pricture,
+                    prod_picture,
                     fit: BoxFit.cover,
                   )
 
@@ -224,5 +221,8 @@ class Single_prod extends StatelessWidget {
     );
   }
 }
+
+
+
 
 

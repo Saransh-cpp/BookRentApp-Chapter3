@@ -33,21 +33,6 @@ class _AllBooksState extends State<AllBooks> {
                             ),
                           ),
                           Products(),
-                          Container(
-                            height: 20,
-                            width: 500,
-                            child: Center(
-                              child: Text(
-                                'Genre 1',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-
-                                ),
-                              ),
-                            ),
-                          ),
-                          Products(),
                         ],
 
                      ),

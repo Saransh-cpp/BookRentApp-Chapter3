@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  carousel_pro: ^1.0.0
   curved_navigation_bar: ^0.3.4
   flutter:
     sdk: flutter

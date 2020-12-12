@@ -15,7 +15,6 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/home',
-
     routes: {
       '/': (context) => Loading(),
       '/home': (context) => NavBar(),
