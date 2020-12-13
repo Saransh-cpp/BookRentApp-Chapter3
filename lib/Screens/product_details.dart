@@ -1,6 +1,7 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/Widgets.dart';
 
 class ProductDetails extends StatefulWidget {
   final product_detail_name;
@@ -20,6 +21,14 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.pink[50],
+          iconTheme: IconThemeData(
+            color: Colors.black
+          ),
+
+        ),
         backgroundColor: Colors.pink[50],
         body: ListView(
           physics: ScrollPhysics(),
@@ -192,6 +201,19 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Divider(),
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                ),
+                Divider(),
+                Text(
+                  'Similar Books',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+                Divider(),
+                Container(
+                  height: 360,
+                  child: SimilarProducts(),
                 )
 
               ],

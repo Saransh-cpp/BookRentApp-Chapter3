@@ -140,7 +140,6 @@ class _HomeState extends State<Home> {
                                 CircleAvatar(
                                   backgroundColor: Colors.pink[50],
                                   radius: 50.0,
-                                  backgroundImage: AssetImage('ProPic.jpeg'),
                                 ),
                                 SizedBox(
                                   width: 35.0,

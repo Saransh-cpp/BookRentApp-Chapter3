@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/Widgets.dart';
 
 class YourOrders extends StatefulWidget {
   @override
@@ -13,13 +14,36 @@ class _YourOrdersState extends State<YourOrders> {
       home: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.pink[50],
-          body: Center(
-            child: Container(
-              child: Text(
-                  'Orders'),
-            ),
+          body: CartProducts(),
+          bottomNavigationBar: Container(
+            child: Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    title: Text(
+                        'Total:'
+                    ),
+                    subtitle: Text(
+                        'Rs 50'
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: MaterialButton(
+                    color: Colors.red,
+                    onPressed: () {},
+                    child: Text(
+                      'Rent',
+                      style: TextStyle(
+                          color: Colors.white
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
-        ),
+        ),),
       ),
     );
   }
