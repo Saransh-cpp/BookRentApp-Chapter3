@@ -350,7 +350,7 @@ class _CartProductsState extends State<CartProducts> {
       "price": 30,
       "time": "2 weeks",
     },
-    
+
 ];
   @override
   Widget build(BuildContext context) {

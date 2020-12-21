@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -9,11 +10,15 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Colors.pink[50],
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Container(
-          child: Text(
-            'Loading'
+          child: Center(
+            child: SpinKitPouringHourglass(
+              size: 50,
+              color: Colors.brown,
+            )
           ),
         ),
       ),

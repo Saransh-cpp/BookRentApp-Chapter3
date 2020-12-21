@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_app/Screens/LoginPage.dart';
 import 'package:test_app/Widgets.dart';
+import 'package:test_app/database.dart';
+import 'package:test_app/Screens/Register.dart';
 
 
 class Home extends StatefulWidget {
@@ -8,6 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  //final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
@@ -16,219 +23,197 @@ class _HomeState extends State<Home> {
         primaryColor: Colors.pink[50]
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.pink[50],
-        body: SafeArea(
-            child: Scaffold(
-              key: _drawerKey,
-              drawer: Drawer(
-                child: InkWell(
-                  child: ListView(
-                    children: [
-                      UserAccountsDrawerHeader(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: <Color>[
-                              Colors.deepOrange,
-                              Colors.orangeAccent,
-                            ]
-                          )
+      //home: StreamProvider<QuerySnapshot>.value(
+        home: Scaffold(
+          backgroundColor: Colors.pink[50],
+          body: SafeArea(
+              child: Scaffold(
+                key: _drawerKey,
+                drawer: Drawer(
+                  child: InkWell(
+                    child: ListView(
+                      children: [
+                        UserAccountsDrawerHeader(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: <Color>[
+                                Colors.deepOrange,
+                                Colors.orangeAccent,
+                              ]
+                            )
+                          ),
+                          accountName: Text('Saransh'),
+                          accountEmail: Text('saransh0701@gmail.com'),
+                          currentAccountPicture: CircleAvatar(
+                            radius: 30,
+                          ),
                         ),
-                        accountName: Text('Saransh'),
-                        accountEmail: Text('saransh0701@gmail.com'),
-                        currentAccountPicture: CircleAvatar(
-                          radius: 30,
-                        ),
-                      ),
-                      Container(
-                        height: 1000,
-                        color: Colors.pink[50],
-                        child: Column(
-                        children: [
-                          CustomListTile(
+                        Container(
+                          height: 1000,
+                          color: Colors.pink[50],
+                          child: Column(
+                          children: [
+                            CustomListTile(
+                                  Icons.person,
+                                  'Profile',
+                                      () => {}
+                              ),
+                            CustomListTile(
                                 Icons.person,
                                 'Profile',
                                     () => {}
                             ),
-                          CustomListTile(
-                              Icons.person,
-                              'Profile',
-                                  () => {}
-                          ),
-                          CustomListTile(
-                              Icons.person,
-                              'Profile',
-                                  () => {}
-                          ),
-                          CustomListTile(
-                              Icons.person,
-                              'Profile',
-                                  () => {}
-                          )
-                        ],
-                      ),
-                      )
+                            CustomListTile(
+                                Icons.person,
+                                'Profile',
+                                    () => {}
+                            ),
+                            CustomListTile(
+                                Icons.person,
+                                'Profile',
+                                    () => {}
+                            ),
+                            CustomListTile(
+                                Icons.logout,
+                                'Logout',
+                              () {
+                                  //_auth.signOut();
+                              })
+                          ],
+                        ),
+                        )
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              appBar: AppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.menu,color: Colors.black,),
-                    onPressed: (){
-                      _drawerKey.currentState.openDrawer();
-                    },
-                  ),
-                  backgroundColor: Colors.white,
-                  shadowColor: Colors.pink[50],
-                  elevation: 0.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(30)
-                    )
-                  ),
-                  actions: [
-                    IconButton(
-                        icon: Icon(
-                            Icons.search_rounded,
-                            color: Colors.black,
-                        ),
-                        onPressed:() {
-                          showSearch(context: context, delegate: DataSearch());
-                        },
+                appBar: AppBar(
+                    leading: IconButton(
+                      icon: Icon(Icons.menu,color: Colors.black,),
+                      onPressed: (){
+                        _drawerKey.currentState.openDrawer();
+                      },
                     ),
-                  ]
-              ),
-
-              backgroundColor: Colors.pink[50],
-              body: Container(
-                color: Colors.pink[50],
-
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 30.0,
+                    backgroundColor: Colors.white,
+                    shadowColor: Colors.pink[50],
+                    elevation: 0.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(30)
+                      )
                     ),
-                    Center(
-                      child: Container(
-                          decoration: BoxDecoration(
-
-                              border: Border.all(
-                                color: Colors.pink[50],
-                              ),
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                            color: Colors.pink[900]
+                    actions: [
+                      IconButton(
+                          icon: Icon(
+                              Icons.search_rounded,
+                              color: Colors.black,
                           ),
+                          onPressed:() {
+                            showSearch(context: context, delegate: DataSearch());
+                          },
+                      ),
+                    ]
+                ),
 
+                backgroundColor: Colors.pink[50],
+                body: Container(
+                  color: Colors.pink[50],
 
-                        height: 550,
-                        width: 380,
-                        child: Column(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      Center(
+                        child: Container(
+                            decoration: BoxDecoration(
 
-                          children: [
-                            SizedBox(
-                              height: 30.0,
-                            ),
-                            Row(
-
-                              children: [
-                                SizedBox(
-                                  width: 30.0,
+                                border: Border.all(
+                                  color: Colors.pink[50],
                                 ),
-                                CircleAvatar(
-                                  backgroundColor: Colors.pink[50],
-                                  radius: 50.0,
-                                ),
-                                SizedBox(
-                                  width: 35.0,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-
-                                      border: Border.all(
-                                        color: Colors.pink[900],
-                                      ),
-                                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                                      color: Colors.pink[50]
-                                  ),
-
-
-                                  height: 100.0,
-                                  width: 200.0,
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "User Info here"
-                                      )
-                                    ],
-                                  ),
-                                )
-
-                              ],
+                              borderRadius: BorderRadius.all(Radius.circular(50)),
+                              color: Colors.pink[900]
                             ),
-                            SizedBox(
-                              height: 30.0,
-                            ),
-                            InkWell(
-                              splashColor: Colors.greenAccent,
-                              onTap: () {},
-                              //Photo by Daniel Schludi on Unsplash
-                              child: Container(
 
-                                height: 100,
-                                width: 350,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
 
-                                      image: AssetImage(
-                                          'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                      color: Colors.white,
-                                      border: Border.all(
-                                        color: Colors.pink[900],
-                                      ),
-                                      borderRadius: BorderRadius.all(Radius.circular(20))
-                                  ),
+                          height: MediaQuery.of(context).size.height*0.7,
+                          width: MediaQuery.of(context).size.width*0.97,
+                          child: Column(
 
+                            children: [
+                              SizedBox(
+                                height: 30.0,
                               ),
-                            ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            InkWell(
-                              splashColor: Colors.greenAccent,
-                              onTap: () {},
-                              //Photo by Daniel Schludi on Unsplash
-                              child: Container(
+                              Row(
 
-                                height: 100,
-                                width: 350,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
+                                children: [
+                                  SizedBox(
+                                    width: 30.0,
+                                  ),
+                                  CircleAvatar(
+                                    backgroundColor: Colors.pink[50],
+                                    radius: 50.0,
+                                  ),
+                                  SizedBox(
+                                    width: 35.0,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
 
-                                      image: AssetImage(
-                                          'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
-                                      fit: BoxFit.fill,
+                                        border: Border.all(
+                                          color: Colors.pink[900],
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                                        color: Colors.pink[50]
                                     ),
-                                    color: Colors.white,
-                                    border: Border.all(
-                                      color: Colors.pink[900],
-                                    ),
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
-                                ),
 
+
+                                    height: 100.0,
+                                    width: 200.0,
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "User Info here"
+                                        )
+                                      ],
+                                    ),
+                                  )
+
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            Ink(
-                              color: Colors.blueAccent,
-                              child: InkWell(
+                              SizedBox(
+                                height: 30.0,
+                              ),
+                              InkWell(
+                                splashColor: Colors.greenAccent,
+                                onTap: () {},
+                                //Photo by Daniel Schludi on Unsplash
+                                child: Container(
 
+                                  height: 100,
+                                  width: 350,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+
+                                        image: AssetImage(
+                                            'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                        fit: BoxFit.fill,
+                                      ),
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.pink[900],
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              InkWell(
+                                splashColor: Colors.greenAccent,
                                 onTap: () {},
                                 //Photo by Daniel Schludi on Unsplash
                                 child: Container(
@@ -251,23 +236,50 @@ class _HomeState extends State<Home> {
 
                                 ),
                               ),
-                            )
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              Ink(
+                                color: Colors.blueAccent,
+                                child: InkWell(
 
-                          ],
-                        )
+                                  onTap: () {},
+                                  //Photo by Daniel Schludi on Unsplash
+                                  child: Container(
 
+                                    height: 100,
+                                    width: 350,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+
+                                          image: AssetImage(
+                                              'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.pink[900],
+                                        ),
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+
+                                  ),
+                                ),
+                              )
+
+                            ],
+                          )
+
+                        ),
                       ),
-                    ),
-                ],
+                  ],
+                  ),
                 ),
-              ),
-            )
+              )
 
+          ),
         ),
-      ),
-
-
-    );
+      );
   }
 }
 
