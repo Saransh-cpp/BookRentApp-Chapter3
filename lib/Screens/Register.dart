@@ -2,8 +2,12 @@
 import 'dart:math';
 
 import 'package:firebase_database/firebase_database.dart';
+import 'package:provider/provider.dart';
+import 'package:test_app/Screens/Loading.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_app/Screens/NavBar.dart';
 import 'package:test_app/Utility/auth.dart';
+import 'package:test_app/config/config.dart';
 import 'package:test_app/main.dart';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,6 +17,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_app/Screens/LoginPage.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:test_app/provider/user.dart';
 
 class Register extends StatefulWidget {
 
@@ -32,7 +37,8 @@ class _RegisterState extends State<Register> {
   //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
-  UserServices _userServices = UserServices();
+  final _key = GlobalKey<ScaffoldState>();
+  //UserServices _userServices = UserServices();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _nameTextController = TextEditingController();
@@ -50,6 +56,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context);
     double _screenWidth = MediaQuery
         .of(context)
         .size
@@ -59,230 +66,219 @@ class _RegisterState extends State<Register> {
         .size
         .height;
     return Scaffold(
-      backgroundColor: Colors.pink[50],
-      appBar: AppBar(
-        title: Text("Register"),
-        backgroundColor: Colors.black,
-        elevation: 0,
-        actions: [
-          FlatButton.icon(
-              onPressed: () {
-                widget.toggleView();
-              },
-              icon: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              label: Text(
-                'SignIn',
-                style: TextStyle(
+      key: _key,
+      body: user.status == Status.Authenticating ? Loading() : Scaffold(
+        backgroundColor: Colors.pink[50],
+        appBar: AppBar(
+          title: Text("Register"),
+          backgroundColor: Colors.black,
+          elevation: 0,
+          actions: [
+            FlatButton.icon(
+                onPressed: () {
+                  widget.toggleView();
+                },
+                icon: Icon(
+                  Icons.person,
                   color: Colors.white,
                 ),
-              )
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 20,
-              horizontal: 50,
-            ),
-            child: Container(
-              width: _screenWidth,
-              child: Column(
-                children: [
-                  // random youtube
-                  /*InkWell(
-                    onTap: () async {
-                      final tmpFile = await _selectAndPickImage();
-
-                      setState(() {
-                        _imageFile = tmpFile;
-                      });
-                    },
-
-                    child: CircleAvatar(
-                      radius: _screenWidth * 0.18,
-                      backgroundImage: _imageFile == null ? null : FileImage(
-                          File(_imageFile.path)),
-                      child: _imageFile == null
-                          ? Icon(
-                          Icons.add_photo_alternate, size: _screenWidth * 0.18)
-                          : null,
-                    ),
-                  ),*/
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          width: _screenWidth,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                label: Text(
+                  'SignIn',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                )
+            )
+          ],
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 50,
+              ),
+              child: Container(
+                width: _screenWidth,
+                child: Column(
+                  children: [
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
                           ),
-                          padding: EdgeInsets.all(8),
-                          margin: EdgeInsets.all(0),
-                          child: TextFormField(
-                            controller: _nameTextController,
-                            decoration: InputDecoration(
-                                hintText: "Enter Name",
-                                prefixIcon: Icon(Icons.person)
+                          Container(
+                            width: _screenWidth,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
                             ),
-                            validator: (val) =>
-                            val.isEmpty
-                                ? 'Enter a name'
-                                : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                            // net ninja
-                            /*onChanged: (val) {
-                              setState(() {
-                                name = val;
-                              });
-                            },*/
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          width: _screenWidth,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          margin: EdgeInsets.all(0),
-                          child: TextFormField(
-                            controller: _emailTextController,
-                            decoration: InputDecoration(
-                                hintText: "Enter email",
-                                prefixIcon: Icon(Icons.email)
+                            padding: EdgeInsets.all(8),
+                            margin: EdgeInsets.all(0),
+                            child: TextFormField(
+                              controller: _nameTextController,
+                              decoration: InputDecoration(
+                                  hintText: "Enter Name",
+                                  prefixIcon: Icon(Icons.person)
+                              ),
+                              validator: (val) =>
+                              val.isEmpty
+                                  ? 'Enter a name'
+                                  : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              // net ninja
+                              /*onChanged: (val) {
+                                setState(() {
+                                  name = val;
+                                });
+                              },*/
                             ),
-                            validator: (val) =>
-                            val.isEmpty
-                                ? 'Enter an email'
-                                : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                            // net ninja
-                            onChanged: (val) {
-                              setState(() {
-                                email = val;
-                              });
-                            },
                           ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        ListTile(
-                          title: TextFormField(
-                            controller: _passwordTextController,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                            padding: EdgeInsets.all(8),
+                            margin: EdgeInsets.all(0),
+                            child: TextFormField(
+                              controller: _emailTextController,
+                              decoration: InputDecoration(
+                                  hintText: "Enter email",
+                                  prefixIcon: Icon(Icons.email)
+                              ),
+                              validator: (val) =>
+                              val.isEmpty
+                                  ? 'Enter an email'
+                                  : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              // net ninja
+                              onChanged: (val) {
+                                setState(() {
+                                  email = val;
+                                });
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          ListTile(
+                            title: TextFormField(
+                              controller: _passwordTextController,
+                              validator: (val) =>
+                              val.length < 6
+                                  ? 'Enter a password 6+ chars long'
+                                  : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              obscureText: hidePass,
+                              // net ninja
+                              onChanged: (val) {
+                                setState(() {
+                                  password = val;
+                                });
+                              },
+                            ),
+                            trailing: IconButton(
+                                icon: Icon(Icons.remove_red_eye),
+                                onPressed: () {
+                                  setState(() {
+                                    hidePass = !hidePass;
+                                  });
+                                }),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            controller: _confirmPasswordController,
                             validator: (val) =>
                             val.length < 6
                                 ? 'Enter a password 6+ chars long'
                                 : null,
                             textAlignVertical: TextAlignVertical.bottom,
-                            obscureText: hidePass,
-                            // net ninja
-                            onChanged: (val) {
-                              setState(() {
-                                password = val;
-                              });
+                            obscureText: true,
+                            //onChanged: (val) {
+                            //setState(() {
+                            //password = val;
+                            //});
+                            //},
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          RaisedButton(
+                            onPressed: () async {
+                              // net ninja
+                              //if (_formKey.currentState.validate()) {
+
+                              if(_formKey.currentState.validate()){
+                                if(!await user.signUp(_nameTextController.text ,_emailTextController.text, _passwordTextController.text)){
+                                  _key.currentState.showSnackBar(SnackBar(content: Text("Sign up failed")));
+                                  return;
+                                }
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => NavBar()));
+                              }
+
+
+                              //Random
+                              //uploadAndSaveData();
+
+                              /* net ninja
+                                dynamic result = await registerWithEmailAndPassword(
+                                    email, password);
+                                if (result == null) {
+                                  setState(() {
+                                    error = 'please suppy a valid email';
+                                  });
+                                }*/
                             },
+
+
+                            child: Text(
+                                'Register'
+                            ),
                           ),
-                          trailing: IconButton(
-                              icon: Icon(Icons.remove_red_eye),
-                              onPressed: () {
-                                setState(() {
-                                  hidePass = !hidePass;
+
+                          /*RaisedButton(
+                            onPressed: () async {
+                              Auth auth = Auth();
+                              User user = await auth.googleSignIn();
+                              if (user == null) {
+                                _userServices.createUser({
+                                  "name": user.displayName,
+                                  "photo": user.photoUrl,
+                                  "email": user.email,
+                                  "userId": user.uid
                                 });
-                              }),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: _confirmPasswordController,
-                          validator: (val) =>
-                          val.length < 6
-                              ? 'Enter a password 6+ chars long'
-                              : null,
-                          textAlignVertical: TextAlignVertical.bottom,
-                          obscureText: true,
-                          //onChanged: (val) {
-                          //setState(() {
-                          //password = val;
-                          //});
-                          //},
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        RaisedButton(
-                          onPressed: () async {
-                            // net ninja
-                            //if (_formKey.currentState.validate()) {
-
-                            // Santos
-                            //await validateForm();
-
-                            /*Random video
-                            uploadAndSaveData();*/
-
-                            /* net ninja
-                              dynamic result = await registerWithEmailAndPassword(
-                                  email, password);
-                              if (result == null) {
-                                setState(() {
-                                  error = 'please suppy a valid email';
-                                });
-                              }*/
-                          },
-
-
-                          child: Text(
-                              'Register'
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavBar()));
+                              }
+                            },
+                            child: Text(
+                                'Google SignIn'
+                            ),
+                          ),*/
+                          SizedBox(
+                            height: 15,
                           ),
-                        ),
-
-                        RaisedButton(
-                          onPressed: () async {
-                            Auth auth = Auth();
-                            User user = await auth.googleSignIn();
-                            if (user == null) {
-                              _userServices.createUser({
-                                "name": user.displayName,
-                                "photo": user.photoUrl,
-                                "email": user.email,
-                                "userId": user.uid
-                              });
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavBar()));
-                            }
-                          },
-                          child: Text(
-                              'Google SignIn'
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          error,
-                          style: TextStyle(
-                            color: Colors.red,
-                          ),
-                        )
-                      ],
+                          Text(
+                            error,
+                            style: TextStyle(
+                              color: Colors.red,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
+                  ],
+                ),
+              )
+          ),
         ),
       ),
     );
@@ -313,40 +309,37 @@ class _RegisterState extends State<Register> {
 
 
   //Random video
-  /*Future _selectAndPickImage() async {
-    PickedFile firstImage = await ImagePicker().getImage(source: ImageSource.gallery);
-    return firstImage;
+  /*Future _selectImage(Future<File> pickImage) async {
+    File tempImg = await pickImage;
+    setState(() => _imageFile = tempImg );
+
+  }
+
+  Widget _displayChild1() {
+    if (_imageFile == null) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(14, 70, 14, 70),
+        child: new Icon(Icons.add, color: Colors.grey,),
+      );
+    } else {
+      return Image.file(_imageFile, fit: BoxFit.fill, width: double.infinity,);
+    }
   }
 
   Future<void> uploadAndSaveData() async {
-    /*if(_imageFile == null){
-      showDialog(
-          context: context,
-      builder: (c){
-            return AlertDialog(
-              content: Text(
-                'Please select an image'
-              ),
-            );
-
-      });
+    if(_imageFile == null) {
+      print('all the images must be provided');
     }
-    else*/
-    _passwordTextController.text == _confirmPasswordController.text
-        ? _emailTextController.text.isNotEmpty &&
-        _passwordTextController.text.isNotEmpty &&
-        _nameTextController.text.isNotEmpty
-
-        //? uploadToStorage()
-
-        //: displayDialogue('Please fill up the form')
-
-        : displayDialogue('Passwords do not match');
-    _registerUser();
-
+    else {
+      if(_formKey.currentState.validate()) {
+        if(_passwordTextController.text == _confirmPasswordController.text) {
+          await uploadToStorage();
+        }
+      }
+    }
   }
 
-  displayDialogue(String error) {
+  /*displayDialogue(String error) {
     showDialog(context: context,
         builder: (c) {
           return AlertDialog(
@@ -355,23 +348,18 @@ class _RegisterState extends State<Register> {
             ),
           );
         });
-  }
+  }*/
 
-  String url;
+ // String url;
 
   uploadToStorage() async {
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference storageReference = storage.ref().child("imageFileName" + DateTime
-        .now()
-        .millisecondsSinceEpoch
-        .toString());
-    UploadTask storageUploadTask = storageReference.putFile(_imageFile);
-    storageUploadTask.whenComplete(() {
-      url = storageReference.getDownloadURL() as String;
-    }).catchError((onError) {
-      print(onError);
-    });
-    _registerUser();
+    final String picture = "${DateTime.now().millisecondsSinceEpoch.toString()}.jpg";
+    Reference reference = storage.ref().child(picture);
+    await reference.putFile(_imageFile);
+
+    userImageUrl = await reference.getDownloadURL();
+    registerUser();
 
     //FirebaseAuth _auth = FirebaseAuth.instance;
     //void _registerUser() async{
@@ -383,48 +371,41 @@ class _RegisterState extends State<Register> {
 
 
   //registration
-  void _registerUser() async {
+  void registerUser() async {
     User firebaseUser;
     await _auth.createUserWithEmailAndPassword(
-        email: _emailTextController.text.trim(),
-        password: _passwordTextController.text.trim()
+        email: _emailTextController.text,
+        password: _passwordTextController.text
     ).then((auth) {
       firebaseUser = auth.user;
     }).catchError((error) {
       Navigator.pop(context);
-      showDialog(
-          context: context,
-          builder: (c) {
-            return displayDialogue(error.toString());
-          });
-    }
-    );
+      print(error.toString());
+    });
 
     if (firebaseUser != null) {
       saveUserInfoToFireStore(firebaseUser).then((value){
-        Navigator.pop(context);
-        Route route = MaterialPageRoute(builder: (c) => NavBar());
-        Navigator.pushReplacement(context, route);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => NavBar()));
       });
     }
   }
 
   Future saveUserInfoToFireStore(User user) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    firestore.collection("Users").doc(user.uid).set({
+    firestore.collection("users").doc(user.uid).set({
       "uid": user.uid,
       "email": user.email,
-      "name": _nameTextController.text.trim(),
-      //"url": url,
-      "userCart": ["garbageValue"],
+      "name": _nameTextController.text,
+      "url": userImageUrl,
+      BookApp.userCartList: ["garbageValue"],
     });
 
-    await sharedPreferences.setString("uid", user.uid);
-    await sharedPreferences.setString("email", user.email);
-    await sharedPreferences.setString("name", _nameTextController.text);
-    //await sharedPreferences.setString("url", url);
-    await sharedPreferences.setStringList("userCart", ["garbageValue"]);
+    await BookApp.sharedPreferences.setString(BookApp.userUID, user.uid);
+    await BookApp.sharedPreferences.setString(BookApp.userEmail, user.email);
+    await BookApp.sharedPreferences.setString(BookApp.userName, _nameTextController.text);
+    await BookApp.sharedPreferences.setString(BookApp.userPhotoUrl, userImageUrl);
+    await BookApp.sharedPreferences.setStringList(BookApp.userCartList, ["garbageValue"]);
   }*/
 
 
@@ -484,7 +465,8 @@ class UserServices{
 
 
 
-/* Net ninja
+/* ========================== Net ninja =====================
+
 final FirebaseAuth auth = FirebaseAuth.instance;
 class AuthService{
 

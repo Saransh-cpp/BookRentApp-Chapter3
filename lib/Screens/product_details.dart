@@ -1,26 +1,42 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Widgets.dart';
+import 'package:test_app/model/product.dart';
+import 'package:test_app/provider/app.dart';
+import 'package:test_app/provider/user.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ProductDetails extends StatefulWidget {
-  final product_detail_name;
-  final product_detail_picture;
-  ProductDetails({
-    this.product_detail_name,
-    this.product_detail_picture
-  });
+
+  final ProductModel product;
+  const ProductDetails({Key key, this.product}) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  final _key = GlobalKey<ScaffoldState>();
+  String _size = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _size = widget.product.sizes[0];
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    final userProvider = Provider.of<UserProvider>(context);
+    final appProvider = Provider.of<AppProvider>(context);
+
     return SafeArea(
       child: Scaffold(
+        key: _key,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.pink[50],
@@ -41,12 +57,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Carousel(
                     boxFit: BoxFit.cover,
                     images: [
-                      AssetImage(widget.product_detail_picture),
-                      AssetImage(widget.product_detail_picture),
-                      AssetImage(widget.product_detail_picture),
-                      AssetImage(widget.product_detail_picture),
-                      AssetImage(widget.product_detail_picture),
-                      AssetImage(widget.product_detail_picture),
+                      Image.network(widget.product.pictures[0], fit: BoxFit.fill,),
+                      Image.network(widget.product.pictures[1], fit: BoxFit.fill,),
+                      Image.network(widget.product.pictures[2]),
                     ],
                     animationCurve: Curves.fastOutSlowIn,
                     dotSize: 4.0,
@@ -57,8 +70,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                   color: Colors.white70,
                   child: ListTile(
                     title: Center(
-                      child: Text(
-                        widget.product_detail_name
+                      child: Text(''
+                        //widget.product.name
                       ),
                     ),
                   ),
@@ -68,77 +81,36 @@ class _ProductDetailsState extends State<ProductDetails> {
             Row(
               children: [
                 Expanded(
-                    child: MaterialButton(
-                      elevation: 0.0,
-                      onPressed: () {
-                        showDialog(context: context,
-                        builder: (context){
-                          return AlertDialog(
-                            title: Text('Weeks'),
-                            content: Text('Choose the time'),
-                          );
-                        }
-                        );
-                      },
-                      color: Colors.white,
-                      textColor: Colors.grey,
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Text(
-                                'Time'
-                              )
-                          ),
-                          Expanded(
-                              child: Icon(
-                                  Icons.arrow_drop_down_rounded
-                              )
-                          )
-                    ],
-                  ),
-                    )
+                    child:  DropdownButton<String>(
+                        value: _size,
+                        style: TextStyle(
+                            color: Colors.white
+                        ),
+                        items: widget.product.sizes
+                            .map<DropdownMenuItem<String>>(
+                                (value) => DropdownMenuItem(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  )
+                                )
+                                )
+                        )
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            _size = value;
+                          });
+                        }),
                 ),
                 Expanded(
-                    child: MaterialButton(
-                      elevation: 0.0,
-                      onPressed: () {},
-                      color: Colors.white,
-                      textColor: Colors.grey,
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Text(
-                                  'Time'
-                              )
-                          ),
-                          Expanded(
-                              child: Icon(
-                                  Icons.arrow_drop_down_rounded
-                              )
-                          )
-                        ],
-                      ),
-                    )
-                ),
-                Expanded(
-                    child: MaterialButton(
-                      elevation: 0.0,
-                      onPressed: () {},
-                      color: Colors.white,
-                      textColor: Colors.grey,
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Text(
-                                  'Time'
-                              )
-                          ),
-                          Expanded(
-                              child: Icon(
-                                  Icons.arrow_drop_down_rounded
-                              )
-                          )
-                        ],
+                    child: Text(
+                      'Price: ${widget.product.prices[0]}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18
                       ),
                     )
                 ),
@@ -157,14 +129,46 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ),
         )
               ),
-              IconButton(
+              appProvider.isLoading ? Loading() : IconButton(
                 icon: Icon(Icons.add_shopping_cart_rounded),
-                onPressed: () {},
+                onPressed: () async{
+                  appProvider.changeIsLoading();
+                  bool success = await userProvider.addToCart(product: widget.product, size: _size);
+                  if (success) {
+                    _key.currentState.showSnackBar(
+                        SnackBar(content: Text("Added to Cart!")));
+                    userProvider.reloadUserModel();
+                    appProvider.changeIsLoading();
+                    return;
+                  } else {
+                    _key.currentState.showSnackBar(SnackBar(
+                        content: Text("Not added to Cart!")));
+                    appProvider.changeIsLoading();
+                    return;
+                  }
+                  appProvider.changeIsLoading();
+                },
                 color: Colors.red,
               ),
               IconButton(
                 icon: Icon(Icons.favorite_rounded),
-                onPressed: () {},
+                onPressed: () async{
+                  appProvider.changeIsLoading();
+                  bool success = await userProvider.addToFav(product: widget.product);
+                  if (success) {
+                    _key.currentState.showSnackBar(
+                        SnackBar(content: Text("Added to Fav!")));
+                    userProvider.reloadUserModel();
+                    appProvider.changeIsLoading();
+                    return;
+                  } else {
+                    _key.currentState.showSnackBar(SnackBar(
+                        content: Text("Not added to Fav!")));
+                    appProvider.changeIsLoading();
+                    return;
+                  }
+                  appProvider.changeIsLoading();
+                },
                 color: Colors.red,
               ),
               ]
@@ -188,7 +192,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 Divider(),
                 Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                  widget.product.description
                 ),
                 Divider(),
                 Text(
@@ -200,7 +204,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
                 Divider(),
                 Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                  widget.product.whyToRead
                 ),
                 Divider(),
                 Text(
@@ -211,10 +215,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                 ),
                 Divider(),
-                Container(
+                /*Container(
                   height: 360,
                   child: SimilarProducts(),
-                )
+                )*/
 
               ],
             )

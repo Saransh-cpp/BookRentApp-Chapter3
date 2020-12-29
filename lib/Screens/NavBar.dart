@@ -3,9 +3,9 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/Screens/YourOrders.dart';
 import 'package:test_app/Widgets.dart';
-import 'package:test_app/Widgets.dart';
 import 'package:test_app/Screens/AllBooks.dart';
 import 'package:test_app/Screens/Home.dart';
+import 'package:test_app/counters/cartitemcounter.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -57,9 +57,19 @@ class _NavBarState extends State<NavBar> {
 
             backgroundColor: Colors.pink[50],
             items: <Widget>[
-              Icon(Icons.home_rounded, size: 30),
-              Icon(Icons.menu_book_rounded, size: 30),
-              Icon(Icons.shopping_cart_rounded, size: 30),
+              Icon(
+                  Icons.home_rounded,
+                  size: 30
+              ),
+              Icon(
+                  Icons.menu_book_rounded,
+                  size: 30
+              ),
+              Icon(
+                  Icons.shopping_cart_rounded,
+                  size: 30
+              ),
+
             ],
             index: currentIndex,
             animationCurve: Curves.easeInToLinear,

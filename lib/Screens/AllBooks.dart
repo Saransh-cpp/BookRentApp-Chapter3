@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test_app/Widgets.dart';
+import 'package:test_app/provider/product.dart';
+import 'package:test_app/provider/user.dart';
+import 'package:test_app/services/product.dart';
 
 class AllBooks extends StatefulWidget {
   @override
@@ -7,40 +11,52 @@ class AllBooks extends StatefulWidget {
 }
 
 class _AllBooksState extends State<AllBooks> {
+
+  //ProductServices _productServices = ProductServices();
+
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+    final productProvider = Provider.of<ProductProvider>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
           child: ListView(
-                      physics: ScrollPhysics(),
-                      shrinkWrap: true,
-                        children: [
-                          Container(
-                            color: Colors.pink[50],
-                            height: 20,
-                            width: 500,
-                            child: Center(
-                              child: Text(
-                                'Genre 1',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
+            physics: ScrollPhysics(),
+            shrinkWrap: true,
+            children: [
+              // Row(
+              //   children: <Widget>[
+              //     Padding(
+              //       padding: const EdgeInsets.all(14.0),
+              //       child: Container(
+              //           alignment: Alignment.centerLeft,
+              //           child: new Text('Astrophysics')),
+              //     ),
+              //   ],
+              // ),
+              //
+              // FeaturedProducts(
+              //   genre: 'Astrophysics',
+              // ),
 
-                                ),
-                              ),
-                            ),
-                          ),
-                          Products(),
-                        ],
+              perGenre(
+                genre: 'Astrophysics',
+              ),
 
-                     ),
+              perGenre(
+                genre: 'Horror',
+              ),
+
+              perGenre(
+                genre: 'Science Fiction',
+              ),
+            ],
+          ),
         ),
       ),
-            );
-
-
-
+    );
   }
 }

@@ -21,6 +21,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  transparent_image: ^1.0.0
+  uuid: ^2.2.2
   firebase_database: ^4.4.0
   firebase_storage: ^5.2.0
   image_picker: ^0.6.7+15
@@ -33,6 +35,7 @@ dependencies:
   firebase_auth: ^0.18.4+1
   carousel_pro: ^1.0.0
   curved_navigation_bar: ^0.3.4
+  flutter_typeahead: ^1.9.1
   flutter:
     sdk: flutter
 
