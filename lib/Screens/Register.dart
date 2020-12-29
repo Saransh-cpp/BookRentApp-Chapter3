@@ -66,220 +66,210 @@ class _RegisterState extends State<Register> {
         .size
         .height;
     return Scaffold(
+      backgroundColor: Colors.yellow,
       key: _key,
       body: user.status == Status.Authenticating ? Loading() : Scaffold(
         backgroundColor: Colors.pink[50],
-        appBar: AppBar(
-          title: Text("Register"),
-          backgroundColor: Colors.black,
-          elevation: 0,
-          actions: [
-            FlatButton.icon(
-                onPressed: () {
-                  widget.toggleView();
-                },
-                icon: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  'SignIn',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )
-            )
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 50,
-              ),
-              child: Container(
-                width: _screenWidth,
-                child: Column(
-                  children: [
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 20,
+        body: Center(
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Welcome to\n Chapter 3',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
                           ),
-                          Container(
-                            width: _screenWidth,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            margin: EdgeInsets.all(0),
-                            child: TextFormField(
-                              controller: _nameTextController,
-                              decoration: InputDecoration(
-                                  hintText: "Enter Name",
-                                  prefixIcon: Icon(Icons.person)
+                        ),
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 60,
                               ),
-                              validator: (val) =>
-                              val.isEmpty
-                                  ? 'Enter a name'
-                                  : null,
-                              textAlignVertical: TextAlignVertical.bottom,
-                              // net ninja
-                              /*onChanged: (val) {
-                                setState(() {
-                                  name = val;
-                                });
-                              },*/
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            width: _screenWidth,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            margin: EdgeInsets.all(0),
-                            child: TextFormField(
-                              controller: _emailTextController,
-                              decoration: InputDecoration(
-                                  hintText: "Enter email",
-                                  prefixIcon: Icon(Icons.email)
+                              // CircleAvatar(
+                              //   radius: 70,
+                              //   backgroundImage: user.userModel.userImage == ''
+                              //       ? Icon(Icons.add_photo_alternate)
+                              //       : NetworkImage(user.userModel.userImage),
+                              // ),
+                              // SizedBox(
+                              //   height: 20,
+                              // ),
+                              Container(
+                                width: _screenWidth,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                padding: EdgeInsets.all(8),
+                                margin: EdgeInsets.all(0),
+                                child: TextFormField(
+                                  controller: _nameTextController,
+                                  decoration: InputDecoration(
+                                      hintText: "Enter Name",
+                                      prefixIcon: Icon(Icons.person)),
+                                  validator: (val) =>
+                                      val.isEmpty ? 'Enter a name' : null,
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                ),
                               ),
-                              validator: (val) =>
-                              val.isEmpty
-                                  ? 'Enter an email'
-                                  : null,
-                              textAlignVertical: TextAlignVertical.bottom,
-                              // net ninja
-                              onChanged: (val) {
-                                setState(() {
-                                  email = val;
-                                });
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          ListTile(
-                            title: TextFormField(
-                              controller: _passwordTextController,
-                              validator: (val) =>
-                              val.length < 6
-                                  ? 'Enter a password 6+ chars long'
-                                  : null,
-                              textAlignVertical: TextAlignVertical.bottom,
-                              obscureText: hidePass,
-                              // net ninja
-                              onChanged: (val) {
-                                setState(() {
-                                  password = val;
-                                });
-                              },
-                            ),
-                            trailing: IconButton(
-                                icon: Icon(Icons.remove_red_eye),
-                                onPressed: () {
-                                  setState(() {
-                                    hidePass = !hidePass;
-                                  });
-                                }),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          TextFormField(
-                            controller: _confirmPasswordController,
-                            validator: (val) =>
-                            val.length < 6
-                                ? 'Enter a password 6+ chars long'
-                                : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                            obscureText: true,
-                            //onChanged: (val) {
-                            //setState(() {
-                            //password = val;
-                            //});
-                            //},
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          RaisedButton(
-                            onPressed: () async {
-                              // net ninja
-                              //if (_formKey.currentState.validate()) {
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Container(
+                                width: _screenWidth,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                ),
+                                padding: EdgeInsets.all(8),
+                                margin: EdgeInsets.all(0),
+                                child: TextFormField(
+                                  controller: _emailTextController,
+                                  decoration: InputDecoration(
+                                      hintText: "Enter email",
+                                      prefixIcon: Icon(Icons.email)),
+                                  validator: (val) =>
+                                      val.isEmpty ? 'Enter an email' : null,
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  // net ninja
+                                  onChanged: (val) {
+                                    setState(() {
+                                      email = val;
+                                    });
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              ListTile(
+                                title: TextFormField(
+                                  controller: _passwordTextController,
+                                  validator: (val) => val.length < 6
+                                      ? 'Enter a password 6+ chars long'
+                                      : null,
+                                  textAlignVertical: TextAlignVertical.bottom,
+                                  obscureText: hidePass,
+                                  // net ninja
+                                  onChanged: (val) {
+                                    setState(() {
+                                      password = val;
+                                    });
+                                  },
+                                ),
+                                trailing: IconButton(
+                                    icon: Icon(Icons.remove_red_eye),
+                                    onPressed: () {
+                                      setState(() {
+                                        hidePass = !hidePass;
+                                      });
+                                    }),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              TextFormField(
+                                controller: _confirmPasswordController,
+                                validator: (val) => val.length < 6
+                                    ? 'Enter a password 6+ chars long'
+                                    : null,
+                                textAlignVertical: TextAlignVertical.bottom,
+                                obscureText: true,
+                                //onChanged: (val) {
+                                //setState(() {
+                                //password = val;
+                                //});
+                                //},
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              RaisedButton(
+                                onPressed: () async {
+                                  // net ninja
+                                  //if (_formKey.currentState.validate()) {
 
-                              if(_formKey.currentState.validate()){
-                                if(!await user.signUp(_nameTextController.text ,_emailTextController.text, _passwordTextController.text)){
-                                  _key.currentState.showSnackBar(SnackBar(content: Text("Sign up failed")));
-                                  return;
-                                }
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => NavBar()));
-                              }
+                                  if (_formKey.currentState.validate()) {
+                                    if (!await user.signUp(
+                                        _nameTextController.text,
+                                        _emailTextController.text,
+                                        _passwordTextController.text)) {
+                                      _key.currentState.showSnackBar(SnackBar(
+                                          content: Text("Sign up failed")));
+                                      return;
+                                    }
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (c) => NavBar()));
+                                  }
 
+                                  //Random
+                                  //uploadAndSaveData();
 
-                              //Random
-                              //uploadAndSaveData();
+                                  /* net ninja
+                                                dynamic result = await registerWithEmailAndPassword(
+                                                    email, password);
+                                                if (result == null) {
+                                                  setState(() {
+                                                    error = 'please suppy a valid email';
+                                                  });
+                                                }*/
+                                },
+                                child: Text('Register'),
+                              ),
 
-                              /* net ninja
-                                dynamic result = await registerWithEmailAndPassword(
-                                    email, password);
-                                if (result == null) {
-                                  setState(() {
-                                    error = 'please suppy a valid email';
-                                  });
-                                }*/
-                            },
-
-
-                            child: Text(
-                                'Register'
-                            ),
+                              /*RaisedButton(
+                                            onPressed: () async {
+                                              Auth auth = Auth();
+                                              User user = await auth.googleSignIn();
+                                              if (user == null) {
+                                                _userServices.createUser({
+                                                  "name": user.displayName,
+                                                  "photo": user.photoUrl,
+                                                  "email": user.email,
+                                                  "userId": user.uid
+                                                });
+                                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavBar()));
+                                              }
+                                            },
+                                            child: Text(
+                                                'Google SignIn'
+                                            ),
+                                          ),*/
+                              SizedBox(
+                                height: 15,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  widget.toggleView();
+                                },
+                                child: Text(
+                                  'I already have an account',
+                                  style: TextStyle(color: Colors.red, fontSize: 15),
+                                ),
+                              ),
+                              Text(
+                                error,
+                                style: TextStyle(
+                                  color: Colors.red,
+                                ),
+                              )
+                            ],
                           ),
-
-                          /*RaisedButton(
-                            onPressed: () async {
-                              Auth auth = Auth();
-                              User user = await auth.googleSignIn();
-                              if (user == null) {
-                                _userServices.createUser({
-                                  "name": user.displayName,
-                                  "photo": user.photoUrl,
-                                  "email": user.email,
-                                  "userId": user.uid
-                                });
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavBar()));
-                              }
-                            },
-                            child: Text(
-                                'Google SignIn'
-                            ),
-                          ),*/
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            error,
-                            style: TextStyle(
-                              color: Colors.red,
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              )
-          ),
-        ),
+              ),
       ),
     );
   }

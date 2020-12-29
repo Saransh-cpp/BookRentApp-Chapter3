@@ -145,10 +145,12 @@ class _HomeState extends State<Home> {
                     backgroundColor: Colors.white,
                     shadowColor: Colors.pink[50],
                     elevation: 0.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        bottom: Radius.circular(30)
-                      )
+                    title: Text(
+                      'Chapter 3',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                     ),
                     actions: [
                       // IconButton(
@@ -259,8 +261,8 @@ class _HomeState extends State<Home> {
                                         width: 200.0,
                                         child: Column(
                                           children: [
-                                            Text(
-                                              userProvider.userModel.bio
+                                            Text(''
+                                              // userProvider.userModel.bio
                                             )
                                           ],
                                         ),

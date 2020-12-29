@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:test_app/Screens/product_details.dart';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/model/order.dart';
 import 'package:test_app/model/product.dart';
@@ -80,7 +81,8 @@ class UserProvider with ChangeNotifier {
           'stripeId': '',
           'number': '',
           'address': '',
-          'bio': ''
+          'bio': '',
+          'userImage': '',
         });
         _userModel = await _userServices.getUserById(user.user.uid);
         notifyListeners();
@@ -125,7 +127,9 @@ class UserProvider with ChangeNotifier {
         "name": product.name,
         "image": product.pictures[0],
         "productId": product.id,
-        "price": product.prices[0],
+        'price': ProdPrice(product: product, size: size),
+        // size == '1 week' ? product.prices[0] : product.prices[1],
+        // "price": product.prices[0],
         "size": size,
       };
 
@@ -204,5 +208,19 @@ class UserProvider with ChangeNotifier {
   Future<void> reloadUserModel()async{
     _userModel = await _userServices.getUserById(user.uid);
     notifyListeners();
+  }
+
+
+  ProdPrice({ProductModel product, String size}) {
+    switch(size) {
+      case '1 week':
+        return product.prices[0];
+      case '2 weeks':
+        return product.prices[1];
+      case '3 weeks':
+        return product.prices[2];
+      case '4 weeks':
+        return product.prices[3];
+    }
   }
 }
