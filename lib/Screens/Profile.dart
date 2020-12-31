@@ -721,6 +721,8 @@ class UpdateProfile extends StatefulWidget {
   _UpdateProfileState createState() => _UpdateProfileState();
 }
 
+
+
 class _UpdateProfileState extends State<UpdateProfile> {
 
 
@@ -730,7 +732,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
   final _key = GlobalKey<ScaffoldState>();
 
   UserServices _userServices = UserServices();
-  TextEditingController _emailTextController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
   TextEditingController _nameTextController = TextEditingController();
   TextEditingController _numberController = TextEditingController();
@@ -739,11 +740,16 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
 
   String email = '';
-  String password = '';
-  String error = '';
-  bool hidePass = true;
-  String userImageUrl = '';
-  File _imageFile;
+  String name = '';
+  String address = '';
+  String bio = '';
+  String number = '';
+
+  bool emailbool = false;
+  bool namebool = false;
+  bool addressbool = false;
+  bool biobool = false;
+  bool numberbool = false;
 
   @override
   Widget build(BuildContext context) {
@@ -781,26 +787,28 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 Container(
                                   width: _screenWidth,
                                   decoration: BoxDecoration(
-                                    // color: Colors.white,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)),
                                   ),
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    controller: _nameTextController..text = user.userModel.name,
-                                    onChanged: (text) => {},
+                                    initialValue: user.userModel.name,
+                                    onChanged: (text) => {
+                                      setState(() {
+                                        // print(text);
+                                        // text == ''
+                                        //     ? name = text
+                                        //     : name = user.userModel.name;
+                                        namebool = true;
+                                        name = text;
+                                      })
+                                    },
                                     decoration: InputDecoration(
                                         prefixIcon: Icon(Icons.person)),
                                     validator: (val) =>
                                         val.isEmpty ? 'Enter a name' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
-                                    // net ninja
-                                    /*onChanged: (val) {
-                                setState(() {
-                                  name = val;
-                                });
-                              },*/
                                   ),
                                 ),
                                 SizedBox(
@@ -815,10 +823,16 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    controller: _emailTextController..text = user.userModel.email ,
+                                    initialValue: user.userModel.email,
                                     decoration: InputDecoration(
                                         hintText: "Enter email",
                                         prefixIcon: Icon(Icons.email)),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        emailbool = true;
+                                        email = val;
+                                      });
+                                    },
                                     validator: (val) =>
                                         val.isEmpty ? 'Enter an email' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
@@ -837,7 +851,13 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    controller: _addressController..text = user.userModel.address,
+                                    initialValue: user.userModel.address,
+                                    onChanged: (val){
+                                      setState(() {
+                                        addressbool = true;
+                                        address = val;
+                                      });
+                                    },
                                     decoration: InputDecoration(
                                         hintText: "Enter address",
                                         prefixIcon: Icon(Icons.home_work_rounded)),
@@ -852,24 +872,26 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 Container(
                                   width: _screenWidth,
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
                                     borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
                                   ),
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    keyboardType: TextInputType.number,
-                                    controller: _numberController..text = user.userModel.number,
+                                    initialValue: user.userModel.bio,
+                                    onChanged: (val){
+                                      setState(() {
+                                        biobool = true;
+                                        bio = val;
+                                      });
+                                    },
                                     decoration: InputDecoration(
-                                        hintText: "Enter number",
-                                        prefixIcon: Icon(Icons.phone)),
+                                        hintText: "Enter bio",
+                                        prefixIcon: Icon(Icons.email)),
                                     validator: (val) =>
-                                    val.isEmpty ? 'Enter a number' : null,
+                                    val.isEmpty ? 'Enter a bio' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                     // net ninja
-
-
                                   ),
                                 ),
                                 SizedBox(
@@ -884,14 +906,23 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    controller: _bioController..text = user.userModel.bio,
+                                    keyboardType: TextInputType.number,
+                                    initialValue: user.userModel.number,
+                                    onChanged: (val){
+                                      setState(() {
+                                        numberbool = true;
+                                        number = val;
+                                      });
+                                    },
                                     decoration: InputDecoration(
-                                        hintText: "Enter bio",
-                                        prefixIcon: Icon(Icons.email)),
+                                        hintText: "Enter number",
+                                        prefixIcon: Icon(Icons.phone)),
                                     validator: (val) =>
-                                    val.isEmpty ? 'Enter a bio' : null,
+                                    val.isEmpty ? 'Enter a number' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                     // net ninja
+
+
                                   ),
                                 ),
 
@@ -905,15 +936,16 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
                                     if (_formKey.currentState.validate()) {
                                       if (!await _userServices.createUser({
-                                        'name': _nameTextController.text,
-                                        'email': email,
+                                        'name': namebool ? name : user.userModel.name,
+                                        'email': emailbool ? email : user.userModel.email,
                                         'uid': user.user.uid,
                                         'stripeId': '',
-                                        'number': _numberController.text,
-                                        'address': _addressController.text
+                                        'number': numberbool ? number : user.userModel.number,
+                                        'address': addressbool ? address : user.userModel.address,
+                                        'bio': biobool ? bio : user.userModel.bio
                                       })) {
                                         _key.currentState.showSnackBar(SnackBar(
-                                            content: Text("Sign up failed")));
+                                            content: Text("Network Issue, Try again")));
                                         return;
                                       }
                                       Navigator.pushReplacement(
@@ -958,12 +990,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 SizedBox(
                                   height: 15,
                                 ),
-                                Text(
-                                  error,
-                                  style: TextStyle(
-                                    color: Colors.red,
-                                  ),
-                                )
                               ],
                             ),
                           ),

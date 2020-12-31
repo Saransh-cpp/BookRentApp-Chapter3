@@ -56,7 +56,7 @@ class UserModel {
     _email = snapshot.data()[EMAIL];
     _id = snapshot.data()[ID];
     _address = snapshot.data()[ADDRESS] ?? "";
-    _number = snapshot.data()[NUMBER] ?? "";
+    _number = snapshot.data()[NUMBER] ?? '';
     _userImage = snapshot.data()[USERIMAGE] ?? "";
     _stripeId = snapshot.data()[STRIPE_ID] ?? "";
     _bio = snapshot.data()[BIO] ?? "";
