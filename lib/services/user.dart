@@ -19,6 +19,16 @@ class UserServices{
     }
   }
 
+  updateUser(Map<String, dynamic> data) async{
+    try{
+      await _firestore.collection(collection).doc(data["uid"]).set(data);
+      print("USER WAS CREATED");
+      return true;
+    }catch(e){
+      print('ERROR: ${e.toString()}');
+    }
+  }
+
   Future<UserModel> getUserById(String id)=> _firestore.collection(collection).doc(id).get().then((doc){
     /*print("==========id is $id=============");
     debugPrint("==========NAME is ${doc.data()['name']}=============");

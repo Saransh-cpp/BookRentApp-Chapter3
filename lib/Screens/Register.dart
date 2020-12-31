@@ -31,9 +31,6 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  //final AuthService _auth = AuthService();
-
-
   //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();

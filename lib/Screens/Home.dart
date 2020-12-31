@@ -13,6 +13,9 @@ import 'package:test_app/provider/user.dart';
 import 'package:test_app/services/product.dart';
 import 'package:test_app/Screens/Favourites.dart';
 import 'package:test_app/Screens/Profile.dart';
+import 'package:test_app/Screens/Quiz.dart';
+import 'package:test_app/Screens/Recommendations.dart';
+import 'package:test_app/Screens/BestSellers.dart';
 
 
 class Home extends StatefulWidget {
@@ -54,12 +57,6 @@ class _HomeState extends State<Home> {
                           ),
                           accountEmail: Text(
                             userProvider.userModel?.email ?? "email loading...",
-                          ),
-                          currentAccountPicture: CircleAvatar(
-                            /*backgroundImage: NetworkImage(
-                              BookApp.sharedPreferences.getString(BookApp.userPhotoUrl)
-                            ),*/
-                            radius: 30,
                           ),
                         ),
                         Container(
@@ -103,8 +100,8 @@ class _HomeState extends State<Home> {
                               },
                             ),
                             CustomListTile(
-                                Icons.settings,
-                                'Settings',
+                                Icons.contact_support_rounded,
+                                'Contact us',
                                     () => {}
                             ),
                             CustomListTile(
@@ -234,18 +231,8 @@ class _HomeState extends State<Home> {
                                     height: 30.0,
                                   ),
                                   Row(
-
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(
-                                        width: 30.0,
-                                      ),
-                                      CircleAvatar(
-                                        backgroundColor: Colors.pink[50],
-                                        radius: 50.0,
-                                      ),
-                                      SizedBox(
-                                        width: 35.0,
-                                      ),
                                       Container(
                                         decoration: BoxDecoration(
 
@@ -258,10 +245,13 @@ class _HomeState extends State<Home> {
 
 
                                         height: 100.0,
-                                        width: 200.0,
+                                        width: 350.0,
                                         child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            Text(''
+                                            Text(
+                                              'Welcome ${userProvider.userModel.name}! \nLet us pick a book for you!'
                                               // userProvider.userModel.bio
                                             )
                                           ],
@@ -275,19 +265,26 @@ class _HomeState extends State<Home> {
                                   ),
                                   InkWell(
                                     splashColor: Colors.greenAccent,
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (c) => Quiz()));
+                                    },
                                     //Photo by Daniel Schludi on Unsplash
                                     child: Container(
 
                                       height: 100,
                                       width: 350,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-
-                                            image: AssetImage(
-                                                'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
-                                            fit: BoxFit.fill,
+                                        child: Center(
+                                          child: Text(
+                                            'Quiz'
                                           ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          // image: DecorationImage(
+                                          //
+                                          //   image: AssetImage(
+                                          //       'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
+                                          //   fit: BoxFit.fill,
+                                          // ),
                                             color: Colors.white,
                                             border: Border.all(
                                               color: Colors.pink[900],
@@ -302,25 +299,26 @@ class _HomeState extends State<Home> {
                                   ),
                                   InkWell(
                                     splashColor: Colors.greenAccent,
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (c) => Recommendations()));
+                                    },
                                     //Photo by Daniel Schludi on Unsplash
                                     child: Container(
-
-                                      height: 100,
-                                      width: 350,
-                                      decoration: BoxDecoration(
-                                          image: DecorationImage(
-
-                                            image: AssetImage(
-                                                'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
-                                            fit: BoxFit.fill,
+                                        height: 100,
+                                        child: Center(
+                                          child: Text(
+                                            'Recommendations'
                                           ),
-                                          color: Colors.white,
-                                          border: Border.all(
-                                            color: Colors.pink[900],
-                                          ),
-                                          borderRadius: BorderRadius.all(Radius.circular(20))
-                                      ),
+                                        ),
+                                        width: 350,
+                                        decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                        color: Colors.pink[900],
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))
+                                    ),
 
                                     ),
                                   ),
@@ -331,24 +329,25 @@ class _HomeState extends State<Home> {
                                     color: Colors.blueAccent,
                                     child: InkWell(
 
-                                      onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(builder: (c) => BestSellers()));
+                                      },
                                       //Photo by Daniel Schludi on Unsplash
                                       child: Container(
-
                                         height: 100,
                                         width: 350,
+                                        child: Center(
+                                          child: Text(
+                                            'Best Sellers'
+                                          ),
+                                        ),
                                         decoration: BoxDecoration(
-                                            image: DecorationImage(
-
-                                              image: AssetImage(
-                                                  'images/daniel-schludi-7JL7NdhaRd8-unsplash.jpg'),
-                                              fit: BoxFit.fill,
-                                            ),
                                             color: Colors.white,
                                             border: Border.all(
                                               color: Colors.pink[900],
                                             ),
-                                            borderRadius: BorderRadius.all(Radius.circular(20))
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))
                                         ),
 
                                       ),

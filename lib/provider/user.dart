@@ -97,6 +97,33 @@ class UserProvider with ChangeNotifier {
     }
   }
 
+  Future<bool> updateUser(String name, String email, String number, String address, String bio) async {
+    try {
+      // _status = Status.Authenticating;
+      // notifyListeners();
+        print("CREATE USER");
+        await _userServices.createUser({
+          'name': name,
+          'email': email,
+          'uid': user.uid,
+          'stripeId': '',
+          'number': number,
+          'address': address,
+          'bio': bio,
+          'userImage': '',
+        });
+        _userModel = await _userServices.getUserById(user.uid);
+        notifyListeners();
+
+      return true;
+    } catch (e) {
+      _status = Status.Unauthenticated;
+      notifyListeners();
+      print(e.toString());
+      return false;
+    }
+  }
+
   Future signOut() async {
     _auth.signOut();
     _status = Status.Unauthenticated;

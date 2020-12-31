@@ -732,18 +732,13 @@ class _UpdateProfileState extends State<UpdateProfile> {
   final _key = GlobalKey<ScaffoldState>();
 
   UserServices _userServices = UserServices();
-  TextEditingController _addressController = TextEditingController();
-  TextEditingController _nameTextController = TextEditingController();
-  TextEditingController _numberController = TextEditingController();
-  TextEditingController _bioController = TextEditingController();
-
-
 
   String email = '';
   String name = '';
   String address = '';
   String bio = '';
   String number = '';
+
 
   bool emailbool = false;
   bool namebool = false;
@@ -753,14 +748,23 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context);
+
+    final user = Provider.of<UserProvider>(context, listen: false);
+
+    String initemail = user.userModel.email;
+    String initname = user.userModel.name;
+    String initaddress = user.userModel.address;
+    String initbio = user.userModel.bio;
+    String initnumber = user.userModel.number;
+    bool isLoading = false;
+
     double _screenWidth = MediaQuery.of(context).size.width;
     double _screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       key: _key,
-      body: user.status == Status.Authenticating
-          ? Loading()
-          : Scaffold(
+      body: //user.status == Status.Authenticating ? Loading() :
+      isLoading ? Loading() : Scaffold(
               backgroundColor: Colors.pink[50],
               appBar: AppBar(
                 title: Text("Profile"),
@@ -793,7 +797,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    initialValue: user.userModel.name,
+                                    initialValue: initname,
                                     onChanged: (text) => {
                                       setState(() {
                                         // print(text);
@@ -823,7 +827,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    initialValue: user.userModel.email,
+                                    initialValue: initemail,
                                     decoration: InputDecoration(
                                         hintText: "Enter email",
                                         prefixIcon: Icon(Icons.email)),
@@ -851,7 +855,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    initialValue: user.userModel.address,
+                                    initialValue: initaddress,
                                     onChanged: (val){
                                       setState(() {
                                         addressbool = true;
@@ -878,7 +882,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   padding: EdgeInsets.all(8),
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
-                                    initialValue: user.userModel.bio,
+                                    initialValue: initbio,
                                     onChanged: (val){
                                       setState(() {
                                         biobool = true;
@@ -891,7 +895,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     validator: (val) =>
                                     val.isEmpty ? 'Enter a bio' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
-                                    // net ninja
                                   ),
                                 ),
                                 SizedBox(
@@ -907,7 +910,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                   margin: EdgeInsets.all(0),
                                   child: TextFormField(
                                     keyboardType: TextInputType.number,
-                                    initialValue: user.userModel.number,
+                                    initialValue: initnumber,
                                     onChanged: (val){
                                       setState(() {
                                         numberbool = true;
@@ -920,9 +923,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     validator: (val) =>
                                     val.isEmpty ? 'Enter a number' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
-                                    // net ninja
-
-
                                   ),
                                 ),
 
@@ -931,62 +931,59 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 ),
                                 RaisedButton(
                                   onPressed: () async {
-                                    // net ninja
-                                    //if (_formKey.currentState.validate()) {
 
                                     if (_formKey.currentState.validate()) {
-                                      if (!await _userServices.createUser({
-                                        'name': namebool ? name : user.userModel.name,
-                                        'email': emailbool ? email : user.userModel.email,
-                                        'uid': user.user.uid,
-                                        'stripeId': '',
-                                        'number': numberbool ? number : user.userModel.number,
-                                        'address': addressbool ? address : user.userModel.address,
-                                        'bio': biobool ? bio : user.userModel.bio
-                                      })) {
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      // if (!await _userServices.createUser({
+                                      //   'name': namebool ? name : user.userModel.name,
+                                      //   'email': emailbool ? email : user.userModel.email,
+                                      //   'uid': user.user.uid,
+                                      //   'stripeId': '',
+                                      //   'number': numberbool ? number : user.userModel.number,
+                                      //   'address': addressbool ? address : user.userModel.address,
+                                      //   'bio': biobool ? bio : user.userModel.bio
+                                      // })) {
+                                      if(!await user.updateUser(
+                                          namebool ? name : user.userModel.name,
+                                        emailbool ? email : user.userModel.email,
+                                        numberbool ? number : user.userModel.number,
+                                        addressbool ? address : user.userModel.address,
+                                          biobool ? bio : user.userModel.bio
+                                      //     {'name': namebool ? name : user.userModel.name,
+                                      //     'email': emailbool ? email : user.userModel.email,
+                                      //     'uid': user.user.uid,
+                                      //     'stripeId': '',
+                                      //     'number': numberbool ? number : user.userModel.number,
+                                      //     'address': addressbool ? address : user.userModel.address,
+                                      //     'bio': biobool ? bio : user.userModel.bio
+                                      // }
+                                      )) {
+                                        setState(() {
+                                          isLoading = false;
+                                        });
                                         _key.currentState.showSnackBar(SnackBar(
                                             content: Text("Network Issue, Try again")));
-                                        return;
+                                      } else {
+                                        //await _userServices.getUserById(user.user.uid);
+                                        // setState(() {
+                                        //   print(user.userModel.address);
+                                        //   initemail = user.userModel.email;
+                                        //   initnumber = user.userModel.number;
+                                        //   initbio = user.userModel.bio;
+                                        //   initaddress = user.userModel.address;
+                                        //   initname = user.userModel.name;
+                                        // });
+                                        setState(() {
+                                          isLoading = false;
+                                        });
+                                        Navigator.pop(context);
                                       }
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (c) => NavBar()));
                                     }
-
-                                    //Random
-                                    //uploadAndSaveData();
-
-                                    /* net ninja
-                                dynamic result = await registerWithEmailAndPassword(
-                                    email, password);
-                                if (result == null) {
-                                  setState(() {
-                                    error = 'please suppy a valid email';
-                                  });
-                                }*/
                                   },
                                   child: Text('Register'),
                                 ),
-
-                                /*RaisedButton(
-                            onPressed: () async {
-                              Auth auth = Auth();
-                              User user = await auth.googleSignIn();
-                              if (user == null) {
-                                _userServices.createUser({
-                                  "name": user.displayName,
-                                  "photo": user.photoUrl,
-                                  "email": user.email,
-                                  "userId": user.uid
-                                });
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavBar()));
-                              }
-                            },
-                            child: Text(
-                                'Google SignIn'
-                            ),
-                          ),*/
                                 SizedBox(
                                   height: 15,
                                 ),
