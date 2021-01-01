@@ -8,6 +8,13 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.pink[50],
+      child: Center(
+        child: Text(
+          'Quiz here'
+        ),
+      ),
+    );
   }
 }

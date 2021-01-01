@@ -33,9 +33,9 @@ Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  BookApp.firestore = FirebaseFirestore.instance;
-  BookApp.sharedPreferences = await SharedPreferences.getInstance();
-  BookApp.auth = FirebaseAuth.instance;
+  // BookApp.firestore = FirebaseFirestore.instance;
+  // BookApp.sharedPreferences = await SharedPreferences.getInstance();
+  // BookApp.auth = FirebaseAuth.instance;
   //FirebaseAuth auth = FirebaseAuth.instance;
 
   runApp(MyApp());

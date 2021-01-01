@@ -19,7 +19,7 @@ class _allBooksofAGenreState extends State<allBooksofAGenre> {
     final productProvider = Provider.of<ProductProvider>(context);
     return SafeArea(
       child: Container(
-        color: Colors.red,
+        color: Colors.pink[50],
         child: Column(
           children: productProvider.products
               .map((item) =>

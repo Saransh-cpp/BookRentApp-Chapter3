@@ -14,6 +14,8 @@ class ProductModel {
   static const SIZES = "sizes";
   //static const COLORS = "colors";
   static const WHYTOREAD = "whyToRead";
+  static const RECOMMENDED = "recommended";
+  static const BESTSELLER = "bestseller";
 
   String _id;
   String _name;
@@ -25,6 +27,8 @@ class ProductModel {
   List _prices;
   //bool _sale;
   bool _featured;
+  bool _recommended;
+  bool _bestseller;
   //List _colors;
   List _sizes;
   String _whyToRead;
@@ -48,6 +52,10 @@ class ProductModel {
 
   bool get featured => _featured;
 
+  bool get recommended => _recommended;
+
+  bool get bestseller => _bestseller;
+
   //bool get sale => _sale;
 
   //List get colors => _colors;
@@ -63,6 +71,8 @@ class ProductModel {
     _description = snapshot.data()[DESCRIPTION];
     _whyToRead = snapshot.data()[WHYTOREAD];
     _featured = snapshot.data()[FEATURED];
+    _recommended = snapshot.data()[RECOMMENDED];
+    _bestseller = snapshot.data()[BESTSELLER];
     _prices = snapshot.data()[PRICES];
     _genre = snapshot.data()[GENRE];
     //_colors = snapshot.data[COLORS];
