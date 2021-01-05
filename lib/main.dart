@@ -27,17 +27,12 @@ import 'package:test_app/provider/user.dart';
 
 import 'counters/cartitemcounter.dart';
 import 'counters/changeAddress.dart';
+import 'package:firebase_admob/firebase_admob.dart';
 
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
-  // BookApp.firestore = FirebaseFirestore.instance;
-  // BookApp.sharedPreferences = await SharedPreferences.getInstance();
-  // BookApp.auth = FirebaseAuth.instance;
-  //FirebaseAuth auth = FirebaseAuth.instance;
-
   runApp(MyApp());
 }
 
