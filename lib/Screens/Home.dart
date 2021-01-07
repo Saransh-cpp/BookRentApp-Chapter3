@@ -16,6 +16,9 @@ import 'package:test_app/Screens/Profile.dart';
 import 'package:test_app/Screens/Quiz.dart';
 import 'package:test_app/Screens/Recommendations.dart';
 import 'package:test_app/Screens/BestSellers.dart';
+import 'package:test_app/Screens/AboutUs.dart';
+import 'package:test_app/Screens/Contact.dart';
+import 'package:test_app/Screens/Report.dart';
 
 
 class Home extends StatefulWidget {
@@ -102,17 +105,23 @@ class _HomeState extends State<Home> {
                             CustomListTile(
                                 Icons.contact_support_rounded,
                                 'Contact us',
-                                    () => {}
+                                    () => {
+                                    Navigator.push(context, MaterialPageRoute(builder: (c) => ContactUs()))
+                                    }
                             ),
                             CustomListTile(
                                 Icons.home,
                                 'About',
-                                    () => {}
+                                    () => {
+                                      Navigator.push(context, MaterialPageRoute(builder: (c) => AboutUs()))
+                                    }
                             ),
                             CustomListTile(
                                 Icons.error,
                                 'Report issue',
-                                    () => {}
+                                    () => {
+                                      Navigator.push(context, MaterialPageRoute(builder: (c) => Report()))
+                                    }
                             ),
                             CustomListTile(
                                 Icons.logout,
@@ -370,34 +379,34 @@ class _HomeState extends State<Home> {
   }
 }
 
-class DataSearch extends StatefulWidget {
-  @override
-  _DataSearchState createState() => _DataSearchState();
-}
-
-class _DataSearchState extends State<DataSearch> {
-  @override
-  Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context);
-    return ListTile(
-      leading: Icon(
-        Icons.search,
-        color: Colors.black,
-      ),
-      title: TextField(
-        textInputAction: TextInputAction.search,
-        onSubmitted: (pattern)async{
-          await productProvider.search(productName: pattern);
-          Navigator.push(context, MaterialPageRoute(builder: (c) => ProductSearchScreen()));
-          },
-        decoration: InputDecoration(
-          hintText: "blazer, dress...",
-          border: InputBorder.none,
-        ),
-      ),
-    );
-  }
-}
+// class DataSearch extends StatefulWidget {
+//   @override
+//   _DataSearchState createState() => _DataSearchState();
+// }
+//
+// class _DataSearchState extends State<DataSearch> {
+//   @override
+//   Widget build(BuildContext context) {
+//     final productProvider = Provider.of<ProductProvider>(context);
+//     return ListTile(
+//       leading: Icon(
+//         Icons.search,
+//         color: Colors.black,
+//       ),
+//       title: TextField(
+//         textInputAction: TextInputAction.search,
+//         onSubmitted: (pattern)async{
+//           await productProvider.search(productName: pattern);
+//           Navigator.push(context, MaterialPageRoute(builder: (c) => ProductSearchScreen()));
+//           },
+//         decoration: InputDecoration(
+//           hintText: "blazer, dress...",
+//           border: InputBorder.none,
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 // class DataSearch extends SearchDelegate<String>{
