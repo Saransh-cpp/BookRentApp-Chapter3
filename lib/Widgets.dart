@@ -9,70 +9,70 @@ import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class AnimatedSearchBar extends StatefulWidget {
-  @override
-  _AnimatedSearchBarState createState() => _AnimatedSearchBarState();
-}
+// class AnimatedSearchBar extends StatefulWidget {
+//   @override
+//   _AnimatedSearchBarState createState() => _AnimatedSearchBarState();
+// }
 
-class _AnimatedSearchBarState extends State<AnimatedSearchBar> {
-  bool _folded = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 400),
-      width: _folded ? 56 : 200,
-      height: 56,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
-        color: Colors.white,
-        boxShadow: kElevationToShadow[6],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.only(left: 16),
-              child: !_folded
-                  ? TextField(
-                decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(color: Colors.blue[300]),
-                    border: InputBorder.none),
-              )
-                  : null,
-            ),
-          ),
-          Container(
-            child: Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(_folded ? 32 : 0),
-                  topRight: Radius.circular(32),
-                  bottomLeft: Radius.circular(_folded ? 32 : 0),
-                  bottomRight: Radius.circular(32),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Icon(
-                    _folded ? Icons.search : Icons.close,
-                    color: Colors.blue[900],
-                  ),
-                ),
-                onTap: () {
-                  setState(() {
-                    _folded = !_folded;
-                  });
-                },
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
+// class _AnimatedSearchBarState extends State<AnimatedSearchBar> {
+//   bool _folded = true;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return AnimatedContainer(
+//       duration: Duration(milliseconds: 400),
+//       width: _folded ? 56 : 200,
+//       height: 56,
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(32),
+//         color: Colors.white,
+//         boxShadow: kElevationToShadow[6],
+//       ),
+//       child: Row(
+//         children: [
+//           Expanded(
+//             child: Container(
+//               padding: EdgeInsets.only(left: 16),
+//               child: !_folded
+//                   ? TextField(
+//                 decoration: InputDecoration(
+//                     hintText: 'Search',
+//                     hintStyle: TextStyle(color: Colors.blue[300]),
+//                     border: InputBorder.none),
+//               )
+//                   : null,
+//             ),
+//           ),
+//           Container(
+//             child: Material(
+//               type: MaterialType.transparency,
+//               child: InkWell(
+//                 borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(_folded ? 32 : 0),
+//                   topRight: Radius.circular(32),
+//                   bottomLeft: Radius.circular(_folded ? 32 : 0),
+//                   bottomRight: Radius.circular(32),
+//                 ),
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(16.0),
+//                   child: Icon(
+//                     _folded ? Icons.search : Icons.close,
+//                     color: Colors.blue[900],
+//                   ),
+//                 ),
+//                 onTap: () {
+//                   setState(() {
+//                     _folded = !_folded;
+//                   });
+//                 },
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class CustomListTile extends StatelessWidget {
 
@@ -824,6 +824,155 @@ class _SearchState extends State<Search> {
     );
   }
 }
+
+//==========================Quiz Card================================
+
+class QuizCard extends StatefulWidget {
+
+  final String question;
+  final String option1;
+  final String option2;
+  final String option3;
+  final String option4;
+
+  const QuizCard({Key key, this.question, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
+
+
+  @override
+  _QuizCardState createState() => _QuizCardState();
+}
+
+class _QuizCardState extends State<QuizCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Text(
+            widget.question,
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black
+            ),
+          ),
+          QuizOptionCard(
+            option1: widget.option1,
+            option2: widget.option2,
+            option3: widget.option3,
+            option4: widget.option4,
+          )
+
+        ],
+      ),
+    );
+  }
+}
+
+//=======================Options Card=======================
+
+class QuizOptionCard extends StatefulWidget {
+
+  final String option1;
+  final String option2;
+  final String option3;
+  final String option4;
+
+  const QuizOptionCard({Key key, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
+
+  @override
+  _QuizOptionCardState createState() => _QuizOptionCardState();
+}
+
+class _QuizOptionCardState extends State<QuizOptionCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width * 0.9,
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: Colors.black
+              )
+          ),
+          child: Column(
+            children: [
+              QuizOption(
+                option: 'A',
+                optionText: widget.option1,
+              ),
+              QuizOption(
+                option: 'B',
+                optionText: widget.option1,
+              ),
+              QuizOption(
+                option: 'C',
+                optionText: widget.option1,
+              ),
+              QuizOption(
+                option: 'D',
+                optionText: widget.option1,
+              ),
+            ],
+          ),
+        )
+    );
+  }
+}
+
+
+//======================Single Option==========================
+
+class QuizOption extends StatefulWidget {
+
+  final String option;
+  final String optionText;
+
+  const QuizOption({Key key, this.option, this.optionText}) : super(key: key);
+
+  @override
+  _QuizOptionState createState() => _QuizOptionState();
+}
+
+class _QuizOptionState extends State<QuizOption> {
+
+  bool color = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          color = !color;
+        });
+      },
+        child: Container(
+          color: color ? Colors.lightBlueAccent : Colors.white,
+          child: ListTile(
+            leading: Text(
+              widget.option,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black
+              )
+            ),
+            title: Text(
+                widget.optionText,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black
+              ),
+            ),
+          ),
+        )
+    );
+  }
+}
+
+
+
 
 
 

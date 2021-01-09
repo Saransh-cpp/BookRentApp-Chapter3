@@ -19,6 +19,8 @@ import 'package:test_app/Screens/BestSellers.dart';
 import 'package:test_app/Screens/AboutUs.dart';
 import 'package:test_app/Screens/Contact.dart';
 import 'package:test_app/Screens/Report.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 
 
 class Home extends StatefulWidget {
@@ -27,6 +29,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
 
   final _key = GlobalKey<ScaffoldState>();
   ProductServices _productServices = ProductServices();

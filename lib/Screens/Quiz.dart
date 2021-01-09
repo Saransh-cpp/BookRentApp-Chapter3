@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/Widgets.dart';
 import 'package:test_app/model/QuizQuestion.dart';
 import 'package:test_app/services/quiz.dart';
 
@@ -11,8 +12,73 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+    return SafeArea(
+        child: Scaffold(
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 30,
+                  ),
+                  QuizCard(
+                    question: 'Test 1',
+                    option1: '1',
+                    option2: '1',
+                    option3: '1',
+                    option4: '1',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+
+                  QuizCard(
+                    question: 'Test 1',
+                    option1: '1',
+                    option2: '1',
+                    option3: '1',
+                    option4: '1',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  QuizCard(
+                    question: 'Test 1',
+                    option1: '1',
+                    option2: '1',
+                    option3: '1',
+                    option4: '1',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  QuizCard(
+                    question: 'Test 1',
+                    option1: '1',
+                    option2: '1',
+                    option3: '1',
+                    option4: '1',
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  QuizCard(
+                    question: 'Test 1',
+                    option1: '1',
+                    option2: '1',
+                    option3: '1',
+                    option4: '1',
+                  ),
+                  MaterialButton(
+                      onPressed: () {},
+                    color: Colors.pink[50],
+                    child: Text(
+                      'Find Books for me'
+                    ),
+                  )
+                ],
+              ),
+            )
+        )
     );
   }
 }

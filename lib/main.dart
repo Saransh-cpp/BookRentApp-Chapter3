@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,7 @@ import 'package:test_app/counters/totalMoney.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'counters/cartitemcounter.dart';
 import 'counters/changeAddress.dart';
@@ -37,6 +39,10 @@ Future<void> main() async{
 }
 
 class MyApp extends StatelessWidget {
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   Widget build(BuildContext context) {
     return  MultiProvider(
@@ -46,14 +52,26 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: AppProvider()),
       ],
         child: MaterialApp(
+          navigatorObservers: <NavigatorObserver>[
+            observer
+          ],
           debugShowCheckedModeBanner: false,
-          home: ScreensController()
+          home: ScreensController(
+            analytics: analytics,
+            observer: observer,
+          )
         ),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
+
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+
+  const ScreensController({Key key, this.analytics, this.observer}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
