@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
-
-class Settings extends StatefulWidget {
-  @override
-  _SettingsState createState() => _SettingsState();
-}
-
-class _SettingsState extends State<Settings> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        child: Text('Setting'),
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+//
+// class Settings extends StatefulWidget {
+//   @override
+//   _SettingsState createState() => _SettingsState();
+// }
+//
+// class _SettingsState extends State<Settings> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Container(
+//         child: Text('Setting'),
+//       ),
+//     );
+//   }
+// }

@@ -5,7 +5,6 @@ import 'package:test_app/Screens/YourOrders.dart';
 import 'package:test_app/Widgets.dart';
 import 'package:test_app/Screens/AllBooks.dart';
 import 'package:test_app/Screens/Home.dart';
-import 'package:test_app/counters/cartitemcounter.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -77,6 +76,7 @@ class _NavBarState extends State<NavBar> {
             animationDuration: Duration(
                 milliseconds: 500
             ),
+
             onTap: (int index) {
               setState(() {
                 currentIndex = index;

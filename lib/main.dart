@@ -19,16 +19,10 @@ import 'package:test_app/Screens/product_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:test_app/Wrapper.dart';
 import 'package:test_app/Screens/Register.dart';
-import 'package:test_app/config/config.dart';
-import 'package:test_app/counters/BookedQuantity.dart';
-import 'package:test_app/counters/totalMoney.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-
-import 'counters/cartitemcounter.dart';
-import 'counters/changeAddress.dart';
 import 'package:firebase_admob/firebase_admob.dart';
 
 

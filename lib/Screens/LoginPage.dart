@@ -9,7 +9,6 @@ import 'package:test_app/Screens/AdminSignIn.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/NavBar.dart';
 import 'package:test_app/Screens/Register.dart';
-import 'package:test_app/config/config.dart';
 import 'package:test_app/database.dart';
 import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/user.dart';
