@@ -1,6 +1,6 @@
-# test_app
+# Chapter3 - Book renting app
 
-A new Flutter application.
+A book renting app still in the development phase.
 
 ## Getting Started
 
