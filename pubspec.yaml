@@ -34,6 +34,7 @@ dependencies:
   firebase_admob: ^0.10.3
   google_sign_in: ^4.5.6
   cloud_firestore: ^0.14.4
+  quiver: ^2.1.5
   firebase_auth: ^0.18.4+1
   carousel_pro: ^1.0.0
   curved_navigation_bar: ^0.3.4

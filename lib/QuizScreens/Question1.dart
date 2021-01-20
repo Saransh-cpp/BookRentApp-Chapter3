@@ -3,13 +3,17 @@ import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
 class Question1 extends StatefulWidget {
+
+  QuizData quizData = QuizData();
+  Question1({this.quizData});
   @override
   _Question1State createState() => _Question1State();
-
+  
   int tgdt = 0;
   int tug = 0;
   int pfo = 0;
   int aad = 0;
+
 
 }
 
@@ -21,7 +25,7 @@ class _Question1State extends State<Question1> {
   String option2 = 'Lively, Extrovert, Cheerful';
   String option3 = 'Nerdy, Introvert, Creative, Quite';
   String option4 = 'Smart, Ambivert, Intellectual';
-  QuizData quizData = QuizData();
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +71,9 @@ class _Question1State extends State<Question1> {
                             chosen = option1;
                             answered = true;
                             widget.tgdt += 1;
-                            quizData.tgdt += widget.tgdt;
+                            widget.quizData.tgdt += widget.tgdt;
                           });
+                          print(widget.quizData.tgdt);
                         }
                       },
                       child: Container(
@@ -105,7 +110,7 @@ class _Question1State extends State<Question1> {
                             chosen = option2;
                             answered = true;
                             widget.tug += 1;
-                            quizData.tug += widget.tug;
+                            widget.quizData.tug += widget.tug;
                           });
                         }
                       },
@@ -143,7 +148,7 @@ class _Question1State extends State<Question1> {
                             chosen = option3;
                             answered = true;
                             widget.pfo += 1;
-                            quizData.pfo += widget.pfo;
+                            widget.quizData.pfo += widget.pfo;
                           });
                         }
                       },
@@ -181,7 +186,7 @@ class _Question1State extends State<Question1> {
                             chosen = option4;
                             answered = true;
                             widget.aad += 1;
-                            quizData.aad += widget.aad;
+                            widget.quizData.aad += widget.aad;
                           });
                         }
                       },
@@ -219,16 +224,16 @@ class _Question1State extends State<Question1> {
                   onPressed: () {
                     setState(() {
                       if(chosen == option1){
-                        quizData.tgdt -= 1;
+                        widget.quizData.tgdt -= 1;
                       }
                       else if(chosen == option2){
-                        quizData.tug -= 1;
+                        widget.quizData.tug -= 1;
                       }
                       else if(chosen == option3){
-                        quizData.pfo -= 1;
+                        widget.quizData.pfo -= 1;
                       }
                       else if(chosen == option4){
-                        quizData.aad -= 1;
+                        widget.quizData.aad -= 1;
                       }
                       chosen = '';
                       answered = false;
@@ -243,7 +248,7 @@ class _Question1State extends State<Question1> {
               MaterialButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
-                        quizData: quizData,
+                        quizData: widget.quizData,
                     )));
                   },
                 child: Text(
