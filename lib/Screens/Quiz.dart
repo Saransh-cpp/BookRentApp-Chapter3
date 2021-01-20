@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
+import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/Widgets.dart';
 
 class Quiz extends StatefulWidget {
@@ -14,7 +15,8 @@ class _QuizState extends State<Quiz> {
   int currentIndex = 0;
   var currentTab = [
     Question1(),
-    Question1()
+    Question1(),
+    QuizResult()
   ];
 
   @override

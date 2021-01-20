@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/QuizScreens/QuizResult.dart';
 
 class Question1 extends StatefulWidget {
   @override
   _Question1State createState() => _Question1State();
+
+  int tgdt = 0;
+  int tug = 0;
+  int pfo = 0;
+  int aad = 0;
+
+  returnBook(){
+
+  }
+
 }
 
 class _Question1State extends State<Question1> {
 
   String chosen;
   bool answered = false;
-  String option1 = 'option1';
-  String option2 = 'option2';
-  String option3 = 'option3';
-  String option4 = 'option4';
+  String option1 = 'Bold, fierce, strong headed';
+  String option2 = 'Lively, Extrovert, Cheerful';
+  String option3 = 'Nerdy, Introvert, Creative, Quite';
+  String option4 = 'Smart, Ambivert, Intellectual';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +48,7 @@ class _Question1State extends State<Question1> {
               Row(
                 children: [
                   Text(
-                    'Question',
+                    'What personality trait do you resonate with\nthe most?',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -56,6 +67,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option1;
                             answered = true;
+                            widget.tgdt += 1;
                           });
                         }
                       },
@@ -92,6 +104,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option2;
                             answered = true;
+                            widget.tug += 1;
                           });
                         }
                       },
@@ -128,6 +141,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option3;
                             answered = true;
+                            widget.pfo += 1;
                           });
                         }
                       },
@@ -164,6 +178,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option4;
                             answered = true;
+                            widget.aad += 1;
                           });
                         }
                       },
@@ -196,6 +211,33 @@ class _Question1State extends State<Question1> {
                   )
                 ],
               ),
+              SizedBox(height: 100,),
+              MaterialButton(
+                  onPressed: () {
+                    setState(() {
+                      chosen = '';
+                      answered = false;
+                      widget.tgdt = 0;
+                      widget.pfo = 0;
+                      widget.aad = 0;
+                      widget.tug = 0;
+                    });
+                  },
+                child: Text('Reset'),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
+                      tgdt: widget.tgdt,
+                      pfo: widget.pfo,
+                      tug: widget.tug,
+                      aad: widget.aad,
+                    )));
+                  },
+                child: Text(
+                  'Result'
+                ),
+              )
             ],
           )
       ),
