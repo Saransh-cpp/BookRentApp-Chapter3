@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
+import 'package:test_app/QuizScreens/Question2.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/Widgets.dart';
 
@@ -15,8 +16,7 @@ class _QuizState extends State<Quiz> {
   int currentIndex = 0;
   var currentTab = [
     Question1(),
-    Question1(),
-    QuizResult()
+    Question2(),
   ];
 
   @override
@@ -66,7 +66,7 @@ class _QuizState extends State<Quiz> {
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/material.dart';
 // import 'package:test_app/Widgets.dart';
-// import 'package:test_app/model/QuizQuestion.dart';
+// import 'package:test_app/model/QuizDataModel.dart';
 // import 'package:test_app/services/quiz.dart';
 //
 // class Quiz extends StatefulWidget {

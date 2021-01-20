@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
+import 'package:test_app/model/QuizDataModel.dart';
 
 class QuizResult extends StatefulWidget {
 
-  final int aad;
-  final int pfo;
-  final int tgdt;
-  final int tug;
+  final QuizData quizData;
 
-  const QuizResult({Key key, this.aad, this.pfo, this.tgdt, this.tug}) : super(key: key);
+  const QuizResult({Key key, this.quizData}) : super(key: key);
 
   @override
   _QuizResultState createState() => _QuizResultState();
@@ -18,24 +16,24 @@ class _QuizResultState extends State<QuizResult> {
   @override
   Widget build(BuildContext context) {
 
-    Question1 question1 = Question1();
+    print(widget.quizData.aad);
     String bookSuggestion = '';
-    if(widget.aad == 1){
+    if(widget.quizData.aad == 1){
       setState(() {
         bookSuggestion = 'Angels and Demons';
       });
     }
-    else if(widget.pfo == 1){
+    else if(widget.quizData.pfo == 1){
       setState(() {
         bookSuggestion = 'Paris for One';
       });
     }
-    else if(widget.tgdt == 1){
+    else if(widget.quizData.tgdt == 1){
       setState(() {
         bookSuggestion = 'The girl with a dragon tattoo';
       });
     }
-    else if(widget.tug == 1){
+    else if(widget.quizData.tug == 1){
       setState(() {
         bookSuggestion = 'The Undomestic Goddess';
       });

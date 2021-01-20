@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
-import 'package:test_app/model/QuizDataModel.dart';
 
-class Question1 extends StatefulWidget {
+class Question2 extends StatefulWidget {
   @override
-  _Question1State createState() => _Question1State();
+  _Question2State createState() => _Question2State();
 
-  int tgdt = 0;
+  int hppa = 0;
   int tug = 0;
   int pfo = 0;
-  int aad = 0;
+  int tgdt = 0;
 
 }
 
-class _Question1State extends State<Question1> {
+class _Question2State extends State<Question2> {
 
   String chosen;
   bool answered = false;
-  String option1 = 'Bold, fierce, strong headed';
-  String option2 = 'Lively, Extrovert, Cheerful';
-  String option3 = 'Nerdy, Introvert, Creative, Quite';
-  String option4 = 'Smart, Ambivert, Intellectual';
-  QuizData quizData = QuizData();
+  String option1 = 'Fancy restaurant';
+  String option2 = 'Backpacking through Europe';
+  String option3 = 'An adventurous date in a fantasy world';
+  String option4 = 'Pizza date with fav true crime podcasts';
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -47,7 +44,7 @@ class _Question1State extends State<Question1> {
               Row(
                 children: [
                   Text(
-                    'What personality trait do you resonate with\nthe most?',
+                    'Where would you like to go on a date?',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -66,8 +63,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.tgdt += 1;
-                            quizData.tgdt += widget.tgdt;
+                            widget.tug += 1;
                           });
                         }
                       },
@@ -104,8 +100,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.tug += 1;
-                            quizData.tug += widget.tug;
+                            widget.pfo += 1;
                           });
                         }
                       },
@@ -142,8 +137,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option3;
                             answered = true;
-                            widget.pfo += 1;
-                            quizData.pfo += widget.pfo;
+                            widget.hppa += 1;
                           });
                         }
                       },
@@ -180,8 +174,7 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.aad += 1;
-                            quizData.aad += widget.aad;
+                            widget.tgdt += 1;
                           });
                         }
                       },
@@ -216,38 +209,29 @@ class _Question1State extends State<Question1> {
               ),
               SizedBox(height: 100,),
               MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      if(chosen == option1){
-                        quizData.tgdt -= 1;
-                      }
-                      else if(chosen == option2){
-                        quizData.tug -= 1;
-                      }
-                      else if(chosen == option3){
-                        quizData.pfo -= 1;
-                      }
-                      else if(chosen == option4){
-                        quizData.aad -= 1;
-                      }
-                      chosen = '';
-                      answered = false;
-                      widget.tgdt = 0;
-                      widget.pfo = 0;
-                      widget.aad = 0;
-                      widget.tug = 0;
-                    });
-                  },
+                onPressed: () {
+                  setState(() {
+                    chosen = '';
+                    answered = false;
+                    widget.tgdt = 0;
+                    widget.pfo = 0;
+                    widget.hppa = 0;
+                    widget.tug = 0;
+                  });
+                },
                 child: Text('Reset'),
               ),
               MaterialButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
-                        quizData: quizData,
-                    )));
-                  },
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
+                    // tgdt: widget.tgdt,
+                    // pfo: widget.pfo,
+                    // tug: widget.tug,
+                    // aad: widget.hppa,
+                  )));
+                },
                 child: Text(
-                  'Result'
+                    'Result'
                 ),
               )
             ],
