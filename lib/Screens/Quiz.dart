@@ -13,60 +13,6 @@ class _QuizState extends State<Quiz> {
   PageController pageController = PageController();
   int currentIndex = 0;
   var currentTab = [
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
-    // QuizCard(
-    //   QuestionNumber: '1',
-    //   question: 'Test?',
-    //   option1: 'Yes',
-    //   option2: 'dk',
-    //   option3: 'No',
-    //   option4: 'probably',
-    //   correctOption: 'Yes',
-    // ),
     Question1(),
     Question1()
   ];
@@ -79,8 +25,29 @@ class _QuizState extends State<Quiz> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black
+        ),
+        backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+              icon: Icon(
+                  Icons.navigate_next_rounded
+              ),
+              onPressed: () {
+                setState(() {
+                  currentIndex += 1;
+                  pageController.animateToPage(currentIndex,
+                      duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                });
+              })
+        ],
+      ),
       body: PageView(
         reverse: false,
+        physics: NeverScrollableScrollPhysics(),
         children: currentTab,
         controller: pageController,
         onPageChanged: (int index) {
@@ -88,6 +55,7 @@ class _QuizState extends State<Quiz> {
             currentIndex = index;
           });
         },
+
       ),
     );
   }
