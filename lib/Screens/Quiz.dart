@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:test_app/Widgets.dart';
-import 'package:test_app/model/QuizQuestion.dart';
-import 'package:test_app/services/quiz.dart';
 
 class Quiz extends StatefulWidget {
   @override
@@ -10,78 +8,184 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+
+  PageController pageController = PageController();
+  int currentIndex = 0;
+  var currentTab = [
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+    QuizCard(
+      QuestionNumber: '1',
+      question: 'Test?',
+      option1: 'Yes',
+      option2: 'dk',
+      option3: 'No',
+      option4: 'probably',
+      correctOption: 'Yes',
+    ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 10), (Timer timer) {
+      if (currentIndex < 5) {
+        currentIndex++;
+      } else {
+        currentIndex = 5;
+      }
+      pageController.animateToPage(
+        currentIndex,
+        duration: Duration(milliseconds: 350),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-                  QuizCard(
-                    question: 'Test 1',
-                    option1: '1',
-                    option2: '1',
-                    option3: '1',
-                    option4: '1',
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-
-                  QuizCard(
-                    question: 'Test 1',
-                    option1: '1',
-                    option2: '1',
-                    option3: '1',
-                    option4: '1',
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  QuizCard(
-                    question: 'Test 1',
-                    option1: '1',
-                    option2: '1',
-                    option3: '1',
-                    option4: '1',
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  QuizCard(
-                    question: 'Test 1',
-                    option1: '1',
-                    option2: '1',
-                    option3: '1',
-                    option4: '1',
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  QuizCard(
-                    question: 'Test 1',
-                    option1: '1',
-                    option2: '1',
-                    option3: '1',
-                    option4: '1',
-                  ),
-                  MaterialButton(
-                      onPressed: () {},
-                    color: Colors.pink[50],
-                    child: Text(
-                      'Find Books for me'
-                    ),
-                  )
-                ],
-              ),
-            )
-        )
+    return Scaffold(
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        children: currentTab,
+        controller: pageController,
+        onPageChanged: (int index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
     );
   }
 }
+
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter/material.dart';
+// import 'package:test_app/Widgets.dart';
+// import 'package:test_app/model/QuizQuestion.dart';
+// import 'package:test_app/services/quiz.dart';
+//
+// class Quiz extends StatefulWidget {
+//   @override
+//   _QuizState createState() => _QuizState();
+// }
+//
+// class _QuizState extends State<Quiz> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//         child: Scaffold(
+//             body: SingleChildScrollView(
+//               child: Column(
+//                 children: [
+//                   SizedBox(
+//                     height: 30,
+//                   ),
+//                   QuizCard(
+//                     question: 'Test 1',
+//                     option1: '1',
+//                     option2: '1',
+//                     option3: '1',
+//                     option4: '1',
+//                   ),
+//                   SizedBox(
+//                     height: 30,
+//                   ),
+//
+//                   QuizCard(
+//                     question: 'Test 1',
+//                     option1: '1',
+//                     option2: '1',
+//                     option3: '1',
+//                     option4: '1',
+//                   ),
+//                   SizedBox(
+//                     height: 30,
+//                   ),
+//                   QuizCard(
+//                     question: 'Test 1',
+//                     option1: '1',
+//                     option2: '1',
+//                     option3: '1',
+//                     option4: '1',
+//                   ),
+//                   SizedBox(
+//                     height: 30,
+//                   ),
+//                   QuizCard(
+//                     question: 'Test 1',
+//                     option1: '1',
+//                     option2: '1',
+//                     option3: '1',
+//                     option4: '1',
+//                   ),
+//                   SizedBox(
+//                     height: 30,
+//                   ),
+//                   QuizCard(
+//                     question: 'Test 1',
+//                     option1: '1',
+//                     option2: '1',
+//                     option3: '1',
+//                     option4: '1',
+//                   ),
+//                   MaterialButton(
+//                       onPressed: () {},
+//                     color: Colors.pink[50],
+//                     child: Text(
+//                       'Find Books for me'
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             )
+//         )
+//     );
+//   }
+// }
 
 
 // class Quiz extends StatefulWidget {

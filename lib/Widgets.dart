@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -827,150 +829,395 @@ class _SearchState extends State<Search> {
 
 //==========================Quiz Card================================
 
+// class QuizCard extends StatefulWidget {
+//
+//   final String question;
+//   final String option1;
+//   final String option2;
+//   final String option3;
+//   final String option4;
+//
+//   const QuizCard({Key key, this.question, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
+//
+//
+//   @override
+//   _QuizCardState createState() => _QuizCardState();
+// }
+//
+// class _QuizCardState extends State<QuizCard> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: Column(
+//         children: [
+//           Text(
+//             widget.question,
+//             style: TextStyle(
+//               fontSize: 18,
+//               color: Colors.black
+//             ),
+//           ),
+//           QuizOptionCard(
+//             option1: widget.option1,
+//             option2: widget.option2,
+//             option3: widget.option3,
+//             option4: widget.option4,
+//           )
+//
+//         ],
+//       ),
+//     );
+//   }
+// }
+//
+// //=======================Options Card=======================
+//
+// class QuizOptionCard extends StatefulWidget {
+//
+//   final String option1;
+//   final String option2;
+//   final String option3;
+//   final String option4;
+//
+//   const QuizOptionCard({Key key, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
+//
+//   @override
+//   _QuizOptionCardState createState() => _QuizOptionCardState();
+// }
+//
+// class _QuizOptionCardState extends State<QuizOptionCard> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//         child: Container(
+//           width: MediaQuery
+//               .of(context)
+//               .size
+//               .width * 0.9,
+//           decoration: BoxDecoration(
+//               border: Border.all(
+//                   color: Colors.black
+//               )
+//           ),
+//           child: Column(
+//             children: [
+//               QuizOption(
+//                 option: 'A',
+//                 optionText: widget.option1,
+//               ),
+//               QuizOption(
+//                 option: 'B',
+//                 optionText: widget.option1,
+//               ),
+//               QuizOption(
+//                 option: 'C',
+//                 optionText: widget.option1,
+//               ),
+//               QuizOption(
+//                 option: 'D',
+//                 optionText: widget.option1,
+//               ),
+//             ],
+//           ),
+//         )
+//     );
+//   }
+// }
+//
+//
+// //======================Single Option==========================
+//
+// class QuizOption extends StatefulWidget {
+//
+//   final String option;
+//   final String optionText;
+//
+//   const QuizOption({Key key, this.option, this.optionText}) : super(key: key);
+//
+//   @override
+//   _QuizOptionState createState() => _QuizOptionState();
+// }
+//
+// class _QuizOptionState extends State<QuizOption> {
+//
+//   bool color = false;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: () {
+//         setState(() {
+//           color = !color;
+//         });
+//       },
+//         child: Container(
+//           color: color ? Colors.lightBlueAccent : Colors.white,
+//           child: ListTile(
+//             leading: Text(
+//               widget.option,
+//               style: TextStyle(
+//                   fontSize: 16,
+//                   color: Colors.black
+//               )
+//             ),
+//             title: Text(
+//                 widget.optionText,
+//               style: TextStyle(
+//                 fontSize: 16,
+//                 color: Colors.black
+//               ),
+//             ),
+//           ),
+//         )
+//     );
+//   }
+// }
+
 class QuizCard extends StatefulWidget {
 
+  final String QuestionNumber;
   final String question;
   final String option1;
   final String option2;
   final String option3;
   final String option4;
+  final String correctOption;
 
-  const QuizCard({Key key, this.question, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
-
+  const QuizCard({Key key, this.question, this.option1, this.option2, this.option3, this.option4, this.correctOption, this.QuestionNumber}) : super(key: key);
 
   @override
   _QuizCardState createState() => _QuizCardState();
 }
 
 class _QuizCardState extends State<QuizCard> {
+
+  int counter = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  Timer _timer;
+  int _start = 10;
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Text(
-            widget.question,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black
-            ),
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.QuestionNumber,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20
+                      ),
+                    ),
+                    Text(
+                      '${_start}',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: _start < 5 == true ? Colors.red : Colors.blueAccent
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Text(widget.question),
+              OptionsCard(
+                option1: widget.option1,
+                option2: widget.option2,
+                option3: widget.option3,
+                option4: widget.option4,
+                correctOption: widget.correctOption,
+              )
+            ],
           ),
-          QuizOptionCard(
-            option1: widget.option1,
-            option2: widget.option2,
-            option3: widget.option3,
-            option4: widget.option4,
-          )
-
-        ],
+        ),
       ),
     );
   }
 }
 
-//=======================Options Card=======================
-
-class QuizOptionCard extends StatefulWidget {
+class OptionsCard extends StatefulWidget {
 
   final String option1;
   final String option2;
   final String option3;
   final String option4;
+  final String correctOption;
 
-  const QuizOptionCard({Key key, this.option1, this.option2, this.option3, this.option4}) : super(key: key);
+  const OptionsCard({Key key, this.option1, this.option2, this.option3, this.option4, this.correctOption}) : super(key: key);
 
   @override
-  _QuizOptionCardState createState() => _QuizOptionCardState();
+  _OptionsCardState createState() => _OptionsCardState();
 }
 
-class _QuizOptionCardState extends State<QuizOptionCard> {
+class _OptionsCardState extends State<OptionsCard> {
+
+  String chosen;
+  bool answered = false;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width * 0.9,
-          decoration: BoxDecoration(
-              border: Border.all(
-                  color: Colors.black
-              )
-          ),
-          child: Column(
+    return Container(
+      child: Column(
+        children: [
+          ListView(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
             children: [
-              QuizOption(
-                option: 'A',
-                optionText: widget.option1,
+              GestureDetector(
+                onTap: () {
+                  if(!answered) {
+                    setState(() {
+                      chosen = widget.option1;
+                      answered = true;
+                    });
+                  }
+                },
+                child: Container(
+                  color: chosen == widget.option1 ?
+                  widget.option1 == widget.correctOption ?
+                  Colors.greenAccent :
+                  Colors.redAccent :
+                  Colors.white,
+                  child: Row(
+                    children: [
+                      Text(
+                        widget.option1,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-              QuizOption(
-                option: 'B',
-                optionText: widget.option1,
+              GestureDetector(
+                onTap: () {
+                  if(!answered) {
+                    setState(() {
+                      chosen = widget.option2;
+                      answered = true;
+                    });
+                  }
+                },
+                child: Container(
+                  color: chosen == widget.option2 ?
+                  widget.option2 == widget.correctOption ?
+                  Colors.greenAccent :
+                  Colors.redAccent :
+                  Colors.white,
+                  child: Row(
+                    children: [
+                      Text(
+                        widget.option2,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-              QuizOption(
-                option: 'C',
-                optionText: widget.option1,
+              GestureDetector(
+                onTap: () {
+                  if(!answered) {
+                    setState(() {
+                      chosen = widget.option3;
+                      answered = true;
+                    });
+                  }
+                },
+                child: Container(
+                  color: chosen == widget.option3 ?
+                  widget.option3 == widget.correctOption ?
+                  Colors.greenAccent :
+                  Colors.redAccent :
+                  Colors.white,
+                  child: Row(
+                    children: [
+                      Text(
+                        widget.option3,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-              QuizOption(
-                option: 'D',
-                optionText: widget.option1,
-              ),
+              GestureDetector(
+                onTap: () {
+                  if(!answered) {
+                    setState(() {
+                      chosen = widget.option4;
+                      answered = true;
+                    });
+                  }
+                },
+                child: Container(
+                  color: chosen == widget.option4 ?
+                  widget.option4 == widget.correctOption ?
+                  Colors.greenAccent :
+                  Colors.redAccent :
+                  Colors.white,
+                  child: Row(
+                    children: [
+                      Text(
+                        widget.option4,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
-        )
+        ],
+      ),
     );
   }
 }
-
-
-//======================Single Option==========================
-
-class QuizOption extends StatefulWidget {
-
-  final String option;
-  final String optionText;
-
-  const QuizOption({Key key, this.option, this.optionText}) : super(key: key);
-
-  @override
-  _QuizOptionState createState() => _QuizOptionState();
-}
-
-class _QuizOptionState extends State<QuizOption> {
-
-  bool color = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          color = !color;
-        });
-      },
-        child: Container(
-          color: color ? Colors.lightBlueAccent : Colors.white,
-          child: ListTile(
-            leading: Text(
-              widget.option,
-              style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black
-              )
-            ),
-            title: Text(
-                widget.optionText,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black
-              ),
-            ),
-          ),
-        )
-    );
-  }
-}
-
 
 
 
