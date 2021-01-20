@@ -66,7 +66,7 @@ class _YourOrdersState extends State<YourOrders> {
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
+    _bannerAd.dispose();
     super.dispose();
   }
 

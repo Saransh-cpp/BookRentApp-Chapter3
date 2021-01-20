@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/Widgets.dart';
 
 class Quiz extends StatefulWidget {
@@ -12,60 +13,62 @@ class _QuizState extends State<Quiz> {
   PageController pageController = PageController();
   int currentIndex = 0;
   var currentTab = [
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
-    QuizCard(
-      QuestionNumber: '1',
-      question: 'Test?',
-      option1: 'Yes',
-      option2: 'dk',
-      option3: 'No',
-      option4: 'probably',
-      correctOption: 'Yes',
-    ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    // QuizCard(
+    //   QuestionNumber: '1',
+    //   question: 'Test?',
+    //   option1: 'Yes',
+    //   option2: 'dk',
+    //   option3: 'No',
+    //   option4: 'probably',
+    //   correctOption: 'Yes',
+    // ),
+    Question1(),
+    Question1()
   ];
 
   @override
@@ -77,6 +80,7 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        reverse: false,
         children: currentTab,
         controller: pageController,
         onPageChanged: (int index) {
