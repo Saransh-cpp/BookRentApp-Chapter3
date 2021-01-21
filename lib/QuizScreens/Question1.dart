@@ -266,7 +266,7 @@ class _Question1State extends State<Question1> {
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (c) =>
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) =>
                       QuizResult(
                         quizData: widget.quizData,
                       )));

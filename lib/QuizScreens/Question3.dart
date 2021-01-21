@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
-import 'package:test_app/QuizScreens/Question3.dart';
+import 'package:test_app/QuizScreens/Question4.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
-class Question2 extends StatefulWidget {
+class Question3 extends StatefulWidget {
 
   QuizData quizData = QuizData();
-  Question2({this.quizData});
+  Question3({this.quizData});
 
   @override
-  _Question2State createState() => _Question2State();
+  _Question3State createState() => _Question3State();
 
-  int hppa = 0;
-  int tug = 0;
+  int ts = 0;
+  int aad = 0;
   int pfo = 0;
-  int tgdt = 0;
+  int fsg = 0;
 
 }
 
-class _Question2State extends State<Question2> {
+class _Question3State extends State<Question3> {
 
   String chosen;
   bool answered = false;
-  String option1 = 'Fancy restaurant';
-  String option2 = 'Backpacking through Europe';
-  String option3 = 'An adventurous date in a fantasy\nworld';
-  String option4 = 'Pizza date with fav true crime\npodcasts';
+  String option1 = 'I believe in soulmates';
+  String option2 = 'A love triangle because I\'m\nconfused';
+  String option3 = 'Single forever gang';
+  String option4 = 'I don\'t date, I hookup';
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _Question2State extends State<Question2> {
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question3(
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question4(
                     quizData: widget.quizData,
                   )));
                 },
@@ -55,7 +55,7 @@ class _Question2State extends State<Question2> {
               Row(
                 children: [
                   Text(
-                    'Question 2',
+                    'Question 3',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -69,7 +69,7 @@ class _Question2State extends State<Question2> {
               Row(
                 children: [
                   Text(
-                    'Where would you like to go on a date?',
+                    'What sort of romance do you like?',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -88,8 +88,8 @@ class _Question2State extends State<Question2> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.tug += 1;
-                            widget.quizData.tug += widget.tug;
+                            widget.pfo += 1;
+                            widget.quizData.pfo += widget.pfo;
                           });
                         }
                       },
@@ -126,8 +126,8 @@ class _Question2State extends State<Question2> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.pfo += 1;
-                            widget.quizData.pfo += widget.pfo;
+                            widget.ts += 1;
+                            widget.quizData.ts += widget.ts;
                           });
                         }
                       },
@@ -164,8 +164,8 @@ class _Question2State extends State<Question2> {
                           setState(() {
                             chosen = option3;
                             answered = true;
-                            widget.hppa += 1;
-                            widget.quizData.hppa += widget.hppa;
+                            widget.aad += 1;
+                            widget.quizData.aad += widget.aad;
                           });
                         }
                       },
@@ -202,8 +202,8 @@ class _Question2State extends State<Question2> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.tgdt += 1;
-                            widget.quizData.tgdt += widget.tgdt;
+                            widget.fsg += 1;
+                            widget.quizData.fsg += widget.fsg;
                           });
                         }
                       },
@@ -241,23 +241,23 @@ class _Question2State extends State<Question2> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.tug -= 1;
-                    }
-                    else if (chosen == option2) {
                       widget.quizData.pfo -= 1;
                     }
+                    else if (chosen == option2) {
+                      widget.quizData.ts -= 1;
+                    }
                     else if (chosen == option3) {
-                      widget.quizData.hppa -= 1;
+                      widget.quizData.aad -= 1;
                     }
                     else if (chosen == option4) {
-                      widget.quizData.tgdt -= 1;
+                      widget.quizData.fsg -= 1;
                     }
                     chosen = '';
                     answered = false;
-                    widget.tgdt = 0;
+                    widget.ts = 0;
                     widget.pfo = 0;
-                    widget.hppa = 0;
-                    widget.tug = 0;
+                    widget.fsg = 0;
+                    widget.aad = 0;
                   });
                 },
                 child: Text('Reset'),
