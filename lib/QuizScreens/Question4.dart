@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
+import 'package:test_app/QuizScreens/Question5.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
@@ -44,7 +45,9 @@ class _Question4State extends State<Question4> {
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question5(
+                    quizData: widget.quizData,
+                  )));
                 },
               )
             ],
@@ -54,7 +57,7 @@ class _Question4State extends State<Question4> {
               Row(
                 children: [
                   Text(
-                    'Question 3',
+                    'Question 4',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -262,7 +265,7 @@ class _Question4State extends State<Question4> {
                     widget.eu = 0;
                     widget.csms = 0;
                     widget.tgdt = 0;
-                    widget.eu = 0;
+                    widget.pw = 0;
                     widget.fsg = 0;
                     widget.aad = 0;
                   });

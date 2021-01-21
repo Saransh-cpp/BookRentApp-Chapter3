@@ -10,5 +10,6 @@ class QuizData {
   int pw = 0;
   int csms = 0;
   int eu = 0;
+  int kr = 0;
 
 }

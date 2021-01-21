@@ -21,7 +21,7 @@ class _QuizResultState extends State<QuizResult> {
     String bookSuggestion = '';
     List<int> Books = [widget.quizData.aad, widget.quizData.pfo, widget.quizData.tug,
     widget.quizData.tgdt, widget.quizData.hppa, widget.quizData.eu, widget.quizData.csms,
-    widget.quizData.pw, widget.quizData.fsg, widget.quizData.ts];
+    widget.quizData.pw, widget.quizData.fsg, widget.quizData.ts, widget.quizData.kr];
     int maxBook = quiver.max(Books);
 
     if(widget.quizData.aad == maxBook){
@@ -62,6 +62,10 @@ class _QuizResultState extends State<QuizResult> {
     else if(widget.quizData.eu == maxBook){
       print(maxBook);
       bookSuggestion = 'Elegant Universe';
+    }
+    else if(widget.quizData.kr == maxBook){
+      print(maxBook);
+      bookSuggestion = 'The Kite Runner';
     }
 
 
