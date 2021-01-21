@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/QuizScreens/Question2.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
 class Question1 extends StatefulWidget {
 
   QuizData quizData = QuizData();
-  Question1({this.quizData});
+  // Question1({this.quizData});
   @override
   _Question1State createState() => _Question1State();
-  
+
   int tgdt = 0;
   int tug = 0;
   int pfo = 0;
@@ -29,9 +30,27 @@ class _Question1State extends State<Question1> {
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            iconTheme: IconThemeData(
+                color: Colors.black
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.navigate_next_rounded),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (c) =>
+                      Question2(
+                        quizData: widget.quizData,
+                      )));
+                },
+              )
+            ],
+          ),
           body: Column(
             children: [
               Row(
@@ -221,38 +240,39 @@ class _Question1State extends State<Question1> {
               ),
               SizedBox(height: 100,),
               MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      if(chosen == option1){
-                        widget.quizData.tgdt -= 1;
-                      }
-                      else if(chosen == option2){
-                        widget.quizData.tug -= 1;
-                      }
-                      else if(chosen == option3){
-                        widget.quizData.pfo -= 1;
-                      }
-                      else if(chosen == option4){
-                        widget.quizData.aad -= 1;
-                      }
-                      chosen = '';
-                      answered = false;
-                      widget.tgdt = 0;
-                      widget.pfo = 0;
-                      widget.aad = 0;
-                      widget.tug = 0;
-                    });
-                  },
+                onPressed: () {
+                  setState(() {
+                    if (chosen == option1) {
+                      widget.quizData.tgdt -= 1;
+                    }
+                    else if (chosen == option2) {
+                      widget.quizData.tug -= 1;
+                    }
+                    else if (chosen == option3) {
+                      widget.quizData.pfo -= 1;
+                    }
+                    else if (chosen == option4) {
+                      widget.quizData.aad -= 1;
+                    }
+                    chosen = '';
+                    answered = false;
+                    widget.tgdt = 0;
+                    widget.pfo = 0;
+                    widget.aad = 0;
+                    widget.tug = 0;
+                  });
+                },
                 child: Text('Reset'),
               ),
               MaterialButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (c) =>
+                      QuizResult(
                         quizData: widget.quizData,
-                    )));
-                  },
+                      )));
+                },
                 child: Text(
-                  'Result'
+                    'Result'
                 ),
               )
             ],

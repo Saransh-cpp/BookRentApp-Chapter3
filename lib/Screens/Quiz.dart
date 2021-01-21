@@ -1,69 +1,69 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:test_app/QuizScreens/Question1.dart';
-import 'package:test_app/QuizScreens/Question2.dart';
-import 'package:test_app/QuizScreens/QuizResult.dart';
-import 'package:test_app/Widgets.dart';
-import 'package:test_app/model/QuizDataModel.dart';
-
-class Quiz extends StatefulWidget {
-  @override
-  _QuizState createState() => _QuizState();
-}
-
-class _QuizState extends State<Quiz> {
-
-  QuizData quizData = QuizData();
-  PageController pageController = PageController();
-  int currentIndex = 0;
-  var currentTab = [
-    Question1(),
-    Question2(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Colors.black
-        ),
-        backgroundColor: Colors.white,
-        actions: [
-          IconButton(
-              icon: Icon(
-                  Icons.navigate_next_rounded
-              ),
-              onPressed: () {
-                setState(() {
-                  currentIndex += 1;
-                  pageController.animateToPage(currentIndex,
-                      duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-                });
-              })
-        ],
-      ),
-      body: PageView(
-        reverse: false,
-        // physics: NeverScrollableScrollPhysics(),
-        children: currentTab,
-        controller: pageController,
-        onPageChanged: (int index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-
-      ),
-    );
-  }
-}
+// import 'dart:async';
+// import 'package:flutter/material.dart';
+// import 'package:test_app/QuizScreens/Question1.dart';
+// import 'package:test_app/QuizScreens/Question2.dart';
+// import 'package:test_app/QuizScreens/QuizResult.dart';
+// import 'package:test_app/Widgets.dart';
+// import 'package:test_app/model/QuizDataModel.dart';
+//
+// class Quiz extends StatefulWidget {
+//   @override
+//   _QuizState createState() => _QuizState();
+// }
+//
+// class _QuizState extends State<Quiz> {
+//
+//   QuizData quizData = QuizData();
+//   PageController pageController = PageController();
+//   int currentIndex = 0;
+//   var currentTab = [
+//     Question1(),
+//     Question2(),
+//   ];
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         elevation: 0,
+//         iconTheme: IconThemeData(
+//           color: Colors.black
+//         ),
+//         backgroundColor: Colors.white,
+//         actions: [
+//           IconButton(
+//               icon: Icon(
+//                   Icons.navigate_next_rounded
+//               ),
+//               onPressed: () {
+//                 setState(() {
+//                   currentIndex += 1;
+//                   pageController.animateToPage(currentIndex,
+//                       duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+//                 });
+//               })
+//         ],
+//       ),
+//       body: PageView(
+//         reverse: false,
+//         // physics: NeverScrollableScrollPhysics(),
+//         children: currentTab,
+//         controller: pageController,
+//         onPageChanged: (int index) {
+//           setState(() {
+//             currentIndex = index;
+//           });
+//         },
+//
+//       ),
+//     );
+//   }
+// }
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/material.dart';

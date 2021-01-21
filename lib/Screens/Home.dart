@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/Screens/LoginPage.dart';
 import 'package:test_app/Screens/orders.dart';
 import 'package:test_app/Screens/product_search.dart';
@@ -304,7 +305,7 @@ class _HomeState extends State<Home> {
                                         onTap: () {
                                           Navigator.push(context,
                                               MaterialPageRoute(
-                                                  builder: (c) => Quiz()));
+                                                  builder: (c) => Question1()));
                                         },
                                         //Photo by Daniel Schludi on Unsplash
                                         child: Container(

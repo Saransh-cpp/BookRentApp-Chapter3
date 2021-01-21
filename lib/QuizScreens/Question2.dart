@@ -5,6 +5,10 @@ import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
 class Question2 extends StatefulWidget {
+
+  QuizData quizData = QuizData();
+  Question2({this.quizData});
+
   @override
   _Question2State createState() => _Question2State();
 
@@ -23,13 +27,24 @@ class _Question2State extends State<Question2> {
   String option2 = 'Backpacking through Europe';
   String option3 = 'An adventurous date in a fantasy\nworld';
   String option4 = 'Pizza date with fav true crime\npodcasts';
-  Question1 question1 = Question1();
 
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            iconTheme: IconThemeData(
+                color: Colors.black
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.navigate_next_rounded),
+                onPressed: () {},
+              )
+            ],
+          ),
           body: Column(
             children: [
               Row(
@@ -69,9 +84,8 @@ class _Question2State extends State<Question2> {
                             chosen = option1;
                             answered = true;
                             widget.tug += 1;
-                            question1.quizData.tug += widget.tug;
+                            widget.quizData.tug += widget.tug;
                           });
-                          print(question1.quizData.tgdt);
                         }
                       },
                       child: Container(
@@ -108,7 +122,7 @@ class _Question2State extends State<Question2> {
                             chosen = option2;
                             answered = true;
                             widget.pfo += 1;
-                            question1.quizData.pfo += widget.pfo;
+                            widget.quizData.pfo += widget.pfo;
                           });
                         }
                       },
@@ -146,7 +160,7 @@ class _Question2State extends State<Question2> {
                             chosen = option3;
                             answered = true;
                             widget.hppa += 1;
-                            question1.quizData.hppa += widget.hppa;
+                            widget.quizData.hppa += widget.hppa;
                           });
                         }
                       },
@@ -181,13 +195,11 @@ class _Question2State extends State<Question2> {
                       onTap: () {
                         if (!answered) {
                           setState(() {
-                            print(question1.quizData.tgdt);
                             chosen = option4;
                             answered = true;
                             widget.tgdt += 1;
-                            question1.quizData.tgdt += widget.tgdt;
+                            widget.quizData.tgdt += widget.tgdt;
                           });
-                          print(question1.quizData.tgdt);
                         }
                       },
                       child: Container(
@@ -223,17 +235,17 @@ class _Question2State extends State<Question2> {
               MaterialButton(
                 onPressed: () {
                   setState(() {
-                    if(chosen == option1){
-                      question1.quizData.tug -= 1;
+                    if (chosen == option1) {
+                      widget.quizData.tug -= 1;
                     }
-                    else if(chosen == option2){
-                      question1.quizData.pfo -= 1;
+                    else if (chosen == option2) {
+                      widget.quizData.pfo -= 1;
                     }
-                    else if(chosen == option3){
-                      question1.quizData.hppa -= 1;
+                    else if (chosen == option3) {
+                      widget.quizData.hppa -= 1;
                     }
-                    else if(chosen == option4){
-                      question1.quizData.tgdt -= 1;
+                    else if (chosen == option4) {
+                      widget.quizData.tgdt -= 1;
                     }
                     chosen = '';
                     answered = false;
@@ -247,9 +259,10 @@ class _Question2State extends State<Question2> {
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (c) => QuizResult(
-                    quizData: question1.quizData,
-                  )));
+                  Navigator.push(context, MaterialPageRoute(builder: (c) =>
+                      QuizResult(
+                        quizData: widget.quizData,
+                      )));
                 },
                 child: Text(
                     'Result'
