@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
+import 'package:test_app/QuizScreens/Question8.dart';
 
 class Question7 extends StatefulWidget {
 
@@ -42,7 +43,9 @@ class _Question7State extends State<Question7> {
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question8(
+                    quizData: widget.quizData,
+                  )));
                 },
               )
             ],
