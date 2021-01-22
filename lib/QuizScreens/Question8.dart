@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
+import 'package:test_app/QuizScreens/Question9.dart';
 import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
@@ -44,7 +45,9 @@ class _Question8State extends State<Question8> {
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question9(
+                    quizData: widget.quizData,
+                  )));
                 },
               )
             ],
@@ -54,7 +57,7 @@ class _Question8State extends State<Question8> {
               Row(
                 children: [
                   Text(
-                    'What emotion are you seeking today?',
+                    'Question 8',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black
@@ -271,7 +274,8 @@ class _Question8State extends State<Question8> {
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) =>
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (c) =>
                       QuizResult(
                         quizData: widget.quizData,
                       )));

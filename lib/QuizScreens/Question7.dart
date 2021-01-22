@@ -25,8 +25,8 @@ class _Question7State extends State<Question7> {
   String chosen;
   bool answered = false;
   String option1 = 'I love when books make my heart\nbeat faster';
-  String option2 = 'I love when the book keeps me guessing';
-  String option3 = 'I love when the book makes me ugly cry';
+  String option2 = 'I love when the book keeps me\nguessing';
+  String option3 = 'I love when the book makes me\nugly cry';
   String option4 = 'I love when the protagonists fall in\nlove and have a happy ending ';
 
   @override
