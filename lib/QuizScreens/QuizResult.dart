@@ -26,46 +26,46 @@ class _QuizResultState extends State<QuizResult> {
 
     if(widget.quizData.aad == maxBook){
       print(maxBook);
-      bookSuggestion = 'Angels and Demons';
+      bookSuggestion = bookSuggestion + '\nAngels and Demons';
     }
-    else if(widget.quizData.tug == maxBook){
+    if(widget.quizData.tug == maxBook){
       print(maxBook);
-      bookSuggestion = 'The Undomestic Goddess';
+      bookSuggestion += '\nThe Undomestic Goddess';
     }
-    else if(widget.quizData.tgdt == maxBook){
+    if(widget.quizData.tgdt == maxBook){
       print(maxBook);
-      bookSuggestion = 'The Girl with the Dragon Tattoo';
+      bookSuggestion += '\nThe Girl with the Dragon Tattoo';
     }
-    else if(widget.quizData.hppa == maxBook){
-      bookSuggestion = 'Harry Potter and the prisoner of Azkaban';
+    if(widget.quizData.hppa == maxBook){
+      bookSuggestion += '\nHarry Potter and the prisoner of Azkaban';
     }
-    else if(widget.quizData.pfo == maxBook){
+    if(widget.quizData.pfo == maxBook){
       print(maxBook);
-      bookSuggestion = 'Paris for One';
+      bookSuggestion += '\nParis for One';
     }
-    else if(widget.quizData.ts == maxBook){
+    if(widget.quizData.ts == maxBook){
       print(maxBook);
-      bookSuggestion = 'The Selection';
+      bookSuggestion += '\nThe Selection';
     }
-    else if(widget.quizData.fsg == maxBook){
+    if(widget.quizData.fsg == maxBook){
       print(maxBook);
-      bookSuggestion = 'Fifty Shades of grey';
+      bookSuggestion += '\nFifty Shades of grey';
     }
-    else if(widget.quizData.pw == maxBook){
+    if(widget.quizData.pw == maxBook){
       print(maxBook);
-      bookSuggestion = 'Parallel Worlds';
+      bookSuggestion += '\nParallel Worlds';
     }
-    else if(widget.quizData.csms == maxBook){
+    if(widget.quizData.csms == maxBook){
       print(maxBook);
-      bookSuggestion = 'Cosmos';
+      bookSuggestion += '\nCosmos';
     }
-    else if(widget.quizData.eu == maxBook){
+    if(widget.quizData.eu == maxBook){
       print(maxBook);
-      bookSuggestion = 'Elegant Universe';
+      bookSuggestion += '\nElegant Universe';
     }
-    else if(widget.quizData.kr == maxBook){
+    if(widget.quizData.kr == maxBook){
       print(maxBook);
-      bookSuggestion = 'The Kite Runner';
+      bookSuggestion += '\nThe Kite Runner';
     }
 
 

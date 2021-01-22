@@ -40,14 +40,14 @@ class _Question9State extends State<Question9> {
             iconTheme: IconThemeData(
                 color: Colors.black
             ),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.navigate_next_rounded),
-                onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
-                },
-              )
-            ],
+            // actions: [
+            //   IconButton(
+            //     icon: Icon(Icons.navigate_next_rounded),
+            //     onPressed: () {
+            //       // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
+            //     },
+            //   )
+            // ],
           ),
           body: Column(
             children: [
