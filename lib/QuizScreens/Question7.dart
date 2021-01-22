@@ -262,17 +262,6 @@ class _Question7State extends State<Question7> {
                 },
                 child: Text('Reset'),
               ),
-              // MaterialButton(
-              //   onPressed: () {
-              //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) =>
-              //         QuizResult(
-              //           quizData: widget.quizData,
-              //         )));
-              //   },
-              //   child: Text(
-              //       'Result'
-              //   ),
-              // )
             ],
           )
       ),

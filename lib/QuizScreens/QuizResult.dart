@@ -24,48 +24,53 @@ class _QuizResultState extends State<QuizResult> {
     widget.quizData.pw, widget.quizData.fsg, widget.quizData.ts, widget.quizData.kr];
     int maxBook = quiver.max(Books);
 
-    if(widget.quizData.aad == maxBook){
-      print(maxBook);
-      bookSuggestion = bookSuggestion + '\nAngels and Demons';
+    if(maxBook == 0){
+      bookSuggestion = 'Please attempt the quiz first';
     }
-    if(widget.quizData.tug == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nThe Undomestic Goddess';
-    }
-    if(widget.quizData.tgdt == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nThe Girl with the Dragon Tattoo';
-    }
-    if(widget.quizData.hppa == maxBook){
-      bookSuggestion += '\nHarry Potter and the prisoner of Azkaban';
-    }
-    if(widget.quizData.pfo == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nParis for One';
-    }
-    if(widget.quizData.ts == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nThe Selection';
-    }
-    if(widget.quizData.fsg == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nFifty Shades of grey';
-    }
-    if(widget.quizData.pw == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nParallel Worlds';
-    }
-    if(widget.quizData.csms == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nCosmos';
-    }
-    if(widget.quizData.eu == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nElegant Universe';
-    }
-    if(widget.quizData.kr == maxBook){
-      print(maxBook);
-      bookSuggestion += '\nThe Kite Runner';
+    else {
+      if (widget.quizData.aad == maxBook) {
+        print(maxBook);
+        bookSuggestion = bookSuggestion + '\nAngels and Demons';
+      }
+      if (widget.quizData.tug == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nThe Undomestic Goddess';
+      }
+      if (widget.quizData.tgdt == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nThe Girl with the Dragon Tattoo';
+      }
+      if (widget.quizData.hppa == maxBook) {
+        bookSuggestion += '\nHarry Potter and the prisoner of Azkaban';
+      }
+      if (widget.quizData.pfo == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nParis for One';
+      }
+      if (widget.quizData.ts == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nThe Selection';
+      }
+      if (widget.quizData.fsg == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nFifty Shades of grey';
+      }
+      if (widget.quizData.pw == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nParallel Worlds';
+      }
+      if (widget.quizData.csms == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nCosmos';
+      }
+      if (widget.quizData.eu == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nElegant Universe';
+      }
+      if (widget.quizData.kr == maxBook) {
+        print(maxBook);
+        bookSuggestion += '\nThe Kite Runner';
+      }
     }
 
 
