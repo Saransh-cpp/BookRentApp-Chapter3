@@ -1,6 +1,8 @@
 # Chapter3 - Book renting app
 
-A book renting app still in the development phase.
+A book renting app made for Chapter3.
+
+Majority of the features in the app have been added, looking for a UI/UX designer to help me with the designing part.
 
 ## Getting Started
 
