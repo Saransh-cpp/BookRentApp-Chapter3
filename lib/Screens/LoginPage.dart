@@ -114,7 +114,7 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.pink[50],
       appBar: AppBar(
         title: Text("Sign In"),
-        backgroundColor: Colors.red[300],
+        backgroundColor: Colors.pink[400],
         elevation: 0,
         actions: [
           FlatButton.icon(
@@ -210,16 +210,15 @@ class _SignInState extends State<SignIn> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => AdminSignIn()));
-
+                    widget.toggleView();
                 },
                 child: Text(
-                  'I am an admin',
+                  'I am a new user',
                   style: TextStyle(
                     color: Colors.red,
                     fontSize: 15
                   ),
-                ),
+                )
               ),
               Text(
                 error,

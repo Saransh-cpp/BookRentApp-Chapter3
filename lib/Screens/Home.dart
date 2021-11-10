@@ -19,8 +19,6 @@ import 'package:test_app/Screens/BestSellers.dart';
 import 'package:test_app/Screens/AboutUs.dart';
 import 'package:test_app/Screens/Contact.dart';
 import 'package:test_app/Screens/Report.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 
 
 class Home extends StatefulWidget {
@@ -218,7 +216,7 @@ class _HomeState extends State<Home> {
                                     builder: (c) => ProductSearchScreen()));
                               },
                               decoration: InputDecoration(
-                                hintText: "blazer, dress...",
+                                hintText: "Search your books here!",
                                 border: InputBorder.none,
                               ),
                             ),
@@ -231,9 +229,9 @@ class _HomeState extends State<Home> {
 
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 30.0,
-                          ),
+                          // SizedBox(
+                          //   height: 30.0,
+                          // ),
                           Center(
                               child: Container(
                                   decoration: BoxDecoration(
@@ -243,7 +241,7 @@ class _HomeState extends State<Home> {
                                       ),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(50)),
-                                      color: Colors.pink[900]
+                                      color: Colors.pink[200]
                                   ),
 
 
