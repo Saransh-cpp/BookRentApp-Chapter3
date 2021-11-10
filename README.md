@@ -7,7 +7,7 @@ A book renting app!
 
 ## Setting up the project in your local environment
 ![image](https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png)
-1. Make sure [Flutter]() is installed in your system.
+1. Make sure [Flutter](https://flutter.dev/?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRsfTmxiQ9NuR3Jek8xNX896IE157icHbpgid_QF7agt4wAJRehRwvwaAjp2EALw_wcB&gclsrc=aw.ds) is installed in your system.
 2. Fork this repository.
 3. Clone the **forked** repository -
 ```
@@ -20,7 +20,7 @@ git remote -v
 # adding a remote for the upstream repository
 git remote add upstream https://github.com/Saransh-cpp/BookRentApp-Chapter3
 ```
-6. Open the repository in [Android Studio]() or in [VS Code]().
+6. Open the repository in [Android Studio](https://developer.android.com/studio?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRvb-ozHxKWf5qfWZwRcnaqgvTGO90T_J3u6Pm0s-_p81IyHxGKUhL0aAtJSEALw_wcB&gclsrc=aw.ds) or in [VS Code](https://code.visualstudio.com/).
 7. Run the app.
 8. Create a new issue if you face any difficulties (after browsing through StackOverflo on your own) and someone will help you:)
 
