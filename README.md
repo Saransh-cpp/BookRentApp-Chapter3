@@ -2,7 +2,36 @@
 
 A book renting app made for Chapter3.
 
-Majority of the features in the app have been added, looking for a UI/UX designer to help me with the designing part.
+## Setting up the project in your local environment
+![image](https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png)
+1. Make sure [Flutter]() is installed in your system.
+2. Fork this repository.
+3. Clone the **forked** repository -
+```
+git clone https://github.com/<your github username>/BookRentApp-Chapter3
+```
+4. Add a remote to the upstream repository.
+```
+# typing the below command should show you only 1 remote named origin with the URL of your forked repository
+git remote -v
+# adding a remote for the upstream repository
+git remote add upstream https://github.com/Saransh-cpp/BookRentApp-Chapter3
+```
+6. Open the repository in [Android Studio]() or in [VS Code]().
+7. Run the app.
+8. Create a new issue if you face any difficulties (after browsing through StackOverflo on your own) and someone will help you:)
+
+## Contributing to the project
+![image](https://user-images.githubusercontent.com/74055102/141175911-fbefae23-d381-44b3-bcfb-d369cfb66659.png)
+Now that you have the project set up in your local environment, follow the steps below to contribute!
+
+1. Take up an already existing issue or create a new (but a valid) one.
+2. Pull the latest code in.
+```
+# make sure you are on the main branch
+git pull upstream main
+```
+3. Create a new branch.
 
 ## Getting Started
 
