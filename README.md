@@ -1,6 +1,9 @@
 # Chapter3 - Book renting app
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/74055102/141178562-ad9b8dd2-4000-4763-947d-bdd6e482c571.jpg" height=400/>
+</p>
 
-A book renting app made for Chapter3.
+A book renting app!
 
 ## Setting up the project in your local environment
 ![image](https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png)
