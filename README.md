@@ -23,6 +23,7 @@ git remote add upstream https://github.com/Saransh-cpp/BookRentApp-Chapter3
 
 ## Contributing to the project
 ![image](https://user-images.githubusercontent.com/74055102/141175911-fbefae23-d381-44b3-bcfb-d369cfb66659.png)
+
 Now that you have the project set up in your local environment, follow the steps below to contribute!
 
 1. Take up an already existing issue or create a new (but a valid) one.
@@ -32,6 +33,25 @@ Now that you have the project set up in your local environment, follow the steps
 git pull upstream main
 ```
 3. Create a new branch.
+```
+# replace xx with the issue number you are working on and give your branch a good name
+git checkout -b issue-xx-a-good-name
+```
+4. Make your changes!
+5. Once done with a particular feature, bug fix, or a documentation part, add your changes to the staging area.
+```
+git add .
+```
+6. Review and commit your changes.
+```
+# the message should be in present tense, for ex - "Added feature x" is not ideal but "Add feature X" is
+git commit -m "a meaningful message"
+```
+7. Push your changes!
+```
+git push --set-upstream origin <your-branch-name>
+```
+8. Create a pull request from GitHub and wait for the reviews!
 
 ## Getting Started
 
