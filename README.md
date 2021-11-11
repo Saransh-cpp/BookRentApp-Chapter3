@@ -5,7 +5,7 @@
 
 A book renting app!
 
-The app has built in Flutter by using the Dart programming language. Firebase is being used as the backend and Firestore is being used as a noSQL database for the app.
+The app has built in Flutter by using the Dart programming language. Firebase is being used as the backend and Firestore is being used as a noSQL database for the app. Most of the functionalities have already been implemented (might have some bugs though) but the UI is straight up bad (I never tried to create a better UI as I don't like writing UI).
 
 ## Description of the codebase
 The code is well arranged into sub-directories which are -
