@@ -43,7 +43,7 @@ git remote add upstream https://github.com/Saransh-cpp/BookRentApp-Chapter3
 6. Run the app.
 7. Create a new issue if you face any difficulties (after browsing through StackOverflow on your own) and someone will help you 😁
 
-## Contributing to the project 
+## Contributing to the project 🛠
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74055102/141175911-fbefae23-d381-44b3-bcfb-d369cfb66659.png" height=400/>
