@@ -5,6 +5,17 @@
 
 A book renting app!
 
+The app has built in Flutter by using the Dart programming language. Firebase is being used as the backend and Firestore is being used as a noSQL database for the app.
+
+## Description of the codebase
+The code is well arranged into sub-directories which are -
+- `Screens` (all the screens of the app, which are a lot)
+- `QuizScreens` (the app has a quiz, which suggests you 1 or more books based on your response, this feature is relatively new and might have a lot of bugs)
+- `Utility` (utility files (only 1) meant for google sign in)
+- `model` (all the data models)
+- `provider` (all the providers used for state management)
+- `services` (all the utility functions/services corresponding to different data models)
+
 ## Setting up the project in your local environment
 ![image](https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png)
 1. Make sure [Flutter](https://flutter.dev/?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRsfTmxiQ9NuR3Jek8xNX896IE157icHbpgid_QF7agt4wAJRehRwvwaAjp2EALw_wcB&gclsrc=aw.ds) is installed in your system.
