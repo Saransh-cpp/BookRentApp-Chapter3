@@ -1,48 +1,53 @@
-# Chapter3 - Book renting app
+# Chapter3 - Book renting app 📚
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/74055102/141178562-ad9b8dd2-4000-4763-947d-bdd6e482c571.jpg" height=400/>
+  <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
 </p>
 
-A book renting app!
-- An e-commerce app specifically made for renting books.
-- The user can select any of the available books, can filter them by genre, can order for different time spans and can also cancel their order.
-- In addition to these features, the app also provides users with "Best sellers", "All books" and a quiz which matches a user to 1 or more books.
-- The user can also add a book to their cart for future purchases and can also add them to favourites for future reference.
-- User can also search books, and review and see all of their orders.
-- This is the user version of the app. There is also an admin app through which an admin can add books in the database (which will then show up in the user app, or in this app) and that, for obvious reasons, is private :)
+A book renting app - open a new chapter in your journey 📔
+- An e-commerce application specifically made for renting books.
+- Chapter3 displays collections of top selling books as well as the option to have your taste curated and matched with a book.
+- Customers can filter and select books based on genre, after which placing immediate or deferred orders with the option to cancel.
+- If the customer isnt sure about a purchase they can add to a wishlist or just leave in the cart.
+- There is also a backend present which is used by administators to maintain the collection and available stock (which is private to customers obviously 😀)
 
-The app has been built in Flutter by using the Dart programming language. Firebase is being used as the backend and Firestore is being used as a noSQL database for the app. Most of the functionalities have already been implemented (might have a lot of bugs though) but the UI is straight up bad (I never tried to create a better UI as I don't like writing UI). The code also needs a lot (A LOT) of refactoring.
+This application was built in Flutter using Dart, Firebase paired with firestore as a noSQL database are the backend of Chapter3. Functionality has been finalized, albeit with minor issues. Refactoring and UI work is also needed on this project besides the bug fixes.
 
 ## Description of the codebase
 The code is well arranged into sub-directories which are -
 - `Screens` (all the screens of the app, which are a lot)
 - `QuizScreens` (the app has a quiz, which suggests you 1 or more books based on your response, this feature is relatively new and might have a lot of bugs)
-- `Utility` (utility files (only 1) meant for google sign in)
+- `Utility` (utility files (only 1) mean't for google sign in)
 - `model` (all the data models)
 - `provider` (all the providers used for state management)
 - `services` (all the utility functions/services corresponding to different data models)
 
-## Setting up the project in your local environment
-![image](https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png)
+## Setting up the project in your local environment💻
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png" height=400/>
+</p>
+
 1. Make sure [Flutter](https://flutter.dev/?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRsfTmxiQ9NuR3Jek8xNX896IE157icHbpgid_QF7agt4wAJRehRwvwaAjp2EALw_wcB&gclsrc=aw.ds) is installed in your system.
 2. Fork this repository.
-3. Clone the **forked** repository -
+3. Clone the **forked** repository:
 ```
 git clone https://github.com/<your github username>/BookRentApp-Chapter3
 ```
-4. Add a remote to the upstream repository.
+4. Add a remote to the upstream repository:
 ```
-# typing the below command should show you only 1 remote named origin with the URL of your forked repository
+# typing the command below should show you only 1 remote named origin with the URL of your forked repository
 git remote -v
 # adding a remote for the upstream repository
 git remote add upstream https://github.com/Saransh-cpp/BookRentApp-Chapter3
 ```
-6. Open the repository in [Android Studio](https://developer.android.com/studio?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRvb-ozHxKWf5qfWZwRcnaqgvTGO90T_J3u6Pm0s-_p81IyHxGKUhL0aAtJSEALw_wcB&gclsrc=aw.ds) or in [VS Code](https://code.visualstudio.com/).
-7. Run the app.
-8. Create a new issue if you face any difficulties (after browsing through StackOverflo on your own) and someone will help you:)
+5. Open the repository in [Android Studio](https://developer.android.com/studio?gclid=Cj0KCQiA-K2MBhC-ARIsAMtLKRvb-ozHxKWf5qfWZwRcnaqgvTGO90T_J3u6Pm0s-_p81IyHxGKUhL0aAtJSEALw_wcB&gclsrc=aw.ds) or in [VS Code](https://code.visualstudio.com/).
+6. Run the app.
+7. Create a new issue if you face any difficulties (after browsing through StackOverflow on your own) and someone will help you 😁
 
-## Contributing to the project
-![image](https://user-images.githubusercontent.com/74055102/141175911-fbefae23-d381-44b3-bcfb-d369cfb66659.png)
+## Contributing to the project 
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/74055102/141175911-fbefae23-d381-44b3-bcfb-d369cfb66659.png" height=400/>
+</p>
 
 Now that you have the project set up in your local environment, follow the steps below to contribute!
 
@@ -71,9 +76,9 @@ git commit -m "a meaningful message"
 ```
 git push --set-upstream origin <your-branch-name>
 ```
-8. Create a pull request from GitHub and wait for the reviews!
+8. Create a pull request from GitHub and wait for the review!
 
-## Getting Started
+## Getting Started 
 
 This project is a starting point for a Flutter application.
 
