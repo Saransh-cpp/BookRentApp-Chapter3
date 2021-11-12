@@ -10,7 +10,7 @@ A book renting app - open a new chapter in your journey 📔
 - If the customer isnt sure about a purchase they can add to a wishlist or just leave in the cart.
 - There is also a backend Flutter application present which is used by administators to maintain the collection and available stock (which is private to customers obviously 😀)
 
-This application was built in Flutter using Dart, Firebase paired with firestore as a noSQL database are the backend of Chapter3. Functionality has been finalized, albeit with minor issues. Refactoring and UI work is also needed on this project besides the bug fixes.
+This application was built in Flutter using Dart. Firebase paired with Firestore as a noSQL database are the backend of Chapter3. Functionality has been finalized, albeit with minor issues. Refactoring and UI work is also needed on this project besides the bug fixes.
 
 ## Description of the codebase
 The code is well arranged into sub-directories which are -
