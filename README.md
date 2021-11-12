@@ -16,7 +16,7 @@ This application was built in Flutter using Dart. Firebase paired with Firestore
 The code is well arranged into sub-directories which are -
 - `Screens` (all the screens of the app, which are a lot)
 - `QuizScreens` (the app has a quiz, which suggests you 1 or more books based on your response, this feature is relatively new and might have a lot of bugs)
-- `Utility` (utility files (only 1) mean't for google sign in)
+- `Utility` (utility files (only 1) meant for google sign in)
 - `model` (all the data models)
 - `provider` (all the providers used for state management)
 - `services` (all the utility functions/services corresponding to different data models)
