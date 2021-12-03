@@ -39,7 +39,8 @@ class _HomeState extends State<Home> {
     final userProvider = Provider.of<UserProvider>(context);
     final productProvider = Provider.of<ProductProvider>(context);
 
-    return SafeArea(
+    return SingleChildScrollView(
+      child: SafeArea(
         child: Scaffold(
           key: _drawerKey,
           drawer: Drawer(
@@ -408,7 +409,7 @@ class _HomeState extends State<Home> {
                 ),
               ]
           ),
-        )
+        )),
     );
   }
 }
