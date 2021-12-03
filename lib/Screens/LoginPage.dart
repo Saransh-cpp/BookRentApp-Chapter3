@@ -116,6 +116,24 @@ class _SignInState extends State<SignIn> {
         title: Text("Sign In"),
         backgroundColor: Colors.pink[400],
         elevation: 0,
+        actions: [
+           FlatButton.icon(
+               onPressed: () {
+                 widget.toggleView();
+               },
+               icon: Icon(
+                   Icons.person,
+                 color: Colors.white,
+               ),
+               label: Text(
+                 'Register',
+                 style: TextStyle(
+                   color: Colors.white,
+                 ),
+               )
+           )
+         ],
+
         
       ),
       body: Container(
