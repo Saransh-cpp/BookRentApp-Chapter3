@@ -15,7 +15,7 @@ class Auth implements BaseAuth {
     final GoogleSignInAuthentication googleAuth =
     await googleAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
     try{
