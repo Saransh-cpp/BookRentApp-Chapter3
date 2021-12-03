@@ -54,8 +54,8 @@ Now that you have the project set up in your local environment, follow the steps
 1. Take up an already existing issue or create a new (but a valid) one.
 2. Pull the latest code in.
 ```
-# make sure you are on the main branch
-git pull upstream main
+# make sure you are on the master branch
+git pull upstream master
 ```
 3. Create a new branch.
 ```
