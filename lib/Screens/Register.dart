@@ -75,7 +75,8 @@ class _RegisterState extends State<Register> {
                           'Welcome to\n Chapter 3',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
                           ),
                         ),
                         Form(
@@ -96,7 +97,7 @@ class _RegisterState extends State<Register> {
                               //   height: 20,
                               // ),
                               Container(
-                                width: _screenWidth,
+                                width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
@@ -118,7 +119,7 @@ class _RegisterState extends State<Register> {
                                 height: 20,
                               ),
                               Container(
-                                width: _screenWidth,
+                                width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
@@ -145,44 +146,99 @@ class _RegisterState extends State<Register> {
                               SizedBox(
                                 height: 20,
                               ),
-                              ListTile(
-                                title: TextFormField(
-                                  controller: _passwordTextController,
-                                  validator: (val) => val.length < 6
-                                      ? 'Enter a password 6+ chars long'
-                                      : null,
-                                  textAlignVertical: TextAlignVertical.bottom,
-                                  obscureText: hidePass,
-                                  // net ninja
-                                  onChanged: (val) {
-                                    setState(() {
-                                      password = val;
-                                    });
-                                  },
+                              Container(
+                                width: _screenWidth/1.08,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
                                 ),
-                                trailing: IconButton(
-                                    icon: Icon(Icons.remove_red_eye),
-                                    onPressed: () {
+                                padding: EdgeInsets.all(8),
+                                margin: EdgeInsets.all(0),
+                                child: Container(
+                                  child: TextFormField(
+                                    controller: _passwordTextController,
+                                    decoration: InputDecoration(
+                                        hintText: "Enter Password",
+                                        prefixIcon: Icon(Icons.vpn_key),
+                                      suffixIcon: IconButton(
+                                          icon: Icon(
+                                            hidePass
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            //color: Theme.of(context).primaryColorDark,
+                                            //Icons.remove_red_eye
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              hidePass = !hidePass;
+                                            });
+                                          }),
+                                        ),
+                                    validator: (val) => val.length < 6
+                                        ? 'Enter a password 6+ chars long'
+                                        : null,
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    obscureText: hidePass,
+                                    // net ninja
+                                    onChanged: (val) {
                                       setState(() {
-                                        hidePass = !hidePass;
+                                        password = val;
                                       });
-                                    }),
+                                    },
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
-                              TextFormField(
-                                controller: _confirmPasswordController,
-                                validator: (val) => val.length < 6
-                                    ? 'Enter a password 6+ chars long'
-                                    : null,
-                                textAlignVertical: TextAlignVertical.bottom,
-                                obscureText: true,
-                                //onChanged: (val) {
-                                //setState(() {
-                                //password = val;
-                                //});
-                                //},
+                              Container(
+                                width: _screenWidth/1.08,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                                ),
+                                padding: EdgeInsets.all(8),
+                                margin: EdgeInsets.all(0),
+                                child: Container(
+                                  child: TextFormField(
+                                    controller: _confirmPasswordController,
+                                    decoration: InputDecoration(
+                                      hintText: "Confirm Password",
+                                       prefixIcon: Icon(Icons.vpn_key),
+                                      suffixIcon: IconButton(
+                                          icon: Icon(
+                                            hidePass
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            //color: Theme.of(context).primaryColorDark,
+                                            //Icons.remove_red_eye
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              hidePass = !hidePass;
+                                            });
+                                          }),
+                                    ),
+                                    validator: (val) => val.length < 6
+                                        ? 'Enter a password 6+ chars long'
+                                        : null,
+                                    textAlignVertical: TextAlignVertical.bottom,
+                                    obscureText: hidePass,
+                                    // net ninja
+                                    onChanged: (val) {
+                                      setState(() {
+                                        password = val;
+                                      });
+                                    },
+                                    //onChanged: (val) {
+                                    //setState(() {
+                                    //password = val;
+                                    //});
+                                    //},
+                                  ),
+                                ),
                               ),
                               SizedBox(
                                 height: 20,
