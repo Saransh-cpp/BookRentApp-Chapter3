@@ -13,6 +13,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Youspeakcubic",
+      "name": "Anthony De la Torre",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75534476?v=4",
+      "profile": "http://youspeakcubic.github.io",
+      "contributions": [
+        "content",
+        "doc",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
