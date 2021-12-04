@@ -96,7 +96,7 @@ class _RegisterState extends State<Register> {
                               // SizedBox(
                               //   height: 20,
                               // ),
-                              Container(
+                             /* Container(
                                 width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -117,8 +117,9 @@ class _RegisterState extends State<Register> {
                               ),
                               SizedBox(
                                 height: 20,
-                              ),
-                              Container(
+                              ),*/
+                              Template1("Enter Name" , 'Enter a name' , Icon(Icons.person) ,context),
+                             /* Container(
                                 width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -145,8 +146,9 @@ class _RegisterState extends State<Register> {
                               ),
                               SizedBox(
                                 height: 20,
-                              ),
-                              Container(
+                              ),*/
+                              Template1("Enter Email" , 'Enter an email' , Icon(Icons.email) ,context),
+                              /*Container(
                                 width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -191,8 +193,11 @@ class _RegisterState extends State<Register> {
                               ),
                               SizedBox(
                                 height: 20,
-                              ),
-                              Container(
+                              ),*/
+
+                              Template2("Enter Password", 'Enter a password 6+ chars long' , context),
+
+                             /* Container(
                                 width: _screenWidth/1.08,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -242,7 +247,10 @@ class _RegisterState extends State<Register> {
                               ),
                               SizedBox(
                                 height: 20,
-                              ),
+                              ),*/
+
+                              Template2("Enter Password", 'Enter a password 6+ chars long' , context),
+
                               RaisedButton(
                                 onPressed: () async {
                                   // net ninja
@@ -504,6 +512,113 @@ class UserServices{
     _firestore.collection(collection).doc(data["userId"]).set(data);
   }
 }
+
+
+
+Widget Template1(String hint , String error , Icon icon, BuildContext context){
+  String email = '';
+  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _nameTextController = TextEditingController();
+  double _screenWidth = MediaQuery
+      .of(context)
+      .size
+      .width;
+   return Column(
+     children: [
+       Container(
+        width: _screenWidth/1.08,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius:
+          BorderRadius.all(Radius.circular(10)),
+        ),
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(0),
+        child: TextFormField(
+          controller: _nameTextController,
+          decoration: InputDecoration(
+              hintText: "$hint",
+              prefixIcon: icon),
+          validator: (val) =>
+          val.isEmpty ? '$error' : null,
+          textAlignVertical: TextAlignVertical.bottom,
+        onChanged: (val) {
+      if("$hint" == "Email") {
+        setState(() {
+          email = val;
+        });
+      }
+                },
+
+        ),
+  ),
+       SizedBox(height: 20,)
+     ],
+   );
+}
+
+
+Widget Template2(String hint , String error , BuildContext context){
+  String password= '';
+  TextEditingController _passwordTextController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+  double _screenWidth = MediaQuery
+      .of(context)
+      .size
+      .width;
+  bool hidePass = true;
+  return Column(
+    children: [
+      Container(
+        width: _screenWidth/1.08,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius:
+          BorderRadius.all(Radius.circular(10)),
+        ),
+        padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(0),
+        child: Container(
+          child: TextFormField(
+            controller: _passwordTextController,
+            decoration: InputDecoration(
+              hintText: "$hint",
+              prefixIcon: Icon(Icons.vpn_key),
+              suffixIcon: IconButton(
+                  icon: Icon(
+                    hidePass
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    //color: Theme.of(context).primaryColorDark,
+                    //Icons.remove_red_eye
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      hidePass = !hidePass;
+                    });
+                  }),
+            ),
+            validator: (val) => val.length < 6
+                ? 'error'
+                : null,
+            textAlignVertical: TextAlignVertical.bottom,
+            obscureText: hidePass,
+            // net ninja
+            onChanged: (val) {
+              setState(() {
+                password = val;
+              });
+            },
+          ),
+        ),
+      ),
+      SizedBox(
+        height: 20,
+      ),
+    ],
+  );
+}
+
 
 
 
