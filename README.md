@@ -1,6 +1,6 @@
 # Chapter3 - Book renting app 📚
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
@@ -106,6 +106,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Saransh-cpp"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saransh</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Saransh-cpp" title="Code">💻</a></td>
     <td align="center"><a href="http://youspeakcubic.github.io"><img src="https://avatars.githubusercontent.com/u/75534476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anthony De la Torre</b></sub></a><br /><a href="#content-Youspeakcubic" title="Content">🖋</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Youspeakcubic" title="Documentation">📖</a> <a href="#design-Youspeakcubic" title="Design">🎨</a></td>
     <td align="center"><a href="https://github.com/letsintegreat"><img src="https://avatars.githubusercontent.com/u/37345795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harshit Seksaria</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Code">💻</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/TESLA2402"><img src="https://avatars.githubusercontent.com/u/83589511?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TESLA2402</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=TESLA2402" title="Code">💻</a></td>
   </tr>
 </table>
 
