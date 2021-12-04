@@ -1,6 +1,6 @@
 # Chapter3 - Book renting app 📚
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
@@ -108,6 +108,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/letsintegreat"><img src="https://avatars.githubusercontent.com/u/37345795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harshit Seksaria</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Code">💻</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/TESLA2402"><img src="https://avatars.githubusercontent.com/u/83589511?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TESLA2402</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=TESLA2402" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Vaibhav-Chopra-GT"><img src="https://avatars.githubusercontent.com/u/92637595?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vaibhav-Chopra-GT</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Vaibhav-Chopra-GT" title="Code">💻</a> <a href="#infra-Vaibhav-Chopra-GT" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/Pranav108"><img src="https://avatars.githubusercontent.com/u/56934594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav Pratap Singh</b></sub></a><br /><a href="#ideas-Pranav108" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
