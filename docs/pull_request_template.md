@@ -1,5 +1,5 @@
-## Issue Id -
-Mention your issue ID here
+## Issue
+Fixes #(Mention the issue ID here)
 
 <br>
 
