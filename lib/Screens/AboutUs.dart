@@ -16,23 +16,21 @@ class _AboutUsState extends State<AboutUs> {
   final double spacing = 40;
   List jsonContributors = [];
   String _about_this_app =
-      "BookRentApp application is specifically made for renting books.It displays collections of top selling books as well as the option to have your taste curated and matched with a book.Here customers can filter and select books based on genre, after which placing immediate or deferred orders with the option to cancel.";
+      "Chapter3 is an app specifically made for renting books. It displays collections of top-selling books as well as the option to have your taste curated and matched with a book. Here customers can filter and select books based on genre, after which placing immediate or deferred orders with the option to cancel.";
 
   Future<void> _fetchContributors() async {
     const contributorsAPIUrl =
         'https://api.github.com/repos/Saransh-cpp/BookRentApp-Chapter3/contributors';
 
-    //final response = await http.get(Uri(host: contributorsAPIUrl));
     final response = await http.get(Uri.parse(contributorsAPIUrl));
 
     if (response.statusCode == 200) {
       setState(() {
-        //jsonContributors = json.decode(response.body) as List; //original
         jsonContributors = jsonDecode(response.body) as List;
       });
     } else {
       Fluttertoast.showToast(
-        msg: "Failed to load Contributors from API",
+        msg: "Failed to load Contributors.",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
       );
@@ -81,7 +79,7 @@ class _AboutUsState extends State<AboutUs> {
                           Container(
                             margin: const EdgeInsets.only(left: 8),
                             child: const Text(
-                              "BOOK-RENT-APP",
+                              "Chapter 3",
                               style: TextStyle(
                                 fontSize: 25,
                                 fontWeight: FontWeight.w700,
@@ -108,7 +106,7 @@ class _AboutUsState extends State<AboutUs> {
                       margin: const EdgeInsets.only(top: 15),
                       alignment: Alignment.topCenter,
                       child: const Text(
-                        "Presenting The Team",
+                        "Presenting the Developers",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
@@ -157,7 +155,6 @@ class _AboutUsState extends State<AboutUs> {
                       ),
                     ),
                     _buildTeamTitle('CONTIBUTORS'),
-                    // ignore: prefer_is_empty
                     if (jsonContributors.length > 0)
                       Container(
                         height: 170,
@@ -168,7 +165,7 @@ class _AboutUsState extends State<AboutUs> {
                           itemCount: jsonContributors.length,
                           itemBuilder: (BuildContext context, int index) =>
                               (jsonContributors[index]["login"].toString() ==
-                                      "Saransh-cpp")
+                                      "Saransh-cpp" || jsonContributors[index]["login"].toString() == "allcontributors[bot]")
                                   ? Container()
                                   : Container(
                                       margin: const EdgeInsets.only(
@@ -215,7 +212,6 @@ class _AboutUsState extends State<AboutUs> {
                       )
                     else
                       const Center(child: CircularProgressIndicator()),
-                    //////////////
                     Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.all(10),
@@ -251,7 +247,6 @@ class _AboutUsState extends State<AboutUs> {
             color: Colors.black,
             shape: BoxShape.circle,
             image: DecorationImage(
-              //image: AssetImage('images/pranav.jpg'),
               image: NetworkImage(
                   'https://avatars.githubusercontent.com/u/74055102?v=4'),
               fit: BoxFit.contain,
@@ -279,8 +274,7 @@ class _AboutUsState extends State<AboutUs> {
             color: Colors.black,
             shape: BoxShape.circle,
             image: DecorationImage(
-              //image: AssetImage('images/pranav.jpg'),
-              image: NetworkImage(imagePath), // original
+              image: NetworkImage(imagePath),
               fit: BoxFit.contain,
             ),
           ),
@@ -354,7 +348,6 @@ class _AboutUsState extends State<AboutUs> {
 
 List<Map<String, String>> devTeam = [
   {
-    "imgPath": 'assets/images/team/smaranjit_ghose.png',
     "name": "Saransh",
     "linkedin": "https://www.linkedin.com/in/saransh-cpp/",
     "github": "https://github.com/Saransh-cpp",
