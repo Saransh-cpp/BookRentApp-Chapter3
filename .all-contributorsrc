@@ -72,6 +72,15 @@
         "ideas",
         "bug"
       ]
+    },
+    {
+      "login": "atharv-bhadange",
+      "name": "Atharv Bhadange",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65965314?v=4",
+      "profile": "https://github.com/atharv-bhadange",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
