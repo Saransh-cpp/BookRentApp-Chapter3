@@ -20,7 +20,7 @@ You can write manually also
 <br>
 
 ## Screenshot
-Screenshot of the line where you found the bug
+Screenshot of the fix if required.
 
 <br>
 
