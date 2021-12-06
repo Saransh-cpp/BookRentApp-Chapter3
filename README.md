@@ -1,6 +1,6 @@
 # Chapter3 - Book renting app 📚
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
@@ -113,6 +113,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/aman2kumar"><img src="https://avatars.githubusercontent.com/u/76274870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aman2kumar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=aman2kumar" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mortal-ghost"><img src="https://avatars.githubusercontent.com/u/83603918?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mortal-ghost</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3Amortal-ghost" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

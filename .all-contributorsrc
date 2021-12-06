@@ -90,6 +90,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mortal-ghost",
+      "name": "mortal-ghost",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83603918?v=4",
+      "profile": "https://github.com/mortal-ghost",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
