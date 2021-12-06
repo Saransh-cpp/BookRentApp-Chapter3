@@ -16,43 +16,37 @@ import 'package:test_app/Screens/YourOrders.dart';
 import 'package:test_app/Screens/AllBooks.dart';
 import 'package:test_app/Screens/product_details.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:test_app/Wrapper.dart';
 import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
 
-
-Future<void> main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return  MultiProvider(
+    return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: UserProvider.initialize()),
         ChangeNotifierProvider.value(value: ProductProvider.initialize()),
         ChangeNotifierProvider.value(value: AppProvider()),
       ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: ScreensController()
-        ),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false, home: ScreensController()),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    switch(user.status){
+    switch (user.status) {
       case Status.Uninitialized:
         return Splash();
       case Status.Unauthenticated:
@@ -60,7 +54,8 @@ class ScreensController extends StatelessWidget {
         return LoginPage();
       case Status.Authenticated:
         return NavBar();
-      default: return LoginPage();
+      default:
+        return LoginPage();
     }
   }
 }

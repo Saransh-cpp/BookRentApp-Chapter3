@@ -72,6 +72,33 @@
         "ideas",
         "bug"
       ]
+    },
+    {
+      "login": "atharv-bhadange",
+      "name": "Atharv Bhadange",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65965314?v=4",
+      "profile": "https://github.com/atharv-bhadange",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aman2kumar",
+      "name": "aman2kumar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76274870?v=4",
+      "profile": "https://github.com/aman2kumar",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mortal-ghost",
+      "name": "mortal-ghost",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83603918?v=4",
+      "profile": "https://github.com/mortal-ghost",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
