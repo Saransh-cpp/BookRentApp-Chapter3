@@ -1,6 +1,6 @@
 # Chapter3 - Book renting app 📚
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
@@ -110,6 +110,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Vaibhav-Chopra-GT"><img src="https://avatars.githubusercontent.com/u/92637595?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vaibhav-Chopra-GT</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Vaibhav-Chopra-GT" title="Code">💻</a> <a href="#infra-Vaibhav-Chopra-GT" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/Pranav108"><img src="https://avatars.githubusercontent.com/u/56934594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav Pratap Singh</b></sub></a><br /><a href="#ideas-Pranav108" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3APranav108" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/atharv-bhadange"><img src="https://avatars.githubusercontent.com/u/65965314?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Atharv Bhadange</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=atharv-bhadange" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/aman2kumar"><img src="https://avatars.githubusercontent.com/u/76274870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aman2kumar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=aman2kumar" title="Documentation">📖</a></td>
   </tr>
 </table>
 
