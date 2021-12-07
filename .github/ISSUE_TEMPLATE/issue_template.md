@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 # Description
-Provide a little description for the issue
+Provide a clear description of the issue
 
 # Relevant files
 Mention the files that are relevant to this issue
