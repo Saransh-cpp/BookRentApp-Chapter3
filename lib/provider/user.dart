@@ -61,16 +61,21 @@ class UserProvider with ChangeNotifier {
 
   Future<bool> signInWithGoogle() async {
     try {
+      // Changing the status to authenticating
       _status = Status.Authenticating;
       notifyListeners();
       final Auth googleAuth = Auth();
+      // calling the async function which can return null or a User
       dynamic result = await googleAuth.googleSignIn();
+      // if the result is null, sign in failed
       if (result == null) {
+        // change the status to unauthenticated and return false
         _status = Status.Unauthenticated;
         notifyListeners();
         return false;
       }
       print(result.uid);
+      // if result returns a User, create a user in app and return true
       _userModel = await _userServices.getUserById(result.uid);
       notifyListeners();
       return true;
