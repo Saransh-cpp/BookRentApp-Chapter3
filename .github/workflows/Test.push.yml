@@ -1,0 +1,24 @@
+name: Flutter/Dart Lint Check
+
+on: [pull_request, push, schedule]
+
+jobs:
+  lint-check:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+        matrix:
+          os: [ubuntu-latest, windows-latest, macOS-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java for Flutter
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - name: Lint
+        run: flutter analyze
