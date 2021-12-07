@@ -1,9 +1,6 @@
 ---
 name: Report an issue
 about: Use this template to raise any issues or bugs that you come across in the project
-title: ''
-labels: ''
-assignees: ''
 
 ---
 
