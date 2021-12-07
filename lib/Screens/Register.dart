@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
   @override
 
 
-  Widget Template1(String hint , String error , Icon icon){
+  Widget InputFieldType1(String hint , String error , Icon icon){
     double _screenWidth = MediaQuery
         .of(context)
         .size
@@ -95,7 +95,7 @@ class _RegisterState extends State<Register> {
   }
 
 
-  Widget Template2(String hint , String error ) {
+  Widget InputFieldType2(String hint , String error ) {
     passwordValidator(String cpassword) {
       if (cpassword.length < 6) {
         return '$error';
@@ -131,8 +131,6 @@ class _RegisterState extends State<Register> {
                       hidePass1
                           ? Icons.visibility
                           : Icons.visibility_off,
-                      //color: Theme.of(context).primaryColorDark,
-                      //Icons.remove_red_eye
                     ),
                     onPressed: () {
                       setState(() {
@@ -146,7 +144,6 @@ class _RegisterState extends State<Register> {
                   : null,
               textAlignVertical: TextAlignVertical.bottom,
               obscureText: hidePass1,
-              // net ninja
               onChanged: (val) {
                 setState(() {
                   password = val;
@@ -184,8 +181,6 @@ class _RegisterState extends State<Register> {
                         hidePass2
                             ? Icons.visibility
                             : Icons.visibility_off,
-                        //color: Theme.of(context).primaryColorDark,
-                        //Icons.remove_red_eye
                       ),
                       onPressed: () {
                         setState(() {
@@ -254,160 +249,11 @@ class _RegisterState extends State<Register> {
                         // SizedBox(
                         //   height: 20,
                         // ),
-                        /* Container(
-                                width: _screenWidth/1.08,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                margin: EdgeInsets.all(0),
-                                child: TextFormField(
-                                  controller: _nameTextController,
-                                  decoration: InputDecoration(
-                                      hintText: "Enter Name",
-                                      prefixIcon: Icon(Icons.person)),
-                                  validator: (val) =>
-                                      val.isEmpty ? 'Enter a name' : null,
-                                  textAlignVertical: TextAlignVertical.bottom,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),*/
-                        Template1("Enter Name" , 'Enter a name' , Icon(Icons.person)),
-                        /* Container(
-                                width: _screenWidth/1.08,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                margin: EdgeInsets.all(0),
-                                child: TextFormField(
-                                  controller: _emailTextController,
-                                  decoration: InputDecoration(
-                                      hintText: "Enter email",
-                                      prefixIcon: Icon(Icons.email)),
-                                  validator: (val) =>
-                                      val.isEmpty ? 'Enter an email' : null,
-                                  textAlignVertical: TextAlignVertical.bottom,
-                                  // net ninja
-                                  onChanged: (val) {
-                                    setState(() {
-                                      email = val;
-                                    });
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),*/
-                        Template1("Enter Email" , 'Enter an email' , Icon(Icons.email)),
-                        /*Container(
-                                width: _screenWidth/1.08,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                margin: EdgeInsets.all(0),
-                                child: Container(
-                                  child: TextFormField(
-                                    controller: _passwordTextController,
-                                    decoration: InputDecoration(
-                                        hintText: "Enter Password",
-                                        prefixIcon: Icon(Icons.vpn_key),
-                                      suffixIcon: IconButton(
-                                          icon: Icon(
-                                            hidePass
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
-                                            //color: Theme.of(context).primaryColorDark,
-                                            //Icons.remove_red_eye
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              hidePass = !hidePass;
-                                            });
-                                          }),
-                                        ),
-                                    validator: (val) => val.length < 6
-                                        ? 'Enter a password 6+ chars long'
-                                        : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                    obscureText: hidePass,
-                                    // net ninja
-                                    onChanged: (val) {
-                                      setState(() {
-                                        password = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),*/
+                        InputFieldType1("Enter Name" , 'Enter a name' , Icon(Icons.person)),
+                        InputFieldType1("Enter Email" , 'Enter an email' , Icon(Icons.email)),
 
-                        Template2("Enter Password", 'Enter a password 6+ chars long'),
-
-                        /* Container(
-                                width: _screenWidth/1.08,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                margin: EdgeInsets.all(0),
-                                child: Container(
-                                  child: TextFormField(
-                                    controller: _confirmPasswordController,
-                                    decoration: InputDecoration(
-                                      hintText: "Confirm Password",
-                                       prefixIcon: Icon(Icons.vpn_key),
-                                      suffixIcon: IconButton(
-                                          icon: Icon(
-                                            hidePass
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
-                                            //color: Theme.of(context).primaryColorDark,
-                                            //Icons.remove_red_eye
-                                          ),
-                                          onPressed: () {
-                                            setState(() {
-                                              hidePass = !hidePass;
-                                            });
-                                          }),
-                                    ),
-                                    validator: (val) => val.length < 6
-                                        ? 'Enter a password 6+ chars long'
-                                        : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                    obscureText: hidePass,
-                                    // net ninja
-                                    onChanged: (val) {
-                                      setState(() {
-                                        password = val;
-                                      });
-                                    },
-                                    //onChanged: (val) {
-                                    //setState(() {
-                                    //password = val;
-                                    //});
-                                    //},
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),*/
-
-                        Template2("Confirm Password", 'Enter a password 6+ chars long'),
+                        InputFieldType2("Enter Password", 'Enter a password 6+ chars long'),
+                        InputFieldType2("Confirm Password", 'Enter a password 6+ chars long'),
 
                         RaisedButton(
                           onPressed: () async {
