@@ -16,7 +16,7 @@ jobs:
           add-labels: "SWoC,CodePeak"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-name: "Flutter/Dart Lint Check"
+name: Flutter/Dart Lint Check
 
 on: [pull_request, push, schedule]
 
