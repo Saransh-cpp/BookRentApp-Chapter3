@@ -11,6 +11,7 @@ import 'package:test_app/Screens/NavBar.dart';
 import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/user.dart';
+import 'package:sign_button/sign_button.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -203,6 +204,20 @@ class _SignInState extends State<SignIn> {
                               'I am a new user',
                               style: TextStyle(color: Colors.red, fontSize: 15),
                             )),
+                        SizedBox(height: 20.0,),
+                        SignInButton(
+                            buttonType: ButtonType.google,
+                            onPressed: () async{
+                              if (!await user.signInWithGoogle()){
+                                _key.currentState.showSnackBar(
+                                    SnackBar(content: Text("Sign in failed")));
+                              }
+                              else{
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (c) => NavBar()));
+                              }
+                            }
+                        ),
                         Text(
                           error,
                           style: TextStyle(

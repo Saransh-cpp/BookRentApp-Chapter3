@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
+import 'package:sign_button/constants.dart';
+import 'package:sign_button/create_button.dart';
 import 'package:test_app/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_app/Screens/NavBar.dart';
@@ -17,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_app/Screens/LoginPage.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:test_app/provider/user.dart';
+import 'package:sign_button/sign_button.dart';
 
 class Register extends StatefulWidget {
 
@@ -39,7 +42,6 @@ class _RegisterState extends State<Register> {
   TextEditingController _passwordTextController = TextEditingController();
   TextEditingController _nameTextController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
-
 
   String email = '';
   String password = '';
@@ -252,12 +254,26 @@ class _RegisterState extends State<Register> {
                                   style: TextStyle(color: Colors.red, fontSize: 15),
                                 ),
                               ),
+                              SizedBox(height: 20.0,),
+                              SignInButton(
+                                  buttonType: ButtonType.google,
+                                  onPressed: () async{
+                                    if (!await user.signInWithGoogle()){
+                                      _key.currentState.showSnackBar(
+                                          SnackBar(content: Text("Sign in failed")));
+                                    }
+                                    else{
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (c) => NavBar()));
+                                    }
+                                  }
+                              ),
                               Text(
                                 error,
                                 style: TextStyle(
                                   color: Colors.red,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
