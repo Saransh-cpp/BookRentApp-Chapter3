@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
@@ -15,7 +14,7 @@ class AboutUs extends StatefulWidget {
 class _AboutUsState extends State<AboutUs> {
   final double spacing = 40;
   List jsonContributors = [];
-  String _about_this_app =
+  String _aboutThisApp =
       "Chapter3 is an app specifically made for renting books. It displays collections of top-selling books as well as the option to have your taste curated and matched with a book. Here customers can filter and select books based on genre, after which placing immediate or deferred orders with the option to cancel.";
 
   Future<void> _fetchContributors() async {
@@ -30,207 +29,174 @@ class _AboutUsState extends State<AboutUs> {
       });
     } else {
       Fluttertoast.showToast(
-        msg: "Failed to load Contributors.",
+        msg: "Failed to load contributors.",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
       );
     }
   }
 
-  bool _isLoading = true;
-
   @override
   void initState() {
     super.initState();
     _fetchContributors();
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        _isLoading = false;
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _isLoading
-          ? const SpinKitRotatingCircle(
-              color: Colors.blue,
-            )
-          : SafeArea(
-              child: SingleChildScrollView(
-              child: Container(
-                margin: const EdgeInsets.only(top: 30),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          const Text(
-                            "ABOUT",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w700),
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(left: 8),
-                            child: const Text(
-                              "Chapter 3",
-                              style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700,
-                                // color: Colors.orange[900],
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      child: Card(
-                        elevation: 1,
-                        shadowColor: Colors.grey,
-                        child: Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Text(_about_this_app),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 15),
-                      alignment: Alignment.topCenter,
-                      child: const Text(
-                        "Presenting the Developers",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                    _buildTeamTitle('AUTHOR'),
-                    Container(
-                      height: 190,
-                      margin: const EdgeInsets.only(top: 10),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: devTeam.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            Container(
-                          margin: const EdgeInsets.only(left: 15, right: 15),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.pink,
+        ),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: Text(
+          "About",
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+      ),
+      body: SafeArea(
+          child: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(top: 20),
+          child: Column(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.topCenter,
+                margin: EdgeInsets.only(top: 10),
+                child: const Text(
+                  "Chapter 3",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                child: Card(
+                  elevation: 1,
+                  shadowColor: Colors.grey,
+                  child: Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(_aboutThisApp, textAlign: TextAlign.center),
+                  ),
+                ),
+              ),
+              _buildTeamTitle('AUTHOR'),
+              Container(
+                height: 190,
+                margin: const EdgeInsets.only(top: 10),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: devTeam.length,
+                  itemBuilder: (BuildContext context, int index) => Container(
+                    margin: const EdgeInsets.only(left: 15, right: 15),
+                    child: Column(
+                      children: <Widget>[
+                        _buildProfileImage(devTeam[index]["imgPath"]),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
                           child: Column(
                             children: <Widget>[
-                              _buildprofileImage(devTeam[index]["imgPath"]),
-                              Container(
-                                margin: const EdgeInsets.only(top: 10),
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      devTeam[index]["name"],
-                                    ),
-                                    const Padding(
-                                        padding: EdgeInsets.only(top: 5)),
-                                    Row(
-                                      children: <Widget>[
-                                        _buildProfileIcon(
-                                            devTeam[index]["linkedin"],
-                                            'https://img.icons8.com/fluent/48/000000/linkedin-circled.png'),
-                                        const Padding(
-                                            padding: EdgeInsets.only(left: 10)),
-                                        _buildProfileIcon(
-                                            devTeam[index]["github"],
-                                            'https://img.icons8.com/fluent/50/000000/github.png'),
-                                      ],
-                                    )
-                                  ],
-                                ),
+                              Text(
+                                devTeam[index]["name"],
                               ),
+                              const Padding(padding: EdgeInsets.only(top: 5)),
+                              Row(
+                                children: <Widget>[
+                                  _buildProfileIcon(devTeam[index]["linkedin"],
+                                      'https://img.icons8.com/fluent/48/000000/linkedin-circled.png'),
+                                  const Padding(
+                                      padding: EdgeInsets.only(left: 10)),
+                                  _buildProfileIcon(devTeam[index]["github"],
+                                      'https://img.icons8.com/fluent/50/000000/github.png'),
+                                ],
+                              )
                             ],
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    _buildTeamTitle('CONTIBUTORS'),
-                    if (jsonContributors.length > 0)
-                      Container(
-                        height: 170,
-                        margin: const EdgeInsets.only(top: 20),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: jsonContributors.length,
-                          itemBuilder: (BuildContext context, int index) =>
-                              (jsonContributors[index]["login"].toString() ==
-                                      "Saransh-cpp" || jsonContributors[index]["login"].toString() == "allcontributors[bot]")
-                                  ? Container()
-                                  : Container(
-                                      margin: const EdgeInsets.only(
-                                          left: 15, right: 15),
+                  ),
+                ),
+              ),
+              _buildTeamTitle('CONTIBUTORS'),
+              if (jsonContributors.length > 0)
+                Container(
+                  height: 170,
+                  margin: const EdgeInsets.only(top: 20),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: jsonContributors.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        (jsonContributors[index]["login"].toString() ==
+                                    "Saransh-cpp" ||
+                                jsonContributors[index]["login"].toString() ==
+                                    "allcontributors[bot]")
+                            ? Container()
+                            : Container(
+                                margin:
+                                    const EdgeInsets.only(left: 15, right: 15),
+                                child: Column(
+                                  children: <Widget>[
+                                    _buildNetworkProfileImage(
+                                        jsonContributors[index]["avatar_url"]
+                                            .toString()),
+                                    Container(
+                                      margin: const EdgeInsets.only(top: 10),
                                       child: Column(
                                         children: <Widget>[
-                                          _buildNetworkprofileImage(
-                                              jsonContributors[index]
-                                                      ["avatar_url"]
-                                                  .toString()),
-                                          Container(
-                                            margin:
-                                                const EdgeInsets.only(top: 10),
-                                            child: Column(
-                                              children: <Widget>[
-                                                Text(
-                                                  jsonContributors[index]
-                                                          ["login"]
-                                                      .toString(),
-                                                ),
-                                                const Padding(
-                                                    padding: EdgeInsets.only(
-                                                        top: 5)),
-                                                Row(
-                                                  children: <Widget>[
-                                                    const Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 10)),
-                                                    _buildProfileIcon(
-                                                        jsonContributors[index]
-                                                                ["html_url"]
-                                                            .toString(),
-                                                        'https://img.icons8.com/fluent/50/000000/github.png'),
-                                                  ],
-                                                )
-                                              ],
-                                            ),
+                                          Text(
+                                            jsonContributors[index]["login"]
+                                                .toString(),
                                           ),
+                                          const Padding(
+                                              padding: EdgeInsets.only(top: 5)),
+                                          Row(
+                                            children: <Widget>[
+                                              const Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 10)),
+                                              _buildProfileIcon(
+                                                  jsonContributors[index]
+                                                          ["html_url"]
+                                                      .toString(),
+                                                  'https://img.icons8.com/fluent/50/000000/github.png'),
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ),
-                        ),
-                      )
-                    else
-                      const Center(child: CircularProgressIndicator()),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        "Made with ❤ by Open Source",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  ],
+                                  ],
+                                ),
+                              ),
+                  ),
+                )
+              else
+                const Center(child: CircularProgressIndicator()),
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "Made with ❤ by Open Source",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            )),
+              )
+            ],
+          ),
+        ),
+      )),
     );
   }
 
-  Widget _buildprofileImage(String imagePath) {
+  Widget _buildProfileImage(String imagePath) {
     return Container(
       width: 120.0,
       height: 120.0,
@@ -257,7 +223,7 @@ class _AboutUsState extends State<AboutUs> {
     );
   }
 
-  Widget _buildNetworkprofileImage(String imagePath) {
+  Widget _buildNetworkProfileImage(String imagePath) {
     return Container(
       width: 100.0,
       height: 100.0,
@@ -340,7 +306,14 @@ class _AboutUsState extends State<AboutUs> {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      print('Could not launch $url');
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          'Something went wrong!',
+          style: TextStyle(fontSize: 20),
+        ),
+        backgroundColor: Colors.grey[700],
+        behavior: SnackBarBehavior.floating,
+      ));
       throw 'Could not launch $url';
     }
   }
@@ -349,7 +322,9 @@ class _AboutUsState extends State<AboutUs> {
 List<Map<String, String>> devTeam = [
   {
     "name": "Saransh",
-    "linkedin": "https://www.linkedin.com/in/saransh-cpp/",
+    //"linkedin": "https://www.linkedin.com/in/saransh-cpp/",// original link
+    "linkedin":
+        "htt://www.linkedin.com/in/saransh-cpp/", // link that can't be fetched , to see the functionality of snackBar
     "github": "https://github.com/Saransh-cpp",
   },
 ];
