@@ -101,100 +101,109 @@ class _SignInState extends State<SignIn> {
           ? Loading()
           : Scaffold(
               backgroundColor: Colors.pink[50],
-              appBar: AppBar(
-                title: Text("Sign In"),
-                backgroundColor: Colors.pink[400],
-                elevation: 0,),
+
 
               body: Container(
                   padding: EdgeInsets.symmetric(
                     vertical: 20,
                     horizontal: 50,
                   ),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 20,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Welcome to\n Chapter 3',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20
                         ),
-                        TextFormField(
-                          controller: _emailTextController,
-                          decoration: InputDecoration(hintText: 'email'),
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter an email' : null,
-                          textAlignVertical: TextAlignVertical.bottom,
-                          onChanged: (val) {
-                            setState(() {
-                              email = val;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: _passwordTextController,
-                          decoration: InputDecoration(hintText: 'password'),
-                          validator: (val) => val.length < 6
-                              ? 'Enter a password 6+ chars long'
-                              : null,
-                          textAlignVertical: TextAlignVertical.bottom,
-                          obscureText: true,
-                          onChanged: (val) {
-                            setState(() {
-                              password = val;
-                            });
-                          },
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        RaisedButton(
-                          onPressed: () async {
-                            if (_formKey.currentState.validate()) {
-                              if (!await user.signIn(_emailTextController.text,
-                                  _passwordTextController.text)) {
-                                _key.currentState.showSnackBar(
-                                    SnackBar(content: Text("Sign in failed")));
-                              }
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (c) => NavBar()));
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 20,
+                            ),
+                            TextFormField(
+                              controller: _emailTextController,
+                              decoration: InputDecoration(hintText: 'email'),
+                              validator: (val) =>
+                                  val.isEmpty ? 'Enter an email' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              onChanged: (val) {
+                                setState(() {
+                                  email = val;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            TextFormField(
+                              controller: _passwordTextController,
+                              decoration: InputDecoration(hintText: 'password'),
+                              validator: (val) => val.length < 6
+                                  ? 'Enter a password 6+ chars long'
+                                  : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                              obscureText: true,
+                              onChanged: (val) {
+                                setState(() {
+                                  password = val;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            RaisedButton(
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  if (!await user.signIn(_emailTextController.text,
+                                      _passwordTextController.text)) {
+                                    _key.currentState.showSnackBar(
+                                        SnackBar(content: Text("Sign in failed")));
+                                  }
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (c) => NavBar()));
 
-                              /*setState(() {
-                      loading = true;
-                    });
-                    dynamic result = await _auth.signInWithEmailAndPassword(
-                        email, password);
-                    if (result == null) {
-                      setState(() {
-                        error = 'could not find these credentials';
-                        loading = false;
-                      });
-                    }*/
-                            }
-                          },
-                          child: Text('Sign in'),
+                                  /*setState(() {
+                          loading = true;
+                        });
+                        dynamic result = await _auth.signInWithEmailAndPassword(
+                            email, password);
+                        if (result == null) {
+                          setState(() {
+                            error = 'could not find these credentials';
+                            loading = false;
+                          });
+                        }*/
+                                }
+                              },
+                              child: Text('Sign in'),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            InkWell(
+                                onTap: () {
+                                  widget.toggleView();
+                                },
+                                child: Text(
+                                  'I am a new user',
+                                  style: TextStyle(color: Colors.red, fontSize: 15),
+                                )),
+                            Text(
+                              error,
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        InkWell(
-                            onTap: () {
-                              widget.toggleView();
-                            },
-                            child: Text(
-                              'I am a new user',
-                              style: TextStyle(color: Colors.red, fontSize: 15),
-                            )),
-                        Text(
-                          error,
-                          style: TextStyle(
-                            color: Colors.red,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                    ],
                   ))),
     );
   }
