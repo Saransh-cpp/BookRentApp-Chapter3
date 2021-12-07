@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Widgets.dart';
+//import 'package:test_app/Widgets.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:transparent_image/transparent_image.dart';
+//import 'package:transparent_image/transparent_image.dart';
 import 'package:uuid/uuid.dart';
 import 'package:test_app/services/order.dart';
-import 'package:test_app/model/cart_item.dart';
+//import 'package:test_app/model/cart_item.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel product;
@@ -21,7 +21,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   String size = "";
   OrderServices _orderServices = OrderServices();
 
@@ -105,7 +105,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           ],
         ),
         Row(children: [
-          FlatButton(
+          TextButton(
               onPressed: () {
                 double pricef = prodPriceM();
                 showDialog(
@@ -124,12 +124,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'You will be charged ${pricef} upon delivery!',
+                                  'You will be charged $pricef upon delivery!',
                                   textAlign: TextAlign.center,
                                 ),
                                 SizedBox(
                                   width: 320.0,
-                                  child: RaisedButton(
+                                  child: ElevatedButton(
                                     onPressed: () async {
                                       var uuid = Uuid();
                                       String id = uuid.v4();
@@ -161,7 +161,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                                 SizedBox(
                                   width: 320.0,
-                                  child: RaisedButton(
+                                  child: ElevatedButton(
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },

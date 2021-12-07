@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:test_app/Screens/AdminSignIn.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:test_app/Screens/AdminSignIn.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/NavBar.dart';
 import 'package:test_app/Screens/Register.dart';
 //import 'package:test_app/database.dart';
-import 'package:test_app/Screens/Register.dart';
+//import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/user.dart';
 
 class LoginPage extends StatefulWidget {
@@ -68,7 +68,7 @@ class _SignInState extends State<SignIn> {
 
 
   final _formKey = GlobalKey<FormState>();
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   bool loading = false;
 
   String email = '';
@@ -170,7 +170,7 @@ class _SignInState extends State<SignIn> {
                             SizedBox(
                               height: 20,
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () async {
                                 if (_formKey.currentState.validate()) {
                                   if (!await user.signIn(_emailTextController.text,
@@ -252,10 +252,3 @@ class _SignInState extends State<SignIn> {
     });
   }*/
 }
-
-
-
-
-
-
-

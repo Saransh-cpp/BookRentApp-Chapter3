@@ -676,7 +676,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (c) => allBooksofAGenre(
+                        builder: (c) => AllBooksofAGenre(
                               genre: widget.genre,
                             )));
               },
@@ -1164,13 +1164,4 @@ class _SearchState extends State<Search> {
 //     );
 //   }
 // }
-
-
-
-
-
-
-
-
-
 

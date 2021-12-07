@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/product_details.dart';
-import 'package:test_app/Widgets.dart';
+//import 'package:test_app/Widgets.dart';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
@@ -20,16 +20,14 @@ class YourOrders extends StatefulWidget {
 class _YourOrdersState extends State<YourOrders> {
 
   static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    // testDevices: testDevice != null ? <String>[testDevice] : null,
     testDevices: <String>[],
     contentUrl: 'https://flutter.io',
     childDirected: true,
     keywords: <String>['books','library','novels'],
   );
 
-  // BannerAd _bannerAd;
 
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
   BannerAd _bannerAd;
@@ -45,14 +43,6 @@ class _YourOrdersState extends State<YourOrders> {
     );
   }
 
-  // BannerAd myBanner = BannerAd(
-  //   adUnitId: BannerAd.testAdUnitId,
-  //   size: AdSize.banner,
-  //   targetingInfo: targetingInfo,
-  //   listener: (MobileAdEvent event) {
-  //     print("BannerAd event is $event");
-  //   },
-  // );
 
   @override
   void initState() {
@@ -70,11 +60,6 @@ class _YourOrdersState extends State<YourOrders> {
     super.dispose();
   }
 
-
-
-  // showBannerAd(){
-  //   myBanner..load()..show();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +222,7 @@ class _YourOrdersState extends State<YourOrders> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.black),
-                        child: FlatButton(
+                        child: TextButton(
                             onPressed: () {
                               if (userProvider.userModel.totalCartPrice == 0) {
                                 showDialog(
@@ -303,7 +288,7 @@ class _YourOrdersState extends State<YourOrders> {
                                               ),
                                               SizedBox(
                                                 width: 320.0,
-                                                child: RaisedButton(
+                                                child: ElevatedButton(
                                                   onPressed: () async {
                                                     var uuid = Uuid();
                                                     String id = uuid.v4();
@@ -383,7 +368,7 @@ class _YourOrdersState extends State<YourOrders> {
                                               ),
                                               SizedBox(
                                                 width: 320.0,
-                                                child: RaisedButton(
+                                                child: ElevatedButton(
                                                     onPressed: () {
                                                       Navigator.pop(context);
                                                     },

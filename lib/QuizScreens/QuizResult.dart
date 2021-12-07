@@ -34,7 +34,8 @@ class _QuizResultState extends State<QuizResult> {
 
     if (maxBook == 0) {
       bookSuggestion = 'Please attempt the quiz first';
-    } else {
+    } 
+    else {
       if (widget.quizData.aad == maxBook) {
         print(maxBook);
         bookSuggestion = bookSuggestion + '\nAngels and Demons';
@@ -103,11 +104,15 @@ class _QuizResultState extends State<QuizResult> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(
+          color: Colors.black
+          ),
         elevation: 0,
       ),
       body: Center(
-        child: Text(bookSuggestion),
+        child: Text(
+          bookSuggestion
+        ),
       ),
     );
   }
