@@ -20,48 +20,39 @@ class YourOrders extends StatefulWidget {
 class _YourOrdersState extends State<YourOrders> {
 
   static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    // testDevices: testDevice != null ? <String>[testDevice] : null,
     testDevices: <String>[],
     contentUrl: 'https://flutter.io',
     childDirected: true,
-    keywords: <String>['books','library','novels'],
+    keywords: <String>['books', 'library', 'novels'],
   );
-
-  // BannerAd _bannerAd;
 
   final _key = GlobalKey<ScaffoldState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
   BannerAd _bannerAd;
 
-  BannerAd createBannerAd(){
+  BannerAd createBannerAd() {
     return BannerAd(
-      adUnitId: 'ca-app-pub-2019702807519064/7611340051',
-      size: AdSize.banner,
-      targetingInfo: targetingInfo,
-      listener: (MobileAdEvent event){
-        print('Banner event : $event');
-      }
+        adUnitId: 'ca-app-pub-2019702807519064/7611340051',
+        size: AdSize.banner,
+        targetingInfo: targetingInfo,
+        listener: (MobileAdEvent event) {
+          print('Banner event : $event');
+        }
     );
   }
-
-  // BannerAd myBanner = BannerAd(
-  //   adUnitId: BannerAd.testAdUnitId,
-  //   size: AdSize.banner,
-  //   targetingInfo: targetingInfo,
-  //   listener: (MobileAdEvent event) {
-  //     print("BannerAd event is $event");
-  //   },
-  // );
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance.initialize(appId: 'ca-app-pub-2019702807519064~1210594994');
+    FirebaseAdMob.instance.initialize(
+        appId: 'ca-app-pub-2019702807519064~1210594994');
     // showBannerAd();
-    _bannerAd = createBannerAd()..load()..show(
-      anchorOffset: 125
-    );
+    _bannerAd = createBannerAd()
+      ..load()
+      ..show(
+          anchorOffset: 125
+      );
   }
 
   @override
@@ -69,12 +60,6 @@ class _YourOrdersState extends State<YourOrders> {
     _bannerAd.dispose();
     super.dispose();
   }
-
-
-
-  // showBannerAd(){
-  //   myBanner..load()..show();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -157,12 +142,12 @@ class _YourOrdersState extends State<YourOrders> {
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold)),
                                         TextSpan(
-                                            // text: userProvider.userModel
-                                            //     .cart[index].size == '1 week'
-                                            //     ? userProvider.userModel
-                                            //     .cart[index].price[0]
-                                            //     : userProvider.userModel
-                                            //     .cart[index].price[1],
+                                          // text: userProvider.userModel
+                                          //     .cart[index].size == '1 week'
+                                          //     ? userProvider.userModel
+                                          //     .cart[index].price[0]
+                                          //     : userProvider.userModel
+                                          //     .cart[index].price[1],
                                             text: "\$${userProvider.userModel
                                                 .cart[index].price} \n\n",
                                             style: TextStyle(
@@ -298,7 +283,8 @@ class _YourOrdersState extends State<YourOrders> {
                                             children: [
                                               Text(
                                                 'You will be charged \$${userProvider
-                                                    .userModel.totalCartPrice} upon delivery!',
+                                                    .userModel
+                                                    .totalCartPrice} upon delivery!',
                                                 textAlign: TextAlign.center,
                                               ),
                                               SizedBox(
@@ -307,7 +293,10 @@ class _YourOrdersState extends State<YourOrders> {
                                                   onPressed: () async {
                                                     var uuid = Uuid();
                                                     String id = uuid.v4();
-                                                    if(userProvider.userModel.address != '' && userProvider.userModel.number != '') {
+                                                    if (userProvider.userModel
+                                                        .address != '' &&
+                                                        userProvider.userModel
+                                                            .number != '') {
                                                       String orderNames = '${userProvider
                                                           .userModel.cart[0]
                                                           .name}';
@@ -345,7 +334,8 @@ class _YourOrdersState extends State<YourOrders> {
                                                               .reloadUserModel();
                                                           print(
                                                               "Item added to cart");
-                                                          _key.currentState
+                                                          ScaffoldMessenger.of(
+                                                              context)
                                                               .showSnackBar(
                                                               SnackBar(
                                                                   content: Text(
@@ -355,19 +345,22 @@ class _YourOrdersState extends State<YourOrders> {
                                                               "ITEM WAS NOT REMOVED");
                                                         }
                                                       }
-                                                      _key.currentState
+                                                      ScaffoldMessenger.of(
+                                                          context)
                                                           .showSnackBar(
                                                           SnackBar(
                                                               content: Text(
                                                                   "Order created!")));
                                                       Navigator.pop(context);
-                                                    }else{
-                                                      _key.currentState.showSnackBar(
-                                                        SnackBar(
-                                                            content: Text(
-                                                              'Please add address and number'
-                                                            )
-                                                        )
+                                                    } else {
+                                                      ScaffoldMessenger.of(
+                                                          context)
+                                                          .showSnackBar(
+                                                          SnackBar(
+                                                              content: Text(
+                                                                  'Please add address and number'
+                                                              )
+                                                          )
                                                       );
                                                     }
                                                   },
