@@ -254,7 +254,7 @@ class _RegisterState extends State<Register> {
 
                         InputFieldType2("Enter Password", 'Enter a password 6+ chars long'),
                         InputFieldType2("Confirm Password", 'Enter a password 6+ chars long'),
-
+                        
                         RaisedButton(
                           onPressed: () async {
                             // net ninja
