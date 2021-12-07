@@ -8,9 +8,9 @@
 
 <div align="center">
   
-  [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
   [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
   [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
+  [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
   
 </div>
 
