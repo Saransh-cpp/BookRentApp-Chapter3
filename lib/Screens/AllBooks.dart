@@ -3,20 +3,23 @@ import 'package:provider/provider.dart';
 import 'package:test_app/Widgets.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:test_app/services/product.dart';
+//import 'package:test_app/services/product.dart';
+
 
 class AllBooks extends StatefulWidget {
   @override
   _AllBooksState createState() => _AllBooksState();
 }
 
+//ignore: unused_local_variable
 class _AllBooksState extends State<AllBooks> {
-
   //ProductServices _productServices = ProductServices();
 
   @override
   Widget build(BuildContext context) {
+    //ignore: unused_local_variable
     final userProvider = Provider.of<UserProvider>(context);
+    //ignore: unused_local_variable
     final productProvider = Provider.of<ProductProvider>(context);
 
     return MaterialApp(
@@ -42,15 +45,15 @@ class _AllBooksState extends State<AllBooks> {
               //   genre: 'Astrophysics',
               // ),
 
-              perGenre(
+              PerGenre(
                 genre: 'Astrophysics',
               ),
 
-              perGenre(
+              PerGenre(
                 genre: 'Horror',
               ),
 
-              perGenre(
+              PerGenre(
                 genre: 'Science Fiction',
               ),
             ],
