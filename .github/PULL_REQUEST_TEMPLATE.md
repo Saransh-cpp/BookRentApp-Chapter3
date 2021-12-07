@@ -1,13 +1,9 @@
 ## Issue
 Fixes #(Mention the issue ID here)
 
-<br>
-
 ## Description
 
 Please include a summary of the change. Please also include relevant motivation and context. List any dependencies that are required for this change.
-
-<br>
 
 ## Type of change
 You can write manually also
@@ -17,12 +13,8 @@ You can write manually also
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] Documentation change
 
-<br>
-
 ## Screenshot
 Screenshot of the fix if required.
-
-<br>
 
 ## Checklist:
 
