@@ -15,6 +15,3 @@ jobs:
         with:
           add-labels: "SWoC,CodePeak"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-
-
