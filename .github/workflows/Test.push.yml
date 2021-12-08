@@ -4,7 +4,6 @@ on: [pull_request, push, schedule]
 
 jobs:
   lint-check:
-    name: Test on ${{ matrix.os }}
     runs-on: ubuntu-latest
 
     steps:
