@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:212895190763:android:5bd8db76f68c0e993678ae",
+        "android_client_info": {
+          "package_name": "com.example.chapter3_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212895190763-n4bdd4ot5l8a8f91kgdh17jpmku0e6ud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMpoo_ozLoSvWh4X3-xqNbKDOze4vL6jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212895190763-n4bdd4ot5l8a8f91kgdh17jpmku0e6ud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:212895190763:android:dd5d9477448e46123678ae",
         "android_client_info": {
           "package_name": "com.example.test_app"
@@ -40,7 +69,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-2019702807519064~1210594994"
     }
   ],
   "configuration_version": "1"
