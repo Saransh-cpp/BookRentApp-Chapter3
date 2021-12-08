@@ -34,6 +34,11 @@ The code is well arranged into sub-directories which are -
 - `provider` (all the providers used for state management)
 - `services` (all the utility functions/services corresponding to different data models)
 
+## App Screens
+<p align="center">
+    <img src="blob:https://imgur.com/911ece60-6a86-49d6-904c-1244d3dd1a3d" height=400/>
+</p>
+
 ## Setting up the project in your local environment💻
 <p align="center">
     <img src="https://user-images.githubusercontent.com/74055102/141175363-4c00515a-2658-475e-b510-394110d43ec5.png" height=400/>
