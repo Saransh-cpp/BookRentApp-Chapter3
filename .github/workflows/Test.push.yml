@@ -1,10 +1,28 @@
-name: Flutter/Dart Lint Check
+name: Chapter 3
 
 on: [pull_request, push, schedule]
 
 jobs:
   lint-check:
-    name: Test on ${{ matrix.os }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java for Flutter
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Lint
+        run: |
+          flutter pub get
+          flutter analyze
+
+  build-apk:
+    needs: lint-check
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
@@ -19,6 +37,7 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: flutter pub get
-      - name: Lint
-        run: flutter analyze
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk
