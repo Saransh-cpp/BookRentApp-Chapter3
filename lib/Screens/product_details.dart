@@ -156,7 +156,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       "Accept",
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    color: const Color(0xFF1BC0C5),
+                                    style: ElevatedButton.styleFrom(
+                                       primary: const Color(0xFF1BC0C5),
+                                      ),
                                   ),
                                 ),
                                 SizedBox(
@@ -169,7 +171,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         "Reject",
                                         style: TextStyle(color: Colors.white),
                                       ),
-                                      color: Colors.red),
+                                      style: ElevatedButton.styleFrom(
+                                       primary: Colors.red),
+                                  ),
                                 ) //}
                               ],
                             ),
@@ -253,7 +257,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       appProvider.changeIsLoading();
                       return;
                     }
-                    appProvider.changeIsLoading();
+                    // appProvider.changeIsLoading();
                   },
                   color: Colors.red,
                 ),
@@ -275,7 +279,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 appProvider.changeIsLoading();
                 return;
               }
-              appProvider.changeIsLoading();
+              // appProvider.changeIsLoading();
             },
             color: Colors.red,
           ),

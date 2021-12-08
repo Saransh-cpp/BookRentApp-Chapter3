@@ -362,8 +362,8 @@ class _YourOrdersState extends State<YourOrders> {
                                                     TextStyle(
                                                         color: Colors.white),
                                                   ),
-                                                  color: const Color(
-                                                      0xFF1BC0C5),
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: const  Color(0xFF1BC0C5)),
                                                 ),
                                               ),
                                               SizedBox(
@@ -377,7 +377,9 @@ class _YourOrdersState extends State<YourOrders> {
                                                       style: TextStyle(
                                                           color: Colors.white),
                                                     ),
-                                                    color: Colors.red),
+                                                    style: ElevatedButton.styleFrom(
+                                       primary: Colors.red),
+                                                ),
                                               ) //}
                                             ],
                                           ),
