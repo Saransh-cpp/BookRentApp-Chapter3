@@ -23,7 +23,6 @@ jobs:
 
   build-apk:
     needs: lint-check
-    name: Test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:
