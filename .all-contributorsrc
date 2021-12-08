@@ -110,6 +110,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "raviyadav17",
+      "name": "raviyadav17",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86602971?v=4",
+      "profile": "https://github.com/raviyadav17",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
