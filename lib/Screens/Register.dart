@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
   @override
 
 
-  Widget InputFieldType1(String hint , String error , Icon icon){
+  Widget EmailAndNameField(String hint , String error , Icon icon){
     double _screenWidth = MediaQuery
         .of(context)
         .size
@@ -95,7 +95,7 @@ class _RegisterState extends State<Register> {
   }
 
 
-  Widget InputFieldType2(String hint , String error ) {
+  Widget PasswordField(String hint , String error ) {
     passwordValidator(String cpassword) {
       if (cpassword.length < 6) {
         return '$error';
@@ -249,11 +249,11 @@ class _RegisterState extends State<Register> {
                         // SizedBox(
                         //   height: 20,
                         // ),
-                        InputFieldType1("Enter Name" , 'Enter a name' , Icon(Icons.person)),
-                        InputFieldType1("Enter Email" , 'Enter an email' , Icon(Icons.email)),
+                        EmailAndNameField("Enter Name" , 'Enter a name' , Icon(Icons.person)),
+                        EmailAndNameField("Enter Email" , 'Enter an email' , Icon(Icons.email)),
 
-                        InputFieldType2("Enter Password", 'Enter a password 6+ chars long'),
-                        InputFieldType2("Confirm Password", 'Enter a password 6+ chars long'),
+                        PasswordField("Enter Password", 'Enter a password 6+ chars long'),
+                        PasswordField("Confirm Password", 'Enter a password 6+ chars long'),
                         
                         RaisedButton(
                           onPressed: () async {
