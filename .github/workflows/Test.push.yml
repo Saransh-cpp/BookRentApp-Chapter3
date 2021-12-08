@@ -1,4 +1,4 @@
-name: Flutter/Dart Lint Check
+name: Chapter 3
 
 on: [pull_request, push, schedule]
 
