@@ -16,9 +16,10 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: flutter pub get
       - name: Lint
-        run: flutter analyze
+        run: |
+          flutter pub get
+          flutter analyze
 
   build-apk:
     needs: lint-check
