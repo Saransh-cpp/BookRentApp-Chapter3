@@ -76,6 +76,16 @@ class UserProvider with ChangeNotifier {
       }
       print(result.uid);
       // if result returns a User, create a user in app and return true
+      _userServices.createUser({
+        'name': result.displayName ?? '',
+        'email': result.email,
+        'uid': result.uid,
+        'stripeId': '',
+        'number': '',
+        'address': '',
+        'bio': '',
+        'userImage': '',
+      });
       _userModel = await _userServices.getUserById(result.uid);
       notifyListeners();
       return true;

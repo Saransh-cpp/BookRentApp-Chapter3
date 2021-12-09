@@ -244,7 +244,7 @@ class _HomeState extends State<Home> {
                                             Radius.circular(50)),
                                         color: Colors.pink[50]),
                                     height: 100.0,
-                                    width: 350.0,
+                                    width: 350,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -348,7 +348,7 @@ class _HomeState extends State<Home> {
                                             Radius.circular(20))),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ))),
                 ],

@@ -203,10 +203,12 @@ class _RegisterState extends State<Register> {
                                           content: Text("Sign up failed")));
                                       return;
                                     }
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (c) => NavBar()));
+                                    else {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (c) => NavBar()));
+                                    }
                                   }
 
                                   //Random

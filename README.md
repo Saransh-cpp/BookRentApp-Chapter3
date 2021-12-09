@@ -1,10 +1,20 @@
 # Chapter3 - Book renting app 📚
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
 </p>
+  
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
+<div align="center">
+  
+  [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
+  [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
+  [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+  
+</div>
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 A book renting app - open a new chapter in your journey 📔
 - An e-commerce application specifically made for renting books.
@@ -114,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/aman2kumar"><img src="https://avatars.githubusercontent.com/u/76274870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aman2kumar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=aman2kumar" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/mortal-ghost"><img src="https://avatars.githubusercontent.com/u/83603918?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mortal-ghost</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3Amortal-ghost" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/pushkar-verma/"><img src="https://avatars.githubusercontent.com/u/50198312?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pushkar Verma</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=pushkar2112" title="Documentation">📖</a></td>
   </tr>
 </table>
 
