@@ -176,7 +176,7 @@ class _RegisterState extends State<Register> {
 
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    double _screenWidth = MediaQuery.of(context).size.width;
+    //double _screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.yellow,
         key: _key,
@@ -227,7 +227,7 @@ class _RegisterState extends State<Register> {
 
                                       passwordField("Enter Password", 'Enter a password 6+ chars long'),
                                       passwordField("Confirm Password", 'Enter a password 6+ chars long'),
-                                      
+
                                       ElevatedButton(
                                         onPressed: () async {
                                           // net ninja
