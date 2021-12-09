@@ -268,11 +268,12 @@ class _RegisterState extends State<Register> {
                                 _key.currentState.showSnackBar(SnackBar(
                                     content: Text("Sign up failed")));
                                 return;
+                              } else {
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (c) => NavBar()));
                               }
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (c) => NavBar()));
                             }
 
                             //Random
