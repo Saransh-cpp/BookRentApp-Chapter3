@@ -551,9 +551,7 @@ class FeaturedCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ProductDetails(
-                    product: product,
-                  )));
+              builder: (context) => ProductDetails(product: product,)));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -618,15 +616,25 @@ class FeaturedCard extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: RichText(
-                          text: TextSpan(children: [
-                        TextSpan(
-                            text: '${product.name} \n',
-                            style: TextStyle(fontSize: 18)),
-                        TextSpan(
-                            text: '\$${product.prices[0]} \n',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold)),
-                      ]))),
+                          text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: '${product.name} \n',
+                                    style: TextStyle(
+                                        fontSize: 18
+                                    )
+                                ),
+                                TextSpan(
+                                    text: '\$${product.prices[0]} \n',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
+                              ]
+                          )
+                      )
+                  ),
                 )
               ],
             ),
