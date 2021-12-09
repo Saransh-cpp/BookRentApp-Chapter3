@@ -53,7 +53,7 @@ class _RegisterState extends State<Register> {
   @override
 
 
-  Widget EmailAndNameField(String hint , String error , Icon icon){
+  Widget emailAndNameField(String hint , String error , Icon icon){
     double _screenWidth = MediaQuery
         .of(context)
         .size
@@ -93,7 +93,7 @@ class _RegisterState extends State<Register> {
   }
 
 
-  Widget PasswordField(String hint , String error ) {
+  Widget passwordField(String hint , String error ) {
     passwordValidator(String cpassword) {
       if (cpassword.length < 6) {
         return '$error';
@@ -414,6 +414,9 @@ class _RegisterState extends State<Register> {
                             color: Colors.red,
                           ),
                         )
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -421,8 +424,8 @@ class _RegisterState extends State<Register> {
               ),
             ),
           ),
-        ),
-      ),
+        )
+      )
     );
   }
 
