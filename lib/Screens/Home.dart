@@ -234,6 +234,7 @@ class _HomeState extends State<Home> {
                           // ),
                           Center(
                               child: Container(
+                                  height: 537,
                                   decoration: BoxDecoration(
 
                                       border: Border.all(
@@ -245,14 +246,15 @@ class _HomeState extends State<Home> {
                                   ),
 
 
-                                  height: MediaQuery
+                                  /*height: MediaQuery
                                       .of(context)
                                       .size
-                                      .height * 0.7,
+                                      .height * 0.9,*/
                                   width: MediaQuery
                                       .of(context)
                                       .size
-                                      .width * 0.97,
+                                      .width * 0.98,
+
                                   child: Column(
 
                                     children: [
@@ -273,7 +275,6 @@ class _HomeState extends State<Home> {
                                                     Radius.circular(50)),
                                                 color: Colors.pink[50]
                                             ),
-
 
                                             height: 100.0,
                                             width: 350.0,
