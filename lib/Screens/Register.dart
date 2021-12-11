@@ -51,11 +51,8 @@ class _RegisterState extends State<Register> {
   String userImageUrl = '';
 
 
-  Widget EmailAndNameField(String hint , String error , Icon icon){
-    double _screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+  Widget emailAndNameField(String hint, String error, Icon icon) {
+    double _screenWidth = MediaQuery.of(context).size.width;
     return Column(
       children: [
         Container(
