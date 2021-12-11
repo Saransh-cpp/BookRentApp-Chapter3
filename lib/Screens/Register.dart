@@ -12,10 +12,10 @@ import 'package:test_app/Screens/NavBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_app/Screens/LoginPage.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:test_app/Screens/LoginPage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 import 'package:test_app/provider/user.dart';
 
 class Register extends StatefulWidget {
