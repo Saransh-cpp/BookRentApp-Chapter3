@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:test_app/Screens/product_details.dart';
-import 'package:test_app/Utility/auth.dart';
+//import 'package:test_app/Screens/product_details.dart';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/model/order.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/model/user.dart';
 import 'package:test_app/services/order.dart';
 import 'package:test_app/services/user.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -50,44 +49,6 @@ class UserProvider with ChangeNotifier {
         _userModel = await _userServices.getUserById(value.user.uid);
         notifyListeners();
       });
-      return true;
-    } catch (e) {
-      _status = Status.Unauthenticated;
-      notifyListeners();
-      print(e.toString());
-      return false;
-    }
-  }
-
-  Future<bool> signInWithGoogle() async {
-    try {
-      // Changing the status to authenticating
-      _status = Status.Authenticating;
-      notifyListeners();
-      final Auth googleAuth = Auth();
-      // calling the async function which can return null or a User
-      dynamic result = await googleAuth.googleSignIn();
-      // if the result is null, sign in failed
-      if (result == null) {
-        // change the status to unauthenticated and return false
-        _status = Status.Unauthenticated;
-        notifyListeners();
-        return false;
-      }
-      print(result.uid);
-      // if result returns a User, create a user in app and return true
-      _userServices.createUser({
-        'name': result.displayName ?? '',
-        'email': result.email,
-        'uid': result.uid,
-        'stripeId': '',
-        'number': '',
-        'address': '',
-        'bio': '',
-        'userImage': '',
-      });
-      _userModel = await _userServices.getUserById(result.uid);
-      notifyListeners();
       return true;
     } catch (e) {
       _status = Status.Unauthenticated;
@@ -194,7 +155,7 @@ class UserProvider with ChangeNotifier {
         "name": product.name,
         "image": product.pictures[0],
         "productId": product.id,
-        'price': ProdPrice(product: product, size: size),
+        'price': prodPrice(product: product, size: size),
         // size == '1 week' ? product.prices[0] : product.prices[1],
         // "price": product.prices[0],
         "size": size,
@@ -274,7 +235,7 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  ProdPrice({ProductModel product, String size}) {
+  prodPrice({ProductModel product, String size}) {
     switch (size) {
       case '1 week':
         return product.prices[0];

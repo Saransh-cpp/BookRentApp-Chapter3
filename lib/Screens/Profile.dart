@@ -1,23 +1,23 @@
 
-import 'dart:math';
+//import 'dart:math';
 
-import 'package:firebase_database/firebase_database.dart';
+//import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:test_app/Screens/NavBar.dart';
-import 'package:test_app/Utility/auth.dart';
-import 'package:test_app/main.dart';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:test_app/Screens/NavBar.dart';
+//import 'package:test_app/Utility/auth.dart';
+//import 'package:test_app/main.dart';
+//import 'dart:io';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_app/Screens/LoginPage.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+//import 'package:image_picker/image_picker.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:test_app/Screens/LoginPage.dart';
+//import 'package:firebase_storage/firebase_storage.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:test_app/services/user.dart';
+//import 'package:test_app/services/user.dart';
 
 class UpdateProfile extends StatefulWidget {
   @override
@@ -32,9 +32,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
   //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
-  final _key = GlobalKey<ScaffoldState>();
-
-  UserServices _userServices = UserServices();
+  final _key = GlobalKey<ScaffoldMessengerState>();
 
   String email = '';
   String name = '';
@@ -62,7 +60,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
     bool isLoading = false;
 
     double _screenWidth = MediaQuery.of(context).size.width;
-    double _screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       key: _key,
@@ -232,7 +229,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                RaisedButton(
+                                ElevatedButton(
                                   onPressed: () async {
 
                                     if (_formKey.currentState.validate()) {

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:test_app/Screens/AdminSignIn.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:google_sign_in/google_sign_in.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:test_app/Screens/AdminSignIn.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/NavBar.dart';
 import 'package:test_app/Screens/Register.dart';
-import 'package:test_app/Screens/Register.dart';
+//import 'package:test_app/database.dart';
+//import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/user.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,7 +19,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+
+
   bool showSignIn = true;
+
 
   void toggleView() {
     setState(() {
@@ -26,24 +31,30 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
-    if (showSignIn) {
+    if(showSignIn){
       return SignIn(toggleView: toggleView);
-    } else {
+    }else {
       return Register(toggleView: toggleView);
     }
+
   }
 }
 
 class SignIn extends StatefulWidget {
+
   final Function toggleView;
-  SignIn({this.toggleView});
+  SignIn({
+    this.toggleView
+});
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
+
 /*  //santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SharedPreferences preferences;
@@ -55,13 +66,15 @@ class _SignInState extends State<SignIn> {
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
 
+
   final _formKey = GlobalKey<FormState>();
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   bool loading = false;
 
   String email = '';
   String password = '';
   String error = '';
+
 
 /*  //santos
   @override
@@ -157,7 +170,7 @@ class _SignInState extends State<SignIn> {
                             SizedBox(
                               height: 20,
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () async {
                                 if (_formKey.currentState.validate()) {
                                   if (!await user.signIn(_emailTextController.text,
@@ -169,7 +182,6 @@ class _SignInState extends State<SignIn> {
                                         MaterialPageRoute(
                                             builder: (c) => NavBar()));
                                   }
-
                                   /*setState(() {
                           loading = true;
                         });

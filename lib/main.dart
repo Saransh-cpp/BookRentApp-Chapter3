@@ -10,6 +10,7 @@ import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
 
+
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   // Preload all assets to prevent flash when they are loaded.
@@ -27,25 +28,29 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return  MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: UserProvider.initialize()),
         ChangeNotifierProvider.value(value: ProductProvider.initialize()),
         ChangeNotifierProvider.value(value: AppProvider()),
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false, home: ScreensController()),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: ScreensController()
+        ),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    switch (user.status) {
+    switch(user.status){
       case Status.Uninitialized:
         return Splash();
       case Status.Unauthenticated:
@@ -53,8 +58,7 @@ class ScreensController extends StatelessWidget {
         return LoginPage();
       case Status.Authenticated:
         return NavBar();
-      default:
-        return LoginPage();
+      default: return LoginPage();
     }
   }
 }

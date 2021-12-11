@@ -10,7 +10,7 @@
   [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
   [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-  [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </div>
@@ -126,6 +126,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mortal-ghost"><img src="https://avatars.githubusercontent.com/u/83603918?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mortal-ghost</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3Amortal-ghost" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/pushkar-verma/"><img src="https://avatars.githubusercontent.com/u/50198312?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pushkar Verma</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=pushkar2112" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/raviyadav17"><img src="https://avatars.githubusercontent.com/u/86602971?v=4?s=100" width="100px;" alt=""/><br /><sub><b>raviyadav17</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=raviyadav17" title="Code">💻</a> <a href="#design-raviyadav17" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Starkl7"><img src="https://avatars.githubusercontent.com/u/54771908?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dhrubojeet Haldar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Starkl7" title="Code">💻</a></td>
   </tr>
 </table>
 
