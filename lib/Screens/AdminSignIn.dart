@@ -54,7 +54,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                 SizedBox(
                   height: 20,
                 ),
-                RaisedButton(
+                ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
 
@@ -104,10 +104,10 @@ class _AdminSignInState extends State<AdminSignIn> {
     FirebaseFirestore.instance.collection('admins').get().then((value){
       value.docs.forEach((element) {
         if(element.data()['id'] != _emailTextController.text){
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text('Wrong ID')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Wrong ID')));
         }
         else if(element.data()['password'] != _passwordTextController.text){
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text('Wrong password')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Wrong password')));
         }
         else{
           setState(() {

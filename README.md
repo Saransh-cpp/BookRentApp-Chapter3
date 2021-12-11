@@ -1,7 +1,20 @@
 # Chapter3 - Book renting app 📚
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/75534476/141290305-8f94ec11-e2b6-4473-9d99-e4e7d00bf71b.jpg" height=400/>
 </p>
+  
+ 
+<div align="center">
+
+  [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
+  [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
+</div>
+
 
 A book renting app - open a new chapter in your journey 📔
 - An e-commerce application specifically made for renting books.
@@ -90,3 +103,37 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Saransh-cpp"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saransh</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Saransh-cpp" title="Code">💻</a> <a href="#content-Saransh-cpp" title="Content">🖋</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Saransh-cpp" title="Documentation">📖</a> <a href="#design-Saransh-cpp" title="Design">🎨</a> <a href="#ideas-Saransh-cpp" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-Saransh-cpp" title="Maintenance">🚧</a> <a href="#mentoring-Saransh-cpp" title="Mentoring">🧑‍🏫</a> <a href="#projectManagement-Saransh-cpp" title="Project Management">📆</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/pulls?q=is%3Apr+reviewed-by%3ASaransh-cpp" title="Reviewed Pull Requests">👀</a> <a href="#question-Saransh-cpp" title="Answering Questions">💬</a></td>
+    <td align="center"><a href="http://youspeakcubic.github.io"><img src="https://avatars.githubusercontent.com/u/75534476?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anthony De la Torre</b></sub></a><br /><a href="#content-Youspeakcubic" title="Content">🖋</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Youspeakcubic" title="Documentation">📖</a> <a href="#design-Youspeakcubic" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/letsintegreat"><img src="https://avatars.githubusercontent.com/u/37345795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harshit Seksaria</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Code">💻</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=letsintegreat" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/TESLA2402"><img src="https://avatars.githubusercontent.com/u/83589511?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TESLA2402</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=TESLA2402" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Vaibhav-Chopra-GT"><img src="https://avatars.githubusercontent.com/u/92637595?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vaibhav-Chopra-GT</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Vaibhav-Chopra-GT" title="Code">💻</a> <a href="#infra-Vaibhav-Chopra-GT" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/Pranav108"><img src="https://avatars.githubusercontent.com/u/56934594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pranav Pratap Singh</b></sub></a><br /><a href="#ideas-Pranav108" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3APranav108" title="Bug reports">🐛</a> <a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Pranav108" title="Code">💻</a> <a href="#design-Pranav108" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/atharv-bhadange"><img src="https://avatars.githubusercontent.com/u/65965314?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Atharv Bhadange</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=atharv-bhadange" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/aman2kumar"><img src="https://avatars.githubusercontent.com/u/76274870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>aman2kumar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=aman2kumar" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mortal-ghost"><img src="https://avatars.githubusercontent.com/u/83603918?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mortal-ghost</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues?q=author%3Amortal-ghost" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/pushkar-verma/"><img src="https://avatars.githubusercontent.com/u/50198312?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Pushkar Verma</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=pushkar2112" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/raviyadav17"><img src="https://avatars.githubusercontent.com/u/86602971?v=4?s=100" width="100px;" alt=""/><br /><sub><b>raviyadav17</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=raviyadav17" title="Code">💻</a> <a href="#design-raviyadav17" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Starkl7"><img src="https://avatars.githubusercontent.com/u/54771908?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dhrubojeet Haldar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Starkl7" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/akshatjain1004"><img src="https://avatars.githubusercontent.com/u/86458423?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akshat Jain</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=akshatjain1004" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

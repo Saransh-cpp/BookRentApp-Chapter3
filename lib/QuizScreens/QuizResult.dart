@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/QuizScreens/Question1.dart';
+//import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/model/QuizDataModel.dart';
-import 'dart:math';
+//import 'dart:math';
 import 'package:quiver/iterables.dart' as quiver;
 
 class QuizResult extends StatefulWidget {
-
   final QuizData quizData;
 
   const QuizResult({Key key, this.quizData}) : super(key: key);
@@ -17,16 +16,25 @@ class QuizResult extends StatefulWidget {
 class _QuizResultState extends State<QuizResult> {
   @override
   Widget build(BuildContext context) {
-
     String bookSuggestion = '';
-    List<int> Books = [widget.quizData.aad, widget.quizData.pfo, widget.quizData.tug,
-    widget.quizData.tgdt, widget.quizData.hppa, widget.quizData.eu, widget.quizData.csms,
-    widget.quizData.pw, widget.quizData.fsg, widget.quizData.ts, widget.quizData.kr];
-    int maxBook = quiver.max(Books);
+    List<int> books = [
+      widget.quizData.aad,
+      widget.quizData.pfo,
+      widget.quizData.tug,
+      widget.quizData.tgdt,
+      widget.quizData.hppa,
+      widget.quizData.eu,
+      widget.quizData.csms,
+      widget.quizData.pw,
+      widget.quizData.fsg,
+      widget.quizData.ts,
+      widget.quizData.kr
+    ];
+    int maxBook = quiver.max(books);
 
-    if(maxBook == 0){
+    if (maxBook == 0) {
       bookSuggestion = 'Please attempt the quiz first';
-    }
+    } 
     else {
       if (widget.quizData.aad == maxBook) {
         print(maxBook);
@@ -73,7 +81,6 @@ class _QuizResultState extends State<QuizResult> {
       }
     }
 
-
     // if(widget.quizData.aad == 1){
     //   setState(() {
     //     bookSuggestion = 'Angels and Demons';
@@ -99,7 +106,7 @@ class _QuizResultState extends State<QuizResult> {
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
           color: Colors.black
-        ),
+          ),
         elevation: 0,
       ),
       body: Center(

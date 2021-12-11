@@ -1,19 +1,19 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/QuizScreens/Question1.dart';
-import 'package:test_app/Screens/LoginPage.dart';
+//import 'package:test_app/Screens/LoginPage.dart';
 import 'package:test_app/Screens/orders.dart';
 import 'package:test_app/Screens/product_search.dart';
 import 'package:test_app/Widgets.dart';
-import 'package:test_app/database.dart';
-import 'package:test_app/Screens/Register.dart';
+//import 'package:test_app/database.dart';
+//import 'package:test_app/Screens/Register.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:test_app/services/product.dart';
+//import 'package:test_app/services/product.dart';
 import 'package:test_app/Screens/Favourites.dart';
 import 'package:test_app/Screens/Profile.dart';
-import 'package:test_app/Screens/Quiz.dart';
+//import 'package:test_app/Screens/Quiz.dart';
 import 'package:test_app/Screens/Recommendations.dart';
 import 'package:test_app/Screens/BestSellers.dart';
 import 'package:test_app/Screens/AboutUs.dart';
@@ -27,10 +27,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-
-  final _key = GlobalKey<ScaffoldState>();
-  ProductServices _productServices = ProductServices();
 
   @override
   Widget build(BuildContext context) {

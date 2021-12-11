@@ -1,12 +1,12 @@
-import 'dart:async';
+//import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+//import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/allBooksofAGenre.dart';
 import 'package:test_app/Screens/product_details.dart';
-import 'package:carousel_pro/carousel_pro.dart';
+//import 'package:carousel_pro/carousel_pro.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -77,10 +77,9 @@ import 'package:transparent_image/transparent_image.dart';
 // }
 
 class CustomListTile extends StatelessWidget {
-
-  IconData icon;
-  String text;
-  Function onTap;
+  final IconData icon;
+  final String text;
+  final Function onTap;
 
   CustomListTile(this.icon, this.text, this.onTap);
   @override
@@ -89,7 +88,7 @@ class CustomListTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
       child: Container(
         child: InkWell(
-          onTap: onTap,
+            onTap: onTap,
             splashColor: Colors.orangeAccent,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,18 +98,17 @@ class CustomListTile extends StatelessWidget {
                       Icon(icon),
                       Padding(
                         padding: const EdgeInsets.all(20),
-                        child: Text(text,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),),
+                        child: Text(
+                          text,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                          ),
+                        ),
                       ),
-
                     ],
                   ),
                   Icon(Icons.arrow_right_rounded)
-                ]
-            )
-        ),
+                ])),
       ),
     );
   }
@@ -128,8 +126,13 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (c) => ProductDetails(product: product,)));
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (c) => ProductDetails(
+                        product: product,
+                      )));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -151,9 +154,9 @@ class ProductCard extends StatelessWidget {
                     children: <Widget>[
                       Positioned.fill(
                           child: Align(
-                            alignment: Alignment.center,
-                            child: Loading(),
-                          )),
+                        alignment: Alignment.center,
+                        child: Loading(),
+                      )),
                       Center(
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
@@ -203,7 +206,7 @@ class ProductCard extends StatelessWidget {
 
   //==========================Product Image===========================
 
-  Widget _productImage(String picture) {
+/* Widget _productImage(String picture) {
     if (picture == null) {
       return Container(
         child: Text(
@@ -229,10 +232,8 @@ class ProductCard extends StatelessWidget {
         ),
       );
     }
-  }
+  }*/
 }
-
-
 
 /*class Products extends StatefulWidget {
 
@@ -543,22 +544,20 @@ class FeaturedCard extends StatelessWidget {
 
   const FeaturedCard({Key key, this.product}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(4),
       child: InkWell(
-        onTap: (){
+        onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context)=>ProductDetails(product: product,)));
+              builder: (context) => ProductDetails(product: product,)));
         },
         child: Container(
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color:
-                Color.fromARGB(62, 168, 174, 201),
+                color: Color.fromARGB(62, 168, 174, 201),
                 offset: Offset(0, 9),
                 blurRadius: 14,
               ),
@@ -570,9 +569,9 @@ class FeaturedCard extends StatelessWidget {
               children: <Widget>[
                 Positioned.fill(
                     child: Align(
-                      alignment: Alignment.center,
-                      child: Loading(),
-                    )),
+                  alignment: Alignment.center,
+                  child: Loading(),
+                )),
                 Center(
                   child: FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
@@ -582,7 +581,6 @@ class FeaturedCard extends StatelessWidget {
                     width: 200,
                   ),
                 ),
-
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
@@ -609,39 +607,35 @@ class FeaturedCard extends StatelessWidget {
                           ],
                         ),
                       ),
-
                       child: Padding(
                           padding: const EdgeInsets.only(top: 8.0),
-                          child: Container()
-                      )),
+                          child: Container())),
                 ),
-
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(
-                      padding: const EdgeInsets.only(left:8.0),
+                      padding: const EdgeInsets.only(left: 8.0),
                       child: RichText(
                           text: TextSpan(
                               children: [
-                        TextSpan(
-                            text: '${product.name} \n',
-                            style: TextStyle(
-                                fontSize: 18
-                            )
-                        ),
-                        TextSpan(
-                            text: '\$${product.prices[0]} \n',
-                            style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold
-                            )
-                        ),
+                                TextSpan(
+                                    text: '${product.name} \n',
+                                    style: TextStyle(
+                                        fontSize: 18
+                                    )
+                                ),
+                                TextSpan(
+                                    text: '\$${product.prices[0]} \n',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
                               ]
                           )
                       )
                   ),
                 )
-
               ],
             ),
           ),
@@ -651,11 +645,9 @@ class FeaturedCard extends StatelessWidget {
   }
 }
 
-
 // ===================== Featured products =================
 
 class FeaturedProducts extends StatefulWidget {
-
   final String genre;
 
   const FeaturedProducts({Key key, this.genre}) : super(key: key);
@@ -677,25 +669,28 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                 scrollDirection: Axis.horizontal,
                 itemCount: productProvider.products.length,
                 itemBuilder: (context, index) {
-                  return productProvider.products[index].featured == true && productProvider.products[index].genre == widget.genre
+                  return productProvider.products[index].featured == true &&
+                          productProvider.products[index].genre == widget.genre
                       ? FeaturedCard(
-                    product: productProvider.products[index],
-                  )
-                  : Text('');
-                }
-                )
-        ),
+                          product: productProvider.products[index],
+                        )
+                      : Text('');
+                })),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (c) => allBooksofAGenre(genre: widget.genre,)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (c) => AllBooksofAGenre(
+                              genre: widget.genre,
+                            )));
               },
               child: IconButton(
-                icon:  Icon(
-                  Icons.ballot_rounded
-                ),
+                icon: Icon(Icons.ballot_rounded),
+                onPressed: () {},
               ),
             ),
           ],
@@ -707,49 +702,40 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
 //=============================For every Genre=======================
 
-class perGenre extends StatefulWidget {
-
+class PerGenre extends StatefulWidget {
   final String genre;
 
-  const perGenre({Key key, this.genre}) : super(key: key);
+  const PerGenre({Key key, this.genre}) : super(key: key);
 
   @override
-  _perGenreState createState() => _perGenreState();
+  _PerGenreState createState() => _PerGenreState();
 }
 
-class _perGenreState extends State<perGenre> {
+class _PerGenreState extends State<PerGenre> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: new Text(
-                      widget.genre
-                  )
-              ),
-            ),
-          ],
-        ),
-        FeaturedProducts(
-          genre: widget.genre,
-        ),
-      ]
-    );
+    return Column(children: [
+      Row(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Container(
+                alignment: Alignment.centerLeft, child: new Text(widget.genre)),
+          ),
+        ],
+      ),
+      FeaturedProducts(
+        genre: widget.genre,
+      ),
+    ]);
   }
 }
 
 //==========================All Books of a single genre==================
 class AllBooksOfAGenre extends StatefulWidget {
-
   final String genre;
 
   const AllBooksOfAGenre({Key key, this.genre}) : super(key: key);
-
 
   @override
   _AllBooksOfAGenreState createState() => _AllBooksOfAGenreState();
@@ -763,14 +749,14 @@ class _AllBooksOfAGenreState extends State<AllBooksOfAGenre> {
       color: Colors.red,
       child: Column(
         children: productProvider.products
-            .map((item) =>
-            GestureDetector(
-              child: item.genre == widget.genre ? ProductCard(
-                product: item,
-              )
-                  : Text(''),
-            )
-        ).toList(),
+            .map((item) => GestureDetector(
+                  child: item.genre == widget.genre
+                      ? ProductCard(
+                          product: item,
+                        )
+                      : Text(''),
+                ))
+            .toList(),
       ),
     );
   }
@@ -786,7 +772,7 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
-    return    Padding(
+    return Padding(
       padding: EdgeInsets.all(15),
       child: Container(
         decoration: BoxDecoration(
@@ -804,10 +790,14 @@ class _SearchState extends State<Search> {
             contentPadding: EdgeInsets.all(10.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: BorderSide(color: Colors.white,),
+              borderSide: BorderSide(
+                color: Colors.white,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white,),
+              borderSide: BorderSide(
+                color: Colors.white,
+              ),
               borderRadius: BorderRadius.circular(5.0),
             ),
             hintText: "E.g: formal dress",
@@ -1182,15 +1172,4 @@ class _SearchState extends State<Search> {
 //     );
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
 

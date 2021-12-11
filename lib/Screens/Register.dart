@@ -109,58 +109,58 @@ class _RegisterState extends State<Register> {
         .size
         .width;
     if('$hint'=='Enter Password'){
-    return Column(
-      children: [
-        Container(
-          width: _screenWidth / 1.08,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius:
-            BorderRadius.all(Radius.circular(10)),
-          ),
-          padding: EdgeInsets.all(8),
-          margin: EdgeInsets.all(0),
-          child: Container(
-            child: TextFormField(
-              controller: _passwordTextController,
-              decoration: InputDecoration(
-                hintText: "$hint",
-                prefixIcon: Icon(Icons.vpn_key),
-                suffixIcon: IconButton(
-                    icon: Icon(
-                      hidePass1
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      //color: Theme.of(context).primaryColorDark,
-                      //Icons.remove_red_eye
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        hidePass1 = !hidePass1;
-                      });
-                    }),
+      return Column(
+        children: [
+          Container(
+            width: _screenWidth / 1.08,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius:
+              BorderRadius.all(Radius.circular(10)),
+            ),
+            padding: EdgeInsets.all(8),
+            margin: EdgeInsets.all(0),
+            child: Container(
+              child: TextFormField(
+                controller: _passwordTextController,
+                decoration: InputDecoration(
+                  hintText: "$hint",
+                  prefixIcon: Icon(Icons.vpn_key),
+                  suffixIcon: IconButton(
+                      icon: Icon(
+                        hidePass1
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        //color: Theme.of(context).primaryColorDark,
+                        //Icons.remove_red_eye
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          hidePass1 = !hidePass1;
+                        });
+                      }),
+                ),
+                validator: (val) =>
+                val.length < 6
+                    ? '$error'
+                    : null,
+                textAlignVertical: TextAlignVertical.bottom,
+                obscureText: hidePass1,
+                // net ninja
+                onChanged: (val) {
+                  setState(() {
+                    password = val;
+                  });
+                },
               ),
-              validator: (val) =>
-              val.length < 6
-                  ? '$error'
-                  : null,
-              textAlignVertical: TextAlignVertical.bottom,
-              obscureText: hidePass1,
-              // net ninja
-              onChanged: (val) {
-                setState(() {
-                  password = val;
-                });
-              },
             ),
           ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-      ],
-    );
-  }
+          SizedBox(
+            height: 20,
+          ),
+        ],
+      );
+    }
     else {
       return Column(
         children: [
@@ -254,7 +254,7 @@ class _RegisterState extends State<Register> {
                         // SizedBox(
                         //   height: 20,
                         // ),
-                        
+
                         EmailAndNameField("Enter Name" , 'Enter a name' , Icon(Icons.person)),
                         EmailAndNameField("Enter Email" , 'Enter an email' , Icon(Icons.email)),
 
