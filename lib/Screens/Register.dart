@@ -43,7 +43,7 @@ class _RegisterState extends State<Register> {
 
   String email = '';
   String password = '';
-  String cpassword ='';
+  String cpassword = '';
   String error = '';
   String name = '';
   bool hidePass1 = true;
