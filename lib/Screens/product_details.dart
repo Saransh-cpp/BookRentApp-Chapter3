@@ -157,22 +157,22 @@ class _ProductDetailsState extends State<ProductDetails> {
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     style: ElevatedButton.styleFrom(
-                                       primary: const Color(0xFF1BC0C5),
-                                      ),
+                                      primary: const Color(0xFF1BC0C5),
+                                    ),
                                   ),
                                 ),
                                 SizedBox(
                                   width: 320.0,
                                   child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        "Reject",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                       primary: Colors.red),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Reject",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.red),
                                   ),
                                 ) //}
                               ],
@@ -186,57 +186,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 'Check Out',
                 style: TextStyle(color: Colors.red, fontSize: 18),
               )),
-          // RaisedButton(
-          //   onPressed: () async {
-          //     var uuid = Uuid();
-          //     String id = uuid.v4();
-          //     if (userProvider.userModel.address != '' &&
-          //         userProvider.userModel.number != '') {
-          //       _orderServices.createOrder(
-          //           userId: userProvider.user.uid,
-          //           id: id,
-          //           description: widget.product.name,
-          //           status: "ordered",
-          //           totalPrice: 0,
-          //           cart: userProvider.userModel.cart);
-          //       // for (CartItemModel cartItem in userProvider.userModel.cart) {
-          //       //   bool value =
-          //       //       await userProvider.removeFromCart(cartItem: cartItem);
-          //       //   if (value) {
-          //       //     userProvider.reloadUserModel();
-          //       //     print("Item added to cart");
-          //       //     _key.currentState.showSnackBar(
-          //       //         SnackBar(content: Text("Removed from Cart!")));
-          //       //   } else {
-          //       //     print("ITEM WAS NOT REMOVED");
-          //       //   }
-          //       // }
-          //       _key.currentState
-          //           .showSnackBar(SnackBar(content: Text("Order created!")));
-          //       Navigator.pop(context);
-          //     } else {
-          //       _key.currentState.showSnackBar(
-          //           SnackBar(content: Text('Please add address and number')));
-          //     }
-          //   },
-          //   child: Text(
-          //     "Accept",
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   color: const Color(0xFF1BC0C5),
-          // ),
-          // SizedBox(
-          //   width: 320.0,
-          //   child: RaisedButton(
-          //       onPressed: () {
-          //         Navigator.pop(context);
-          //       },
-          //       child: Text(
-          //         "Reject",
-          //         style: TextStyle(color: Colors.white),
-          //       ),
-          //       color: Colors.red),
-          // ),
           appProvider.isLoading
               ? Loading()
               : IconButton(
@@ -279,7 +228,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 appProvider.changeIsLoading();
                 return;
               }
-              // appProvider.changeIsLoading();
             },
             color: Colors.red,
           ),
@@ -314,10 +262,6 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             Divider(),
-            /*Container(
-                  height: 360,
-                  child: SimilarProducts(),
-                )*/
           ],
         )
       ]),
