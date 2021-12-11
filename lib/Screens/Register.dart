@@ -49,7 +49,6 @@ class _RegisterState extends State<Register> {
   bool hidePass1 = true;
   bool hidePass2 = true;
   String userImageUrl = '';
-  File _imageFile;
 
 
   Widget EmailAndNameField(String hint , String error , Icon icon){
