@@ -36,7 +36,7 @@ The code is well arranged into sub-directories which are -
 
 ## App Screens
 <p align="center">
-    <img src="https://i.imgur.com/4QmX0aD.jpg" height=400/>
+    <img src="https://i.imgur.com/4hsTt9x.png" height=400/>
 </p>
 
 ## Setting up the project in your local environment💻
