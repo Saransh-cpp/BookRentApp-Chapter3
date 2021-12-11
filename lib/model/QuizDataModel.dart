@@ -1,5 +1,4 @@
 class QuizData {
-
   int tgdt = 0;
   int tug = 0;
   int pfo = 0;
@@ -11,5 +10,4 @@ class QuizData {
   int csms = 0;
   int eu = 0;
   int kr = 0;
-
 }

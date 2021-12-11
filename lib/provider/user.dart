@@ -25,14 +25,12 @@ class UserProvider with ChangeNotifier {
 
   UserModel _userModel;
 
-//  getter
   UserModel get userModel => _userModel;
 
   Status get status => _status;
 
   User get user => _user;
 
-  // public variables
   List<OrderModel> orders = [];
 
   UserProvider.initialize() : _auth = FirebaseAuth.instance {
@@ -57,16 +55,6 @@ class UserProvider with ChangeNotifier {
       return false;
     }
   }
-
-  // Future updateUserData(String name,  String email, String number, String address) async{
-  //   return await FirebaseFirestore.instance.collection('users').doc(user.uid).set(
-  //       {
-  //         'name': name,
-  //         'email': email,
-  //         'number': number
-  //
-  //       });
-  // }
 
   Future<bool> signUp(String name, String email, String password) async {
     try {
@@ -101,8 +89,6 @@ class UserProvider with ChangeNotifier {
   Future<bool> updateUser(String name, String email, String number,
       String address, String bio) async {
     try {
-      // _status = Status.Authenticating;
-      // notifyListeners();
       print("CREATE USER");
       await _userServices.createUser({
         'name': name,
@@ -156,16 +142,13 @@ class UserProvider with ChangeNotifier {
         "image": product.pictures[0],
         "productId": product.id,
         'price': prodPrice(product: product, size: size),
-        // size == '1 week' ? product.prices[0] : product.prices[1],
-        // "price": product.prices[0],
         "size": size,
       };
 
       CartItemModel item = CartItemModel.fromMap(cartItem);
-//      if(!itemExists){
+
       print("CART ITEMS ARE: ${cart.toString()}");
       _userServices.addToCart(userId: _user.uid, cartItem: item);
-//      }
 
       return true;
     } catch (e) {
@@ -175,13 +158,10 @@ class UserProvider with ChangeNotifier {
   }
 
   Future<bool> removeFromCart({CartItemModel cartItem}) async {
-    //print("THE PRODUCT IS: ${cartItem.toString()}");
-
     try {
       _userServices.removeFromCart(userId: _user.uid, cartItem: cartItem);
       return true;
     } catch (e) {
-      //print("THE ERROR ${e.toString()}");
       return false;
     }
   }
@@ -201,10 +181,9 @@ class UserProvider with ChangeNotifier {
       };
 
       FavItemModel item = FavItemModel.fromMap(favItem);
-//      if(!itemExists){
+
       print("CART ITEMS ARE: ${fav.toString()}");
       _userServices.addToFav(userId: _user.uid, favItem: item);
-//      }
 
       return true;
     } catch (e) {
@@ -214,13 +193,10 @@ class UserProvider with ChangeNotifier {
   }
 
   Future<bool> removeFromFav({FavItemModel favItem}) async {
-    //print("THE PRODUCT IS: ${cartItem.toString()}");
-
     try {
       _userServices.removeFromFav(userId: _user.uid, favItem: favItem);
       return true;
     } catch (e) {
-      //print("THE ERROR ${e.toString()}");
       return false;
     }
   }
