@@ -52,9 +52,6 @@ class _RegisterState extends State<Register> {
   File _imageFile;
 
 
-  @override
-
-
   Widget EmailAndNameField(String hint , String error , Icon icon){
     double _screenWidth = MediaQuery
         .of(context)
