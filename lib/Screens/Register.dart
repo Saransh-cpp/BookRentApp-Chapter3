@@ -33,7 +33,7 @@ class _RegisterState extends State<Register> {
   //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   //UserServices _userServices = UserServices();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
