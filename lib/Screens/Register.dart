@@ -56,7 +56,7 @@ class _RegisterState extends State<Register> {
     return Column(
       children: [
         Container(
-          width: _screenWidth/1.08,
+          width: _screenWidth / 1.08,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius:
