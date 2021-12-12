@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/QuizScreens/Question2.dart';
-//import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable

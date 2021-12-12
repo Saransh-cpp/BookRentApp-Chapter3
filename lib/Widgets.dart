@@ -1,12 +1,8 @@
-//import 'dart:async';
-
 import 'package:flutter/material.dart';
-//import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/allBooksofAGenre.dart';
 import 'package:test_app/Screens/product_details.dart';
-//import 'package:carousel_pro/carousel_pro.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -25,7 +21,7 @@ class CustomListTile extends StatelessWidget {
         child: InkWell(
             onTap: onTap,
             splashColor: Colors.orangeAccent,
-             child: Row(
+            child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
