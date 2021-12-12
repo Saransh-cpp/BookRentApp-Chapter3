@@ -25,7 +25,7 @@ class _ContactUsState extends State<ContactUs> {
       ),
       body: Container(
         color: Colors.pink[50],
-        child: Column(
+        child: ListView(
           children: [
             Container(
               padding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),

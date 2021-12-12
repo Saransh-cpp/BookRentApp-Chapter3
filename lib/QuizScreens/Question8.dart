@@ -7,7 +7,6 @@ import 'package:test_app/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question8 extends StatefulWidget {
-
   QuizData quizData = QuizData();
   Question8({this.quizData});
 
@@ -20,11 +19,9 @@ class Question8 extends StatefulWidget {
   int fsg = 0;
   int kr = 0;
   int tug = 0;
-
 }
 
 class _Question8State extends State<Question8> {
-
   String chosen;
   bool answered = false;
   String option1 = 'I wanna be happy and filled with\npositivity';
@@ -39,16 +36,17 @@ class _Question8State extends State<Question8> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(
-                color: Colors.black
-            ),
+            iconTheme: IconThemeData(color: Colors.black),
             actions: [
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question9(
-                    quizData: widget.quizData,
-                  )));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) => Question9(
+                                quizData: widget.quizData,
+                              )));
                 },
               )
             ],
@@ -59,10 +57,7 @@ class _Question8State extends State<Question8> {
                 children: [
                   Text(
                     'Question 8',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
@@ -73,10 +68,7 @@ class _Question8State extends State<Question8> {
                 children: [
                   Text(
                     'What is your favorite part about a book?',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
@@ -97,32 +89,24 @@ class _Question8State extends State<Question8> {
                         }
                       },
                       child: Container(
-                          color: chosen == option1 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'A',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option1,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option1
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'A',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option1,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -135,32 +119,24 @@ class _Question8State extends State<Question8> {
                         }
                       },
                       child: Container(
-                          color: chosen == option2 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'B',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option2,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option2
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'B',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option2,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -173,32 +149,24 @@ class _Question8State extends State<Question8> {
                         }
                       },
                       child: Container(
-                          color: chosen == option3 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'C',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option3,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option3
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'C',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option3,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -215,48 +183,39 @@ class _Question8State extends State<Question8> {
                         }
                       },
                       child: Container(
-                          color: chosen == option4 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'D',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option4,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  )
+                          color: chosen == option4
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'D',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option4,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ])))
                 ],
               ),
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               MaterialButton(
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
                       widget.quizData.tug -= 1;
-                    }
-                    else if (chosen == option2) {
+                    } else if (chosen == option2) {
                       widget.quizData.kr -= 1;
-                    }
-                    else if (chosen == option3) {
+                    } else if (chosen == option3) {
                       widget.quizData.fsg -= 1;
-                    }
-                    else if (chosen == option4) {
+                    } else if (chosen == option4) {
                       widget.quizData.eu -= 1;
                       widget.quizData.csms -= 1;
                       widget.quizData.pw -= 1;
@@ -274,8 +233,7 @@ class _Question8State extends State<Question8> {
                 child: Text('Reset'),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }
