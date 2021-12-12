@@ -1,16 +1,15 @@
 import 'package:carousel_pro/carousel_pro.dart';
-//import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
-//import 'package:test_app/Widgets.dart';
+
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
-//import 'package:transparent_image/transparent_image.dart';
+
 import 'package:uuid/uuid.dart';
 import 'package:test_app/services/order.dart';
-//import 'package:test_app/model/cart_item.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel product;

@@ -1,13 +1,11 @@
 import 'dart:async';
 
-//import 'package:test_app/Screens/product_details.dart';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/model/order.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/model/user.dart';
 import 'package:test_app/services/order.dart';
 import 'package:test_app/services/user.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';

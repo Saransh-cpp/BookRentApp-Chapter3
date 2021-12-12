@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:flutter/cupertino.dart';
 import 'package:test_app/model/fav.dart';
 
 class UserServices {

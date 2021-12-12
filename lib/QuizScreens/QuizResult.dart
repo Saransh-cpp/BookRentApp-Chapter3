@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/model/QuizDataModel.dart';
-//import 'dart:math';
 import 'package:quiver/iterables.dart' as quiver;
 
 //ignore: must_be_immutable
