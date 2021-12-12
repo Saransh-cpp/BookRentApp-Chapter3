@@ -4,6 +4,7 @@ import 'package:test_app/model/QuizDataModel.dart';
 //import 'dart:math';
 import 'package:quiver/iterables.dart' as quiver;
 
+//ignore: must_be_immutable
 class QuizResult extends StatefulWidget {
   final QuizData quizData;
 

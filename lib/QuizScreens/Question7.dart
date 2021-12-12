@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 import 'package:test_app/QuizScreens/Question8.dart';
 
+//ignore: must_be_immutable
 class Question7 extends StatefulWidget {
   QuizData quizData = QuizData();
   Question7({this.quizData});
