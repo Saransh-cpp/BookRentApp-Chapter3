@@ -7,7 +7,6 @@ import 'package:test_app/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question5 extends StatefulWidget {
-
   QuizData quizData = QuizData();
   Question5({this.quizData});
 
@@ -19,15 +18,14 @@ class Question5 extends StatefulWidget {
   int ts = 0;
   int kr = 0;
   int hppa = 0;
-
 }
 
 class _Question5State extends State<Question5> {
-
   String chosen;
   bool answered = false;
   String option1 = 'A closely knit group of 3-5 people';
-  String option2 = 'I can befriend every person on this\nplanet because I\'m awesome';
+  String option2 =
+      'I can befriend every person on this\nplanet because I\'m awesome';
   String option3 = 'Idk, I\'m a loner';
   String option4 = '1 bestfriend who\'s everything to me';
 
@@ -38,16 +36,17 @@ class _Question5State extends State<Question5> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(
-                color: Colors.black
-            ),
+            iconTheme: IconThemeData(color: Colors.black),
             actions: [
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question6(
-                    quizData: widget.quizData,
-                  )));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) => Question6(
+                                quizData: widget.quizData,
+                              )));
                 },
               )
             ],
@@ -58,10 +57,7 @@ class _Question5State extends State<Question5> {
                 children: [
                   Text(
                     'Question 5',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
@@ -72,10 +68,7 @@ class _Question5State extends State<Question5> {
                 children: [
                   Text(
                     'Choose your social circle',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
@@ -96,32 +89,24 @@ class _Question5State extends State<Question5> {
                         }
                       },
                       child: Container(
-                          color: chosen == option1 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'A',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option1,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option1
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'A',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option1,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -134,32 +119,24 @@ class _Question5State extends State<Question5> {
                         }
                       },
                       child: Container(
-                          color: chosen == option2 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'B',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option2,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option2
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'B',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option2,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -174,32 +151,24 @@ class _Question5State extends State<Question5> {
                         }
                       },
                       child: Container(
-                          color: chosen == option3 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'C',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option3,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option3
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'C',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option3,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -212,49 +181,40 @@ class _Question5State extends State<Question5> {
                         }
                       },
                       child: Container(
-                          color: chosen == option4 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'D',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option4,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  )
+                          color: chosen == option4
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'D',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option4,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ])))
                 ],
               ),
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               MaterialButton(
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
                       widget.quizData.hppa -= 1;
-                    }
-                    else if (chosen == option2) {
+                    } else if (chosen == option2) {
                       widget.quizData.ts -= 1;
-                    }
-                    else if (chosen == option3) {
+                    } else if (chosen == option3) {
                       widget.quizData.csms -= 1;
                       widget.quizData.eu -= 1;
-                    }
-                    else if (chosen == option4) {
+                    } else if (chosen == option4) {
                       widget.quizData.kr -= 1;
                     }
                     chosen = '';
@@ -269,8 +229,7 @@ class _Question5State extends State<Question5> {
                 child: Text('Reset'),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }

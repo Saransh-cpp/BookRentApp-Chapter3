@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AppProvider with ChangeNotifier{
+class AppProvider with ChangeNotifier {
   bool isLoading = false;
 
-  void changeIsLoading(){
+  void changeIsLoading() {
     isLoading = !isLoading;
     notifyListeners();
   }
