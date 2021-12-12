@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
-//import 'package:test_app/QuizScreens/Question1.dart';
-//import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 import 'package:test_app/QuizScreens/Question8.dart';
 
