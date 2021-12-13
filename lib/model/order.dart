@@ -16,7 +16,6 @@ class OrderModel {
   int _createdAt;
   double _total;
 
-//  getters
   String get id => _id;
 
   String get description => _description;
@@ -29,7 +28,6 @@ class OrderModel {
 
   int get createdAt => _createdAt;
 
-  // public variable
   List cart;
 
   OrderModel.fromSnapshot(DocumentSnapshot snapshot) {
