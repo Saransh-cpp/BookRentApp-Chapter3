@@ -1,21 +1,21 @@
 
-// import 'dart:math';
+import 'dart:math';
 
-// import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_app/Screens/NavBar.dart';
-// import 'package:test_app/Utility/auth.dart';
-// import 'package:test_app/main.dart';
-// import 'dart:io';
+import 'package:test_app/Utility/auth.dart';
+import 'package:test_app/main.dart';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:test_app/Screens/LoginPage.dart';
-// import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test_app/Screens/LoginPage.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:test_app/provider/user.dart';
 
 class Register extends StatefulWidget {
@@ -33,7 +33,7 @@ class _RegisterState extends State<Register> {
   //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
-  final _key = GlobalKey<ScaffoldMessengerState>();
+  final _key = GlobalKey<ScaffoldState>();
   //UserServices _userServices = UserServices();
   TextEditingController _emailTextController = TextEditingController();
   TextEditingController _passwordTextController = TextEditingController();
@@ -43,20 +43,27 @@ class _RegisterState extends State<Register> {
 
   String email = '';
   String password = '';
-  String cpassword = '';
+  String cpassword ='';
   String error = '';
   String name = '';
   bool hidePass1 = true;
   bool hidePass2 = true;
   String userImageUrl = '';
+  File _imageFile;
 
 
-  Widget emailAndNameField(String hint, String error, Icon icon) {
-    double _screenWidth = MediaQuery.of(context).size.width;
+  @override
+
+
+  Widget EmailAndNameField(String hint , String error , Icon icon){
+    double _screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Column(
       children: [
         Container(
-          width: _screenWidth / 1.08,
+          width: _screenWidth/1.08,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius:
@@ -102,58 +109,58 @@ class _RegisterState extends State<Register> {
         .size
         .width;
     if('$hint'=='Enter Password'){
-      return Column(
-        children: [
-          Container(
-            width: _screenWidth / 1.08,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius:
-              BorderRadius.all(Radius.circular(10)),
-            ),
-            padding: EdgeInsets.all(8),
-            margin: EdgeInsets.all(0),
-            child: Container(
-              child: TextFormField(
-                controller: _passwordTextController,
-                decoration: InputDecoration(
-                  hintText: "$hint",
-                  prefixIcon: Icon(Icons.vpn_key),
-                  suffixIcon: IconButton(
-                      icon: Icon(
-                        hidePass1
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                        //color: Theme.of(context).primaryColorDark,
-                        //Icons.remove_red_eye
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          hidePass1 = !hidePass1;
-                        });
-                      }),
-                ),
-                validator: (val) =>
-                val.length < 6
-                    ? '$error'
-                    : null,
-                textAlignVertical: TextAlignVertical.bottom,
-                obscureText: hidePass1,
-                // net ninja
-                onChanged: (val) {
-                  setState(() {
-                    password = val;
-                  });
-                },
+    return Column(
+      children: [
+        Container(
+          width: _screenWidth / 1.08,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius:
+            BorderRadius.all(Radius.circular(10)),
+          ),
+          padding: EdgeInsets.all(8),
+          margin: EdgeInsets.all(0),
+          child: Container(
+            child: TextFormField(
+              controller: _passwordTextController,
+              decoration: InputDecoration(
+                hintText: "$hint",
+                prefixIcon: Icon(Icons.vpn_key),
+                suffixIcon: IconButton(
+                    icon: Icon(
+                      hidePass1
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      //color: Theme.of(context).primaryColorDark,
+                      //Icons.remove_red_eye
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        hidePass1 = !hidePass1;
+                      });
+                    }),
               ),
+              validator: (val) =>
+              val.length < 6
+                  ? '$error'
+                  : null,
+              textAlignVertical: TextAlignVertical.bottom,
+              obscureText: hidePass1,
+              // net ninja
+              onChanged: (val) {
+                setState(() {
+                  password = val;
+                });
+              },
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
-        ],
-      );
-    }
+        ),
+        SizedBox(
+          height: 20,
+        ),
+      ],
+    );
+  }
     else {
       return Column(
         children: [
@@ -247,7 +254,7 @@ class _RegisterState extends State<Register> {
                         // SizedBox(
                         //   height: 20,
                         // ),
-
+                        
                         EmailAndNameField("Enter Name" , 'Enter a name' , Icon(Icons.person)),
                         EmailAndNameField("Enter Email" , 'Enter an email' , Icon(Icons.email)),
 
