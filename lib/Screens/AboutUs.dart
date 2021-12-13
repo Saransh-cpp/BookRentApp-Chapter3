@@ -123,7 +123,7 @@ class _AboutUsState extends State<AboutUs> {
                   ),
                 ),
               ),
-              _buildTeamTitle('CONTIBUTORS'),
+              _buildTeamTitle('CONTRIBUTORS'),
               if (jsonContributors.length > 0)
                 Container(
                   height: 170,
@@ -312,7 +312,6 @@ class _AboutUsState extends State<AboutUs> {
           style: TextStyle(fontSize: 20),
         ),
         backgroundColor: Colors.grey[700],
-        behavior: SnackBarBehavior.floating,
       ));
       throw 'Could not launch $url';
     }
@@ -322,7 +321,6 @@ class _AboutUsState extends State<AboutUs> {
 List<Map<String, String>> devTeam = [
   {
     "name": "Saransh",
-    //"linkedin": "https://www.linkedin.com/in/saransh-cpp/",// original link
     "linkedin":
         "htt://www.linkedin.com/in/saransh-cpp/", // link that can't be fetched , to see the functionality of snackBar
     "github": "https://github.com/Saransh-cpp",
