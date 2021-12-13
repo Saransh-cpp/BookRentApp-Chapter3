@@ -72,7 +72,7 @@ class _YourOrdersState extends State<YourOrders> {
             iconTheme: IconThemeData(
               color: Colors.pink,
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.pink[50],
             elevation: 1,
             title: Text(
               "My Cart",
@@ -250,7 +250,8 @@ class _YourOrdersState extends State<YourOrders> {
                     ),
           bottomNavigationBar: Container(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 8),
+              padding:
+                  const EdgeInsets.only(left: 8, top: 0, right: 8, bottom: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -281,6 +282,7 @@ class _YourOrdersState extends State<YourOrders> {
                     child: TextButton(
                         onPressed: () {
                           if (userProvider.userModel.totalCartPrice == 0) {
+                            _bannerAd.dispose();
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
