@@ -176,10 +176,10 @@ class _RegisterState extends State<Register> {
 
     return Scaffold(
         backgroundColor: Colors.yellow,
-        key: _key,
         body: user.status == Status.Authenticating
             ? Loading()
             : Scaffold(
+                key: _key,
                 backgroundColor: Colors.pink[50],
                 body: Center(
                   child: SingleChildScrollView(
@@ -224,10 +224,6 @@ class _RegisterState extends State<Register> {
                                                     "Sign up failed")));
                                         return;
                                       }
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (c) => NavBar()));
                                     }
                                   },
                                   child: Text('Register'),

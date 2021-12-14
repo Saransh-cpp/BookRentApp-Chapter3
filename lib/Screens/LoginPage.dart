@@ -117,11 +117,6 @@ class _SignInState extends State<SignIn> {
                                       _passwordTextController.text)) {
                                     _key.currentState.showSnackBar(SnackBar(
                                         content: Text("Sign in failed")));
-                                  } else {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (c) => NavBar()));
                                   }
                                 }
                               },
