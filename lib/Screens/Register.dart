@@ -1,7 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:test_app/Screens/NavBar.dart';
 //import 'package:test_app/Utility/auth.dart';
 //import 'package:test_app/main.dart';
 //import 'dart:io';
