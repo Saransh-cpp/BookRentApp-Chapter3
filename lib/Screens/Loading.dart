@@ -20,7 +20,7 @@ class _LoadingState extends State<Loading> {
             color: Colors.brown,
           )),
         ),
-      ),
+      )
     );
   }
 }

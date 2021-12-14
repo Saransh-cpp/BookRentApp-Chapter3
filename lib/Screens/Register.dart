@@ -218,7 +218,7 @@ class _RegisterState extends State<Register> {
                                           _nameTextController.text,
                                           _emailTextController.text,
                                           _passwordTextController.text)) {
-                                        _key.currentState.showSnackBar(
+                                        ScaffoldMessenger.of(context).showSnackBar(
                                             SnackBar(
                                                 content: Text(
                                                     "Sign up failed")));

@@ -53,11 +53,10 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    return Scaffold(
-      key: _key,
-      body: user.status == Status.Authenticating
+    return user.status == Status.Authenticating
           ? Loading()
           : Scaffold(
+              key: _key,
               backgroundColor: Colors.pink[50],
               body: Container(
                   padding: EdgeInsets.symmetric(
@@ -150,7 +149,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ],
-                  ))),
+                  )),
     );
   }
 }
