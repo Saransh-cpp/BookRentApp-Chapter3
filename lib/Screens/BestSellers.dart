@@ -15,7 +15,7 @@ class _BestSellersState extends State<BestSellers> {
     return SafeArea(
       child: Container(
         color: Colors.pink[50],
-        child: Column(
+        child: ListView(
           children: productProvider.products
               .map((item) => GestureDetector(
                     child: item.bestseller

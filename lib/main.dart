@@ -9,6 +9,7 @@ import 'package:test_app/Screens/splash.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,11 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown
+      ]
+    );
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: UserProvider.initialize()),

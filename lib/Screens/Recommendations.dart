@@ -15,7 +15,7 @@ class _RecommendationsState extends State<Recommendations> {
     return SafeArea(
       child: Container(
         color: Colors.pink[50],
-        child: Column(
+        child: ListView(
           children: productProvider.products
               .map((item) => GestureDetector(
                     child: item.recommended
