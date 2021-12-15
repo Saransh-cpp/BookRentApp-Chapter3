@@ -15,11 +15,10 @@ class _LoadingState extends State<Loading> {
       home: SafeArea(
         child: Container(
           child: Center(
-            child: SpinKitPouringHourglass(
-              size: 50,
-              color: Colors.brown,
-            )
-          ),
+              child: SpinKitPouringHourglass(
+            size: 50,
+            color: Colors.brown,
+          )),
         ),
       ),
     );

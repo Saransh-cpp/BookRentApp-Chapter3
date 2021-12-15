@@ -12,13 +12,8 @@ class OrdersScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         elevation: 0.0,
-        title: Text(
-            "Orders",
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black
-            )
-        ),
+        title:
+            Text("Orders", style: TextStyle(fontSize: 18, color: Colors.black)),
         leading: IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
@@ -28,24 +23,19 @@ class OrdersScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: ListView.builder(
           itemCount: userProvider.orders.length,
-          itemBuilder: (_, index){
+          itemBuilder: (_, index) {
             OrderModel _order = userProvider.orders[index];
             return ListTile(
               leading: Text(
                 "\$${_order.total}",
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black
-                ) ,
+                style: TextStyle(fontSize: 15, color: Colors.black),
               ),
               title: Text(_order.description),
-              subtitle: Text(DateTime.fromMillisecondsSinceEpoch(_order.createdAt).toString()),
-              trailing: Text(
-                _order.status,
-                  style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black
-              ) ),
+              subtitle: Text(
+                  DateTime.fromMillisecondsSinceEpoch(_order.createdAt)
+                      .toString()),
+              trailing: Text(_order.status,
+                  style: TextStyle(fontSize: 18, color: Colors.black)),
             );
           }),
     );
