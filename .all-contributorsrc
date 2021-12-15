@@ -1,0 +1,159 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Saransh-cpp",
+      "name": "Saransh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74055102?v=4",
+      "profile": "https://github.com/Saransh-cpp",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "design",
+        "ideas",
+        "maintenance",
+        "mentoring",
+        "projectManagement",
+        "review",
+        "question"
+      ]
+    },
+    {
+      "login": "Youspeakcubic",
+      "name": "Anthony De la Torre",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75534476?v=4",
+      "profile": "http://youspeakcubic.github.io",
+      "contributions": [
+        "content",
+        "doc",
+        "design"
+      ]
+    },
+    {
+      "login": "letsintegreat",
+      "name": "Harshit Seksaria",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37345795?v=4",
+      "profile": "https://github.com/letsintegreat",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "TESLA2402",
+      "name": "TESLA2402",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83589511?v=4",
+      "profile": "https://github.com/TESLA2402",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Vaibhav-Chopra-GT",
+      "name": "Vaibhav-Chopra-GT",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92637595?v=4",
+      "profile": "https://github.com/Vaibhav-Chopra-GT",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    },
+    {
+      "login": "Pranav108",
+      "name": "Pranav Pratap Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56934594?v=4",
+      "profile": "https://github.com/Pranav108",
+      "contributions": [
+        "ideas",
+        "bug",
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "atharv-bhadange",
+      "name": "Atharv Bhadange",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65965314?v=4",
+      "profile": "https://github.com/atharv-bhadange",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aman2kumar",
+      "name": "aman2kumar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/76274870?v=4",
+      "profile": "https://github.com/aman2kumar",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mortal-ghost",
+      "name": "mortal-ghost",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83603918?v=4",
+      "profile": "https://github.com/mortal-ghost",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "pushkar2112",
+      "name": "Pushkar Verma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50198312?v=4",
+      "profile": "https://www.linkedin.com/in/pushkar-verma/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "raviyadav17",
+      "name": "raviyadav17",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86602971?v=4",
+      "profile": "https://github.com/raviyadav17",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "Starkl7",
+      "name": "Dhrubojeet Haldar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54771908?v=4",
+      "profile": "https://github.com/Starkl7",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "akshatjain1004",
+      "name": "Akshat Jain",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86458423?v=4",
+      "profile": "https://github.com/akshatjain1004",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "hurshh",
+      "name": "HARSH RAO",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75796695?v=4",
+      "profile": "https://github.com/hurshh",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "BookRentApp-Chapter3",
+  "projectOwner": "Saransh-cpp",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

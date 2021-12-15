@@ -3,17 +3,16 @@ import 'package:provider/provider.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/Widgets.dart';
 
-class allBooksofAGenre extends StatefulWidget {
-
+class AllBooksofAGenre extends StatefulWidget {
   final String genre;
 
-  const allBooksofAGenre({Key key, this.genre}) : super(key: key);
+  const AllBooksofAGenre({Key key, this.genre}) : super(key: key);
 
   @override
-  _allBooksofAGenreState createState() => _allBooksofAGenreState();
+  _AllBooksofAGenreState createState() => _AllBooksofAGenreState();
 }
 
-class _allBooksofAGenreState extends State<allBooksofAGenre> {
+class _AllBooksofAGenreState extends State<AllBooksofAGenre> {
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
@@ -22,16 +21,16 @@ class _allBooksofAGenreState extends State<allBooksofAGenre> {
         color: Colors.pink[50],
         child: Column(
           children: productProvider.products
-              .map((item) =>
-              GestureDetector(
-                child: item.genre == widget.genre ? ProductCard(
-                  product: item,
-                )
-                    : SizedBox(
-                  height: 0,
-                ),
-              )
-          ).toList(),
+              .map((item) => GestureDetector(
+                    child: item.genre == widget.genre
+                        ? ProductCard(
+                            product: item,
+                          )
+                        : SizedBox(
+                            height: 0,
+                          ),
+                  ))
+              .toList(),
         ),
       ),
     );
