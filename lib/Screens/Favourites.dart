@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Screens/product_details.dart';
-import 'package:test_app/Widgets.dart';
-import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:test_app/services/order.dart';
-import 'package:uuid/uuid.dart';
 
 class Favourites extends StatefulWidget {
   @override
@@ -15,13 +10,10 @@ class Favourites extends StatefulWidget {
 }
 
 class _FavouritesState extends State<Favourites> {
-
-  final _key = GlobalKey<ScaffoldState>();
-  OrderServices _orderServices = OrderServices();
+  final _key = GlobalKey<ScaffoldMessengerState>();
 
   @override
   Widget build(BuildContext context) {
-
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
 
@@ -29,23 +21,20 @@ class _FavouritesState extends State<Favourites> {
         debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
-              key: _key,
-              appBar: AppBar(
-                iconTheme: IconThemeData(color: Colors.black),
-                backgroundColor: Colors.white,
-                elevation: 1,
-                title: Text(
-                  "Favourites",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15
-                  ),
-                ),
-              ),
-              backgroundColor: Colors.white,
-              body: appProvider.isLoading
-                  ? Loading()
-                  : ListView.builder(
+          key: _key,
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            backgroundColor: Colors.white,
+            elevation: 1,
+            title: Text(
+              "Favourites",
+              style: TextStyle(color: Colors.black, fontSize: 15),
+            ),
+          ),
+          backgroundColor: Colors.white,
+          body: appProvider.isLoading
+              ? Loading()
+              : ListView.builder(
                   itemCount: userProvider.userModel.fav.length,
                   itemBuilder: (_, index) {
                     return Padding(
@@ -60,14 +49,9 @@ class _FavouritesState extends State<Favourites> {
                                   color: Colors.red.withOpacity(0.2),
                                   offset: Offset(3, 2),
                                   blurRadius: 30)
-                            ]
-                        ),
+                            ]),
                         child: InkWell(
-                          onTap: () {
-                            // Navigator.push(context, MaterialPageRoute(
-                            //     builder: (c) => ProductDetails
-                            //       (product: userProvider.userModel.cart[index],)));
-                          },
+                          onTap: () {},
                           child: Row(
                             children: <Widget>[
                               ClipRRect(
@@ -87,14 +71,14 @@ class _FavouritesState extends State<Favourites> {
                               ),
                               Expanded(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     RichText(
                                       text: TextSpan(children: [
                                         TextSpan(
                                             text: userProvider
-                                                .userModel.fav[index].name +
+                                                    .userModel.fav[index].name +
                                                 "\n",
                                             style: TextStyle(
                                                 color: Colors.black,
@@ -102,8 +86,7 @@ class _FavouritesState extends State<Favourites> {
                                                 fontWeight: FontWeight.bold)),
                                         TextSpan(
                                             text:
-                                            "\$${userProvider.userModel
-                                                .fav[index].price} \n\n",
+                                                "\$${userProvider.userModel.fav[index].price} \n\n",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 18,
@@ -118,9 +101,9 @@ class _FavouritesState extends State<Favourites> {
                                         onPressed: () async {
                                           appProvider.changeIsLoading();
                                           bool success =
-                                          await userProvider.removeFromFav(
-                                              favItem: userProvider
-                                                  .userModel.fav[index]);
+                                              await userProvider.removeFromFav(
+                                                  favItem: userProvider
+                                                      .userModel.fav[index]);
                                           if (success) {
                                             userProvider.reloadUserModel();
                                             _key.currentState.showSnackBar(
@@ -141,10 +124,7 @@ class _FavouritesState extends State<Favourites> {
                         ),
                       ),
                     );
-                  }
-              ),
-            )
-        )
-    );
+                  }),
+        )));
   }
 }

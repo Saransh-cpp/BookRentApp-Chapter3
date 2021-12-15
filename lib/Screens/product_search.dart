@@ -13,56 +13,66 @@ class ProductSearchScreen extends StatelessWidget {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
-        leading: IconButton(icon: Icon(Icons.close), onPressed: (){
-          Navigator.pop(context);
-        }),
+        leading: IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
         title: Text(
           "Products",
-          style: TextStyle(
-            fontSize: 18,
-            color: Colors.black
-          ),
+          style: TextStyle(fontSize: 18, color: Colors.black),
         ),
         elevation: 0.0,
         centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.shopping_cart), onPressed: (){})
+          IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
         ],
       ),
-      body: productProvider.productsSearched.length < 1 ? Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.search, color: Colors.grey, size: 30,),
-            ],
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                "No products Found",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 22,)
-              ),
-            ],
-          )
-        ],
-      ) : ListView.builder(
-          itemCount: productProvider.productsSearched.length,
-          itemBuilder: (context, index){
-            return GestureDetector(
-                onTap: ()async{
-                  Navigator.push(context, MaterialPageRoute(builder: (c) => ProductDetails(product: productProvider.productsSearched[index])));
-                },
-                child: ProductCard(product:  productProvider.productsSearched[index]));
-          }),
+      body: productProvider.productsSearched.length < 1
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                      size: 30,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("No products Found",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 22,
+                        )),
+                  ],
+                )
+              ],
+            )
+          : ListView.builder(
+              itemCount: productProvider.productsSearched.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                    onTap: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (c) => ProductDetails(
+                                  product: productProvider
+                                      .productsSearched[index])));
+                    },
+                    child: ProductCard(
+                        product: productProvider.productsSearched[index]));
+              }),
     );
   }
 }

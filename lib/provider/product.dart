@@ -2,24 +2,23 @@ import 'package:test_app/model/product.dart';
 import 'package:test_app/services/product.dart';
 import 'package:flutter/material.dart';
 
-class ProductProvider with ChangeNotifier{
+class ProductProvider with ChangeNotifier {
   ProductServices _productServices = ProductServices();
   List<ProductModel> products = [];
   List<ProductModel> productsSearched = [];
 
-
-  ProductProvider.initialize(){
+  ProductProvider.initialize() {
     loadProducts();
   }
 
-  loadProducts()async{
+  loadProducts() async {
     products = await _productServices.getProducts();
     notifyListeners();
   }
 
-  Future search({String productName})async{
-    productsSearched = await _productServices.searchProducts(productName: productName);
+  Future search({String productName}) async {
+    productsSearched =
+        await _productServices.searchProducts(productName: productName);
     notifyListeners();
   }
-
 }
