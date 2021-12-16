@@ -194,7 +194,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     bool success = await userProvider.addToCart(
                         product: widget.product, size: size);
                     if (success) {
-                      _key.currentState.showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Added to Cart!")));
                       userProvider.reloadUserModel();
                       appProvider.changeIsLoading();
