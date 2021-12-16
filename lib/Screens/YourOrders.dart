@@ -25,7 +25,6 @@ class _YourOrdersState extends State<YourOrders> {
     keywords: <String>['books', 'library', 'novels'],
   );
 
-  final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
   BannerAd _bannerAd;
