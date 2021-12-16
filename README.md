@@ -10,7 +10,7 @@
   [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
   [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </div>
@@ -134,6 +134,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Starkl7"><img src="https://avatars.githubusercontent.com/u/54771908?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dhrubojeet Haldar</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=Starkl7" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/akshatjain1004"><img src="https://avatars.githubusercontent.com/u/86458423?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akshat Jain</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=akshatjain1004" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/hurshh"><img src="https://avatars.githubusercontent.com/u/75796695?v=4?s=100" width="100px;" alt=""/><br /><sub><b>HARSH RAO</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/commits?author=hurshh" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/msramesh2k1"><img src="https://avatars.githubusercontent.com/u/71007973?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ramesh M S</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/pulls?q=is%3Apr+reviewed-by%3Amsramesh2k1" title="Reviewed Pull Requests">👀</a> <a href="#mentoring-msramesh2k1" title="Mentoring">🧑‍🏫</a></td>
   </tr>
 </table>
 
