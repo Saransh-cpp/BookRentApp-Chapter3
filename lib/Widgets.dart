@@ -1,80 +1,11 @@
-//import 'dart:async';
-
 import 'package:flutter/material.dart';
-//import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/allBooksofAGenre.dart';
 import 'package:test_app/Screens/product_details.dart';
-//import 'package:carousel_pro/carousel_pro.dart';
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:transparent_image/transparent_image.dart';
-
-// class AnimatedSearchBar extends StatefulWidget {
-//   @override
-//   _AnimatedSearchBarState createState() => _AnimatedSearchBarState();
-// }
-
-// class _AnimatedSearchBarState extends State<AnimatedSearchBar> {
-//   bool _folded = true;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return AnimatedContainer(
-//       duration: Duration(milliseconds: 400),
-//       width: _folded ? 56 : 200,
-//       height: 56,
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(32),
-//         color: Colors.white,
-//         boxShadow: kElevationToShadow[6],
-//       ),
-//       child: Row(
-//         children: [
-//           Expanded(
-//             child: Container(
-//               padding: EdgeInsets.only(left: 16),
-//               child: !_folded
-//                   ? TextField(
-//                 decoration: InputDecoration(
-//                     hintText: 'Search',
-//                     hintStyle: TextStyle(color: Colors.blue[300]),
-//                     border: InputBorder.none),
-//               )
-//                   : null,
-//             ),
-//           ),
-//           Container(
-//             child: Material(
-//               type: MaterialType.transparency,
-//               child: InkWell(
-//                 borderRadius: BorderRadius.only(
-//                   topLeft: Radius.circular(_folded ? 32 : 0),
-//                   topRight: Radius.circular(32),
-//                   bottomLeft: Radius.circular(_folded ? 32 : 0),
-//                   bottomRight: Radius.circular(32),
-//                 ),
-//                 child: Padding(
-//                   padding: const EdgeInsets.all(16.0),
-//                   child: Icon(
-//                     _folded ? Icons.search : Icons.close,
-//                     color: Colors.blue[900],
-//                   ),
-//                 ),
-//                 onTap: () {
-//                   setState(() {
-//                     _folded = !_folded;
-//                   });
-//                 },
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class CustomListTile extends StatelessWidget {
   final IconData icon;
@@ -551,7 +482,9 @@ class FeaturedCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ProductDetails(product: product,)));
+              builder: (context) => ProductDetails(
+                    product: product,
+                  )));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -616,25 +549,15 @@ class FeaturedCard extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: RichText(
-                          text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: '${product.name} \n',
-                                    style: TextStyle(
-                                        fontSize: 18
-                                    )
-                                ),
-                                TextSpan(
-                                    text: '\$${product.prices[0]} \n',
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold
-                                    )
-                                ),
-                              ]
-                          )
-                      )
-                  ),
+                          text: TextSpan(children: [
+                        TextSpan(
+                            text: '${product.name} \n',
+                            style: TextStyle(fontSize: 18)),
+                        TextSpan(
+                            text: '\$${product.prices[0]} \n',
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold)),
+                      ]))),
                 )
               ],
             ),
@@ -1172,4 +1095,3 @@ class _SearchState extends State<Search> {
 //     );
 //   }
 // }
-

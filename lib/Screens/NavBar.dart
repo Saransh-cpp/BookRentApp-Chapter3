@@ -1,8 +1,6 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/Screens/YourOrders.dart';
-//import 'package:test_app/Widgets.dart';
 import 'package:test_app/Screens/AllBooks.dart';
 import 'package:test_app/Screens/Home.dart';
 
@@ -18,29 +16,13 @@ class _NavBarState extends State<NavBar> {
     Home(),
     AllBooks(),
     YourOrders(),
-
-
   ];
-
-  //@override
-  //void initState(){
-    //super.initState();
-    //pageController = PageController(initialPage: currentIndex);
-  //}
-
-  //@override
-  //void dispose(){
-    //pageController.dispose();
-    //super.dispose();
-  //}
-
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
         body: PageView(
           children: currentTab,
           controller: pageController,
@@ -52,40 +34,23 @@ class _NavBarState extends State<NavBar> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
-
-
             backgroundColor: Colors.pink[50],
             items: <Widget>[
-              Icon(
-                  Icons.home_rounded,
-                  size: 30
-              ),
-              Icon(
-                  Icons.menu_book_rounded,
-                  size: 30
-              ),
-              Icon(
-                  Icons.shopping_cart_rounded,
-                  size: 30
-              ),
-
+              Icon(Icons.home_rounded, size: 30),
+              Icon(Icons.menu_book_rounded, size: 30),
+              Icon(Icons.shopping_cart_rounded, size: 30),
             ],
             index: currentIndex,
             animationCurve: Curves.easeInToLinear,
-
-            animationDuration: Duration(
-                milliseconds: 500
-            ),
-
+            animationDuration: Duration(milliseconds: 500),
             onTap: (int index) {
               setState(() {
                 currentIndex = index;
                 pageController.animateToPage(index,
-                    duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.easeIn);
               });
-            }
-
-        ),
+            }),
       ),
     );
   }

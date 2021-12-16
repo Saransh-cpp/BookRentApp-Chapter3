@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
 import 'package:test_app/Screens/Recommendations.dart';
 import 'package:test_app/Screens/product_details.dart';
-//import 'package:test_app/Widgets.dart';
 import 'package:test_app/model/cart_item.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
@@ -296,7 +295,6 @@ class _YourOrdersState extends State<YourOrders> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(20.0)),
-                                  //this right here
                                   child: Container(
                                     height: 200,
                                     child: Padding(

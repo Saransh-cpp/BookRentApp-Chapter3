@@ -99,7 +99,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/83603918?v=4",
       "profile": "https://github.com/mortal-ghost",
       "contributions": [
-        "bug"
+        "bug",
+        "code"
       ]
     },
     {
@@ -135,6 +136,15 @@
       "name": "Akshat Jain",
       "avatar_url": "https://avatars.githubusercontent.com/u/86458423?v=4",
       "profile": "https://github.com/akshatjain1004",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "hurshh",
+      "name": "HARSH RAO",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75796695?v=4",
+      "profile": "https://github.com/hurshh",
       "contributions": [
         "doc"
       ]
