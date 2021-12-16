@@ -10,7 +10,7 @@
   [![Flutter/Dart Lint Check](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/Test.push.yml)
   [![Label issues](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml/badge.svg)](https://github.com/Saransh-cpp/BookRentApp-Chapter3/actions/workflows/App.yml)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </div>
@@ -138,6 +138,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/msramesh2k1"><img src="https://avatars.githubusercontent.com/u/71007973?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ramesh M S</b></sub></a><br /><a href="https://github.com/Saransh-cpp/BookRentApp-Chapter3/pulls?q=is%3Apr+reviewed-by%3Amsramesh2k1" title="Reviewed Pull Requests">👀</a> <a href="#mentoring-msramesh2k1" title="Mentoring">🧑‍🏫</a></td>
     <td align="center"><a href="https://arnav1776.github.io/portfolio_website/"><img src="https://avatars.githubusercontent.com/u/64467851?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arnav Sharma</b></sub></a><br /><a href="#mentoring-arnav1776" title="Mentoring">🧑‍🏫</a></td>
+    <td align="center"><a href="http://naveeramesh.github.io/portfolio/"><img src="https://avatars.githubusercontent.com/u/54928117?v=4?s=100" width="100px;" alt=""/><br /><sub><b>navee-ramesh</b></sub></a><br /><a href="#mentoring-naveeramesh" title="Mentoring">🧑‍🏫</a></td>
   </tr>
 </table>
 
