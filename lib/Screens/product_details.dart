@@ -10,7 +10,6 @@ import 'package:test_app/provider/user.dart';
 
 import 'package:uuid/uuid.dart';
 import 'package:test_app/services/order.dart';
-import 'package:test_app/model/cart_item.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel product;
@@ -121,7 +120,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 appProvider.changeIsLoading();
                                 return;
                               }
-                              appProvider.changeIsLoading();
                             },
                             color: Colors.red,
                           ),
@@ -137,7 +135,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Expanded(
-                    child: ProdPrice(),
+                    child: prodPrice(),
                   ),
                 ),
                 Expanded(
@@ -198,7 +196,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     ],
                   ),
                   onPressed: () {
-                    double pricef = ProdPriceM();
+                    double pricef = prodPriceM();
                     showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -215,12 +213,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'You will be charged ${pricef} upon delivery!',
+                                      'You will be charged $pricef upon delivery!',
                                       textAlign: TextAlign.center,
                                     ),
                                     SizedBox(
                                       width: 320.0,
-                                      child: RaisedButton(
+                                      child: ElevatedButton(
                                         onPressed: () async {
                                           var uuid = Uuid();
                                           String id = uuid.v4();
@@ -252,21 +250,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                                           "Accept",
                                           style: TextStyle(color: Colors.white),
                                         ),
-                                        color: const Color(0xFF1BC0C5),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: const Color(0xFF1BC0C5),
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: 320.0,
-                                      child: RaisedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                            "Reject",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                          color: Colors.red),
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          "Reject",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.red,
+                                        ),
+                                      ),
                                     ) //}
                                   ],
                                 ),
@@ -364,7 +366,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                             appProvider.changeIsLoading();
                             return;
                           }
-                          appProvider.changeIsLoading();
                         },
                       ),
               ],
@@ -434,7 +435,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
-  ProdPrice() {
+  Widget prodPrice() {
     TextStyle productPriceTextStyle =
         TextStyle(color: Colors.black, fontSize: 24);
     switch (size) {
@@ -467,7 +468,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     }
   }
 
-  ProdPriceM() {
+  prodPriceM() {
     switch (size) {
       case '1 week':
         return widget.product.prices[0];
