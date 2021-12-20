@@ -210,7 +210,7 @@ class _HomeState extends State<Home> {
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
                                   color: Colors.pink[200]),
-                              //height: MediaQuery.of(context).size.height * 0.7,
+                              //height: MediaQuery.of(context).size.height * 0.8,
                               width: MediaQuery.of(context).size.width * 0.98,
                               child: Column(
                                 children: [
