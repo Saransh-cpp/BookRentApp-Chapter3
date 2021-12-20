@@ -1,22 +1,17 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Widgets.dart';
+
 import 'package:test_app/model/product.dart';
 import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
-import 'package:transparent_image/transparent_image.dart';
+
 import 'package:uuid/uuid.dart';
 import 'package:test_app/services/order.dart';
-import 'package:test_app/model/cart_item.dart';
-
-
-
 
 class ProductDetails extends StatefulWidget {
-
   final ProductModel product;
   const ProductDetails({Key key, this.product}) : super(key: key);
 
@@ -25,7 +20,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  final _key = GlobalKey<ScaffoldState>();
+  final _key = GlobalKey<ScaffoldMessengerState>();
   String size = "";
   OrderServices _orderServices = OrderServices();
 
@@ -37,14 +32,13 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
-
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
 
     return SafeArea(
         child: Scaffold(
-          key: _key,
-          appBar: AppBar(
+      key: _key,
+      appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.pink[50],
         iconTheme: IconThemeData(color: Colors.black),
@@ -106,159 +100,91 @@ class _ProductDetailsState extends State<ProductDetails> {
                     });
                   }),
             ),
-            Expanded(child: ProdPrice()),
+            Expanded(child: prodPrice()),
           ],
         ),
-        Row(
-            children: [
-              FlatButton(
-                  onPressed: () {
-                    double pricef = ProdPriceM();
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    20.0)),
-                            //this right here
-                            child: Container(
-                              height: 200,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .center,
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'You will be charged ${pricef} upon delivery!',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    SizedBox(
-                                      width: 320.0,
-                                      child: RaisedButton(
-                                        onPressed: () async {
-                                          var uuid = Uuid();
-                                          String id = uuid.v4();
-                                          if(userProvider.userModel.address != '' && userProvider.userModel.number != '') {
-                                            _orderServices
-                                                .createOrder(
-                                                userId: userProvider
-                                                    .user.uid,
-                                                id: id,
-                                                description: widget.product.name,
-                                                status: "ordered",
-                                                totalPrice: pricef,
-                                                cart: userProvider
-                                                    .userModel.cart);
-                                            _key.currentState
-                                                .showSnackBar(
-                                                SnackBar(
-                                                    content: Text(
-                                                        "Order created!")));
-                                            Navigator.pop(context);
-                                          }else{
-                                            _key.currentState.showSnackBar(
-                                                SnackBar(
-                                                    content: Text(
-                                                        'Please add address and number'
-                                                    )
-                                                )
-                                            );
-                                          }
-                                        },
-                                        child: Text(
-                                          "Accept",
-                                          style:
-                                          TextStyle(
-                                              color: Colors.white),
-                                        ),
-                                        color: const Color(
-                                            0xFF1BC0C5),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 320.0,
-                                      child: RaisedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text(
-                                            "Reject",
-                                            style: TextStyle(
-                                                color: Colors.white),
-                                          ),
-                                          color: Colors.red),
-                                    ) //}
-                                  ],
+        Row(children: [
+          TextButton(
+              onPressed: () {
+                double pricef = prodPriceM();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        //this right here
+                        child: Container(
+                          height: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'You will be charged $pricef upon delivery!',
+                                  textAlign: TextAlign.center,
                                 ),
-                              ),
+                                SizedBox(
+                                  width: 320.0,
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      var uuid = Uuid();
+                                      String id = uuid.v4();
+                                      if (userProvider.userModel.address !=
+                                              '' &&
+                                          userProvider.userModel.number != '') {
+                                        _orderServices.createOrder(
+                                            userId: userProvider.user.uid,
+                                            id: id,
+                                            description: widget.product.name,
+                                            status: "ordered",
+                                            totalPrice: pricef,
+                                            cart: userProvider.userModel.cart);
+                                        _key.currentState.showSnackBar(SnackBar(
+                                            content: Text("Order created!")));
+                                        Navigator.pop(context);
+                                      } else {
+                                        _key.currentState.showSnackBar(SnackBar(
+                                            content: Text(
+                                                'Please add address and number')));
+                                      }
+                                    },
+                                    child: Text(
+                                      "Accept",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                      primary: const Color(0xFF1BC0C5),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 320.0,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text(
+                                      "Reject",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Colors.red),
+                                  ),
+                                ) //}
+                              ],
                             ),
-                          );
-                        }
-                    );
-                  },
-                  child: Text(
-                    'Check Out',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 18
-                    ),
-                  )
-              ),
-          // RaisedButton(
-          //   onPressed: () async {
-          //     var uuid = Uuid();
-          //     String id = uuid.v4();
-          //     if (userProvider.userModel.address != '' &&
-          //         userProvider.userModel.number != '') {
-          //       _orderServices.createOrder(
-          //           userId: userProvider.user.uid,
-          //           id: id,
-          //           description: widget.product.name,
-          //           status: "ordered",
-          //           totalPrice: 0,
-          //           cart: userProvider.userModel.cart);
-          //       // for (CartItemModel cartItem in userProvider.userModel.cart) {
-          //       //   bool value =
-          //       //       await userProvider.removeFromCart(cartItem: cartItem);
-          //       //   if (value) {
-          //       //     userProvider.reloadUserModel();
-          //       //     print("Item added to cart");
-          //       //     _key.currentState.showSnackBar(
-          //       //         SnackBar(content: Text("Removed from Cart!")));
-          //       //   } else {
-          //       //     print("ITEM WAS NOT REMOVED");
-          //       //   }
-          //       // }
-          //       _key.currentState
-          //           .showSnackBar(SnackBar(content: Text("Order created!")));
-          //       Navigator.pop(context);
-          //     } else {
-          //       _key.currentState.showSnackBar(
-          //           SnackBar(content: Text('Please add address and number')));
-          //     }
-          //   },
-          //   child: Text(
-          //     "Accept",
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   color: const Color(0xFF1BC0C5),
-          // ),
-          // SizedBox(
-          //   width: 320.0,
-          //   child: RaisedButton(
-          //       onPressed: () {
-          //         Navigator.pop(context);
-          //       },
-          //       child: Text(
-          //         "Reject",
-          //         style: TextStyle(color: Colors.white),
-          //       ),
-          //       color: Colors.red),
-          // ),
+                          ),
+                        ),
+                      );
+                    });
+              },
+              child: Text(
+                'Check Out',
+                style: TextStyle(color: Colors.red, fontSize: 18),
+              )),
           appProvider.isLoading
               ? Loading()
               : IconButton(
@@ -279,7 +205,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       appProvider.changeIsLoading();
                       return;
                     }
-                    appProvider.changeIsLoading();
+                    // appProvider.changeIsLoading();
                   },
                   color: Colors.red,
                 ),
@@ -301,7 +227,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 appProvider.changeIsLoading();
                 return;
               }
-              appProvider.changeIsLoading();
             },
             color: Colors.red,
           ),
@@ -336,63 +261,45 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
             ),
             Divider(),
-            /*Container(
-                  height: 360,
-                  child: SimilarProducts(),
-                )*/
           ],
         )
       ]),
     ));
   }
 
-  ProdPrice() {
-    switch(size){
+  prodPrice() {
+    switch (size) {
       case '1 week':
-        return     Text(
+        return Text(
           'Price: ${widget.product.prices[0]}',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 18
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '2 weeks':
-        return     Text(
+        return Text(
           'Price: ${widget.product.prices[1]}',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 18
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '3 weeks':
-        return     Text(
+        return Text(
           'Price: ${widget.product.prices[2]}',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 18
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '4 weeks':
-        return     Text(
+        return Text(
           'Price: ${widget.product.prices[3]}',
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 18
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       default:
-        return Text(
-          'select a time'
-        );
+        return Text('select a time');
     }
   }
 
-  ProdPriceM() {
-    switch(size){
+  prodPriceM() {
+    switch (size) {
       case '1 week':
         return widget.product.prices[0];
         break;
@@ -408,6 +315,5 @@ class _ProductDetailsState extends State<ProductDetails> {
       default:
         return 0;
     }
-
   }
 }

@@ -180,85 +180,85 @@ class _RegisterState extends State<Register> {
         body: user.status == Status.Authenticating
             ? Loading()
             : Scaffold(
-            backgroundColor: Colors.pink[50],
-            body: Center(
-              child: SingleChildScrollView(
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        'Welcome to\n Chapter 3',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                        ),
+                backgroundColor: Colors.pink[50],
+                body: Center(
+                  child: SingleChildScrollView(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            'Welcome to\n Chapter 3',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                            ),
+                          ),
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 60,
+                                ),
+                                emailAndNameField("Enter Name",
+                                    'Enter a name', Icon(Icons.person)),
+                                emailAndNameField("Enter Email",
+                                    'Enter an email', Icon(Icons.email)),
+                                passwordField("Enter Password",
+                                    'Enter a password 6+ chars long'),
+                                passwordField("Confirm Password",
+                                    'Enter a password 6+ chars long'),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    if (_formKey.currentState
+                                        .validate()) {
+                                      if (!await user.signUp(
+                                          _nameTextController.text,
+                                          _emailTextController.text,
+                                          _passwordTextController.text)) {
+                                        _key.currentState.showSnackBar(
+                                            SnackBar(
+                                                content: Text(
+                                                    "Sign up failed")));
+                                        return;
+                                      }
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (c) => NavBar()));
+                                    }
+                                  },
+                                  child: Text('Register'),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    widget.toggleView();
+                                  },
+                                  child: Text(
+                                    'I already have an account',
+                                    style: TextStyle(
+                                        color: Colors.red, fontSize: 15),
+                                  ),
+                                ),
+                                Text(
+                                  error,
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 60,
-                            ),
-                            emailAndNameField("Enter Name",
-                                'Enter a name', Icon(Icons.person)),
-                            emailAndNameField("Enter Email",
-                                'Enter an email', Icon(Icons.email)),
-                            passwordField("Enter Password",
-                                'Enter a password 6+ chars long'),
-                            passwordField("Confirm Password",
-                                'Enter a password 6+ chars long'),
-                            ElevatedButton(
-                              onPressed: () async {
-                                if (_formKey.currentState
-                                    .validate()) {
-                                  if (!await user.signUp(
-                                      _nameTextController.text,
-                                      _emailTextController.text,
-                                      _passwordTextController.text)) {
-                                    _key.currentState.showSnackBar(
-                                        SnackBar(
-                                            content: Text(
-                                                "Sign up failed")));
-                                    return;
-                                  }
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (c) => NavBar()));
-                                }
-                              },
-                              child: Text('Register'),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                widget.toggleView();
-                              },
-                              child: Text(
-                                'I already have an account',
-                                style: TextStyle(
-                                    color: Colors.red, fontSize: 15),
-                              ),
-                            ),
-                            Text(
-                              error,
-                              style: TextStyle(
-                                color: Colors.red,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            )));
+                )));
   }
 }
 

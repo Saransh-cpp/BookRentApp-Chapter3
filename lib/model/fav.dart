@@ -11,7 +11,6 @@ class FavItemModel {
   String _productId;
   double _price;
 
-  //  getters
   String get id => _id;
 
   String get name => _name;
@@ -22,8 +21,7 @@ class FavItemModel {
 
   double get price => _price;
 
-
-  FavItemModel.fromMap(Map data){
+  FavItemModel.fromMap(Map data) {
     _id = data[ID];
     _name = data[NAME];
     _image = data[IMAGE];
@@ -31,8 +29,7 @@ class FavItemModel {
     _price = data[PRICE];
   }
 
-  Map toMap() =>
-      {
+  Map toMap() => {
         ID: _id,
         IMAGE: _image,
         NAME: _name,

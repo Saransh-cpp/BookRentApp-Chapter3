@@ -4,7 +4,6 @@ import 'package:test_app/provider/product.dart';
 import 'package:test_app/Widgets.dart';
 
 class BestSellers extends StatefulWidget {
-
   @override
   _BestSellersState createState() => _BestSellersState();
 }
@@ -16,21 +15,20 @@ class _BestSellersState extends State<BestSellers> {
     return SafeArea(
       child: Container(
         color: Colors.pink[50],
-        child: Column(
+        child: ListView(
           children: productProvider.products
-              .map((item) =>
-              GestureDetector(
-                child: item.bestseller ? ProductCard(
-                  product: item,
-                )
-                    : SizedBox(
-                  height: 0,
-                ),
-              )
-          ).toList(),
+              .map((item) => GestureDetector(
+                    child: item.bestseller
+                        ? ProductCard(
+                            product: item,
+                          )
+                        : SizedBox(
+                            height: 0,
+                          ),
+                  ))
+              .toList(),
         ),
       ),
     );
   }
 }
-

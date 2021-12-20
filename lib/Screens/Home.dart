@@ -129,6 +129,9 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            onPressed: () {
+              _drawerKey.currentState.openDrawer();
+            },
           ),
           appBar: AppBar(
               leading: IconButton(

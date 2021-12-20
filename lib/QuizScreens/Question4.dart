@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:test_app/QuizScreens/Question1.dart';
 import 'package:test_app/QuizScreens/Question5.dart';
-import 'package:test_app/QuizScreens/QuizResult.dart';
 import 'package:test_app/model/QuizDataModel.dart';
 
+//ignore: must_be_immutable
 class Question4 extends StatefulWidget {
-
   QuizData quizData = QuizData();
   Question4({this.quizData});
 
@@ -19,16 +16,16 @@ class Question4 extends StatefulWidget {
   int aad = 0;
   int tgdt = 0;
   int fsg = 0;
-
 }
 
 class _Question4State extends State<Question4> {
-
   String chosen;
   bool answered = false;
   String option1 = 'Fall in love with a\nbillionaire';
-  String option2 = 'Be a prominent figure in the\ninternational Hacker community';
-  String option3 = 'Take a break from your regular\njob and solve mysteries\nand save the world';
+  String option2 =
+      'Be a prominent figure in the\ninternational Hacker community';
+  String option3 =
+      'Take a break from your regular\njob and solve mysteries\nand save the world';
   String option4 = 'Unravel the complexities\n of the universe';
 
   @override
@@ -38,16 +35,17 @@ class _Question4State extends State<Question4> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(
-                color: Colors.black
-            ),
+            iconTheme: IconThemeData(color: Colors.black),
             actions: [
               IconButton(
                 icon: Icon(Icons.navigate_next_rounded),
                 onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question5(
-                    quizData: widget.quizData,
-                  )));
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) => Question5(
+                                quizData: widget.quizData,
+                              )));
                 },
               )
             ],
@@ -58,10 +56,7 @@ class _Question4State extends State<Question4> {
                 children: [
                   Text(
                     'Question 4',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
@@ -72,10 +67,7 @@ class _Question4State extends State<Question4> {
                 children: [
                   Text(
                     'What are you most likely to do?',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
-                    ),
+                    style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
@@ -96,32 +88,24 @@ class _Question4State extends State<Question4> {
                         }
                       },
                       child: Container(
-                          color: chosen == option1 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'A',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option1,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option1
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'A',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option1,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -134,32 +118,24 @@ class _Question4State extends State<Question4> {
                         }
                       },
                       child: Container(
-                          color: chosen == option2 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'B',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option2,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option2
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'B',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option2,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -172,32 +148,24 @@ class _Question4State extends State<Question4> {
                         }
                       },
                       child: Container(
-                          color: chosen == option3 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'C',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option3,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  ),
+                          color: chosen == option3
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'C',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option3,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ]))),
                   GestureDetector(
                       onTap: () {
                         if (!answered) {
@@ -214,48 +182,39 @@ class _Question4State extends State<Question4> {
                         }
                       },
                       child: Container(
-                          color: chosen == option4 ?
-                          Colors.blueAccent :
-                          Colors.white,
-                          child: Row(
-                              children: [
-                                Text(
-                                  'D',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 40,
-                                ),
-                                Text(
-                                  option4,
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ]
-                          )
-                      )
-                  )
+                          color: chosen == option4
+                              ? Colors.blueAccent
+                              : Colors.white,
+                          child: Row(children: [
+                            Text(
+                              'D',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            ),
+                            SizedBox(
+                              width: 40,
+                            ),
+                            Text(
+                              option4,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 20),
+                            )
+                          ])))
                 ],
               ),
-              SizedBox(height: 100,),
+              SizedBox(
+                height: 100,
+              ),
               MaterialButton(
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
                       widget.quizData.fsg -= 1;
-                    }
-                    else if (chosen == option2) {
+                    } else if (chosen == option2) {
                       widget.quizData.tgdt -= 1;
-                    }
-                    else if (chosen == option3) {
+                    } else if (chosen == option3) {
                       widget.quizData.aad -= 1;
-                    }
-                    else if (chosen == option4) {
+                    } else if (chosen == option4) {
                       widget.quizData.pw -= 1;
                       widget.quizData.csms -= 1;
                       widget.quizData.eu -= 1;
@@ -273,8 +232,7 @@ class _Question4State extends State<Question4> {
                 child: Text('Reset'),
               ),
             ],
-          )
-      ),
+          )),
     );
   }
 }
