@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/product_details.dart';
-import 'package:test_app/Widgets.dart';
-import 'package:test_app/provider/product.dart';
+import 'package:book_rent_app_chapter3/Screens/product_details.dart';
+import 'package:book_rent_app_chapter3/Widgets.dart';
+import 'package:book_rent_app_chapter3/provider/product.dart';
 
 class ProductSearchScreen extends StatelessWidget {
   @override

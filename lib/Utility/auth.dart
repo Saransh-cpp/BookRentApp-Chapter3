@@ -11,19 +11,14 @@ class Auth implements BaseAuth {
   @override
   Future<User> googleSignIn() async {
     final GoogleSignIn _googleSignIn = GoogleSignIn();
-    final GoogleSignInAccount googleAccount = await _googleSignIn.signIn();
+    final GoogleSignInAccount? googleAccount = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
-    await googleAccount.authentication;
+    await googleAccount!.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
-    try{
       User user = (await _firebaseAuth.signInWithCredential(credential)) as User;
       return user;
-    }catch(e){
-      print(e.toString());
-      return null;
-    }
   }
 }

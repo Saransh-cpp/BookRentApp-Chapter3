@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/Widgets.dart';
+import 'package:book_rent_app_chapter3/Widgets.dart';
 
 class AllBooks extends StatefulWidget {
   @override

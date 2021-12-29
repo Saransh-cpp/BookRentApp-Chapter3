@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app/Screens/AdminPage.dart';
-import 'package:test_app/Screens/LoginPage.dart';
+import 'package:book_rent_app_chapter3/Screens/AdminPage.dart';
+import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
 
 class AdminSignIn extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                 TextFormField(
                   controller: _emailTextController,
                   decoration: InputDecoration(hintText: 'email'),
-                  validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                  validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                   textAlignVertical: TextAlignVertical.bottom,
                 ),
                 SizedBox(
@@ -42,7 +42,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                   controller: _passwordTextController,
                   decoration: InputDecoration(hintText: 'password'),
                   validator: (val) =>
-                      val.length < 6 ? 'Enter a password 6+ chars long' : null,
+                      val!.length < 6 ? 'Enter a password 6+ chars long' : null,
                   textAlignVertical: TextAlignVertical.bottom,
                   obscureText: true,
                 ),
@@ -51,7 +51,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    if (_formKey.currentState.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       loginAdmin();
                     }
                   },

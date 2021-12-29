@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Screens/allBooksofAGenre.dart';
-import 'package:test_app/Screens/product_details.dart';
-import 'package:test_app/model/product.dart';
-import 'package:test_app/provider/product.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/allBooksofAGenre.dart';
+import 'package:book_rent_app_chapter3/Screens/product_details.dart';
+import 'package:book_rent_app_chapter3/model/product.dart';
+import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -19,7 +19,7 @@ class CustomListTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
       child: Container(
         child: InkWell(
-            onTap: onTap,
+            onTap: onTap(),
             splashColor: Colors.orangeAccent,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +50,7 @@ class CustomListTile extends StatelessWidget {
 class ProductCard extends StatelessWidget {
   final ProductModel product;
 
-  const ProductCard({Key key, this.product}) : super(key: key);
+  const ProductCard({Key? key,required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class ProductCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey[300],
+                    color: Colors.grey[300]!,
                     offset: Offset(-2, -1),
                     blurRadius: 5),
               ]),
@@ -473,7 +473,7 @@ class _ProductsState extends State<Products> {
 class FeaturedCard extends StatelessWidget {
   final ProductModel product;
 
-  const FeaturedCard({Key key, this.product}) : super(key: key);
+  const FeaturedCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -573,7 +573,7 @@ class FeaturedCard extends StatelessWidget {
 class FeaturedProducts extends StatefulWidget {
   final String genre;
 
-  const FeaturedProducts({Key key, this.genre}) : super(key: key);
+  const FeaturedProducts({Key? key, required this.genre}) : super(key: key);
 
   @override
   _FeaturedProductsState createState() => _FeaturedProductsState();
@@ -628,7 +628,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 class PerGenre extends StatefulWidget {
   final String genre;
 
-  const PerGenre({Key key, this.genre}) : super(key: key);
+  const PerGenre({Key? key,required this.genre}) : super(key: key);
 
   @override
   _PerGenreState createState() => _PerGenreState();
@@ -658,7 +658,7 @@ class _PerGenreState extends State<PerGenre> {
 class AllBooksOfAGenre extends StatefulWidget {
   final String genre;
 
-  const AllBooksOfAGenre({Key key, this.genre}) : super(key: key);
+  const AllBooksOfAGenre({Key? key, required this.genre}) : super(key: key);
 
   @override
   _AllBooksOfAGenreState createState() => _AllBooksOfAGenreState();

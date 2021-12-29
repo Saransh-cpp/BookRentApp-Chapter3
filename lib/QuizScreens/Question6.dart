@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/QuizScreens/Question7.dart';
-import 'package:test_app/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/Question7.dart';
+import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question6 extends StatefulWidget {
   QuizData quizData = QuizData();
-  Question6({this.quizData});
+  Question6({required this.quizData});
 
   @override
   _Question6State createState() => _Question6State();
@@ -17,7 +17,7 @@ class Question6 extends StatefulWidget {
 }
 
 class _Question6State extends State<Question6> {
-  String chosen;
+  String? chosen;
   bool answered = false;
   String option1 = 'Sweden';
   String option2 = 'A lavish castle in a dystopian world';

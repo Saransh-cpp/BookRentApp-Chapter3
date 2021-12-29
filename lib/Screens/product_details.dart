@@ -2,18 +2,18 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
 
-import 'package:test_app/model/product.dart';
-import 'package:test_app/provider/app.dart';
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/model/product.dart';
+import 'package:book_rent_app_chapter3/provider/app.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 
 import 'package:uuid/uuid.dart';
-import 'package:test_app/services/order.dart';
+import 'package:book_rent_app_chapter3/services/order.dart';
 
 class ProductDetails extends StatefulWidget {
-  final ProductModel product;
-  const ProductDetails({Key key, this.product}) : super(key: key);
+  final ProductModel? product;
+  const ProductDetails({ Key? key, this.product}) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -27,7 +27,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   void initState() {
     super.initState();
-    size = widget.product.sizes[0];
+    size = widget.product!.sizes[0];
   }
 
   @override
@@ -54,14 +54,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                   boxFit: BoxFit.cover,
                   images: [
                     Image.network(
-                      widget.product.pictures[0],
+                      widget.product!.pictures[0],
                       fit: BoxFit.fill,
                     ),
                     Image.network(
-                      widget.product.pictures[1],
+                      widget.product!.pictures[1],
                       fit: BoxFit.fill,
                     ),
-                    Image.network(widget.product.pictures[2]),
+                    Image.network(widget.product!.pictures[2]),
                   ],
                   animationCurve: Curves.fastOutSlowIn,
                   dotSize: 4.0,
@@ -85,7 +85,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: DropdownButton<String>(
                   value: size,
                   style: TextStyle(color: Colors.white),
-                  items: widget.product.sizes
+                  items: widget.product!.sizes
                       .map<DropdownMenuItem<String>>(
                           (value) => DropdownMenuItem(
                               value: value,
@@ -96,7 +96,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       .toList(),
                   onChanged: (value) {
                     setState(() {
-                      size = value;
+                      size = value!;
                     });
                   }),
             ),
@@ -138,15 +138,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         _orderServices.createOrder(
                                             userId: userProvider.user.uid,
                                             id: id,
-                                            description: widget.product.name,
+                                            description: widget.product!.name,
                                             status: "ordered",
                                             totalPrice: pricef,
-                                            cart: userProvider.userModel.cart);
-                                        _key.currentState.showSnackBar(SnackBar(
+                                            cart: userProvider.userModel.cart!);
+                                        _key.currentState!.showSnackBar(SnackBar(
                                             content: Text("Order created!")));
                                         Navigator.pop(context);
                                       } else {
-                                        _key.currentState.showSnackBar(SnackBar(
+                                        _key.currentState!.showSnackBar(SnackBar(
                                             content: Text(
                                                 'Please add address and number')));
                                       }
@@ -192,15 +192,15 @@ class _ProductDetailsState extends State<ProductDetails> {
                   onPressed: () async {
                     appProvider.changeIsLoading();
                     bool success = await userProvider.addToCart(
-                        product: widget.product, size: size);
+                        product: widget.product!, size: size);
                     if (success) {
-                      _key.currentState.showSnackBar(
+                      _key.currentState!.showSnackBar(
                           SnackBar(content: Text("Added to Cart!")));
                       userProvider.reloadUserModel();
                       appProvider.changeIsLoading();
                       return;
                     } else {
-                      _key.currentState.showSnackBar(
+                      _key.currentState!.showSnackBar(
                           SnackBar(content: Text("Not added to Cart!")));
                       appProvider.changeIsLoading();
                       return;
@@ -214,15 +214,15 @@ class _ProductDetailsState extends State<ProductDetails> {
             onPressed: () async {
               appProvider.changeIsLoading();
               bool success =
-                  await userProvider.addToFav(product: widget.product);
+                  await userProvider.addToFav(product: widget.product!);
               if (success) {
-                _key.currentState
+                _key.currentState!
                     .showSnackBar(SnackBar(content: Text("Added to Fav!")));
                 userProvider.reloadUserModel();
                 appProvider.changeIsLoading();
                 return;
               } else {
-                _key.currentState
+                _key.currentState!
                     .showSnackBar(SnackBar(content: Text("Not added to Fav!")));
                 appProvider.changeIsLoading();
                 return;
@@ -246,12 +246,12 @@ class _ProductDetailsState extends State<ProductDetails> {
               ],
             ),
             Divider(),
-            Text(widget.product.description),
+            Text(widget.product!.description),
             Divider(),
             Text('Why you should read?',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Divider(),
-            Text(widget.product.whyToRead),
+            Text(widget.product!.whyToRead),
             Divider(),
             Text(
               'Similar Books',
@@ -271,25 +271,25 @@ class _ProductDetailsState extends State<ProductDetails> {
     switch (size) {
       case '1 week':
         return Text(
-          'Price: ${widget.product.prices[0]}',
+          'Price: ${widget.product!.prices[0]}',
           style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '2 weeks':
         return Text(
-          'Price: ${widget.product.prices[1]}',
+          'Price: ${widget.product!.prices[1]}',
           style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '3 weeks':
         return Text(
-          'Price: ${widget.product.prices[2]}',
+          'Price: ${widget.product!.prices[2]}',
           style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
       case '4 weeks':
         return Text(
-          'Price: ${widget.product.prices[3]}',
+          'Price: ${widget.product!.prices[3]}',
           style: TextStyle(color: Colors.black, fontSize: 18),
         );
         break;
@@ -301,16 +301,16 @@ class _ProductDetailsState extends State<ProductDetails> {
   prodPriceM() {
     switch (size) {
       case '1 week':
-        return widget.product.prices[0];
+        return widget.product!.prices[0];
         break;
       case '2 weeks':
-        return widget.product.prices[1];
+        return widget.product!.prices[1];
         break;
       case '3 weeks':
-        return widget.product.prices[2];
+        return widget.product!.prices[2];
         break;
       case '4 weeks':
-        return widget.product.prices[3];
+        return widget.product!.prices[3];
         break;
       default:
         return 0;

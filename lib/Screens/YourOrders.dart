@@ -1,13 +1,13 @@
 import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Screens/product_details.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/product_details.dart';
 
-import 'package:test_app/model/cart_item.dart';
-import 'package:test_app/provider/app.dart';
-import 'package:test_app/provider/user.dart';
-import 'package:test_app/services/order.dart';
+import 'package:book_rent_app_chapter3/model/cart_item.dart';
+import 'package:book_rent_app_chapter3/provider/app.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
+import 'package:book_rent_app_chapter3/services/order.dart';
 import 'package:uuid/uuid.dart';
 
 // const String testDevice = 'ca-app-pub-2019702807519064~1210594994';
@@ -28,7 +28,7 @@ class _YourOrdersState extends State<YourOrders> {
   final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
-  BannerAd _bannerAd;
+  BannerAd? _bannerAd;
 
   BannerAd createBannerAd() {
     return BannerAd(
@@ -53,7 +53,7 @@ class _YourOrdersState extends State<YourOrders> {
 
   @override
   void dispose() {
-    _bannerAd.dispose();
+    _bannerAd!.dispose();
     super.dispose();
   }
 
@@ -80,7 +80,7 @@ class _YourOrdersState extends State<YourOrders> {
           body: appProvider.isLoading
               ? Loading()
               : ListView.builder(
-                  itemCount: userProvider.userModel.cart.length,
+                  itemCount: userProvider.userModel.cart!.length,
                   itemBuilder: (_, index) {
                     return Padding(
                       padding: const EdgeInsets.all(16),
@@ -105,7 +105,7 @@ class _YourOrdersState extends State<YourOrders> {
                                   topLeft: Radius.circular(20),
                                 ),
                                 child: Image.network(
-                                  userProvider.userModel.cart[index].image,
+                                  userProvider.userModel.cart![index].image,
                                   height: 120,
                                   width: 140,
                                   fit: BoxFit.fill,
@@ -123,7 +123,7 @@ class _YourOrdersState extends State<YourOrders> {
                                       text: TextSpan(children: [
                                         TextSpan(
                                             text: userProvider.userModel
-                                                    .cart[index].name +
+                                                    .cart![index].name +
                                                 "\n",
                                             style: TextStyle(
                                                 color: Colors.black,
@@ -131,7 +131,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                 fontWeight: FontWeight.bold)),
                                         TextSpan(
                                             text:
-                                                "\$${userProvider.userModel.cart[index].price} \n\n",
+                                                "\$${userProvider.userModel.cart![index].price} \n\n",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 18,
@@ -148,10 +148,10 @@ class _YourOrdersState extends State<YourOrders> {
                                           bool success =
                                               await userProvider.removeFromCart(
                                                   cartItem: userProvider
-                                                      .userModel.cart[index]);
+                                                      .userModel.cart![index]);
                                           if (success) {
                                             userProvider.reloadUserModel();
-                                            _key.currentState.showSnackBar(
+                                            _key.currentState!.showSnackBar(
                                                 SnackBar(
                                                     content: Text(
                                                         "Removed from Cart!")));
@@ -269,14 +269,14 @@ class _YourOrdersState extends State<YourOrders> {
                                                             .userModel.number !=
                                                         '') {
                                                   String orderNames =
-                                                      '${userProvider.userModel.cart[0].name}';
+                                                      '${userProvider.userModel.cart![0].name}';
                                                   for (int i = 1;
                                                       i <
                                                           userProvider.userModel
-                                                              .cart.length;
+                                                              .cart!.length;
                                                       i++) {
                                                     orderNames = orderNames +
-                                                        ', ${userProvider.userModel.cart[i].name}';
+                                                        ', ${userProvider.userModel.cart![i].name}';
                                                   }
                                                   _orderServices.createOrder(
                                                       userId:
@@ -286,12 +286,12 @@ class _YourOrdersState extends State<YourOrders> {
                                                       status: "ordered",
                                                       totalPrice: userProvider
                                                           .userModel
-                                                          .totalCartPrice,
+                                                          .totalCartPrice!,
                                                       cart: userProvider
-                                                          .userModel.cart);
+                                                          .userModel.cart!);
                                                   for (CartItemModel cartItem
                                                       in userProvider
-                                                          .userModel.cart) {
+                                                          .userModel.cart!) {
                                                     bool value =
                                                         await userProvider
                                                             .removeFromCart(
@@ -302,7 +302,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                           .reloadUserModel();
                                                       print(
                                                           "Item added to cart");
-                                                      _key.currentState
+                                                      _key.currentState!
                                                           .showSnackBar(SnackBar(
                                                               content: Text(
                                                                   "Removed from Cart!")));
@@ -311,13 +311,13 @@ class _YourOrdersState extends State<YourOrders> {
                                                           "ITEM WAS NOT REMOVED");
                                                     }
                                                   }
-                                                  _key.currentState
+                                                  _key.currentState!
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               "Order created!")));
                                                   Navigator.pop(context);
                                                 } else {
-                                                  _key.currentState
+                                                  _key.currentState!
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               'Please add address and number')));

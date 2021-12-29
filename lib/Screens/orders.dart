@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/model/order.dart';
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/model/order.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class OrdersScreen extends StatelessWidget {
   @override

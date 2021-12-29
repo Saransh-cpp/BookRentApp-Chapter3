@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/QuizScreens/Question1.dart';
-//import 'package:test_app/Screens/LoginPage.dart';
-import 'package:test_app/Screens/orders.dart';
-import 'package:test_app/Screens/product_search.dart';
-import 'package:test_app/Widgets.dart';
-//import 'package:test_app/database.dart';
-//import 'package:test_app/Screens/Register.dart';
-import 'package:test_app/provider/product.dart';
-import 'package:test_app/provider/user.dart';
-//import 'package:test_app/services/product.dart';
-import 'package:test_app/Screens/Favourites.dart';
-import 'package:test_app/Screens/Profile.dart';
-//import 'package:test_app/Screens/Quiz.dart';
-import 'package:test_app/Screens/Recommendations.dart';
-import 'package:test_app/Screens/BestSellers.dart';
-import 'package:test_app/Screens/AboutUs.dart';
-import 'package:test_app/Screens/Contact.dart';
-import 'package:test_app/Screens/Report.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/Question1.dart';
+//import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
+import 'package:book_rent_app_chapter3/Screens/orders.dart';
+import 'package:book_rent_app_chapter3/Screens/product_search.dart';
+import 'package:book_rent_app_chapter3/Widgets.dart';
+//import 'package:book_rent_app_chapter3/database.dart';
+//import 'package:book_rent_app_chapter3/Screens/Register.dart';
+import 'package:book_rent_app_chapter3/provider/product.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
+//import 'package:book_rent_app_chapter3/services/product.dart';
+import 'package:book_rent_app_chapter3/Screens/Favourites.dart';
+import 'package:book_rent_app_chapter3/Screens/Profile.dart';
+//import 'package:book_rent_app_chapter3/Screens/Quiz.dart';
+import 'package:book_rent_app_chapter3/Screens/Recommendations.dart';
+import 'package:book_rent_app_chapter3/Screens/BestSellers.dart';
+import 'package:book_rent_app_chapter3/Screens/AboutUs.dart';
+import 'package:book_rent_app_chapter3/Screens/Contact.dart';
+import 'package:book_rent_app_chapter3/Screens/Report.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
               color: Colors.black,
             ),
             onPressed: () {
-              _drawerKey.currentState.openDrawer();
+              _drawerKey.currentState!.openDrawer();
             },
           ),
           backgroundColor: Colors.white,
@@ -204,10 +204,10 @@ class _HomeState extends State<Home> {
                       child: Container(
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: Colors.pink[50],
+                                color: Colors.pink[50]!,
                               ),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(50)),
+                                  BorderRadius.all(Radius.circular(50)!),
                               color: Colors.pink[200]),
                           height: MediaQuery.of(context).size.height * 0.7,
                           width: MediaQuery.of(context).size.width * 0.97,
@@ -222,7 +222,7 @@ class _HomeState extends State<Home> {
                                   Container(
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                          color: Colors.pink[900],
+                                          color: Colors.pink[900]!,
                                         ),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50)),
@@ -264,7 +264,7 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.pink[900],
+                                        color: Colors.pink[900]!,
                                       ),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -290,7 +290,7 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.pink[900],
+                                        color: Colors.pink[900]!,
                                       ),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -317,7 +317,7 @@ class _HomeState extends State<Home> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         border: Border.all(
-                                          color: Colors.pink[900],
+                                          color: Colors.pink[900]!,
                                         ),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(20))),
