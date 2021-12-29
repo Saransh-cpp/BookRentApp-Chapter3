@@ -1,6 +1,6 @@
 {
-    "name": "book_rent_app_chapter3",
-    "short_name": "book_rent_app_chapter3",
+    "name": "test_app",
+    "short_name": "test_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
