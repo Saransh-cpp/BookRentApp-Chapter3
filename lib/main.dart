@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
@@ -22,7 +23,6 @@ Future<void> main() async {
     }
     binding.allowFirstFrame();
   });
-  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
