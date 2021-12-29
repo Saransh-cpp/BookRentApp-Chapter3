@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.book_rent_app_chapter3">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="book_rent_app_chapter3"
+       android:label="Chapter3 - Book Rental Service"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -20,6 +21,10 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <meta-data
+                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+                android:resource="@drawable/launch_background"
+                />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
