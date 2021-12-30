@@ -1,7 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:book_rent_app_chapter3/Screens/NavBar.dart';
 //import 'package:book_rent_app_chapter3/Utility/auth.dart';
 //import 'package:book_rent_app_chapter3/main.dart';
 //import 'dart:io';
@@ -176,10 +175,10 @@ class _RegisterState extends State<Register> {
 
     return Scaffold(
         backgroundColor: Colors.yellow,
-        key: _key,
         body: user.status == Status.Authenticating
             ? Loading()
             : Scaffold(
+                key: _key,
                 backgroundColor: Colors.pink[50],
                 body: Center(
                   child: SingleChildScrollView(
@@ -218,16 +217,12 @@ class _RegisterState extends State<Register> {
                                           _nameTextController.text,
                                           _emailTextController.text,
                                           _passwordTextController.text)) {
-                                        _key.currentState!.showSnackBar(
+                                        ScaffoldMessenger.of(context).showSnackBar(
                                             SnackBar(
                                                 content: Text(
                                                     "Sign up failed")));
                                         return;
                                       }
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (c) => NavBar()));
                                     }
                                   },
                                   child: Text('Register'),

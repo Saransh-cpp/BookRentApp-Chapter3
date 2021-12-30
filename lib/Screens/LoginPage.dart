@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:book_rent_app_chapter3/Screens/Loading.dart';
-import 'package:book_rent_app_chapter3/Screens/NavBar.dart';
 import 'package:book_rent_app_chapter3/Screens/Register.dart';
 
 import 'package:book_rent_app_chapter3/provider/user.dart';
@@ -53,11 +52,10 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
-    return Scaffold(
-      key: _key,
-      body: user.status == Status.Authenticating
+    return user.status == Status.Authenticating
           ? Loading()
           : Scaffold(
+              key: _key,
               backgroundColor: Colors.pink[50],
               body: Container(
                   padding: EdgeInsets.symmetric(
@@ -116,13 +114,8 @@ class _SignInState extends State<SignIn> {
                                   if (!await user.signIn(
                                       _emailTextController.text,
                                       _passwordTextController.text)) {
-                                    _key.currentState!.showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                         content: Text("Sign in failed")));
-                                  } else {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (c) => NavBar()));
                                   }
                                 }
                               },
@@ -150,7 +143,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                     ],
-                  ))),
+                  )),
     );
   }
 }
