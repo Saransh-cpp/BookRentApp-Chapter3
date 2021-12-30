@@ -10,6 +10,8 @@ import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/product.dart';
 import 'package:test_app/provider/user.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +25,8 @@ Future<void> main() async {
     binding.allowFirstFrame();
   });
   await Firebase.initializeApp();
+  MobileAds.instance.initialize();
+
   runApp(MyApp());
 }
 

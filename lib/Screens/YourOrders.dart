@@ -1,4 +1,4 @@
-import 'package:firebase_admob/firebase_admob.dart';
+// import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/Screens/Loading.dart';
@@ -9,6 +9,8 @@ import 'package:test_app/provider/app.dart';
 import 'package:test_app/provider/user.dart';
 import 'package:test_app/services/order.dart';
 import 'package:uuid/uuid.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 // const String testDevice = 'ca-app-pub-2019702807519064~1210594994';
 
@@ -18,49 +20,81 @@ class YourOrders extends StatefulWidget {
 }
 
 class _YourOrdersState extends State<YourOrders> {
-  static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: <String>[],
-    contentUrl: 'https://flutter.io',
-    childDirected: true,
-    keywords: <String>['books', 'library', 'novels'],
-  );
+  // static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+  //   testDevices: <String>[],
+  //   contentUrl: 'https://flutter.io',
+  //   childDirected: true,
+  //   keywords: <String>['books', 'library', 'novels'],
+  // );
 
   final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
-  BannerAd _bannerAd;
 
-  BannerAd createBannerAd() {
-    return BannerAd(
-        adUnitId: 'ca-app-pub-2019702807519064/7611340051',
-        size: AdSize.banner,
-        targetingInfo: targetingInfo,
-        listener: (MobileAdEvent event) {
-          print('Banner event : $event');
-        });
-  }
+  // BannerAd createBannerAd() {
+  //   return BannerAd(
+  //       adUnitId: 'ca-app-pub-2019702807519064/7611340051',
+  //       size: AdSize.banner,
+  //       targetingInfo: targetingInfo,
+  //       listener: (MobileAdEvent event) {
+  //         print('Banner event : $event');
+  //       });
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   FirebaseAdMob.instance
+  //       .initialize(appId: 'ca-app-pub-2019702807519064~1210594994');
+  //   // showBannerAd();
+  //   _bannerAd = createBannerAd()
+  //     ..load()
+  //     ..show(anchorOffset: 125);
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _bannerAd.dispose();
+  //   super.dispose();
+  // }
+  BannerAd _bannerAd;
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance
-        .initialize(appId: 'ca-app-pub-2019702807519064~1210594994');
-    // showBannerAd();
-    _bannerAd = createBannerAd()
-      ..load()
-      ..show(anchorOffset: 125);
+    _bannerAd = BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (Ad ad) {
+          print('$BannerAd loaded.');
+        },
+        onAdFailedToLoad: (Ad ad, LoadAdError error) {
+          print('$BannerAd failedToLoad: $error');
+        },
+        onAdOpened: (Ad ad) => print('$BannerAd onAdOpened.'),
+        onAdClosed: (Ad ad) => print('$BannerAd onAdClosed.'),
+      ),
+    );
+
+    _bannerAd?.load();
   }
 
   @override
   void dispose() {
-    _bannerAd.dispose();
     super.dispose();
+    _bannerAd?.dispose();
+    _bannerAd = null;
   }
+
 
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
+    final AdWidget adWidget = AdWidget(ad: _bannerAd);
+
 
     return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -347,7 +381,14 @@ class _YourOrdersState extends State<YourOrders> {
                                               style: ElevatedButton.styleFrom(
                                                   primary: Colors.red),
                                             ),
-                                          ) //}
+                                          ),
+                                          Spacer(),
+                                          Container(
+                                            alignment: Alignment.center,
+                                            child: adWidget,
+                                            width: _bannerAd.size.width.toDouble(),
+                                            height: _bannerAd.size.height.toDouble(),
+                                          )
                                         ],
                                       ),
                                     ),
@@ -359,7 +400,8 @@ class _YourOrdersState extends State<YourOrders> {
                           'Check Out',
                           style: TextStyle(color: Colors.red, fontSize: 18),
                         )),
-                  )
+                  ),
+
                 ],
               ),
             ),
