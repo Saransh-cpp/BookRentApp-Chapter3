@@ -114,7 +114,7 @@ class _SignInState extends State<SignIn> {
                                   if (!await user.signIn(
                                       _emailTextController.text,
                                       _passwordTextController.text)) {
-                                    _key.currentState.showSnackBar(SnackBar(
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                         content: Text("Sign in failed")));
                                   }
                                 }
