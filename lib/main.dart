@@ -22,9 +22,11 @@ Future<void> main() async {
     }
     binding.allowFirstFrame();
   });
-  await Firebase.initializeApp(
-    options: FirebaseOptions(apiKey: "AIzaSyCdQgjJ7kTZ_NxrW-1ReuvInOYyXJTwRTA", appId: "1:154108809680:web:f0f9b39d6f5bdbfbfb29d5", messagingSenderId: "154108809680", projectId: "bookrentapp"),
-  );
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp();
+  }else {
+    Firebase.app(); // if already initialized, use that one
+  }
   runApp(MyApp());
 }
 
