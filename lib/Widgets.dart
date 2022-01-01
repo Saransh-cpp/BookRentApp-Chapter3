@@ -10,7 +10,7 @@ import 'package:transparent_image/transparent_image.dart';
 class CustomListTile extends StatelessWidget {
   final IconData icon;
   final String text;
-  final Function onTap;
+  final Function() onTap;
 
   CustomListTile(this.icon, this.text, this.onTap);
   @override
@@ -19,7 +19,7 @@ class CustomListTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
       child: Container(
         child: InkWell(
-            onTap: onTap(),
+            onTap: onTap,
             splashColor: Colors.orangeAccent,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -115,7 +115,7 @@ class ClickableCard extends StatelessWidget {
   ClickableCard(
       {required this.textContent, required this.onTap, required this.color});
   final String textContent;
-  final Function onTap;
+  final Function() onTap;
   final Color color;
 
   @override
@@ -133,7 +133,7 @@ class ClickableCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           splashColor: Colors.pink.withAlpha(60),
-          onTap: onTap(),
+          onTap: onTap,
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Text(
