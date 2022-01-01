@@ -1,4 +1,3 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/Screens/Loading.dart';
@@ -18,42 +17,18 @@ class YourOrders extends StatefulWidget {
 }
 
 class _YourOrdersState extends State<YourOrders> {
-  static MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
-    testDevices: <String>[],
-    contentUrl: 'https://flutter.io',
-    childDirected: true,
-    keywords: <String>['books', 'library', 'novels'],
-  );
 
   final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
-  BannerAd? _bannerAd;
-
-  BannerAd createBannerAd() {
-    return BannerAd(
-        adUnitId: 'ca-app-pub-2019702807519064/7611340051',
-        size: AdSize.banner,
-        targetingInfo: targetingInfo,
-        listener: (MobileAdEvent event) {
-          print('Banner event : $event');
-        });
-  }
 
   @override
   void initState() {
     super.initState();
-    FirebaseAdMob.instance
-        .initialize(appId: 'ca-app-pub-2019702807519064~1210594994');
-    // showBannerAd();
-    _bannerAd = createBannerAd()
-      ..load()
-      ..show(anchorOffset: 125);
   }
 
   @override
   void dispose() {
-    _bannerAd!.dispose();
     super.dispose();
   }
 

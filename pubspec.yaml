@@ -27,10 +27,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  carousel_pro: ^1.0.0
+  carousel_pro_nullsafety: ^1.0.2
   cloud_firestore: 3.1.5
   curved_navigation_bar: ^1.0.1
-  firebase_admob: ^0.11.2
   firebase_analytics: ^9.0.4
   firebase_auth: ^3.3.4
   firebase_core: 1.10.6
