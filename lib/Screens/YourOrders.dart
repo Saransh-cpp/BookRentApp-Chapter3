@@ -25,10 +25,10 @@ class _YourOrdersState extends State<YourOrders> {
     keywords: <String>['books', 'library', 'novels'],
   );
 
-  final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
   BannerAd _bannerAd;
+  BuildContext _scaffoldContext;
 
   BannerAd createBannerAd() {
     return BannerAd(
@@ -62,11 +62,11 @@ class _YourOrdersState extends State<YourOrders> {
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
     bool isCartEmpty = userProvider.userModel.cart.length == 0;
+    _scaffoldContext = context;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
-          key: _key,
           appBar: AppBar(
             iconTheme: IconThemeData(
               color: Colors.pink,
@@ -355,22 +355,19 @@ class _YourOrdersState extends State<YourOrders> {
                                                           .reloadUserModel();
                                                       print(
                                                           "Item added to cart");
-                                                      _key.currentState
-                                                          .showSnackBar(SnackBar(
-                                                              content: Text(
-                                                                  "Removed from Cart!")));
                                                     } else {
                                                       print(
                                                           "ITEM WAS NOT REMOVED");
                                                     }
                                                   }
-                                                  _key.currentState
+                                                  Navigator.pop(context);
+                                                  ScaffoldMessenger.of(_scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               "Order created!")));
-                                                  Navigator.pop(context);
                                                 } else {
-                                                  _key.currentState
+                                                  Navigator.pop(context);
+                                                  ScaffoldMessenger.of(_scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               'Please add address and number')));
