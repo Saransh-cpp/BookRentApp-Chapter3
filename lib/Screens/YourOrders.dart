@@ -201,42 +201,29 @@ class _YourOrdersState extends State<YourOrders> {
                                                         FontWeight.w300)),
                                           ]),
                                         ),
-                                        IconButton(
-                                            icon: Icon(
-                                              Icons.delete,
-                                              color: Colors.red,
-                                            ),
-                                            onPressed: () async {
-                                              appProvider.changeIsLoading();
-                                              bool success = await userProvider
-                                                  .removeFromCart(
-                                                      cartItem: userProvider
-                                                          .userModel
-                                                          .cart[index]);
-                                              if (success) {
-                                                userProvider.reloadUserModel();
-                                                _key.currentState.showSnackBar(
-                                                    SnackBar(
-                                                        content: Text(
-                                                            "Removed from Cart!")));
-                                                appProvider.changeIsLoading();
-                                                return;
-                                              } else {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                  content: Text(
-                                                    'Something went wrong!',
-                                                    style:
-                                                        TextStyle(fontSize: 20),
-                                                  ),
-                                                  backgroundColor:
-                                                      Colors.grey[700],
-                                                  behavior:
-                                                      SnackBarBehavior.floating,
-                                                ));
-                                                appProvider.changeIsLoading();
-                                              }
-                                            })
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () async {
+                                          appProvider.changeIsLoading();
+                                          bool success =
+                                              await userProvider.removeFromCart(
+                                                  cartItem: userProvider
+                                                      .userModel.cart[index]);
+                                          if (success) {
+                                            userProvider.reloadUserModel();
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(
+                                                    content: Text(
+                                                        "Removed from Cart!")));
+                                            appProvider.changeIsLoading();
+                                            return;
+                                          } else {
+                                            appProvider.changeIsLoading();
+                                          }
+                                        })
                                       ],
                                     ),
                                   )
