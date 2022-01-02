@@ -18,7 +18,6 @@ class YourOrders extends StatefulWidget {
 
 class _YourOrdersState extends State<YourOrders> {
 
-  final _key = GlobalKey<ScaffoldMessengerState>();
   OrderServices _orderServices = OrderServices();
   ProductDetails productDetails = ProductDetails();
 
@@ -36,12 +35,12 @@ class _YourOrdersState extends State<YourOrders> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
+    _scaffoldContext = context;
 
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
-          key: _key,
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
             backgroundColor: Colors.white,
@@ -126,7 +125,7 @@ class _YourOrdersState extends State<YourOrders> {
                                                       .userModel.cart![index]);
                                           if (success) {
                                             userProvider.reloadUserModel();
-                                            _key.currentState!.showSnackBar(
+                                            ScaffoldMessenger.of(context).showSnackBar(
                                                 SnackBar(
                                                     content: Text(
                                                         "Removed from Cart!")));
@@ -277,22 +276,19 @@ class _YourOrdersState extends State<YourOrders> {
                                                           .reloadUserModel();
                                                       print(
                                                           "Item added to cart");
-                                                      _key.currentState!
-                                                          .showSnackBar(SnackBar(
-                                                              content: Text(
-                                                                  "Removed from Cart!")));
                                                     } else {
                                                       print(
                                                           "ITEM WAS NOT REMOVED");
                                                     }
                                                   }
-                                                  _key.currentState!
+                                                  Navigator.pop(context);
+                                                  ScaffoldMessenger.of(_scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               "Order created!")));
-                                                  Navigator.pop(context);
                                                 } else {
-                                                  _key.currentState!
+                                                  Navigator.pop(context);
+                                                  ScaffoldMessenger.of(_scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               'Please add address and number')));

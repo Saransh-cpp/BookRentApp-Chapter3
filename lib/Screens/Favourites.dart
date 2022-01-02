@@ -17,10 +17,8 @@ class _FavouritesState extends State<Favourites> {
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
 
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SafeArea(
-            child: Scaffold(
+    return SafeArea(
+          child: Scaffold(
           key: _key,
           appBar: AppBar(
             iconTheme: IconThemeData(color: Colors.black),
@@ -106,7 +104,7 @@ class _FavouritesState extends State<Favourites> {
                                                       .userModel.fav![index]);
                                           if (success) {
                                             userProvider.reloadUserModel();
-                                            _key.currentState!.showSnackBar(
+                                            ScaffoldMessenger.of(context).showSnackBar(
                                                 SnackBar(
                                                     content: Text(
                                                         "Removed from fav!")));
@@ -125,6 +123,6 @@ class _FavouritesState extends State<Favourites> {
                       ),
                     );
                   }),
-        )));
+        ));
   }
 }
