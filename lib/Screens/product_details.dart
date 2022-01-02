@@ -34,6 +34,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     final appProvider = Provider.of<AppProvider>(context);
+    final BuildContext _scaffoldContext = context;
 
     return SafeArea(
         child: Scaffold(
@@ -142,12 +143,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             status: "ordered",
                                             totalPrice: pricef,
                                             cart: userProvider.userModel.cart);
-                                        _key.currentState.showSnackBar(SnackBar(
-                                            content: Text("Order created!")));
                                         Navigator.pop(context);
+                                        ScaffoldMessenger.of(_scaffoldContext).showSnackBar(SnackBar(
+                                            content: Text("Order created!")));
                                       } else {
-                                        _key.currentState.showSnackBar(SnackBar(
-                                            content: Text(
+                                        Navigator.pop(context);
+                                        ScaffoldMessenger.of(_scaffoldContext)
+                                            .showSnackBar(SnackBar(
+                                              content: Text(
                                                 'Please add address and number')));
                                       }
                                     },
@@ -194,13 +197,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                     bool success = await userProvider.addToCart(
                         product: widget.product, size: size);
                     if (success) {
-                      _key.currentState.showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Added to Cart!")));
                       userProvider.reloadUserModel();
                       appProvider.changeIsLoading();
                       return;
                     } else {
-                      _key.currentState.showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Not added to Cart!")));
                       appProvider.changeIsLoading();
                       return;
@@ -216,13 +219,13 @@ class _ProductDetailsState extends State<ProductDetails> {
               bool success =
                   await userProvider.addToFav(product: widget.product);
               if (success) {
-                _key.currentState
+                ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBar(content: Text("Added to Fav!")));
                 userProvider.reloadUserModel();
                 appProvider.changeIsLoading();
                 return;
               } else {
-                _key.currentState
+                ScaffoldMessenger.of(context)
                     .showSnackBar(SnackBar(content: Text("Not added to Fav!")));
                 appProvider.changeIsLoading();
                 return;
