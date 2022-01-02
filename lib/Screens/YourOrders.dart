@@ -72,7 +72,7 @@ class _YourOrdersState extends State<YourOrders> {
               color: Colors.pink,
             ),
             backgroundColor: Colors.pink[50],
-            elevation: 1,
+            elevation: 0,
             title: Text(
               "My Cart",
               style: TextStyle(color: Colors.black, fontSize: 20),
