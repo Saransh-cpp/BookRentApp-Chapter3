@@ -17,62 +17,62 @@ class ProductModel {
   static const RECOMMENDED = "recommended";
   static const BESTSELLER = "bestseller";
 
-  String _id;
-  String _name;
-  List _pictures;
-  String _description;
-  String _genre;
-  String _author;
-  int _quantity;
-  List _prices;
+  String? _id;
+  String? _name;
+  List? _pictures;
+  String? _description;
+  String? _genre;
+  String? _author;
+  int? _quantity;
+  List? _prices;
 
-  bool _featured;
-  bool _recommended;
-  bool _bestseller;
+  bool? _featured;
+  bool? _recommended;
+  bool? _bestseller;
 
-  List _sizes;
-  String _whyToRead;
+  List? _sizes;
+  String? _whyToRead;
 
-  String get id => _id;
+  String? get id => _id;
 
-  String get name => _name;
+  String? get name => _name;
 
-  List get pictures => _pictures;
+  List? get pictures => _pictures;
 
-  String get author => _author;
+  String? get author => _author;
 
-  String get genre => _genre;
+  String? get genre => _genre;
 
-  String get description => _description;
+  String? get description => _description;
 
-  int get quantity => _quantity;
+  int? get quantity => _quantity;
 
-  List get prices => _prices;
+  List? get prices => _prices;
 
-  bool get featured => _featured;
+  bool? get featured => _featured;
 
-  bool get recommended => _recommended;
+  bool? get recommended => _recommended;
 
-  bool get bestseller => _bestseller;
+  bool? get bestseller => _bestseller;
 
-  List get sizes => _sizes;
+  List? get sizes => _sizes;
 
-  String get whyToRead => _whyToRead;
+  String? get whyToRead => _whyToRead;
 
   ProductModel.fromSnapshot(DocumentSnapshot snapshot) {
-    _id = snapshot.data()[ID];
-    _author = snapshot.data()[AUTHOR];
+    _id = snapshot.data()![ID];
+    _author = snapshot.data()![AUTHOR];
     //_sale = snapshot.data[SALE];
-    _description = snapshot.data()[DESCRIPTION];
-    _whyToRead = snapshot.data()[WHYTOREAD];
-    _featured = snapshot.data()[FEATURED];
-    _recommended = snapshot.data()[RECOMMENDED];
-    _bestseller = snapshot.data()[BESTSELLER];
-    _prices = snapshot.data()[PRICES];
-    _genre = snapshot.data()[GENRE];
+    _description = snapshot.data()![DESCRIPTION];
+    _whyToRead = snapshot.data()![WHYTOREAD];
+    _featured = snapshot.data()![FEATURED];
+    _recommended = snapshot.data()![RECOMMENDED];
+    _bestseller = snapshot.data()![BESTSELLER];
+    _prices = snapshot.data()![PRICES];
+    _genre = snapshot.data()![GENRE];
 
-    _sizes = snapshot.data()[SIZES];
-    _name = snapshot.data()[NAME];
-    _pictures = snapshot.data()[PICTURES];
+    _sizes = snapshot.data()![SIZES];
+    _name = snapshot.data()![NAME];
+    _pictures = snapshot.data()![PICTURES];
   }
 }

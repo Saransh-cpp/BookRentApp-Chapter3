@@ -137,7 +137,7 @@ class _HomeState extends State<Home> {
               color: Colors.black,
             ),
             onPressed: () {
-              _drawerKey.currentState.openDrawer();
+              _drawerKey.currentState!.openDrawer();
             },
           ),
           backgroundColor: Colors.white,
@@ -204,7 +204,7 @@ class _HomeState extends State<Home> {
                       child: Container(
                           decoration: BoxDecoration(
                               border: Border.all(
-                                color: Colors.pink[50],
+                                color: Colors.pink[50]!,
                               ),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
@@ -222,7 +222,7 @@ class _HomeState extends State<Home> {
                                   Container(
                                     decoration: BoxDecoration(
                                         border: Border.all(
-                                          color: Colors.pink[900],
+                                          color: Colors.pink[900]!,
                                         ),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50)),
@@ -236,7 +236,7 @@ class _HomeState extends State<Home> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                            'Welcome ${userProvider.userModel.name}! \nLet us pick a book for you!'
+                                            'Welcome ${userProvider.userModel!.name}! \nLet us pick a book for you!'
                                             // userProvider.userModel.bio
                                             )
                                       ],
@@ -264,7 +264,7 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.pink[900],
+                                        color: Colors.pink[900]!,
                                       ),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -290,7 +290,7 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       border: Border.all(
-                                        color: Colors.pink[900],
+                                        color: Colors.pink[900]!,
                                       ),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -317,7 +317,7 @@ class _HomeState extends State<Home> {
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         border: Border.all(
-                                          color: Colors.pink[900],
+                                          color: Colors.pink[900]!,
                                         ),
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(20))),

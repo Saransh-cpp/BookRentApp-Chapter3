@@ -19,7 +19,7 @@ class CustomListTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
       child: Container(
         child: InkWell(
-            onTap: onTap,
+            onTap: onTap as void Function()?,
             splashColor: Colors.orangeAccent,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,9 +48,9 @@ class CustomListTile extends StatelessWidget {
 // ==========================Product Card=============================
 
 class ProductCard extends StatelessWidget {
-  final ProductModel product;
+  final ProductModel? product;
 
-  const ProductCard({Key key, this.product}) : super(key: key);
+  const ProductCard({Key? key, this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class ProductCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.grey[300],
+                    color: Colors.grey[300]!,
                     offset: Offset(-2, -1),
                     blurRadius: 5),
               ]),
@@ -91,7 +91,7 @@ class ProductCard extends StatelessWidget {
                       Center(
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
-                          image: product.pictures[0],
+                          image: product!.pictures![0],
                           fit: BoxFit.cover,
                           height: 140,
                           width: 120,
@@ -107,15 +107,15 @@ class ProductCard extends StatelessWidget {
               RichText(
                 text: TextSpan(children: [
                   TextSpan(
-                    text: '${product.name} \n',
+                    text: '${product!.name} \n',
                     style: TextStyle(fontSize: 20),
                   ),
                   TextSpan(
-                    text: 'by: ${product.author} \n\n\n\n',
+                    text: 'by: ${product!.author} \n\n\n\n',
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   TextSpan(
-                    text: '\$${product.prices[0]} \t',
+                    text: '\$${product!.prices![0]} \t',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   /*TextSpan(
@@ -471,9 +471,9 @@ class _ProductsState extends State<Products> {
 // ====================== Featured Card ==========================
 
 class FeaturedCard extends StatelessWidget {
-  final ProductModel product;
+  final ProductModel? product;
 
-  const FeaturedCard({Key key, this.product}) : super(key: key);
+  const FeaturedCard({Key? key, this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -508,7 +508,7 @@ class FeaturedCard extends StatelessWidget {
                 Center(
                   child: FadeInImage.memoryNetwork(
                     placeholder: kTransparentImage,
-                    image: product.pictures[0],
+                    image: product!.pictures![0],
                     fit: BoxFit.cover,
                     height: 220,
                     width: 200,
@@ -551,10 +551,10 @@ class FeaturedCard extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(children: [
                         TextSpan(
-                            text: '${product.name} \n',
+                            text: '${product!.name} \n',
                             style: TextStyle(fontSize: 18)),
                         TextSpan(
-                            text: '\$${product.prices[0]} \n',
+                            text: '\$${product!.prices![0]} \n',
                             style: TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.bold)),
                       ]))),
@@ -571,9 +571,9 @@ class FeaturedCard extends StatelessWidget {
 // ===================== Featured products =================
 
 class FeaturedProducts extends StatefulWidget {
-  final String genre;
+  final String? genre;
 
-  const FeaturedProducts({Key key, this.genre}) : super(key: key);
+  const FeaturedProducts({Key? key, this.genre}) : super(key: key);
 
   @override
   _FeaturedProductsState createState() => _FeaturedProductsState();
@@ -626,9 +626,9 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 //=============================For every Genre=======================
 
 class PerGenre extends StatefulWidget {
-  final String genre;
+  final String? genre;
 
-  const PerGenre({Key key, this.genre}) : super(key: key);
+  const PerGenre({Key? key, this.genre}) : super(key: key);
 
   @override
   _PerGenreState createState() => _PerGenreState();
@@ -643,7 +643,7 @@ class _PerGenreState extends State<PerGenre> {
           Padding(
             padding: const EdgeInsets.all(14.0),
             child: Container(
-                alignment: Alignment.centerLeft, child: new Text(widget.genre)),
+                alignment: Alignment.centerLeft, child: new Text(widget.genre!)),
           ),
         ],
       ),
@@ -656,9 +656,9 @@ class _PerGenreState extends State<PerGenre> {
 
 //==========================All Books of a single genre==================
 class AllBooksOfAGenre extends StatefulWidget {
-  final String genre;
+  final String? genre;
 
-  const AllBooksOfAGenre({Key key, this.genre}) : super(key: key);
+  const AllBooksOfAGenre({Key? key, this.genre}) : super(key: key);
 
   @override
   _AllBooksOfAGenreState createState() => _AllBooksOfAGenreState();

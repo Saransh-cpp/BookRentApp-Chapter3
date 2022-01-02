@@ -18,7 +18,7 @@ class _BestSellersState extends State<BestSellers> {
         child: ListView(
           children: productProvider.products
               .map((item) => GestureDetector(
-                    child: item.bestseller
+                    child: item.bestseller!
                         ? ProductCard(
                             product: item,
                           )

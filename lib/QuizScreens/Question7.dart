@@ -4,7 +4,7 @@ import 'package:test_app/QuizScreens/Question8.dart';
 
 //ignore: must_be_immutable
 class Question7 extends StatefulWidget {
-  QuizData quizData = QuizData();
+  QuizData? quizData = QuizData();
   Question7({this.quizData});
 
   @override
@@ -17,7 +17,7 @@ class Question7 extends StatefulWidget {
 }
 
 class _Question7State extends State<Question7> {
-  String chosen;
+  String? chosen;
   bool answered = false;
   String option1 = 'I love when books make my heart\nbeat faster';
   String option2 = 'I love when the book keeps me\nguessing';
@@ -80,7 +80,7 @@ class _Question7State extends State<Question7> {
                             chosen = option1;
                             answered = true;
                             widget.hppa += 1;
-                            widget.quizData.hppa += widget.hppa;
+                            widget.quizData!.hppa += widget.hppa;
                           });
                         }
                       },
@@ -110,7 +110,7 @@ class _Question7State extends State<Question7> {
                             chosen = option2;
                             answered = true;
                             widget.aad += 1;
-                            widget.quizData.aad += widget.aad;
+                            widget.quizData!.aad += widget.aad;
                           });
                         }
                       },
@@ -140,7 +140,7 @@ class _Question7State extends State<Question7> {
                             chosen = option3;
                             answered = true;
                             widget.kr += 1;
-                            widget.quizData.kr += widget.kr;
+                            widget.quizData!.kr += widget.kr;
                           });
                         }
                       },
@@ -170,7 +170,7 @@ class _Question7State extends State<Question7> {
                             chosen = option4;
                             answered = true;
                             widget.ts += 1;
-                            widget.quizData.ts += widget.ts;
+                            widget.quizData!.ts += widget.ts;
                           });
                         }
                       },
@@ -202,13 +202,13 @@ class _Question7State extends State<Question7> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.hppa -= 1;
+                      widget.quizData!.hppa -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.aad -= 1;
+                      widget.quizData!.aad -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.kr -= 1;
+                      widget.quizData!.kr -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.ts -= 1;
+                      widget.quizData!.ts -= 1;
                     }
                     chosen = '';
                     answered = false;

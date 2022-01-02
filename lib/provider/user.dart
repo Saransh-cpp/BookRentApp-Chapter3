@@ -16,18 +16,18 @@ enum Status { Uninitialized, Authenticated, Authenticating, Unauthenticated }
 
 class UserProvider with ChangeNotifier {
   FirebaseAuth _auth;
-  User _user;
+  User? _user;
   Status _status = Status.Uninitialized;
   UserServices _userServices = UserServices();
   OrderServices _orderServices = OrderServices();
 
-  UserModel _userModel;
+  UserModel? _userModel;
 
-  UserModel get userModel => _userModel;
+  UserModel? get userModel => _userModel;
 
   Status get status => _status;
 
-  User get user => _user;
+  User? get user => _user;
 
   List<OrderModel> orders = [];
 
@@ -42,7 +42,7 @@ class UserProvider with ChangeNotifier {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) async {
-        _userModel = await _userServices.getUserById(value.user.uid);
+        _userModel = await _userServices.getUserById(value.user!.uid);
         notifyListeners();
       });
       return true;
@@ -65,14 +65,14 @@ class UserProvider with ChangeNotifier {
         _userServices.createUser({
           'name': name,
           'email': email,
-          'uid': user.user.uid,
+          'uid': user.user!.uid,
           'stripeId': '',
           'number': '',
           'address': '',
           'bio': '',
           'userImage': '',
         });
-        _userModel = await _userServices.getUserById(user.user.uid);
+        _userModel = await _userServices.getUserById(user.user!.uid);
         notifyListeners();
       });
       return true;
@@ -84,21 +84,21 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> updateUser(String name, String email, String number,
-      String address, String bio) async {
+  Future<bool> updateUser(String? name, String? email, String? number,
+      String? address, String? bio) async {
     try {
       print("CREATE USER");
       await _userServices.createUser({
         'name': name,
         'email': email,
-        'uid': user.uid,
+        'uid': user!.uid,
         'stripeId': '',
         'number': number,
         'address': address,
         'bio': bio,
         'userImage': '',
       });
-      _userModel = await _userServices.getUserById(user.uid);
+      _userModel = await _userServices.getUserById(user!.uid);
       notifyListeners();
 
       return true;
@@ -117,7 +117,7 @@ class UserProvider with ChangeNotifier {
     return Future.delayed(Duration.zero);
   }
 
-  Future<void> _onStateChanged(User user) async {
+  Future<void> _onStateChanged(User? user) async {
     if (user == null) {
       _status = Status.Unauthenticated;
     } else {
@@ -128,16 +128,16 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> addToCart({ProductModel product, String size}) async {
+  Future<bool> addToCart({required ProductModel product, String? size}) async {
     try {
       var uuid = Uuid();
       String cartItemId = uuid.v4();
-      List<CartItemModel> cart = _userModel.cart;
+      List<CartItemModel>? cart = _userModel!.cart;
 
       Map cartItem = {
         "id": cartItemId,
         "name": product.name,
-        "image": product.pictures[0],
+        "image": product.pictures![0],
         "productId": product.id,
         'price': prodPrice(product: product, size: size),
         "size": size,
@@ -146,7 +146,7 @@ class UserProvider with ChangeNotifier {
       CartItemModel item = CartItemModel.fromMap(cartItem);
 
       print("CART ITEMS ARE: ${cart.toString()}");
-      _userServices.addToCart(userId: _user.uid, cartItem: item);
+      _userServices.addToCart(userId: _user!.uid, cartItem: item);
 
       return true;
     } catch (e) {
@@ -155,33 +155,33 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> removeFromCart({CartItemModel cartItem}) async {
+  Future<bool> removeFromCart({required CartItemModel cartItem}) async {
     try {
-      _userServices.removeFromCart(userId: _user.uid, cartItem: cartItem);
+      _userServices.removeFromCart(userId: _user!.uid, cartItem: cartItem);
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  Future<bool> addToFav({ProductModel product}) async {
+  Future<bool> addToFav({required ProductModel product}) async {
     try {
       var uuid = Uuid();
       String favItemId = uuid.v4();
-      List<FavItemModel> fav = _userModel.fav;
+      List<FavItemModel>? fav = _userModel!.fav;
 
       Map favItem = {
         "id": favItemId,
         "name": product.name,
-        "image": product.pictures[0],
+        "image": product.pictures![0],
         "productId": product.id,
-        "price": product.prices[0],
+        "price": product.prices![0],
       };
 
       FavItemModel item = FavItemModel.fromMap(favItem);
 
       print("CART ITEMS ARE: ${fav.toString()}");
-      _userServices.addToFav(userId: _user.uid, favItem: item);
+      _userServices.addToFav(userId: _user!.uid, favItem: item);
 
       return true;
     } catch (e) {
@@ -190,9 +190,9 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> removeFromFav({FavItemModel favItem}) async {
+  Future<bool> removeFromFav({required FavItemModel favItem}) async {
     try {
-      _userServices.removeFromFav(userId: _user.uid, favItem: favItem);
+      _userServices.removeFromFav(userId: _user!.uid, favItem: favItem);
       return true;
     } catch (e) {
       return false;
@@ -200,25 +200,25 @@ class UserProvider with ChangeNotifier {
   }
 
   getOrders() async {
-    orders = await _orderServices.getUserOrders(userId: _user.uid);
+    orders = await _orderServices.getUserOrders(userId: _user!.uid);
     notifyListeners();
   }
 
   Future<void> reloadUserModel() async {
-    _userModel = await _userServices.getUserById(user.uid);
+    _userModel = await _userServices.getUserById(user!.uid);
     notifyListeners();
   }
 
-  prodPrice({ProductModel product, String size}) {
+  prodPrice({ProductModel? product, String? size}) {
     switch (size) {
       case '1 week':
-        return product.prices[0];
+        return product!.prices![0];
       case '2 weeks':
-        return product.prices[1];
+        return product!.prices![1];
       case '3 weeks':
-        return product.prices[2];
+        return product!.prices![2];
       case '4 weeks':
-        return product.prices[3];
+        return product!.prices![3];
     }
   }
 }

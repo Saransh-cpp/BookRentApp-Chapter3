@@ -18,7 +18,7 @@ class _RecommendationsState extends State<Recommendations> {
         child: ListView(
           children: productProvider.products
               .map((item) => GestureDetector(
-                    child: item.recommended
+                    child: item.recommended!
                         ? ProductCard(
                             product: item,
                           )

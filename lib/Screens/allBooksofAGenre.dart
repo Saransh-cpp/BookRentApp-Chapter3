@@ -4,9 +4,9 @@ import 'package:test_app/provider/product.dart';
 import 'package:test_app/Widgets.dart';
 
 class AllBooksofAGenre extends StatefulWidget {
-  final String genre;
+  final String? genre;
 
-  const AllBooksofAGenre({Key key, this.genre}) : super(key: key);
+  const AllBooksofAGenre({Key? key, this.genre}) : super(key: key);
 
   @override
   _AllBooksofAGenreState createState() => _AllBooksofAGenreState();

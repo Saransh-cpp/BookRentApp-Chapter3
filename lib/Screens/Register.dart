@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:test_app/provider/user.dart';
 
 class Register extends StatefulWidget {
-  final Function toggleView;
+  final Function? toggleView;
   Register({this.toggleView});
   @override
   _RegisterState createState() => _RegisterState();
@@ -57,7 +57,7 @@ class _RegisterState extends State<Register> {
                 ? _nameTextController
                 : _emailTextController,
             decoration: InputDecoration(hintText: "$hint", prefixIcon: icon),
-            validator: (val) => val.isEmpty ? '$error' : null,
+            validator: (val) => val!.isEmpty ? '$error' : null,
             textAlignVertical: TextAlignVertical.bottom,
             onChanged: (val) {
               if ("$hint" == "Enter Email") {
@@ -113,7 +113,7 @@ class _RegisterState extends State<Register> {
                         });
                       }),
                 ),
-                validator: (val) => val.length < 6 ? '$error' : null,
+                validator: (val) => val!.length < 6 ? '$error' : null,
                 textAlignVertical: TextAlignVertical.bottom,
                 obscureText: hidePass1,
                 onChanged: (val) {
@@ -156,7 +156,7 @@ class _RegisterState extends State<Register> {
                         });
                       }),
                 ),
-                validator: (val) => passwordValidator(val),
+                validator: (val) => passwordValidator(val!),
                 textAlignVertical: TextAlignVertical.bottom,
                 obscureText: hidePass2,
               ),
@@ -211,7 +211,7 @@ class _RegisterState extends State<Register> {
                                     'Enter a password 6+ chars long'),
                                 ElevatedButton(
                                   onPressed: () async {
-                                    if (_formKey.currentState
+                                    if (_formKey.currentState!
                                         .validate()) {
                                       if (!await user.signUp(
                                           _nameTextController.text,
@@ -232,7 +232,7 @@ class _RegisterState extends State<Register> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    widget.toggleView();
+                                    widget.toggleView!();
                                   },
                                   child: Text(
                                     'I already have an account',
@@ -262,6 +262,6 @@ class UserServices {
   String collection = "users";
 
   void createUser(Map data) {
-    _firestore.collection(collection).doc(data["userId"]).set(data);
+    _firestore.collection(collection).doc(data["userId"]).set(data as Map<String, dynamic>);
   }
 }

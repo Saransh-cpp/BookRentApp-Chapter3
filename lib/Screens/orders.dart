@@ -30,11 +30,11 @@ class OrdersScreen extends StatelessWidget {
                 "\$${_order.total}",
                 style: TextStyle(fontSize: 15, color: Colors.black),
               ),
-              title: Text(_order.description),
+              title: Text(_order.description!),
               subtitle: Text(
-                  DateTime.fromMillisecondsSinceEpoch(_order.createdAt)
+                  DateTime.fromMillisecondsSinceEpoch(_order.createdAt!)
                       .toString()),
-              trailing: Text(_order.status,
+              trailing: Text(_order.status!,
                   style: TextStyle(fontSize: 18, color: Colors.black)),
             );
           }),

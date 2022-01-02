@@ -4,7 +4,7 @@ import 'package:test_app/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question8 extends StatefulWidget {
-  QuizData quizData = QuizData();
+  QuizData? quizData = QuizData();
   Question8({this.quizData});
 
   @override
@@ -19,7 +19,7 @@ class Question8 extends StatefulWidget {
 }
 
 class _Question8State extends State<Question8> {
-  String chosen;
+  String? chosen;
   bool answered = false;
   String option1 = 'I wanna be happy and filled with\npositivity';
   String option2 = 'Tear jerker, Hit me with a solid\nemotional story';
@@ -81,7 +81,7 @@ class _Question8State extends State<Question8> {
                             chosen = option1;
                             answered = true;
                             widget.tug += 1;
-                            widget.quizData.tug += widget.tug;
+                            widget.quizData!.tug += widget.tug;
                           });
                         }
                       },
@@ -111,7 +111,7 @@ class _Question8State extends State<Question8> {
                             chosen = option2;
                             answered = true;
                             widget.kr += 1;
-                            widget.quizData.kr += widget.kr;
+                            widget.quizData!.kr += widget.kr;
                           });
                         }
                       },
@@ -141,7 +141,7 @@ class _Question8State extends State<Question8> {
                             chosen = option3;
                             answered = true;
                             widget.fsg += 1;
-                            widget.quizData.fsg += widget.fsg;
+                            widget.quizData!.fsg += widget.fsg;
                           });
                         }
                       },
@@ -173,9 +173,9 @@ class _Question8State extends State<Question8> {
                             widget.csms += 1;
                             widget.eu += 1;
                             widget.pw += 1;
-                            widget.quizData.csms += widget.csms;
-                            widget.quizData.eu += widget.eu;
-                            widget.quizData.pw += widget.pw;
+                            widget.quizData!.csms += widget.csms;
+                            widget.quizData!.eu += widget.eu;
+                            widget.quizData!.pw += widget.pw;
                           });
                         }
                       },
@@ -207,15 +207,15 @@ class _Question8State extends State<Question8> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.tug -= 1;
+                      widget.quizData!.tug -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.kr -= 1;
+                      widget.quizData!.kr -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.fsg -= 1;
+                      widget.quizData!.fsg -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.eu -= 1;
-                      widget.quizData.csms -= 1;
-                      widget.quizData.pw -= 1;
+                      widget.quizData!.eu -= 1;
+                      widget.quizData!.csms -= 1;
+                      widget.quizData!.pw -= 1;
                     }
                     chosen = '';
                     answered = false;

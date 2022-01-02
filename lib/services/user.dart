@@ -33,25 +33,25 @@ class UserServices {
         return UserModel.fromSnapshot(doc);
       });
 
-  void addToCart({String userId, CartItemModel cartItem}) {
+  void addToCart({String? userId, required CartItemModel cartItem}) {
     _firestore.collection(collection).doc(userId).update({
       "cart": FieldValue.arrayUnion([cartItem.toMap()])
     });
   }
 
-  void addToFav({String userId, FavItemModel favItem}) {
+  void addToFav({String? userId, required FavItemModel favItem}) {
     _firestore.collection(collection).doc(userId).update({
       "fav": FieldValue.arrayUnion([favItem.toMap()])
     });
   }
 
-  void removeFromCart({String userId, CartItemModel cartItem}) {
+  void removeFromCart({String? userId, required CartItemModel cartItem}) {
     _firestore.collection(collection).doc(userId).update({
       "cart": FieldValue.arrayRemove([cartItem.toMap()])
     });
   }
 
-  void removeFromFav({String userId, FavItemModel favItem}) {
+  void removeFromFav({String? userId, required FavItemModel favItem}) {
     _firestore.collection(collection).doc(userId).update({
       "fav": FieldValue.arrayRemove([favItem.toMap()])
     });

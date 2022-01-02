@@ -16,7 +16,7 @@ Future<void> main() async {
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
-    BuildContext context = binding.renderViewElement;
+    BuildContext? context = binding.renderViewElement;
     if (context != null) {
       Splash();
     }

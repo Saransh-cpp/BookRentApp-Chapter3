@@ -33,11 +33,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: false);
 
-    String initemail = user.userModel.email;
-    String initname = user.userModel.name;
-    String initaddress = user.userModel.address;
-    String initbio = user.userModel.bio;
-    String initnumber = user.userModel.number;
+    String? initemail = user.userModel!.email;
+    String? initname = user.userModel!.name;
+    String? initaddress = user.userModel!.address;
+    String? initbio = user.userModel!.bio;
+    String? initnumber = user.userModel!.number;
     bool isLoading = false;
 
     double _screenWidth = MediaQuery.of(context).size.width;
@@ -89,7 +89,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     decoration: InputDecoration(
                                         prefixIcon: Icon(Icons.person)),
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter a name' : null,
+                                        val!.isEmpty ? 'Enter a name' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                   ),
                                 ),
@@ -116,7 +116,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       });
                                     },
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter an email' : null,
+                                        val!.isEmpty ? 'Enter an email' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                   ),
                                 ),
@@ -144,7 +144,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                         prefixIcon:
                                             Icon(Icons.home_work_rounded)),
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter an address' : null,
+                                        val!.isEmpty ? 'Enter an address' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                   ),
                                 ),
@@ -171,7 +171,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                         hintText: "Enter bio",
                                         prefixIcon: Icon(Icons.email)),
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter a bio' : null,
+                                        val!.isEmpty ? 'Enter a bio' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                   ),
                                 ),
@@ -199,7 +199,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                         hintText: "Enter number",
                                         prefixIcon: Icon(Icons.phone)),
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter a number' : null,
+                                        val!.isEmpty ? 'Enter a number' : null,
                                     textAlignVertical: TextAlignVertical.bottom,
                                   ),
                                 ),
@@ -208,27 +208,27 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () async {
-                                    if (_formKey.currentState.validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       setState(() {
                                         isLoading = true;
                                       });
 
                                       if (!await user.updateUser(
-                                          namebool ? name : user.userModel.name,
+                                          namebool ? name : user.userModel!.name,
                                           emailbool
                                               ? email
-                                              : user.userModel.email,
+                                              : user.userModel!.email,
                                           numberbool
                                               ? number
-                                              : user.userModel.number,
+                                              : user.userModel!.number,
                                           addressbool
                                               ? address
-                                              : user.userModel.address,
-                                          biobool ? bio : user.userModel.bio)) {
+                                              : user.userModel!.address,
+                                          biobool ? bio : user.userModel!.bio)) {
                                         setState(() {
                                           isLoading = false;
                                         });
-                                        _key.currentState.showSnackBar(SnackBar(
+                                        _key.currentState!.showSnackBar(SnackBar(
                                             content: Text(
                                                 "Network Issue, Try again")));
                                       } else {

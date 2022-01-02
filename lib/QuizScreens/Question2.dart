@@ -4,7 +4,7 @@ import 'package:test_app/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question2 extends StatefulWidget {
-  QuizData quizData = QuizData();
+  QuizData? quizData = QuizData();
   Question2({this.quizData});
 
   @override
@@ -17,7 +17,7 @@ class Question2 extends StatefulWidget {
 }
 
 class _Question2State extends State<Question2> {
-  String chosen;
+  String? chosen;
   bool answered = false;
   String option1 = 'Fancy restaurant';
   String option2 = 'Backpacking through Europe';
@@ -79,7 +79,7 @@ class _Question2State extends State<Question2> {
                             chosen = option1;
                             answered = true;
                             widget.tug += 1;
-                            widget.quizData.tug += widget.tug;
+                            widget.quizData!.tug += widget.tug;
                           });
                         }
                       },
@@ -109,7 +109,7 @@ class _Question2State extends State<Question2> {
                             chosen = option2;
                             answered = true;
                             widget.pfo += 1;
-                            widget.quizData.pfo += widget.pfo;
+                            widget.quizData!.pfo += widget.pfo;
                           });
                         }
                       },
@@ -139,7 +139,7 @@ class _Question2State extends State<Question2> {
                             chosen = option3;
                             answered = true;
                             widget.hppa += 1;
-                            widget.quizData.hppa += widget.hppa;
+                            widget.quizData!.hppa += widget.hppa;
                           });
                         }
                       },
@@ -169,7 +169,7 @@ class _Question2State extends State<Question2> {
                             chosen = option4;
                             answered = true;
                             widget.tgdt += 1;
-                            widget.quizData.tgdt += widget.tgdt;
+                            widget.quizData!.tgdt += widget.tgdt;
                           });
                         }
                       },
@@ -201,13 +201,13 @@ class _Question2State extends State<Question2> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.tug -= 1;
+                      widget.quizData!.tug -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.pfo -= 1;
+                      widget.quizData!.pfo -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.hppa -= 1;
+                      widget.quizData!.hppa -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.tgdt -= 1;
+                      widget.quizData!.tgdt -= 1;
                     }
                     chosen = '';
                     answered = false;

@@ -113,10 +113,10 @@ class _ContactUsState extends State<ContactUs> {
 
 class ClickableCard extends StatelessWidget {
   ClickableCard(
-      {@required this.textContent, @required this.onTap, @required this.color});
+      {required this.textContent, required this.onTap, required this.color});
   final String textContent;
   final Function onTap;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +133,7 @@ class ClickableCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           splashColor: Colors.pink.withAlpha(60),
-          onTap: onTap,
+          onTap: onTap as void Function()?,
           child: Padding(
             padding: EdgeInsets.all(20),
             child: Text(
