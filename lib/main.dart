@@ -22,9 +22,17 @@ Future<void> main() async {
     }
     binding.allowFirstFrame();
   });
-  await Firebase.initializeApp(
-    options: FirebaseOptions(apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE", appId: "1:212895190763:web:ce93ccbf38d7bf823678ae", messagingSenderId: "212895190763", projectId: "chapter3-3a6ab"),
-  );
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE",
+          appId: "1:212895190763:web:ce93ccbf38d7bf823678ae",
+          messagingSenderId: "212895190763",
+          projectId: "chapter3-3a6ab"),
+    );
+  } else {
+    Firebase.app();
+  }
   runApp(MyApp());
 }
 
