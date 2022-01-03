@@ -22,11 +22,9 @@ Future<void> main() async {
     }
     binding.allowFirstFrame();
   });
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp();
-  }else {
-    Firebase.app(); // if already initialized, use that one
-  }
+  await Firebase.initializeApp(
+    options: FirebaseOptions(apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE", appId: "1:212895190763:web:ce93ccbf38d7bf823678ae", messagingSenderId: "212895190763", projectId: "chapter3-3a6ab"),
+  );
   runApp(MyApp());
 }
 
