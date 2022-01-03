@@ -84,6 +84,7 @@ flutter:
   assets:
     - images/chapter3Logo.png
     - images/ProPic.jpeg
+    - images/emptycart.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
