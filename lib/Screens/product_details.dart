@@ -143,7 +143,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             description: widget.product!.name,
                                             status: "ordered",
                                             totalPrice: pricef,
-                                            cart: userProvider.userModel.cart);
+                                            cart: userProvider.userModel.cart!);
                                         Navigator.pop(context);
                                         ScaffoldMessenger.of(_scaffoldContext).showSnackBar(SnackBar(
                                             content: Text("Order created!")));
