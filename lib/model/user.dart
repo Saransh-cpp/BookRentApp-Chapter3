@@ -64,7 +64,7 @@ class UserModel {
 
   List<CartItemModel> _convertCartItems(List cart) {
     List<CartItemModel> convertedCart = [];
-    for (Map cartItem in cart as Iterable<Map<dynamic, dynamic>>) {
+    for (Map cartItem in cart) {
       convertedCart.add(CartItemModel.fromMap(cartItem));
     }
     return convertedCart;
@@ -72,7 +72,7 @@ class UserModel {
 
   List<FavItemModel> _convertFavItems(List fav) {
     List<FavItemModel> convertedFav = [];
-    for (Map favItem in fav as Iterable<Map<dynamic, dynamic>>) {
+    for (Map favItem in fav) {
       convertedFav.add(FavItemModel.fromMap(favItem));
     }
     return convertedFav;
@@ -82,7 +82,7 @@ class UserModel {
     if (cart == null) {
       return 0;
     }
-    for (Map cartItem in cart as Iterable<Map<dynamic, dynamic>>) {
+    for (Map cartItem in cart) {
       _priceSum += cartItem["price"];
     }
 
