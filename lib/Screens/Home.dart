@@ -18,6 +18,7 @@ import 'package:book_rent_app_chapter3/Screens/BestSellers.dart';
 import 'package:book_rent_app_chapter3/Screens/AboutUs.dart';
 import 'package:book_rent_app_chapter3/Screens/Contact.dart';
 import 'package:book_rent_app_chapter3/Screens/Report.dart';
+import 'package:wiredash/wiredash.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -117,8 +118,7 @@ class _HomeState extends State<Home> {
                         Icons.error,
                         'Report issue',
                         () => {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (c) => Report()))
+                            Wiredash.of(context)?.show()
                             }),
                     CustomListTile(Icons.logout, 'Logout', () {
                       userProvider.signOut();
