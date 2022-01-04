@@ -82,52 +82,54 @@ class _YourOrdersState extends State<YourOrders> {
           body: appProvider.isLoading
               ? Loading()
               : isCartEmpty
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/emptycart.png',
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 20),
-                          child: Card(
-                            elevation: 3,
-                            shadowColor: Colors.grey,
-                            child: Padding(
-                              padding: EdgeInsets.all(30),
-                              child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text:
-                                          'You have nothing in your cart ,click on ',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.pinkAccent),
-                                    ),
-                                    TextSpan(
-                                      text: 'add item',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.teal,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(
-                                      text: ' to find your recommendation.',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.pinkAccent),
-                                    )
-                                  ],
+                  ? SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'images/emptycart.png',
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 20),
+                            child: Card(
+                              elevation: 3,
+                              shadowColor: Colors.grey,
+                              child: Padding(
+                                padding: EdgeInsets.all(30),
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            'You have nothing in your cart ,click on ',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.pinkAccent),
+                                      ),
+                                      TextSpan(
+                                        text: 'add item',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.teal,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                        text: ' to find your recommendation.',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.pinkAccent),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   : ListView.builder(
                       itemCount: userProvider.userModel.cart.length,
@@ -201,29 +203,30 @@ class _YourOrdersState extends State<YourOrders> {
                                                         FontWeight.w300)),
                                           ]),
                                         ),
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.delete,
-                                          color: Colors.red,
-                                        ),
-                                        onPressed: () async {
-                                          appProvider.changeIsLoading();
-                                          bool success =
-                                              await userProvider.removeFromCart(
-                                                  cartItem: userProvider
-                                                      .userModel.cart[index]);
-                                          if (success) {
-                                            userProvider.reloadUserModel();
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(
-                                                    content: Text(
-                                                        "Removed from Cart!")));
-                                            appProvider.changeIsLoading();
-                                            return;
-                                          } else {
-                                            appProvider.changeIsLoading();
-                                          }
-                                        })
+                                        IconButton(
+                                            icon: Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            ),
+                                            onPressed: () async {
+                                              appProvider.changeIsLoading();
+                                              bool success = await userProvider
+                                                  .removeFromCart(
+                                                      cartItem: userProvider
+                                                          .userModel
+                                                          .cart[index]);
+                                              if (success) {
+                                                userProvider.reloadUserModel();
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(SnackBar(
+                                                        content: Text(
+                                                            "Removed from Cart!")));
+                                                appProvider.changeIsLoading();
+                                                return;
+                                              } else {
+                                                appProvider.changeIsLoading();
+                                              }
+                                            })
                                       ],
                                     ),
                                   )
@@ -348,13 +351,15 @@ class _YourOrdersState extends State<YourOrders> {
                                                     }
                                                   }
                                                   Navigator.pop(context);
-                                                  ScaffoldMessenger.of(_scaffoldContext)
+                                                  ScaffoldMessenger.of(
+                                                          _scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               "Order created!")));
                                                 } else {
                                                   Navigator.pop(context);
-                                                  ScaffoldMessenger.of(_scaffoldContext)
+                                                  ScaffoldMessenger.of(
+                                                          _scaffoldContext)
                                                       .showSnackBar(SnackBar(
                                                           content: Text(
                                                               'Please add address and number')));
