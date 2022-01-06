@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:book_rent_app_chapter3/QuizScreens/Question2.dart';
 import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 
-//ignore: must_be_immutable
+// ignore: must_be_immutable
 class Question1 extends StatefulWidget {
   final QuizData quizData = QuizData();
+
+  Question1({Key? key}) : super(key: key);
 
   @override
   _Question1State createState() => _Question1State();
@@ -30,15 +32,16 @@ class _Question1State extends State<Question1> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
             actions: [
               IconButton(
-                icon: Icon(Icons.navigate_next_rounded),
+                icon: const Icon(Icons.navigate_next_rounded),
                 onPressed: () {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (c) => Question2(
+                          builder: (c) =>
+                              Question2(
                                 quizData: widget.quizData,
                               )));
                 },
@@ -48,25 +51,25 @@ class _Question1State extends State<Question1> {
           body: Column(
             children: [
               Row(
-                children: [
+                children: const [
                   Text(
                     'Question 1',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     'What personality trait do you resonate with\nthe most?',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Column(
@@ -80,6 +83,7 @@ class _Question1State extends State<Question1> {
                             widget.tgdt += 1;
                             widget.quizData.tgdt += widget.tgdt;
                           });
+                          // ignore: avoid_print
                           print(widget.quizData.tgdt);
                         }
                       },
@@ -88,18 +92,19 @@ class _Question1State extends State<Question1> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'A',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option1,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -118,18 +123,19 @@ class _Question1State extends State<Question1> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'B',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option2,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -148,18 +154,19 @@ class _Question1State extends State<Question1> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'C',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option3,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -178,23 +185,24 @@ class _Question1State extends State<Question1> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'D',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option4,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ])))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               MaterialButton(
@@ -217,7 +225,7 @@ class _Question1State extends State<Question1> {
                     widget.tug = 0;
                   });
                 },
-                child: Text('Reset'),
+                child: const Text('Reset'),
               ),
             ],
           )),

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class CartItemModel {
   static const ID = "id";
   static const NAME = "name";

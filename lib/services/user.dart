@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'package:book_rent_app_chapter3/model/cart_item.dart';
 import 'package:book_rent_app_chapter3/model/user.dart';
@@ -5,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:book_rent_app_chapter3/model/fav.dart';
 
 class UserServices {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String collection = "users";
 
   createUser(Map<String, dynamic> data) async {

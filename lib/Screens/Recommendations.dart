@@ -17,15 +17,16 @@ class _RecommendationsState extends State<Recommendations> {
         color: Colors.pink[50],
         child: ListView(
           children: productProvider.products
-              .map((item) => GestureDetector(
-                    child: item.recommended
-                        ? ProductCard(
-                            product: item,
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
-                  ))
+              .map((item) =>
+              GestureDetector(
+                child: item.recommended
+                    ? ProductCard(
+                  product: item,
+                )
+                    : const SizedBox(
+                  height: 0,
+                ),
+              ))
               .toList(),
         ),
       ),

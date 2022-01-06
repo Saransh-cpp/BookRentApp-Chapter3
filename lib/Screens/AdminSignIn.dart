@@ -4,13 +4,15 @@ import 'package:book_rent_app_chapter3/Screens/AdminPage.dart';
 import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
 
 class AdminSignIn extends StatefulWidget {
+  const AdminSignIn({Key? key}) : super(key: key);
+
   @override
   _AdminSignInState createState() => _AdminSignInState();
 }
 
 class _AdminSignInState extends State<AdminSignIn> {
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _emailTextController = TextEditingController();
+  final TextEditingController _passwordTextController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -18,7 +20,7 @@ class _AdminSignInState extends State<AdminSignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 20,
             horizontal: 50,
           ),
@@ -26,27 +28,27 @@ class _AdminSignInState extends State<AdminSignIn> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   controller: _emailTextController,
-                  decoration: InputDecoration(hintText: 'email'),
+                  decoration: const InputDecoration(hintText: 'email'),
                   validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                   textAlignVertical: TextAlignVertical.bottom,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   controller: _passwordTextController,
-                  decoration: InputDecoration(hintText: 'password'),
+                  decoration: const InputDecoration(hintText: 'password'),
                   validator: (val) =>
                       val!.length < 6 ? 'Enter a password 6+ chars long' : null,
                   textAlignVertical: TextAlignVertical.bottom,
                   obscureText: true,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
@@ -55,9 +57,9 @@ class _AdminSignInState extends State<AdminSignIn> {
                       loginAdmin();
                     }
                   },
-                  child: Text('Sign in'),
+                  child: const Text('Sign in'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 InkWell(
@@ -65,7 +67,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (c) => LoginPage()));
                   },
-                  child: Text(
+                  child: const Text(
                     'I am a user',
                     style: TextStyle(color: Colors.red, fontSize: 15),
                   ),
@@ -78,22 +80,22 @@ class _AdminSignInState extends State<AdminSignIn> {
 
   loginAdmin() {
     FirebaseFirestore.instance.collection('admins').get().then((value) {
-      value.docs.forEach((element) {
+      for (var element in value.docs) {
         if (element.data()['id'] != _emailTextController.text) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Wrong ID')));
+              .showSnackBar(const SnackBar(content: Text('Wrong ID')));
         } else if (element.data()['password'] != _passwordTextController.text) {
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Wrong password')));
+              .showSnackBar(const SnackBar(content: Text('Wrong password')));
         } else {
           setState(() {
             _emailTextController.text = '';
             _passwordTextController.text = '';
           });
           Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (c) => AdminPage()));
+              context, MaterialPageRoute(builder: (c) => const AdminPage()));
         }
-      });
+      }
     });
   }
 }

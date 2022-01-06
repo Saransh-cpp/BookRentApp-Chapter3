@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class UpdateProfile extends StatefulWidget {
+  const UpdateProfile({Key? key}) : super(key: key);
+
   @override
   _UpdateProfileState createState() => _UpdateProfileState();
 }
@@ -40,218 +42,223 @@ class _UpdateProfileState extends State<UpdateProfile> {
     String initnumber = user.userModel.number;
     bool isLoading = false;
 
-    double _screenWidth = MediaQuery.of(context).size.width;
+    double _screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
 
     return Scaffold(
       key: _key,
       body: isLoading
-          ? Loading()
+          ? const Loading()
           : Scaffold(
-              backgroundColor: Colors.pink[50],
-              appBar: AppBar(
-                title: Text("Profile"),
-                backgroundColor: Colors.black,
-                elevation: 0,
+        backgroundColor: Colors.pink[50],
+        appBar: AppBar(
+          title: const Text("Profile"),
+          backgroundColor: Colors.black,
+          elevation: 0,
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 50,
               ),
-              body: SingleChildScrollView(
-                child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 50,
-                    ),
-                    child: Container(
-                      width: _screenWidth,
+              child: SizedBox(
+                width: _screenWidth,
+                child: Column(
+                  children: [
+                    Form(
+                      key: _formKey,
                       child: Column(
                         children: [
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    initialValue: initname,
-                                    onChanged: (text) => {
-                                      setState(() {
-                                        namebool = true;
-                                        name = text;
-                                      })
-                                    },
-                                    decoration: InputDecoration(
-                                        prefixIcon: Icon(Icons.person)),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter a name' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    initialValue: initemail,
-                                    decoration: InputDecoration(
-                                        hintText: "Enter email",
-                                        prefixIcon: Icon(Icons.email)),
-                                    onChanged: (val) {
-                                      setState(() {
-                                        emailbool = true;
-                                        email = val;
-                                      });
-                                    },
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter an email' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    initialValue: initaddress,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        addressbool = true;
-                                        address = val;
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        hintText: "Enter address",
-                                        prefixIcon:
-                                            Icon(Icons.home_work_rounded)),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter an address' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    initialValue: initbio,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        biobool = true;
-                                        bio = val;
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        hintText: "Enter bio",
-                                        prefixIcon: Icon(Icons.email)),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter a bio' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    keyboardType: TextInputType.number,
-                                    initialValue: initnumber,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        numberbool = true;
-                                        number = val;
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        hintText: "Enter number",
-                                        prefixIcon: Icon(Icons.phone)),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter a number' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () async {
-                                    if (_formKey.currentState!.validate()) {
-                                      setState(() {
-                                        isLoading = true;
-                                      });
-
-                                      if (!await user.updateUser(
-                                          namebool ? name : user.userModel.name,
-                                          emailbool
-                                              ? email
-                                              : user.userModel.email,
-                                          numberbool
-                                              ? number
-                                              : user.userModel.number,
-                                          addressbool
-                                              ? address
-                                              : user.userModel.address,
-                                          biobool ? bio : user.userModel.bio)) {
-                                        setState(() {
-                                          isLoading = false;
-                                        });
-                                        _key.currentState!.showSnackBar(SnackBar(
-                                            content: Text(
-                                                "Network Issue, Try again")));
-                                      } else {
-                                        setState(() {
-                                          isLoading = false;
-                                        });
-                                        Navigator.pop(context);
-                                      }
-                                    }
-                                  },
-                                  child: Text('Register'),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                              ],
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10)),
                             ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            child: TextFormField(
+                              initialValue: initname,
+                              onChanged: (text) =>
+                              {
+                                setState(() {
+                                  namebool = true;
+                                  name = text;
+                                })
+                              },
+                              decoration: const InputDecoration(
+                                  prefixIcon: Icon(Icons.person)),
+                              validator: (val) =>
+                              val!.isEmpty ? 'Enter a name' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10)),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            child: TextFormField(
+                              initialValue: initemail,
+                              decoration: const InputDecoration(
+                                  hintText: "Enter email",
+                                  prefixIcon: Icon(Icons.email)),
+                              onChanged: (val) {
+                                setState(() {
+                                  emailbool = true;
+                                  email = val;
+                                });
+                              },
+                              validator: (val) =>
+                              val!.isEmpty ? 'Enter an email' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10)),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            child: TextFormField(
+                              initialValue: initaddress,
+                              onChanged: (val) {
+                                setState(() {
+                                  addressbool = true;
+                                  address = val;
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                  hintText: "Enter address",
+                                  prefixIcon:
+                                  Icon(Icons.home_work_rounded)),
+                              validator: (val) =>
+                              val!.isEmpty ? 'Enter an address' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10)),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            child: TextFormField(
+                              initialValue: initbio,
+                              onChanged: (val) {
+                                setState(() {
+                                  biobool = true;
+                                  bio = val;
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                  hintText: "Enter bio",
+                                  prefixIcon: Icon(Icons.email)),
+                              validator: (val) =>
+                              val!.isEmpty ? 'Enter a bio' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: _screenWidth,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(10)),
+                            ),
+                            padding: const EdgeInsets.all(8),
+                            margin: const EdgeInsets.all(0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              initialValue: initnumber,
+                              onChanged: (val) {
+                                setState(() {
+                                  numberbool = true;
+                                  number = val;
+                                });
+                              },
+                              decoration: const InputDecoration(
+                                  hintText: "Enter number",
+                                  prefixIcon: Icon(Icons.phone)),
+                              validator: (val) =>
+                              val!.isEmpty ? 'Enter a number' : null,
+                              textAlignVertical: TextAlignVertical.bottom,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+
+                                if (!await user.updateUser(
+                                    namebool ? name : user.userModel.name,
+                                    emailbool
+                                        ? email
+                                        : user.userModel.email,
+                                    numberbool
+                                        ? number
+                                        : user.userModel.number,
+                                    addressbool
+                                        ? address
+                                        : user.userModel.address,
+                                    biobool ? bio : user.userModel.bio)) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  _key.currentState!.showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "Network Issue, Try again")));
+                                } else {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  Navigator.pop(context);
+                                }
+                              }
+                            },
+                            child: const Text('Register'),
+                          ),
+                          const SizedBox(
+                            height: 15,
                           ),
                         ],
                       ),
-                    )),
-              ),
-            ),
+                    ),
+                  ],
+                ),
+              )),
+        ),
+      ),
     );
   }
 }

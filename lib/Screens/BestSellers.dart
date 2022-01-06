@@ -17,15 +17,16 @@ class _BestSellersState extends State<BestSellers> {
         color: Colors.pink[50],
         child: ListView(
           children: productProvider.products
-              .map((item) => GestureDetector(
-                    child: item.bestseller
-                        ? ProductCard(
-                            product: item,
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
-                  ))
+              .map((item) =>
+              GestureDetector(
+                child: item.bestseller
+                    ? ProductCard(
+                  product: item,
+                )
+                    : const SizedBox(
+                  height: 0,
+                ),
+              ))
               .toList(),
         ),
       ),

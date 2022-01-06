@@ -5,6 +5,8 @@ import 'package:book_rent_app_chapter3/Screens/AllBooks.dart';
 import 'package:book_rent_app_chapter3/Screens/Home.dart';
 
 class NavBar extends StatefulWidget {
+  const NavBar({Key? key}) : super(key: key);
+
   @override
   _NavBarState createState() => _NavBarState();
 }
@@ -13,9 +15,9 @@ class _NavBarState extends State<NavBar> {
   PageController pageController = PageController();
   int currentIndex = 0;
   var currentTab = [
-    Home(),
-    AllBooks(),
-    YourOrders(),
+    const Home(),
+    const AllBooks(),
+    const YourOrders(),
   ];
 
   @override
@@ -35,19 +37,19 @@ class _NavBarState extends State<NavBar> {
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
             backgroundColor: Colors.pink[50]!,
-            items: <Widget>[
+            items: const <Widget>[
               Icon(Icons.home_rounded, size: 30),
               Icon(Icons.menu_book_rounded, size: 30),
               Icon(Icons.shopping_cart_rounded, size: 30),
             ],
             index: currentIndex,
             animationCurve: Curves.easeInToLinear,
-            animationDuration: Duration(milliseconds: 500),
+            animationDuration: const Duration(milliseconds: 500),
             onTap: (int index) {
               setState(() {
                 currentIndex = index;
                 pageController.animateToPage(index,
-                    duration: Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500),
                     curve: Curves.easeIn);
               });
             }),

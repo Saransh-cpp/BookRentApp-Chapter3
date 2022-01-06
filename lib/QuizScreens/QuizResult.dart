@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 import 'package:quiver/iterables.dart' as quiver;
@@ -82,7 +84,7 @@ class _QuizResultState extends State<QuizResult> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         elevation: 0,
       ),
       body: Center(

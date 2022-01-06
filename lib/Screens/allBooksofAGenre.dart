@@ -21,15 +21,16 @@ class _AllBooksofAGenreState extends State<AllBooksofAGenre> {
         color: Colors.pink[50],
         child: Column(
           children: productProvider.products
-              .map((item) => GestureDetector(
-                    child: item.genre == widget.genre
-                        ? ProductCard(
-                            product: item,
-                          )
-                        : SizedBox(
-                            height: 0,
-                          ),
-                  ))
+              .map((item) =>
+              GestureDetector(
+                child: item.genre == widget.genre
+                    ? ProductCard(
+                  product: item,
+                )
+                    : const SizedBox(
+                  height: 0,
+                ),
+              ))
               .toList(),
         ),
       ),

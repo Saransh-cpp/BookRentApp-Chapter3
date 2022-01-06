@@ -5,7 +5,7 @@ import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 //ignore: must_be_immutable
 class Question9 extends StatefulWidget {
   QuizData quizData = QuizData();
-  Question9({required this.quizData});
+  Question9({Key? key, required this.quizData}) : super(key: key);
 
   @override
   _Question9State createState() => _Question9State();
@@ -36,7 +36,7 @@ class _Question9State extends State<Question9> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
             // actions: [
             //   IconButton(
             //     icon: Icon(Icons.navigate_next_rounded),
@@ -49,25 +49,25 @@ class _Question9State extends State<Question9> {
           body: Column(
             children: [
               Row(
-                children: [
+                children: const [
                   Text(
                     'Question 9',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
                     'Choose a quote',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Column(
@@ -92,18 +92,18 @@ class _Question9State extends State<Question9> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'A',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option1,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -122,18 +122,18 @@ class _Question9State extends State<Question9> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'B',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option2,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -152,18 +152,18 @@ class _Question9State extends State<Question9> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'C',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option3,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -182,23 +182,23 @@ class _Question9State extends State<Question9> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'D',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option4,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ])))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               MaterialButton(
@@ -225,18 +225,19 @@ class _Question9State extends State<Question9> {
                     widget.pw = 0;
                   });
                 },
-                child: Text('Reset'),
+                child: const Text('Reset'),
               ),
               MaterialButton(
                 onPressed: () {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (c) => QuizResult(
+                          builder: (c) =>
+                              QuizResult(
                                 quizData: widget.quizData,
                               )));
                 },
-                child: Text('Result'),
+                child: const Text('Result'),
               )
             ],
           )),

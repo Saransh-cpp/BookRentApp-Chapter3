@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatefulWidget {
+  const AdminPage({Key? key}) : super(key: key);
+
   @override
   _AdminPageState createState() => _AdminPageState();
 }
@@ -8,10 +10,8 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        child: Text('Henlo')
-      ),
+    return const Center(
+      child: Text('Henlo'),
     );
   }
 }

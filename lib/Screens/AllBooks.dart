@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:book_rent_app_chapter3/Widgets.dart';
 
 class AllBooks extends StatefulWidget {
+  const AllBooks({Key? key}) : super(key: key);
+
   @override
   _AllBooksState createState() => _AllBooksState();
 }
@@ -14,9 +16,9 @@ class _AllBooksState extends State<AllBooks> {
       home: Scaffold(
         body: SafeArea(
           child: ListView(
-            physics: ScrollPhysics(),
+            physics: const ScrollPhysics(),
             shrinkWrap: true,
-            children: [
+            children: const [
               PerGenre(
                 genre: 'Astrophysics',
               ),

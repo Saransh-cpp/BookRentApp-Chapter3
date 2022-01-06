@@ -7,7 +7,8 @@ abstract class BaseAuth {
 }
 
 class Auth implements BaseAuth {
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   @override
   Future<User> googleSignIn() async {
     final GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -18,7 +19,7 @@ class Auth implements BaseAuth {
     final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
-      User user = (await _firebaseAuth.signInWithCredential(credential)) as User;
-      return user;
+    User user = (await _firebaseAuth.signInWithCredential(credential)) as User;
+    return user;
   }
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class FavItemModel {
   static const ID = "id";
   static const NAME = "name";

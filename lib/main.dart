@@ -18,14 +18,11 @@ Future<void> main() async {
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
-    BuildContext context = binding.renderViewElement!;
-    if (context != null) {
-      Splash();
-    }
+    Splash();
     binding.allowFirstFrame();
   });
   if (Firebase.apps.isEmpty) {
-    if (kIsWeb)
+    if (kIsWeb) {
       await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE",
@@ -33,8 +30,9 @@ Future<void> main() async {
           messagingSenderId: "212895190763",
           projectId: "chapter3-3a6ab"),
       );
-    else
+    } else {
       await Firebase.initializeApp();
+    }
   } else {
     Firebase.app();
   }
@@ -43,6 +41,8 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();
+
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +63,15 @@ class MyApp extends StatelessWidget {
           navigatorKey: _navigatorKey,
           child: MaterialApp(
             navigatorKey: _navigatorKey,
-            debugShowCheckedModeBanner: false, home: ScreensController()),
+            debugShowCheckedModeBanner: false, home: const ScreensController()),
       ),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
+  const ScreensController({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
