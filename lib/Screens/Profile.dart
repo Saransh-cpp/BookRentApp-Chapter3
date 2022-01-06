@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/Screens/Loading.dart';
 
@@ -17,13 +19,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
   final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldMessengerState>();
 
-  String email = '';
   String name = '';
   String address = '';
   String bio = '';
   String number = '';
 
-  bool emailbool = false;
   bool namebool = false;
   bool addressbool = false;
   bool biobool = false;
@@ -33,7 +33,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context, listen: false);
 
-    String initemail = user.userModel.email;
     String initname = user.userModel.name;
     String initaddress = user.userModel.address;
     String initbio = user.userModel.bio;
@@ -41,44 +40,74 @@ class _UpdateProfileState extends State<UpdateProfile> {
     bool isLoading = false;
 
     double _screenWidth = MediaQuery.of(context).size.width;
+    const Color _iconColor = Colors.pink;
 
     return Scaffold(
       key: _key,
       body: isLoading
           ? Loading()
-          : Scaffold(
-              backgroundColor: Colors.pink[50],
-              appBar: AppBar(
-                title: Text("Profile"),
-                backgroundColor: Colors.black,
-                elevation: 0,
-              ),
-              body: SingleChildScrollView(
-                child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 20,
-                      horizontal: 50,
+          : Stack(
+              children: [
+                Opacity(
+                  opacity: .8,
+                  child: Image.asset(
+                    "images/profile_background.jpeg",
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Scaffold(
+                  resizeToAvoidBottomInset: true,
+                  backgroundColor: Colors.transparent,
+                  appBar: AppBar(
+                    iconTheme: IconThemeData(
+                      color: Colors.black,
                     ),
+                    backgroundColor: Colors.white,
+                    title: Text(
+                      "Profile",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    elevation: 3,
+                  ),
+                  body: SingleChildScrollView(
                     child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       width: _screenWidth,
                       child: Column(
                         children: [
                           Form(
                             key: _formKey,
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 SizedBox(
                                   height: 20,
                                 ),
                                 Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                  height: 140,
+                                  child: Image.asset(
+                                    "images/reader.png",
+                                    fit: BoxFit.cover,
                                   ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                ),
+                                ListTile(
+                                  horizontalTitleGap: 8.0,
+                                  tileColor: Colors.white,
+                                  leading: Icon(
+                                    Icons.person,
+                                    color: _iconColor,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  title: TextFormField(
                                     initialValue: initname,
                                     onChanged: (text) => {
                                       setState(() {
@@ -87,51 +116,31 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       })
                                     },
                                     decoration: InputDecoration(
-                                        prefixIcon: Icon(Icons.person)),
+                                      border: InputBorder.none,
+                                      // hintText: 'Email',
+                                      hintStyle: TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                     validator: (val) =>
                                         val!.isEmpty ? 'Enter a name' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                    textAlign: TextAlign.start,
                                   ),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                ListTile(
+                                  horizontalTitleGap: 8.0,
+                                  tileColor: Colors.white,
+                                  leading: Icon(
+                                    Icons.home_work_rounded,
+                                    color: _iconColor,
                                   ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
-                                    initialValue: initemail,
-                                    decoration: InputDecoration(
-                                        hintText: "Enter email",
-                                        prefixIcon: Icon(Icons.email)),
-                                    onChanged: (val) {
-                                      setState(() {
-                                        emailbool = true;
-                                        email = val;
-                                      });
-                                    },
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter an email' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
+                                  title: TextFormField(
                                     initialValue: initaddress,
                                     onChanged: (val) {
                                       setState(() {
@@ -140,26 +149,32 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       });
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Enter address",
-                                        prefixIcon:
-                                            Icon(Icons.home_work_rounded)),
-                                    validator: (val) =>
-                                        val!.isEmpty ? 'Enter an address' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                      border: InputBorder.none,
+                                      hintText: "Enter address",
+                                      hintStyle: TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    validator: (val) => val!.isEmpty
+                                        ? 'Enter an address'
+                                        : null,
+                                    textAlign: TextAlign.start,
                                   ),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                ListTile(
+                                  horizontalTitleGap: 8.0,
+                                  tileColor: Colors.white,
+                                  leading: Icon(
+                                    Icons.chat,
+                                    color: _iconColor,
                                   ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  title: TextFormField(
                                     initialValue: initbio,
                                     onChanged: (val) {
                                       setState(() {
@@ -168,25 +183,31 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       });
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Enter bio",
-                                        prefixIcon: Icon(Icons.email)),
+                                      border: InputBorder.none,
+                                      hintText: "Enter bio",
+                                      hintStyle: TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                     validator: (val) =>
                                         val!.isEmpty ? 'Enter a bio' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                    textAlign: TextAlign.start,
                                   ),
                                 ),
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Container(
-                                  width: _screenWidth,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
+                                ListTile(
+                                  horizontalTitleGap: 8.0,
+                                  tileColor: Colors.white,
+                                  leading: Icon(
+                                    Icons.phone,
+                                    color: _iconColor,
                                   ),
-                                  padding: EdgeInsets.all(8),
-                                  margin: EdgeInsets.all(0),
-                                  child: TextFormField(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  title: TextFormField(
                                     keyboardType: TextInputType.number,
                                     initialValue: initnumber,
                                     onChanged: (val) {
@@ -196,17 +217,29 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       });
                                     },
                                     decoration: InputDecoration(
-                                        hintText: "Enter number",
-                                        prefixIcon: Icon(Icons.phone)),
+                                      border: InputBorder.none,
+                                      hintText: "Enter number",
+                                      hintStyle: TextStyle(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                                     validator: (val) =>
                                         val!.isEmpty ? 'Enter a number' : null,
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                    textAlign: TextAlign.start,
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 20,
+                                  height: 30,
                                 ),
-                                ElevatedButton(
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    fixedSize: Size(double.maxFinite, 50),
+                                    backgroundColor:
+                                        Color.fromARGB(255, 0, 174, 9),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                  ),
                                   onPressed: () async {
                                     if (_formKey.currentState!.validate()) {
                                       setState(() {
@@ -215,9 +248,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
                                       if (!await user.updateUser(
                                           namebool ? name : user.userModel.name,
-                                          emailbool
-                                              ? email
-                                              : user.userModel.email,
+                                          user.userModel.email,
                                           numberbool
                                               ? number
                                               : user.userModel.number,
@@ -239,7 +270,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                       }
                                     }
                                   },
-                                  child: Text('Register'),
+                                  child: Text(
+                                    'Register',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -249,8 +284,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           ),
                         ],
                       ),
-                    )),
-              ),
+                    ),
+                  ),
+                ),
+              ],
             ),
     );
   }
