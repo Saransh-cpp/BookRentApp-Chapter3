@@ -163,8 +163,7 @@ class _HomeState extends State<Home> {
                   icon: Icons.error,
                   text: 'Report issue',
                   onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => Report()))
+                    Wiredash.of(context)?.show()
                   }),
               _createDrawerItem(
                   icon: Icons.logout,
