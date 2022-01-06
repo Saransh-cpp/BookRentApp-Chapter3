@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                   text: 'Profile',
                   onTap: () => {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (c) => UpdateProfile()))
+                            MaterialPageRoute(builder: (c) => const UpdateProfile()))
                       }),
               _createDrawerItem(
                   icon: Icons.favorite_outlined,
