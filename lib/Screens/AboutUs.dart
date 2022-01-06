@@ -96,22 +96,22 @@ class _AboutUsState extends State<AboutUs> {
                     margin: const EdgeInsets.only(left: 15, right: 15),
                     child: Column(
                       children: <Widget>[
-                        _buildProfileImage(devTeam[index]["imgPath"]),
+                        _buildProfileImage(devTeam[index]["imgPath"]!),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           child: Column(
                             children: <Widget>[
                               Text(
-                                devTeam[index]["name"],
+                                devTeam[index]["name"]!,
                               ),
                               const Padding(padding: EdgeInsets.only(top: 5)),
                               Row(
                                 children: <Widget>[
-                                  _buildProfileIcon(devTeam[index]["linkedin"],
+                                  _buildProfileIcon(devTeam[index]["linkedin"]!,
                                       'https://img.icons8.com/fluent/48/000000/linkedin-circled.png'),
                                   const Padding(
                                       padding: EdgeInsets.only(left: 10)),
-                                  _buildProfileIcon(devTeam[index]["github"],
+                                  _buildProfileIcon(devTeam[index]["github"]!,
                                       'https://img.icons8.com/fluent/50/000000/github.png'),
                                 ],
                               )

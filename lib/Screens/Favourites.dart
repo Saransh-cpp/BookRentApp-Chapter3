@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/provider/app.dart';
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/provider/app.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class Favourites extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _FavouritesState extends State<Favourites> {
           body: appProvider.isLoading
               ? Loading()
               : ListView.builder(
-                  itemCount: userProvider.userModel.fav.length,
+                  itemCount: userProvider.userModel.fav!.length,
                   itemBuilder: (_, index) {
                     return Padding(
                       padding: const EdgeInsets.all(16),
@@ -58,7 +58,7 @@ class _FavouritesState extends State<Favourites> {
                                   topLeft: Radius.circular(20),
                                 ),
                                 child: Image.network(
-                                  userProvider.userModel.fav[index].image,
+                                  userProvider.userModel.fav![index].image,
                                   height: 120,
                                   width: 140,
                                   fit: BoxFit.fill,
@@ -76,7 +76,7 @@ class _FavouritesState extends State<Favourites> {
                                       text: TextSpan(children: [
                                         TextSpan(
                                             text: userProvider
-                                                    .userModel.fav[index].name +
+                                                    .userModel.fav![index].name +
                                                 "\n",
                                             style: TextStyle(
                                                 color: Colors.black,
@@ -84,7 +84,7 @@ class _FavouritesState extends State<Favourites> {
                                                 fontWeight: FontWeight.bold)),
                                         TextSpan(
                                             text:
-                                                "\$${userProvider.userModel.fav[index].price} \n\n",
+                                                "\$${userProvider.userModel.fav![index].price} \n\n",
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 18,
@@ -101,7 +101,7 @@ class _FavouritesState extends State<Favourites> {
                                           bool success =
                                               await userProvider.removeFromFav(
                                                   favItem: userProvider
-                                                      .userModel.fav[index]);
+                                                      .userModel.fav![index]);
                                           if (success) {
                                             userProvider.reloadUserModel();
                                             ScaffoldMessenger.of(context).showSnackBar(

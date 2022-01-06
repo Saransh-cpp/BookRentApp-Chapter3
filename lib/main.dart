@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/LoginPage.dart';
-import 'package:test_app/Screens/NavBar.dart';
-import 'package:test_app/Screens/splash.dart';
-import 'package:test_app/provider/app.dart';
-import 'package:test_app/provider/product.dart';
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
+import 'package:book_rent_app_chapter3/Screens/NavBar.dart';
+import 'package:book_rent_app_chapter3/Screens/splash.dart';
+import 'package:book_rent_app_chapter3/provider/app.dart';
+import 'package:book_rent_app_chapter3/provider/product.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
@@ -16,13 +17,26 @@ Future<void> main() async {
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
-    BuildContext context = binding.renderViewElement;
+    BuildContext context = binding.renderViewElement!;
     if (context != null) {
       Splash();
     }
     binding.allowFirstFrame();
   });
-  await Firebase.initializeApp();
+  if (Firebase.apps.isEmpty) {
+    if (kIsWeb)
+      await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE",
+          appId: "1:212895190763:web:ce93ccbf38d7bf823678ae",
+          messagingSenderId: "212895190763",
+          projectId: "chapter3-3a6ab"),
+      );
+    else
+      await Firebase.initializeApp();
+  } else {
+    Firebase.app();
+  }
   runApp(MyApp());
 }
 

@@ -1,5 +1,5 @@
-import 'package:test_app/model/product.dart';
-import 'package:test_app/services/product.dart';
+import 'package:book_rent_app_chapter3/model/product.dart';
+import 'package:book_rent_app_chapter3/services/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductProvider with ChangeNotifier {
@@ -16,7 +16,7 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future search({String productName}) async {
+  Future search({required String productName}) async {
     productsSearched =
         await _productServices.searchProducts(productName: productName);
     notifyListeners();

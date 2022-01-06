@@ -1,21 +1,21 @@
 import 'package:provider/provider.dart';
-import 'package:test_app/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-//import 'package:test_app/Utility/auth.dart';
-//import 'package:test_app/main.dart';
+//import 'package:book_rent_app_chapter3/Utility/auth.dart';
+//import 'package:book_rent_app_chapter3/main.dart';
 //import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:image_picker/image_picker.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
-//import 'package:test_app/Screens/LoginPage.dart';
+//import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
 //import 'package:firebase_storage/firebase_storage.dart';
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
-  Register({this.toggleView});
+  Register({required this.toggleView});
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -57,7 +57,7 @@ class _RegisterState extends State<Register> {
                 ? _nameTextController
                 : _emailTextController,
             decoration: InputDecoration(hintText: "$hint", prefixIcon: icon),
-            validator: (val) => val.isEmpty ? '$error' : null,
+            validator: (val) => val!.isEmpty ? '$error' : null,
             textAlignVertical: TextAlignVertical.bottom,
             onChanged: (val) {
               if ("$hint" == "Enter Email") {
@@ -113,7 +113,7 @@ class _RegisterState extends State<Register> {
                         });
                       }),
                 ),
-                validator: (val) => val.length < 6 ? '$error' : null,
+                validator: (val) => val!.length < 6 ? '$error' : null,
                 textAlignVertical: TextAlignVertical.bottom,
                 obscureText: hidePass1,
                 onChanged: (val) {
@@ -156,7 +156,7 @@ class _RegisterState extends State<Register> {
                         });
                       }),
                 ),
-                validator: (val) => passwordValidator(val),
+                validator: (val) => passwordValidator(val!),
                 textAlignVertical: TextAlignVertical.bottom,
                 obscureText: hidePass2,
               ),
@@ -211,7 +211,7 @@ class _RegisterState extends State<Register> {
                                     'Enter a password 6+ chars long'),
                                 ElevatedButton(
                                   onPressed: () async {
-                                    if (_formKey.currentState
+                                    if (_formKey.currentState!
                                         .validate()) {
                                       if (!await user.signUp(
                                           _nameTextController.text,
@@ -261,7 +261,7 @@ class UserServices {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String collection = "users";
 
-  void createUser(Map data) {
+  void createUser(Map<String, dynamic> data) {
     _firestore.collection(collection).doc(data["userId"]).set(data);
   }
 }

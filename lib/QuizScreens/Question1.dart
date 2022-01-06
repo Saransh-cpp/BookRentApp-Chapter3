@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/QuizScreens/Question2.dart';
-import 'package:test_app/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/Question2.dart';
+import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 
 //ignore: must_be_immutable
 class Question1 extends StatefulWidget {
@@ -16,7 +16,7 @@ class Question1 extends StatefulWidget {
 }
 
 class _Question1State extends State<Question1> {
-  String chosen;
+  String? chosen;
   bool answered = false;
   String option1 = 'Bold, fierce, strong headed';
   String option2 = 'Lively, Extrovert, Cheerful';

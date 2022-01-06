@@ -1,5 +1,5 @@
-import 'package:test_app/model/cart_item.dart';
-import 'package:test_app/model/order.dart';
+import 'package:book_rent_app_chapter3/model/cart_item.dart';
+import 'package:book_rent_app_chapter3/model/order.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OrderServices {
@@ -7,12 +7,12 @@ class OrderServices {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   void createOrder(
-      {String userId,
-      String id,
-      String description,
-      String status,
-      List<CartItemModel> cart,
-      double totalPrice}) {
+      {required String userId,
+        required String id,
+        required String description,
+        required String status,
+        required List<CartItemModel> cart,
+        required double totalPrice}) {
     List<Map> convertedCart = [];
 
     for (CartItemModel item in cart) {
@@ -30,7 +30,7 @@ class OrderServices {
     });
   }
 
-  Future<List<OrderModel>> getUserOrders({String userId}) async => _firestore
+  Future<List<OrderModel>> getUserOrders({required String userId}) async => _firestore
           .collection(collection)
           .where("userId", isEqualTo: userId)
           .get()

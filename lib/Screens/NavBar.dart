@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app/Screens/YourOrders.dart';
-import 'package:test_app/Screens/AllBooks.dart';
-import 'package:test_app/Screens/Home.dart';
+import 'package:book_rent_app_chapter3/Screens/YourOrders.dart';
+import 'package:book_rent_app_chapter3/Screens/AllBooks.dart';
+import 'package:book_rent_app_chapter3/Screens/Home.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _NavBarState extends State<NavBar> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
-            backgroundColor: Colors.pink[50],
+            backgroundColor: Colors.pink[50]!,
             items: <Widget>[
               Icon(Icons.home_rounded, size: 30),
               Icon(Icons.menu_book_rounded, size: 30),

@@ -1,4 +1,4 @@
-import 'package:test_app/model/product.dart';
+import 'package:book_rent_app_chapter3/model/product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductServices {
@@ -14,7 +14,7 @@ class ProductServices {
         return products;
       });
 
-  Future<List<ProductModel>> searchProducts({String productName}) {
+  Future<List<ProductModel>> searchProducts({required String productName}) {
     String searchKey = productName[0].toLowerCase() + productName.substring(1);
     return _firestore
         .collection(collection)

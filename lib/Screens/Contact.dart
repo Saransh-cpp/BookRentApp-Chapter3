@@ -58,7 +58,7 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                   ClickableCard(
                     textContent: 'Suggest some feature',
-                    color: Colors.purple[300],
+                    color: Colors.purple[300]!,
                     onTap: () async {
                       await _launchURL(
                           'https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues');
@@ -81,7 +81,7 @@ class _ContactUsState extends State<ContactUs> {
                   ),
                   ClickableCard(
                     textContent: 'Rate us on PlayStore',
-                    color: Colors.red[300],
+                    color: Colors.red[300]!,
                     onTap: () async {
                       await _launchURL('apps_playStore_link_here');
                     },
@@ -113,9 +113,9 @@ class _ContactUsState extends State<ContactUs> {
 
 class ClickableCard extends StatelessWidget {
   ClickableCard(
-      {@required this.textContent, @required this.onTap, @required this.color});
+      {required this.textContent, required this.onTap, required this.color});
   final String textContent;
-  final Function onTap;
+  final Function() onTap;
   final Color color;
 
   @override

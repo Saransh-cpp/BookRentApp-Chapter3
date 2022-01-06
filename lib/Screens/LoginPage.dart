@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:test_app/Screens/Loading.dart';
-import 'package:test_app/Screens/Register.dart';
+import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/Register.dart';
 
-import 'package:test_app/provider/user.dart';
+import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
-  SignIn({this.toggleView});
+  SignIn({required this.toggleView});
   @override
   _SignInState createState() => _SignInState();
 }
@@ -80,7 +80,7 @@ class _SignInState extends State<SignIn> {
                               controller: _emailTextController,
                               decoration: InputDecoration(hintText: 'email'),
                               validator: (val) =>
-                                  val.isEmpty ? 'Enter an email' : null,
+                                  val!.isEmpty ? 'Enter an email' : null,
                               textAlignVertical: TextAlignVertical.bottom,
                               onChanged: (val) {
                                 setState(() {
@@ -94,7 +94,7 @@ class _SignInState extends State<SignIn> {
                             TextFormField(
                               controller: _passwordTextController,
                               decoration: InputDecoration(hintText: 'password'),
-                              validator: (val) => val.length < 6
+                              validator: (val) => val!.length < 6
                                   ? 'Enter a password 6+ chars long'
                                   : null,
                               textAlignVertical: TextAlignVertical.bottom,
@@ -110,11 +110,11 @@ class _SignInState extends State<SignIn> {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                if (_formKey.currentState.validate()) {
+                                if (_formKey.currentState!.validate()) {
                                   if (!await user.signIn(
                                       _emailTextController.text,
                                       _passwordTextController.text)) {
-                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                         content: Text("Sign in failed")));
                                   }
                                 }

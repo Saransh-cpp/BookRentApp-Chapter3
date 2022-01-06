@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
 import 'package:quiver/iterables.dart' as quiver;
 
 //ignore: must_be_immutable
 class QuizResult extends StatefulWidget {
   final QuizData quizData;
 
-  const QuizResult({Key key, this.quizData}) : super(key: key);
+  const QuizResult({Key? key, required this.quizData}) : super(key: key);
 
   @override
   _QuizResultState createState() => _QuizResultState();
@@ -29,7 +29,7 @@ class _QuizResultState extends State<QuizResult> {
       widget.quizData.ts,
       widget.quizData.kr
     ];
-    int maxBook = quiver.max(books);
+    int maxBook = quiver.max(books)!;
 
     if (maxBook == 0) {
       bookSuggestion = 'Please attempt the quiz first';

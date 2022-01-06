@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:212895190763:android:dd5d9477448e46123678ae",
         "android_client_info": {
-          "package_name": "com.example.test_app"
+          "package_name": "com.example.book_rent_app_chapter3"
         }
       },
       "oauth_client": [
@@ -46,7 +46,7 @@
           "client_id": "212895190763-bvvgch9rv4l6tcelqh0c6dql8sjq2ud5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.test_app",
+            "package_name": "com.example.book_rent_app_chapter3",
             "certificate_hash": "1483649d6e547013618dc7440f6d43eec2000bc1"
           }
         },
