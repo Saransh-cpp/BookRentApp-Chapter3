@@ -32,7 +32,11 @@ class _FavouritesState extends State<Favourites> {
           backgroundColor: Colors.white,
           body: appProvider.isLoading
               ? Loading()
-              : ListView.builder(
+              : ( (userProvider.userModel.fav!.isEmpty)
+                ? Image.asset(
+                    'images/nofav.png',
+                  )
+                : ListView.builder(
                   itemCount: userProvider.userModel.fav!.length,
                   itemBuilder: (_, index) {
                     return Padding(
@@ -122,7 +126,7 @@ class _FavouritesState extends State<Favourites> {
                         ),
                       ),
                     );
-                  }),
+                  })),
         ));
   }
 }
