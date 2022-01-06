@@ -26,6 +26,80 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Widget _createHeader(String username, String email) {
+    return DrawerHeader(
+        margin: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.fill,
+                image:  AssetImage('images/drawer-back.png')
+            )
+        ),
+        child: Center(
+          child: Stack(children: <Widget>[
+            Positioned(
+              bottom: 30.0,
+              left: 16.0,
+              child: Center(
+                child: Text(
+                  username,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 25.0,
+                      fontFamily: 'MontBold'),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 12.0,
+              left: 16.0,
+              child: Center(
+                  child: Text(email,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 15.0,
+                          fontFamily: 'Mont'))),
+            ),
+          ]),
+        ));
+  }
+
+  Widget _createDrawerItem(
+      {required IconData icon,
+      required String text,
+      required GestureTapCallback onTap}) {
+    return ListTile(
+      title: Row(
+        children: <Widget>[
+          IconTheme(
+            data: IconThemeData(
+              color: Colors.grey[600]
+            ),
+            child: Icon(icon),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              top: 16.0,
+              bottom: 16.0
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                text,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+      onTap: onTap,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
@@ -40,92 +114,64 @@ class _HomeState extends State<Home> {
         child: InkWell(
           child: ListView(
             children: [
-              UserAccountsDrawerHeader(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: <Color>[
-                  Colors.deepOrange,
-                  Colors.orangeAccent,
-                ])),
-                accountName: Text(
-                  userProvider.userModel?.name ?? "username loading...",
-                ),
-                accountEmail: Text(
-                  userProvider.userModel?.email ?? "email loading...",
-                ),
+              _createHeader(
+                userProvider.userModel.name,
+                userProvider.userModel.email,
               ),
-              Container(
-                height: 600,
-                color: Colors.pink[50],
-                child: Column(
-                  children: [
-                    CustomListTile(
-                        Icons.person,
-                        'Profile',
-                        () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (c) => UpdateProfile()))
-                            }),
-                    CustomListTile(
-                        Icons.favorite_outlined,
-                        'Favourites',
-                        () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (c) => Favourites()))
-                            }),
-                    ListTile(
-                      leading: Icon(
-                        Icons.bookmark_border_rounded,
-                        color: Colors.black,
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_right,
-                        color: Colors.black,
-                      ),
-                      title: Text(
-                        'My Orders',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                      onTap: () async {
-                        await userProvider.getOrders();
+              _createDrawerItem(
+                  icon: Icons.person,
+                  text: 'Profile',
+                  onTap: () => {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (c) => OrdersScreen()));
-                      },
-                    ),
-                    CustomListTile(
-                        Icons.contact_support_rounded,
-                        'Contact us',
-                        () => {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (c) => ContactUs()))
-                            }),
-                    CustomListTile(
-                        Icons.home,
-                        'About',
-                        () => {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (c) => AboutUs()))
-                            }),
-                    CustomListTile(
-                        Icons.error,
-                        'Report issue',
-                        () => {
-                            Wiredash.of(context)?.show()
-                            }),
-                    CustomListTile(Icons.logout, 'Logout', () {
-                      userProvider.signOut();
-                    })
-                  ],
-                ),
-              )
+                            MaterialPageRoute(builder: (c) => UpdateProfile()))
+                      }),
+              _createDrawerItem(
+                  icon: Icons.favorite_outlined,
+                  text: 'Favourites',
+                  onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (c) => Favourites()))
+                  }),
+              _createDrawerItem(
+                  icon: Icons.bookmark_border_rounded,
+                  text: 'My Orders',
+                   onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (c) => OrdersScreen()))
+                  }),
+              _createDrawerItem(
+                  icon: Icons.contact_support_rounded,
+                  text: 'Contact us',
+                  onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (c) => ContactUs()))
+                  }),
+              _createDrawerItem(
+                  icon: Icons.home,
+                  text: 'About',
+                  onTap: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => AboutUs()))
+                  }),
+              _createDrawerItem(
+                  icon: Icons.error,
+                  text: 'Report issue',
+                  onTap: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => Report()))
+                  }),
+              _createDrawerItem(
+                  icon: Icons.logout,
+                  text: 'Logout',
+                  onTap: () {
+                    userProvider.signOut();
+                  }),
             ],
           ),
         ),
