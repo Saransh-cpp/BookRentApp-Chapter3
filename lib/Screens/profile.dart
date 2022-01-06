@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
 
 class UpdateProfile extends StatefulWidget {
+  const UpdateProfile({Key? key}) : super(key: key);
+
   @override
   _UpdateProfileState createState() => _UpdateProfileState();
 }
@@ -44,9 +46,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
     return Scaffold(
       key: _key,
-      body: isLoading
-          ? Loading()
-          : Stack(
+      body:Stack(
               children: [
                 Opacity(
                   opacity: .8,
@@ -87,7 +87,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Container(
+                                SizedBox(
                                   height: 140,
                                   child: Image.asset(
                                     "images/reader.png",
