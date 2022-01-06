@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/loading.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +46,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
     return Scaffold(
       key: _key,
-      body:Stack(
+      body: isLoading
+          // ignore: dead_code
+          ? const Loading()
+          : Stack(
               children: [
                 Opacity(
                   opacity: .8,
