@@ -334,7 +334,7 @@ class _HomeState extends State<Home> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (c) =>
-                                                  Recommendations()));
+                                                  const Recommendations()));
                                     },
                                     child: Container(
                                       height: 100,
