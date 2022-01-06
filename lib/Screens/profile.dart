@@ -50,6 +50,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Scaffold(
       key: _key,
       body: isLoading
+      // ignore: dead_code
           ? const Loading()
           : Scaffold(
         backgroundColor: Colors.pink[50],

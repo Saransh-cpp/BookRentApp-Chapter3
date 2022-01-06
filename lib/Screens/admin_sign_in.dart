@@ -65,7 +65,7 @@ class _AdminSignInState extends State<AdminSignIn> {
                 InkWell(
                   onTap: () {
                     Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (c) => LoginPage()));
+                        MaterialPageRoute(builder: (c) => const LoginPage()));
                   },
                   child: const Text(
                     'I am a user',

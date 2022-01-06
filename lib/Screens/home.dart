@@ -1,23 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/QuizScreens/question1.dart';
-//import 'package:book_rent_app_chapter3/Screens/login_page.dart';
 import 'package:book_rent_app_chapter3/Screens/orders.dart';
 import 'package:book_rent_app_chapter3/Screens/product_search.dart';
-import 'package:book_rent_app_chapter3/widgets.dart';
-//import 'package:book_rent_app_chapter3/database.dart';
-//import 'package:book_rent_app_chapter3/Screens/register.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
-//import 'package:book_rent_app_chapter3/services/product.dart';
 import 'package:book_rent_app_chapter3/Screens/favourites.dart';
 import 'package:book_rent_app_chapter3/Screens/profile.dart';
-//import 'package:book_rent_app_chapter3/Screens/quiz.dart';
 import 'package:book_rent_app_chapter3/Screens/recommendations.dart';
 import 'package:book_rent_app_chapter3/Screens/best_sellers.dart';
 import 'package:book_rent_app_chapter3/Screens/about_us.dart';
 import 'package:book_rent_app_chapter3/Screens/contact.dart';
-import 'package:book_rent_app_chapter3/Screens/report.dart';
 import 'package:wiredash/wiredash.dart';
 
 class Home extends StatefulWidget {
@@ -125,7 +118,7 @@ class _HomeState extends State<Home> {
                       onTap: () =>
                       {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (c) => UpdateProfile()))
+                            MaterialPageRoute(builder: (c) => const UpdateProfile()))
                       }),
                   _createDrawerItem(
                       icon: Icons.favorite_outlined,
@@ -234,7 +227,7 @@ class _HomeState extends State<Home> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (c) => ProductSearchScreen()));
+                                    builder: (c) => const ProductSearchScreen()));
                           },
                           decoration: const InputDecoration(
                             hintText: "Search your books here!",
@@ -259,7 +252,7 @@ class _HomeState extends State<Home> {
                                     color: Colors.pink[50]!,
                                   ),
                                   borderRadius:
-                                  BorderRadius.all(const Radius.circular(50)!),
+                                  const BorderRadius.all(Radius.circular(50)),
                                   color: Colors.pink[200]),
                               height: MediaQuery
                                   .of(context)
@@ -368,7 +361,7 @@ class _HomeState extends State<Home> {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (c) => BestSellers()));
+                                                builder: (c) => const BestSellers()));
                                       },
                                       child: Container(
                                         height: 100,

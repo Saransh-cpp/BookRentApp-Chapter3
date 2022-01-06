@@ -18,7 +18,7 @@ Future<void> main() async {
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
-    Splash();
+    const Splash();
     binding.allowFirstFrame();
   });
   if (Firebase.apps.isEmpty) {
@@ -77,15 +77,15 @@ class ScreensController extends StatelessWidget {
     final user = Provider.of<UserProvider>(context);
     switch (user.status) {
       case Status.Uninitialized:
-        return Splash();
+        return const Splash();
       case Status.Unauthenticated:
-        return LoginPage();
+        return const LoginPage();
       case Status.Authenticating:
-        return LoginPage();
+        return const LoginPage();
       case Status.Authenticated:
-        return NavBar();
+        return const NavBar();
       default:
-        return LoginPage();
+        return const LoginPage();
     }
   }
 }

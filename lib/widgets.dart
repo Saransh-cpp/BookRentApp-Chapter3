@@ -59,7 +59,8 @@ class ProductCard extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (c) => ProductDetails(
+                  builder: (c) =>
+                      ProductDetails(
                         product: product,
                       )));
         },
@@ -81,11 +82,11 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Stack(
                     children: <Widget>[
-                      Positioned.fill(
+                      const Positioned.fill(
                           child: Align(
-                        alignment: Alignment.center,
-                        child: Loading(),
-                      )),
+                            alignment: Alignment.center,
+                            child: Loading(),
+                          )),
                       Center(
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
@@ -114,7 +115,8 @@ class ProductCard extends StatelessWidget {
                   ),
                   TextSpan(
                     text: '\$${product.prices[0]} \t',
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   /*TextSpan(
                     text: product.sale ? 'ON SALE ' : "",
@@ -498,7 +500,7 @@ class FeaturedCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Stack(
               children: <Widget>[
-                Positioned.fill(
+                const Positioned.fill(
                     child: Align(
                   alignment: Alignment.center,
                   child: Loading(),

@@ -4,6 +4,8 @@ import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:book_rent_app_chapter3/widgets.dart';
 
 class Recommendations extends StatefulWidget {
+  const Recommendations({Key? key}) : super(key: key);
+
   @override
   _RecommendationsState createState() => _RecommendationsState();
 }

@@ -197,7 +197,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     style: TextStyle(color: Colors.red, fontSize: 18),
                   )),
               appProvider.isLoading
-                  ? Loading()
+                  ? const Loading()
                   : IconButton(
                 icon: const Icon(Icons.add_shopping_cart_rounded),
                 onPressed: () async {
@@ -287,25 +287,21 @@ class _ProductDetailsState extends State<ProductDetails> {
           'Price: ${widget.product!.prices[0]}',
           style: const TextStyle(color: Colors.black, fontSize: 18),
         );
-        break;
       case '2 weeks':
         return Text(
           'Price: ${widget.product!.prices[1]}',
           style: const TextStyle(color: Colors.black, fontSize: 18),
         );
-        break;
       case '3 weeks':
         return Text(
           'Price: ${widget.product!.prices[2]}',
           style: const TextStyle(color: Colors.black, fontSize: 18),
         );
-        break;
       case '4 weeks':
         return Text(
           'Price: ${widget.product!.prices[3]}',
           style: const TextStyle(color: Colors.black, fontSize: 18),
         );
-        break;
       default:
         return const Text('select a time');
     }
