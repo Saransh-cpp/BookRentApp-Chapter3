@@ -47,6 +47,7 @@ dependencies:
   transparent_image: 2.0.0
   url_launcher: 6.0.17
   uuid: 3.0.5
+  wiredash: ^0.7.0+1
   flutter:
     sdk: flutter
 

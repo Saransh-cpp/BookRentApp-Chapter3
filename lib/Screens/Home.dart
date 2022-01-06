@@ -18,6 +18,7 @@ import 'package:book_rent_app_chapter3/Screens/BestSellers.dart';
 import 'package:book_rent_app_chapter3/Screens/AboutUs.dart';
 import 'package:book_rent_app_chapter3/Screens/Contact.dart';
 import 'package:book_rent_app_chapter3/Screens/Report.dart';
+import 'package:wiredash/wiredash.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -162,8 +163,7 @@ class _HomeState extends State<Home> {
                   icon: Icons.error,
                   text: 'Report issue',
                   onTap: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => Report()))
+                    Wiredash.of(context)?.show()
                   }),
               _createDrawerItem(
                   icon: Icons.logout,

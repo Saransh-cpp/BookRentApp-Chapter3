@@ -11,6 +11,7 @@ import 'package:book_rent_app_chapter3/provider/app.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
 import 'package:flutter/services.dart';
+import 'package:wiredash/wiredash.dart';
 
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +42,8 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -54,8 +57,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: ProductProvider.initialize()),
         ChangeNotifierProvider.value(value: AppProvider()),
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false, home: ScreensController()),
+      child: Wiredash(
+          projectId: "chapter3-1ym21le",
+          secret: "A2XCs2mC48QPiCAFboCRRHzChA42S5BM",
+          navigatorKey: _navigatorKey,
+          child: MaterialApp(
+            navigatorKey: _navigatorKey,
+            debugShowCheckedModeBanner: false, home: ScreensController()),
+      ),
     );
   }
 }
