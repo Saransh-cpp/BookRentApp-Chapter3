@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/QuizScreens/Question2.dart';
-import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/question6.dart';
+import 'package:book_rent_app_chapter3/model/quiz_data_model.dart';
 
-// ignore: must_be_immutable
-class Question1 extends StatefulWidget {
-  final QuizData quizData = QuizData();
-
-  Question1({Key? key}) : super(key: key);
+//ignore: must_be_immutable
+class Question5 extends StatefulWidget {
+  QuizData quizData = QuizData();
+  Question5({Key? key, required this.quizData}) : super(key: key);
 
   @override
-  _Question1State createState() => _Question1State();
+  _Question5State createState() => _Question5State();
 
-  int tgdt = 0;
-  int tug = 0;
-  int pfo = 0;
-  int aad = 0;
+  int csms = 0;
+  int eu = 0;
+  int ts = 0;
+  int kr = 0;
+  int hppa = 0;
 }
 
-class _Question1State extends State<Question1> {
+class _Question5State extends State<Question5> {
   String? chosen;
   bool answered = false;
-  String option1 = 'Bold, fierce, strong headed';
-  String option2 = 'Lively, Extrovert, Cheerful';
-  String option3 = 'Nerdy, Introvert, Creative, Quite';
-  String option4 = 'Smart, Ambivert, Intellectual';
+  String option1 = 'A closely knit group of 3-5 people';
+  String option2 =
+      'I can befriend every person on this\nplanet because I\'m awesome';
+  String option3 = 'Idk, I\'m a loner';
+  String option4 = '1 bestfriend who\'s everything to me';
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class _Question1State extends State<Question1> {
                       context,
                       MaterialPageRoute(
                           builder: (c) =>
-                              Question2(
+                              Question6(
                                 quizData: widget.quizData,
                               )));
                 },
@@ -53,7 +54,7 @@ class _Question1State extends State<Question1> {
               Row(
                 children: const [
                   Text(
-                    'Question 1',
+                    'Question 5',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
@@ -64,7 +65,7 @@ class _Question1State extends State<Question1> {
               Row(
                 children: const [
                   Text(
-                    'What personality trait do you resonate with\nthe most?',
+                    'Choose your social circle',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
@@ -80,11 +81,9 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.tgdt += 1;
-                            widget.quizData.tgdt += widget.tgdt;
+                            widget.hppa += 1;
+                            widget.quizData.hppa += widget.hppa;
                           });
-                          // ignore: avoid_print
-                          print(widget.quizData.tgdt);
                         }
                       },
                       child: Container(
@@ -103,8 +102,7 @@ class _Question1State extends State<Question1> {
                             Text(
                               option1,
                               style:
-                              const TextStyle(color: Colors.black,
-                                  fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -113,8 +111,8 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.tug += 1;
-                            widget.quizData.tug += widget.tug;
+                            widget.ts += 1;
+                            widget.quizData.ts += widget.ts;
                           });
                         }
                       },
@@ -134,8 +132,7 @@ class _Question1State extends State<Question1> {
                             Text(
                               option2,
                               style:
-                              const TextStyle(color: Colors.black,
-                                  fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -144,8 +141,10 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option3;
                             answered = true;
-                            widget.pfo += 1;
-                            widget.quizData.pfo += widget.pfo;
+                            widget.eu += 1;
+                            widget.csms += 1;
+                            widget.quizData.eu += widget.eu;
+                            widget.quizData.csms += widget.csms;
                           });
                         }
                       },
@@ -165,8 +164,7 @@ class _Question1State extends State<Question1> {
                             Text(
                               option3,
                               style:
-                              const TextStyle(color: Colors.black,
-                                  fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -175,8 +173,8 @@ class _Question1State extends State<Question1> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.aad += 1;
-                            widget.quizData.aad += widget.aad;
+                            widget.kr += 1;
+                            widget.quizData.kr += widget.kr;
                           });
                         }
                       },
@@ -196,8 +194,7 @@ class _Question1State extends State<Question1> {
                             Text(
                               option4,
                               style:
-                              const TextStyle(color: Colors.black,
-                                  fontSize: 20),
+                              const TextStyle(color: Colors.black, fontSize: 20),
                             )
                           ])))
                 ],
@@ -209,20 +206,22 @@ class _Question1State extends State<Question1> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.tgdt -= 1;
+                      widget.quizData.hppa -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.tug -= 1;
+                      widget.quizData.ts -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.pfo -= 1;
+                      widget.quizData.csms -= 1;
+                      widget.quizData.eu -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.aad -= 1;
+                      widget.quizData.kr -= 1;
                     }
                     chosen = '';
                     answered = false;
-                    widget.tgdt = 0;
-                    widget.pfo = 0;
-                    widget.aad = 0;
-                    widget.tug = 0;
+                    widget.eu = 0;
+                    widget.csms = 0;
+                    widget.ts = 0;
+                    widget.kr = 0;
+                    widget.hppa = 0;
                   });
                 },
                 child: const Text('Reset'),

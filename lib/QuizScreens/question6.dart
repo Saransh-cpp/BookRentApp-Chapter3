@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
-import 'package:book_rent_app_chapter3/QuizScreens/Question8.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/question7.dart';
+import 'package:book_rent_app_chapter3/model/quiz_data_model.dart';
 
 //ignore: must_be_immutable
-class Question7 extends StatefulWidget {
+class Question6 extends StatefulWidget {
   QuizData quizData = QuizData();
-  Question7({Key? key, required this.quizData}) : super(key: key);
+  Question6({Key? key, required this.quizData}) : super(key: key);
 
   @override
-  _Question7State createState() => _Question7State();
+  _Question6State createState() => _Question6State();
 
   int aad = 0;
   int ts = 0;
   int kr = 0;
-  int hppa = 0;
+  int tgdt = 0;
 }
 
-class _Question7State extends State<Question7> {
+class _Question6State extends State<Question6> {
   String? chosen;
   bool answered = false;
-  String option1 = 'I love when books make my heart\nbeat faster';
-  String option2 = 'I love when the book keeps me\nguessing';
-  String option3 = 'I love when the book makes me\nugly cry';
-  String option4 =
-      'I love when the protagonists fall in\nlove and have a happy ending ';
+  String option1 = 'Sweden';
+  String option2 = 'A lavish castle in a dystopian world';
+  String option3 = 'Afghanistan';
+  String option4 = 'Vatican City ';
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,7 @@ class _Question7State extends State<Question7> {
                       context,
                       MaterialPageRoute(
                           builder: (c) =>
-                              Question8(
+                              Question7(
                                 quizData: widget.quizData,
                               )));
                 },
@@ -53,7 +52,7 @@ class _Question7State extends State<Question7> {
               Row(
                 children: const [
                   Text(
-                    'Question 7',
+                    'Question 6',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
@@ -64,7 +63,7 @@ class _Question7State extends State<Question7> {
               Row(
                 children: const [
                   Text(
-                    'What is your favorite part about a book?',
+                    'Where will you spend your vacation?',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
@@ -80,8 +79,8 @@ class _Question7State extends State<Question7> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.hppa += 1;
-                            widget.quizData.hppa += widget.hppa;
+                            widget.tgdt += 1;
+                            widget.quizData.tgdt += widget.tgdt;
                           });
                         }
                       },
@@ -110,8 +109,8 @@ class _Question7State extends State<Question7> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.aad += 1;
-                            widget.quizData.aad += widget.aad;
+                            widget.ts += 1;
+                            widget.quizData.ts += widget.ts;
                           });
                         }
                       },
@@ -170,8 +169,8 @@ class _Question7State extends State<Question7> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.ts += 1;
-                            widget.quizData.ts += widget.ts;
+                            widget.aad += 1;
+                            widget.quizData.aad += widget.aad;
                           });
                         }
                       },
@@ -203,17 +202,17 @@ class _Question7State extends State<Question7> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.hppa -= 1;
+                      widget.quizData.tgdt -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.aad -= 1;
+                      widget.quizData.ts -= 1;
                     } else if (chosen == option3) {
                       widget.quizData.kr -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.ts -= 1;
+                      widget.quizData.aad -= 1;
                     }
                     chosen = '';
                     answered = false;
-                    widget.hppa = 0;
+                    widget.tgdt = 0;
                     widget.ts = 0;
                     widget.kr = 0;
                     widget.aad = 0;

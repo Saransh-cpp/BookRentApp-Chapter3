@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/Screens/AdminPage.dart';
-import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
+import 'package:book_rent_app_chapter3/Screens/admin_page.dart';
+import 'package:book_rent_app_chapter3/Screens/login_page.dart';
 
 class AdminSignIn extends StatefulWidget {
   const AdminSignIn({Key? key}) : super(key: key);

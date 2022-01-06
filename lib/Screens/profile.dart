@@ -1,5 +1,5 @@
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/Screens/Loading.dart';
+import 'package:book_rent_app_chapter3/Screens/loading.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

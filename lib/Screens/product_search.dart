@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/Screens/product_details.dart';
-import 'package:book_rent_app_chapter3/Widgets.dart';
+import 'package:book_rent_app_chapter3/widgets.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
 
 class ProductSearchScreen extends StatelessWidget {

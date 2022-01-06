@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/Screens/Loading.dart';
-import 'package:book_rent_app_chapter3/Screens/Recommendations.dart';
+import 'package:book_rent_app_chapter3/Screens/loading.dart';
+import 'package:book_rent_app_chapter3/Screens/recommendations.dart';
 import 'package:book_rent_app_chapter3/Screens/product_details.dart';
 import 'package:book_rent_app_chapter3/model/cart_item.dart';
 import 'package:book_rent_app_chapter3/provider/app.dart';

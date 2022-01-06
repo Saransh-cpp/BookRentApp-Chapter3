@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
-import 'package:book_rent_app_chapter3/Widgets.dart';
+import 'package:book_rent_app_chapter3/widgets.dart';
 
-class BestSellers extends StatefulWidget {
+class Recommendations extends StatefulWidget {
   @override
-  _BestSellersState createState() => _BestSellersState();
+  _RecommendationsState createState() => _RecommendationsState();
 }
 
-class _BestSellersState extends State<BestSellers> {
+class _RecommendationsState extends State<Recommendations> {
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
@@ -19,7 +19,7 @@ class _BestSellersState extends State<BestSellers> {
           children: productProvider.products
               .map((item) =>
               GestureDetector(
-                child: item.bestseller
+                child: item.recommended
                     ? ProductCard(
                   product: item,
                 )

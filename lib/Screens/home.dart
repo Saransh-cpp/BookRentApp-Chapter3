@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/QuizScreens/Question1.dart';
-//import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/question1.dart';
+//import 'package:book_rent_app_chapter3/Screens/login_page.dart';
 import 'package:book_rent_app_chapter3/Screens/orders.dart';
 import 'package:book_rent_app_chapter3/Screens/product_search.dart';
-import 'package:book_rent_app_chapter3/Widgets.dart';
+import 'package:book_rent_app_chapter3/widgets.dart';
 //import 'package:book_rent_app_chapter3/database.dart';
-//import 'package:book_rent_app_chapter3/Screens/Register.dart';
+//import 'package:book_rent_app_chapter3/Screens/register.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
 //import 'package:book_rent_app_chapter3/services/product.dart';
-import 'package:book_rent_app_chapter3/Screens/Favourites.dart';
-import 'package:book_rent_app_chapter3/Screens/Profile.dart';
-//import 'package:book_rent_app_chapter3/Screens/Quiz.dart';
-import 'package:book_rent_app_chapter3/Screens/Recommendations.dart';
-import 'package:book_rent_app_chapter3/Screens/BestSellers.dart';
-import 'package:book_rent_app_chapter3/Screens/AboutUs.dart';
-import 'package:book_rent_app_chapter3/Screens/Contact.dart';
-import 'package:book_rent_app_chapter3/Screens/Report.dart';
+import 'package:book_rent_app_chapter3/Screens/favourites.dart';
+import 'package:book_rent_app_chapter3/Screens/profile.dart';
+//import 'package:book_rent_app_chapter3/Screens/quiz.dart';
+import 'package:book_rent_app_chapter3/Screens/recommendations.dart';
+import 'package:book_rent_app_chapter3/Screens/best_sellers.dart';
+import 'package:book_rent_app_chapter3/Screens/about_us.dart';
+import 'package:book_rent_app_chapter3/Screens/contact.dart';
+import 'package:book_rent_app_chapter3/Screens/report.dart';
 import 'package:wiredash/wiredash.dart';
 
 class Home extends StatefulWidget {

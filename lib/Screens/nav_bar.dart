@@ -1,8 +1,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/Screens/YourOrders.dart';
-import 'package:book_rent_app_chapter3/Screens/AllBooks.dart';
-import 'package:book_rent_app_chapter3/Screens/Home.dart';
+import 'package:book_rent_app_chapter3/Screens/your_orders.dart';
+import 'package:book_rent_app_chapter3/Screens/all_books.dart';
+import 'package:book_rent_app_chapter3/Screens/home.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);

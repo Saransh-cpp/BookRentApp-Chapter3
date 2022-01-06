@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/QuizScreens/QuizResult.dart';
-import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/question2.dart';
+import 'package:book_rent_app_chapter3/model/quiz_data_model.dart';
 
-//ignore: must_be_immutable
-class Question9 extends StatefulWidget {
-  QuizData quizData = QuizData();
-  Question9({Key? key, required this.quizData}) : super(key: key);
+// ignore: must_be_immutable
+class Question1 extends StatefulWidget {
+  final QuizData quizData = QuizData();
+
+  Question1({Key? key}) : super(key: key);
 
   @override
-  _Question9State createState() => _Question9State();
+  _Question1State createState() => _Question1State();
 
-  int csms = 0;
-  int eu = 0;
-  int pw = 0;
+  int tgdt = 0;
+  int tug = 0;
+  int pfo = 0;
   int aad = 0;
-  int kr = 0;
-  int ts = 0;
 }
 
-class _Question9State extends State<Question9> {
+class _Question1State extends State<Question1> {
   String? chosen;
   bool answered = false;
-  String option1 =
-      'The boldness of asking deep\nquestions may require unforeseen\nflexibility if we are to\naccept the answers.';
-  String option2 = 'For you, a thousand times over.';
-  String option3 =
-      'There is some good in this world,\nand it’s worth fighting for.';
-  String option4 =
-      'Whatever our souls are made of,\nhis and mine are the same.';
+  String option1 = 'Bold, fierce, strong headed';
+  String option2 = 'Lively, Extrovert, Cheerful';
+  String option3 = 'Nerdy, Introvert, Creative, Quite';
+  String option4 = 'Smart, Ambivert, Intellectual';
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +33,27 @@ class _Question9State extends State<Question9> {
             backgroundColor: Colors.white,
             elevation: 0,
             iconTheme: const IconThemeData(color: Colors.black),
-            // actions: [
-            //   IconButton(
-            //     icon: Icon(Icons.navigate_next_rounded),
-            //     onPressed: () {
-            //       // Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => ))
-            //     },
-            //   )
-            // ],
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.navigate_next_rounded),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (c) =>
+                              Question2(
+                                quizData: widget.quizData,
+                              )));
+                },
+              )
+            ],
           ),
           body: Column(
             children: [
               Row(
                 children: const [
                   Text(
-                    'Question 9',
+                    'Question 1',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
@@ -62,7 +64,7 @@ class _Question9State extends State<Question9> {
               Row(
                 children: const [
                   Text(
-                    'Choose a quote',
+                    'What personality trait do you resonate with\nthe most?',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
@@ -78,13 +80,11 @@ class _Question9State extends State<Question9> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.csms += 1;
-                            widget.eu += 1;
-                            widget.pw += 1;
-                            widget.quizData.csms += widget.csms;
-                            widget.quizData.eu += widget.eu;
-                            widget.quizData.pw += widget.pw;
+                            widget.tgdt += 1;
+                            widget.quizData.tgdt += widget.tgdt;
                           });
+                          // ignore: avoid_print
+                          print(widget.quizData.tgdt);
                         }
                       },
                       child: Container(
@@ -103,7 +103,8 @@ class _Question9State extends State<Question9> {
                             Text(
                               option1,
                               style:
-                              const TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -112,8 +113,8 @@ class _Question9State extends State<Question9> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.kr += 1;
-                            widget.quizData.kr += widget.kr;
+                            widget.tug += 1;
+                            widget.quizData.tug += widget.tug;
                           });
                         }
                       },
@@ -133,7 +134,8 @@ class _Question9State extends State<Question9> {
                             Text(
                               option2,
                               style:
-                              const TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -142,8 +144,8 @@ class _Question9State extends State<Question9> {
                           setState(() {
                             chosen = option3;
                             answered = true;
-                            widget.aad += 1;
-                            widget.quizData.aad += widget.aad;
+                            widget.pfo += 1;
+                            widget.quizData.pfo += widget.pfo;
                           });
                         }
                       },
@@ -163,7 +165,8 @@ class _Question9State extends State<Question9> {
                             Text(
                               option3,
                               style:
-                              const TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -172,8 +175,8 @@ class _Question9State extends State<Question9> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.ts += 1;
-                            widget.quizData.ts += widget.ts;
+                            widget.aad += 1;
+                            widget.quizData.aad += widget.aad;
                           });
                         }
                       },
@@ -193,7 +196,8 @@ class _Question9State extends State<Question9> {
                             Text(
                               option4,
                               style:
-                              const TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ])))
                 ],
@@ -205,40 +209,24 @@ class _Question9State extends State<Question9> {
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.eu -= 1;
-                      widget.quizData.csms -= 1;
-                      widget.quizData.pw -= 1;
+                      widget.quizData.tgdt -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.kr -= 1;
+                      widget.quizData.tug -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.aad -= 1;
+                      widget.quizData.pfo -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.ts -= 1;
+                      widget.quizData.aad -= 1;
                     }
                     chosen = '';
                     answered = false;
-                    widget.ts = 0;
+                    widget.tgdt = 0;
+                    widget.pfo = 0;
                     widget.aad = 0;
-                    widget.kr = 0;
-                    widget.eu = 0;
-                    widget.csms = 0;
-                    widget.pw = 0;
+                    widget.tug = 0;
                   });
                 },
                 child: const Text('Reset'),
               ),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (c) =>
-                              QuizResult(
-                                quizData: widget.quizData,
-                              )));
-                },
-                child: const Text('Result'),
-              )
             ],
           )),
     );

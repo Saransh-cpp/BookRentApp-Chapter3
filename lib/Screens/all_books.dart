@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/Widgets.dart';
+import 'package:book_rent_app_chapter3/widgets.dart';
 
 class AllBooks extends StatefulWidget {
   const AllBooks({Key? key}) : super(key: key);
