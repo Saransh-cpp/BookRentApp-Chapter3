@@ -7,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutUs extends StatefulWidget {
+  const AboutUs({Key? key}) : super(key: key);
+
   @override
   _AboutUsState createState() => _AboutUsState();
 }
@@ -14,7 +16,7 @@ class AboutUs extends StatefulWidget {
 class _AboutUsState extends State<AboutUs> {
   final double spacing = 40;
   List jsonContributors = [];
-  String _aboutThisApp =
+  final String _aboutThisApp =
       "Chapter3 is an app specifically made for renting books. It displays collections of top-selling books as well as the option to have your taste curated and matched with a book. Here customers can filter and select books based on genre, after which placing immediate or deferred orders with the option to cancel.";
 
   Future<void> _fetchContributors() async {
@@ -46,12 +48,12 @@ class _AboutUsState extends State<AboutUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.pink,
         ),
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Text(
+        title: const Text(
           "About",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
@@ -64,7 +66,7 @@ class _AboutUsState extends State<AboutUs> {
             children: <Widget>[
               Container(
                 alignment: Alignment.topCenter,
-                margin: EdgeInsets.only(top: 10),
+                margin: const EdgeInsets.only(top: 10),
                 child: const Text(
                   "Chapter 3",
                   style: TextStyle(
@@ -74,12 +76,12 @@ class _AboutUsState extends State<AboutUs> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Card(
                   elevation: 1,
                   shadowColor: Colors.grey,
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Text(_aboutThisApp, textAlign: TextAlign.center),
                   ),
                 ),
@@ -124,7 +126,7 @@ class _AboutUsState extends State<AboutUs> {
                 ),
               ),
               _buildTeamTitle('CONTRIBUTORS'),
-              if (jsonContributors.length > 0)
+              if (jsonContributors.isNotEmpty)
                 Container(
                   height: 170,
                   margin: const EdgeInsets.only(top: 20),
@@ -180,8 +182,8 @@ class _AboutUsState extends State<AboutUs> {
                 const Center(child: CircularProgressIndicator()),
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.all(10),
-                child: Text(
+                padding: const EdgeInsets.all(10),
+                child: const Text(
                   "Made with ❤ by Open Source",
                   style: TextStyle(
                     fontSize: 18,
@@ -212,7 +214,7 @@ class _AboutUsState extends State<AboutUs> {
             boxShadow: _buildBoxShadow,
             color: Colors.black,
             shape: BoxShape.circle,
-            image: DecorationImage(
+            image: const DecorationImage(
               image: NetworkImage(
                   'https://avatars.githubusercontent.com/u/74055102?v=4'),
               fit: BoxFit.contain,
@@ -307,7 +309,7 @@ class _AboutUsState extends State<AboutUs> {
       await launch(url);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
+        content: const Text(
           'Something went wrong!',
           style: TextStyle(fontSize: 20),
         ),

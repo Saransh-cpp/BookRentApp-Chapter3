@@ -4,15 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OrderServices {
   String collection = "orders";
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  void createOrder(
-      {required String userId,
-        required String id,
-        required String description,
-        required String status,
-        required List<CartItemModel> cart,
-        required double totalPrice}) {
+  void createOrder({required String userId,
+    required String id,
+    required String description,
+    required String status,
+    required List<CartItemModel> cart,
+    required double totalPrice}) {
     List<Map> convertedCart = [];
 
     for (CartItemModel item in cart) {
@@ -24,13 +23,16 @@ class OrderServices {
       "id": id,
       "cart": convertedCart,
       "total": totalPrice,
-      "createdAt": DateTime.now().millisecondsSinceEpoch,
+      "createdAt": DateTime
+          .now()
+          .millisecondsSinceEpoch,
       "description": description,
       "status": status
     });
   }
 
-  Future<List<OrderModel>> getUserOrders({required String userId}) async => _firestore
+  Future<List<OrderModel>> getUserOrders({required String userId}) async =>
+      _firestore
           .collection(collection)
           .where("userId", isEqualTo: userId)
           .get()

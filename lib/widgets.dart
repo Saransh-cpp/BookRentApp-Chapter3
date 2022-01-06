@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/Screens/Loading.dart';
-import 'package:book_rent_app_chapter3/Screens/allBooksofAGenre.dart';
+import 'package:book_rent_app_chapter3/Screens/loading.dart';
+import 'package:book_rent_app_chapter3/Screens/all_books_of_a_genre.dart';
 import 'package:book_rent_app_chapter3/Screens/product_details.dart';
 import 'package:book_rent_app_chapter3/model/product.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
@@ -12,35 +12,33 @@ class CustomListTile extends StatelessWidget {
   final String text;
   final Function() onTap;
 
-  CustomListTile(this.icon, this.text, this.onTap);
+  const CustomListTile(this.icon, this.text, this.onTap, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-      child: Container(
-        child: InkWell(
-            onTap: onTap,
-            splashColor: Colors.orangeAccent,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Icon(icon),
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Text(
-                          text,
-                          style: TextStyle(
-                            fontSize: 16.0,
-                          ),
+      child: InkWell(
+          onTap: onTap,
+          splashColor: Colors.orangeAccent,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(icon),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        text,
+                        style: const TextStyle(
+                          fontSize: 16.0,
                         ),
                       ),
-                    ],
-                  ),
-                  Icon(Icons.arrow_right_rounded)
-                ])),
-      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.arrow_right_rounded)
+              ])),
     );
   }
 }
@@ -61,7 +59,8 @@ class ProductCard extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (c) => ProductDetails(
+                  builder: (c) =>
+                      ProductDetails(
                         product: product,
                       )));
         },
@@ -72,7 +71,7 @@ class ProductCard extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey[300]!,
-                    offset: Offset(-2, -1),
+                    offset: const Offset(-2, -1),
                     blurRadius: 5),
               ]),
           child: Row(
@@ -83,11 +82,11 @@ class ProductCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Stack(
                     children: <Widget>[
-                      Positioned.fill(
+                      const Positioned.fill(
                           child: Align(
-                        alignment: Alignment.center,
-                        child: Loading(),
-                      )),
+                            alignment: Alignment.center,
+                            child: Loading(),
+                          )),
                       Center(
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
@@ -101,22 +100,23 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               RichText(
                 text: TextSpan(children: [
                   TextSpan(
                     text: '${product.name} \n',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   TextSpan(
                     text: 'by: ${product.author} \n\n\n\n',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   TextSpan(
                     text: '\$${product.prices[0]} \t',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   /*TextSpan(
                     text: product.sale ? 'ON SALE ' : "",
@@ -126,7 +126,7 @@ class ProductCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: Colors.red),
                   )*/
-                ], style: TextStyle(color: Colors.black)),
+                ], style: const TextStyle(color: Colors.black)),
               )
             ],
           ),
@@ -478,7 +478,7 @@ class FeaturedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
@@ -487,7 +487,7 @@ class FeaturedCard extends StatelessWidget {
                   )));
         },
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(
                 color: Color.fromARGB(62, 168, 174, 201),
@@ -500,7 +500,7 @@ class FeaturedCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Stack(
               children: <Widget>[
-                Positioned.fill(
+                const Positioned.fill(
                     child: Align(
                   alignment: Alignment.center,
                   child: Loading(),
@@ -552,10 +552,10 @@ class FeaturedCard extends StatelessWidget {
                           text: TextSpan(children: [
                         TextSpan(
                             text: '${product.name} \n',
-                            style: TextStyle(fontSize: 18)),
+                            style: const TextStyle(fontSize: 18)),
                         TextSpan(
                             text: '\$${product.prices[0]} \n',
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 22, fontWeight: FontWeight.bold)),
                       ]))),
                 )
@@ -586,7 +586,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
     return Column(
       children: [
-        Container(
+        SizedBox(
             height: 230,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -597,7 +597,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                       ? FeaturedCard(
                           product: productProvider.products[index],
                         )
-                      : Text('');
+                      : const Text('');
                 })),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -612,7 +612,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                             )));
               },
               child: IconButton(
-                icon: Icon(Icons.ballot_rounded),
+                icon: const Icon(Icons.ballot_rounded),
                 onPressed: () {},
               ),
             ),
@@ -643,7 +643,7 @@ class _PerGenreState extends State<PerGenre> {
           Padding(
             padding: const EdgeInsets.all(14.0),
             child: Container(
-                alignment: Alignment.centerLeft, child: new Text(widget.genre)),
+                alignment: Alignment.centerLeft, child: Text(widget.genre)),
           ),
         ],
       ),
@@ -677,7 +677,7 @@ class _AllBooksOfAGenreState extends State<AllBooksOfAGenre> {
                       ? ProductCard(
                           product: item,
                         )
-                      : Text(''),
+                      : const Text(''),
                 ))
             .toList(),
       ),
@@ -688,6 +688,8 @@ class _AllBooksOfAGenreState extends State<AllBooksOfAGenre> {
 //====================Search=====================
 
 class Search extends StatefulWidget {
+  const Search({Key? key}) : super(key: key);
+
   @override
   _SearchState createState() => _SearchState();
 }
@@ -696,11 +698,11 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.blueGrey[50],
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(5.0),
           ),
         ),
@@ -710,15 +712,15 @@ class _SearchState extends State<Search> {
             color: Colors.blueGrey[300],
           ),
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.all(10.0),
+            contentPadding: const EdgeInsets.all(10.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.white,
               ),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.white,
               ),
               borderRadius: BorderRadius.circular(5.0),

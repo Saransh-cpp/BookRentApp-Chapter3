@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:book_rent_app_chapter3/QuizScreens/Question9.dart';
-import 'package:book_rent_app_chapter3/model/QuizDataModel.dart';
+import 'package:book_rent_app_chapter3/QuizScreens/question4.dart';
+import 'package:book_rent_app_chapter3/model/quiz_data_model.dart';
 
 //ignore: must_be_immutable
-class Question8 extends StatefulWidget {
+class Question3 extends StatefulWidget {
   QuizData quizData = QuizData();
-  Question8({required this.quizData});
+  Question3({Key? key, required this.quizData}) : super(key: key);
 
   @override
-  _Question8State createState() => _Question8State();
+  _Question3State createState() => _Question3State();
 
-  int csms = 0;
-  int eu = 0;
-  int pw = 0;
+  int ts = 0;
+  int aad = 0;
+  int pfo = 0;
   int fsg = 0;
-  int kr = 0;
-  int tug = 0;
 }
 
-class _Question8State extends State<Question8> {
+class _Question3State extends State<Question3> {
   String? chosen;
   bool answered = false;
-  String option1 = 'I wanna be happy and filled with\npositivity';
-  String option2 = 'Tear jerker, Hit me with a solid\nemotional story';
-  String option3 = 'Hot and steamy romance pls';
-  String option4 = 'Send my brain for a jog, give me facts\nand knowledge';
+  String option1 = 'I believe in soulmates';
+  String option2 = 'A love triangle because I\'m\nconfused';
+  String option3 = 'Single forever gang';
+  String option4 = 'I don\'t date, I hookup';
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +31,16 @@ class _Question8State extends State<Question8> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0,
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: const IconThemeData(color: Colors.black),
             actions: [
               IconButton(
-                icon: Icon(Icons.navigate_next_rounded),
+                icon: const Icon(Icons.navigate_next_rounded),
                 onPressed: () {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (c) => Question9(
+                          builder: (c) =>
+                              Question4(
                                 quizData: widget.quizData,
                               )));
                 },
@@ -51,25 +50,25 @@ class _Question8State extends State<Question8> {
           body: Column(
             children: [
               Row(
-                children: [
+                children: const [
                   Text(
-                    'Question 8',
+                    'Question 3',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
-                children: [
+                children: const [
                   Text(
-                    'What is your favorite part about a book?',
+                    'What sort of romance do you like?',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Column(
@@ -80,8 +79,8 @@ class _Question8State extends State<Question8> {
                           setState(() {
                             chosen = option1;
                             answered = true;
-                            widget.tug += 1;
-                            widget.quizData.tug += widget.tug;
+                            widget.pfo += 1;
+                            widget.quizData.pfo += widget.pfo;
                           });
                         }
                       },
@@ -90,18 +89,19 @@ class _Question8State extends State<Question8> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'A',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option1,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -110,8 +110,8 @@ class _Question8State extends State<Question8> {
                           setState(() {
                             chosen = option2;
                             answered = true;
-                            widget.kr += 1;
-                            widget.quizData.kr += widget.kr;
+                            widget.ts += 1;
+                            widget.quizData.ts += widget.ts;
                           });
                         }
                       },
@@ -120,18 +120,19 @@ class _Question8State extends State<Question8> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'B',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option2,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -140,8 +141,8 @@ class _Question8State extends State<Question8> {
                           setState(() {
                             chosen = option3;
                             answered = true;
-                            widget.fsg += 1;
-                            widget.quizData.fsg += widget.fsg;
+                            widget.aad += 1;
+                            widget.quizData.aad += widget.aad;
                           });
                         }
                       },
@@ -150,18 +151,19 @@ class _Question8State extends State<Question8> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'C',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option3,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ]))),
                   GestureDetector(
@@ -170,12 +172,8 @@ class _Question8State extends State<Question8> {
                           setState(() {
                             chosen = option4;
                             answered = true;
-                            widget.csms += 1;
-                            widget.eu += 1;
-                            widget.pw += 1;
-                            widget.quizData.csms += widget.csms;
-                            widget.quizData.eu += widget.eu;
-                            widget.quizData.pw += widget.pw;
+                            widget.fsg += 1;
+                            widget.quizData.fsg += widget.fsg;
                           });
                         }
                       },
@@ -184,50 +182,47 @@ class _Question8State extends State<Question8> {
                               ? Colors.blueAccent
                               : Colors.white,
                           child: Row(children: [
-                            Text(
+                            const Text(
                               'D',
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              TextStyle(color: Colors.black, fontSize: 20),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 40,
                             ),
                             Text(
                               option4,
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 20),
+                              const TextStyle(color: Colors.black,
+                                  fontSize: 20),
                             )
                           ])))
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
               MaterialButton(
                 onPressed: () {
                   setState(() {
                     if (chosen == option1) {
-                      widget.quizData.tug -= 1;
+                      widget.quizData.pfo -= 1;
                     } else if (chosen == option2) {
-                      widget.quizData.kr -= 1;
+                      widget.quizData.ts -= 1;
                     } else if (chosen == option3) {
-                      widget.quizData.fsg -= 1;
+                      widget.quizData.aad -= 1;
                     } else if (chosen == option4) {
-                      widget.quizData.eu -= 1;
-                      widget.quizData.csms -= 1;
-                      widget.quizData.pw -= 1;
+                      widget.quizData.fsg -= 1;
                     }
                     chosen = '';
                     answered = false;
-                    widget.tug = 0;
+                    widget.ts = 0;
+                    widget.pfo = 0;
                     widget.fsg = 0;
-                    widget.kr = 0;
-                    widget.eu = 0;
-                    widget.csms = 0;
-                    widget.pw = 0;
+                    widget.aad = 0;
                   });
                 },
-                child: Text('Reset'),
+                child: const Text('Reset'),
               ),
             ],
           )),

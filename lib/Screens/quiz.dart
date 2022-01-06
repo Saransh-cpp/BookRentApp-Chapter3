@@ -1,10 +1,10 @@
 // import 'dart:async';
 // import 'package:flutter/material.dart';
-// import 'package:test_app/QuizScreens/Question1.dart';
-// import 'package:test_app/QuizScreens/Question2.dart';
-// import 'package:test_app/QuizScreens/QuizResult.dart';
-// import 'package:test_app/Widgets.dart';
-// import 'package:test_app/model/QuizDataModel.dart';
+// import 'package:test_app/QuizScreens/question1.dart';
+// import 'package:test_app/QuizScreens/question2.dart';
+// import 'package:test_app/QuizScreens/quiz_result.dart';
+// import 'package:test_app/widgets.dart';
+// import 'package:test_app/model/quiz_data_model.dart';
 //
 // class Quiz extends StatefulWidget {
 //   @override
@@ -67,8 +67,8 @@
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:flutter/material.dart';
-// import 'package:test_app/Widgets.dart';
-// import 'package:test_app/model/QuizDataModel.dart';
+// import 'package:test_app/widgets.dart';
+// import 'package:test_app/model/quiz_data_model.dart';
 // import 'package:test_app/services/quiz.dart';
 //
 // class Quiz extends StatefulWidget {

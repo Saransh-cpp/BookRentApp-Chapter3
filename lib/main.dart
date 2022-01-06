@@ -4,8 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:book_rent_app_chapter3/Screens/LoginPage.dart';
-import 'package:book_rent_app_chapter3/Screens/NavBar.dart';
+import 'package:book_rent_app_chapter3/Screens/login_page.dart';
+import 'package:book_rent_app_chapter3/Screens/nav_bar.dart';
 import 'package:book_rent_app_chapter3/Screens/splash.dart';
 import 'package:book_rent_app_chapter3/provider/app.dart';
 import 'package:book_rent_app_chapter3/provider/product.dart';
@@ -18,14 +18,11 @@ Future<void> main() async {
   // Preload all assets to prevent flash when they are loaded.
   binding.deferFirstFrame();
   binding.addPostFrameCallback((_) {
-    BuildContext context = binding.renderViewElement!;
-    if (context != null) {
-      Splash();
-    }
+    const Splash();
     binding.allowFirstFrame();
   });
   if (Firebase.apps.isEmpty) {
-    if (kIsWeb)
+    if (kIsWeb) {
       await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyDKcTjW2TTKLHq-kKeuSGJda9cpipv8eFE",
@@ -33,8 +30,9 @@ Future<void> main() async {
           messagingSenderId: "212895190763",
           projectId: "chapter3-3a6ab"),
       );
-    else
+    } else {
       await Firebase.initializeApp();
+    }
   } else {
     Firebase.app();
   }
@@ -43,6 +41,8 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final _navigatorKey = GlobalKey<NavigatorState>();
+
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,27 +63,29 @@ class MyApp extends StatelessWidget {
           navigatorKey: _navigatorKey,
           child: MaterialApp(
             navigatorKey: _navigatorKey,
-            debugShowCheckedModeBanner: false, home: ScreensController()),
+            debugShowCheckedModeBanner: false, home: const ScreensController()),
       ),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
+  const ScreensController({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     switch (user.status) {
       case Status.Uninitialized:
-        return Splash();
+        return const Splash();
       case Status.Unauthenticated:
-        return LoginPage();
+        return const LoginPage();
       case Status.Authenticating:
-        return LoginPage();
+        return const LoginPage();
       case Status.Authenticated:
-        return NavBar();
+        return const NavBar();
       default:
-        return LoginPage();
+        return const LoginPage();
     }
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
+  const ContactUs({Key? key}) : super(key: key);
+
   @override
   _ContactUsState createState() => _ContactUsState();
 }
@@ -13,12 +15,12 @@ class _ContactUsState extends State<ContactUs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.pink,
         ),
         backgroundColor: Colors.white,
         elevation: 1,
-        title: Text(
+        title: const Text(
           "Contact Us",
           style: TextStyle(color: Colors.black, fontSize: 20),
         ),
@@ -28,8 +30,8 @@ class _ContactUsState extends State<ContactUs> {
         child: ListView(
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
-              child: Card(
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+              child: const Card(
                 elevation: 1,
                 shadowColor: Colors.grey,
                 child: Padding(
@@ -100,7 +102,7 @@ class _ContactUsState extends State<ContactUs> {
       await launch(url);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(
+        content: const Text(
           'Something went wrong!',
           style: TextStyle(fontSize: 20),
         ),
@@ -112,8 +114,9 @@ class _ContactUsState extends State<ContactUs> {
 }
 
 class ClickableCard extends StatelessWidget {
-  ClickableCard(
-      {required this.textContent, required this.onTap, required this.color});
+  const ClickableCard(
+      {Key? key, required this.textContent, required this.onTap, required this.color})
+      : super(key: key);
   final String textContent;
   final Function() onTap;
   final Color color;
@@ -122,25 +125,25 @@ class ClickableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: color,
-      margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
       elevation: 10,
       shadowColor: Colors.grey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           splashColor: Colors.pink.withAlpha(60),
           onTap: onTap,
           child: Padding(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Text(
               textContent,
               textWidthBasis: TextWidthBasis.longestLine,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.white),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
             ),
           ),
         ),
