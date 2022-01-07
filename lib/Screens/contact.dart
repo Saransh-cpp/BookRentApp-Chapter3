@@ -44,52 +44,55 @@ class _ContactUsState extends State<ContactUs> {
                 ),
               ),
             ),
-            Flexible(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClickableCard(
-                    textContent: 'Visit our github repository',
-                    color: Colors.green,
-                    onTap: () async {
-                      await _launchURL(
-                          'https://github.com/Saransh-cpp/BookRentApp-Chapter3');
-                    },
-                  ),
-                  ClickableCard(
-                    textContent: 'Suggest some feature',
-                    color: Colors.purple[300]!,
-                    onTap: () async {
-                      await _launchURL(
-                          'https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues');
-                    },
-                  ),
-                  ClickableCard(
-                    textContent: 'Contact author on Github',
-                    color: Colors.blueGrey,
-                    onTap: () async {
-                      await _launchURL('https://github.com/Saransh-cpp');
-                    },
-                  ),
-                  ClickableCard(
-                    textContent: 'Contact author on LinkedIn',
-                    color: Colors.lightBlue,
-                    onTap: () async {
-                      await _launchURL(
-                          'https://www.linkedin.com/in/saransh-cpp/');
-                    },
-                  ),
-                  ClickableCard(
-                    textContent: 'Rate us on PlayStore',
-                    color: Colors.red[300]!,
-                    onTap: () async {
-                      await _launchURL('apps_playStore_link_here');
-                    },
-                  ),
-                ],
-              ),
+            Flex(
+              direction: Axis.horizontal,
+              children: [Flexible(
+                flex: 2,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClickableCard(
+                      textContent: 'Visit our github repository',
+                      color: Colors.green,
+                      onTap: () async {
+                        await _launchURL(
+                            'https://github.com/Saransh-cpp/BookRentApp-Chapter3');
+                      },
+                    ),
+                    ClickableCard(
+                      textContent: 'Suggest some feature',
+                      color: Colors.purple[300]!,
+                      onTap: () async {
+                        await _launchURL(
+                            'https://github.com/Saransh-cpp/BookRentApp-Chapter3/issues');
+                      },
+                    ),
+                    ClickableCard(
+                      textContent: 'Contact author on Github',
+                      color: Colors.blueGrey,
+                      onTap: () async {
+                        await _launchURL('https://github.com/Saransh-cpp');
+                      },
+                    ),
+                    ClickableCard(
+                      textContent: 'Contact author on LinkedIn',
+                      color: Colors.lightBlue,
+                      onTap: () async {
+                        await _launchURL(
+                            'https://www.linkedin.com/in/saransh-cpp/');
+                      },
+                    ),
+                    ClickableCard(
+                      textContent: 'Rate us on PlayStore',
+                      color: Colors.red[300]!,
+                      onTap: () async {
+                        await _launchURL('apps_playStore_link_here');
+                      },
+                    ),
+                  ],
+                ),
+              ),]
             ),
           ],
         ),
