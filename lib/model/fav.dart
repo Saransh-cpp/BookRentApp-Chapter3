@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class FavItemModel {
   static const ID = "id";
   static const NAME = "name";
@@ -5,21 +7,21 @@ class FavItemModel {
   static const PRODUCT_ID = "productId";
   static const PRICE = "price";
 
-  String _id;
-  String _name;
-  String _image;
-  String _productId;
-  double _price;
+  String? _id;
+  String? _name;
+  String? _image;
+  String? _productId;
+  double? _price;
 
-  String get id => _id;
+  String get id => _id!;
 
-  String get name => _name;
+  String get name => _name!;
 
-  String get image => _image;
+  String get image => _image!;
 
-  String get productId => _productId;
+  String get productId => _productId!;
 
-  double get price => _price;
+  double get price => _price!;
 
   FavItemModel.fromMap(Map data) {
     _id = data[ID];
