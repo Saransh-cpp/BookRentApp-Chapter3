@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'cart_item.dart';
@@ -15,51 +17,51 @@ class UserModel {
   static const USERIMAGE = 'userImage';
   static const BIO = 'bio';
 
-  String _name;
-  String _email;
-  String _id;
-  String _stripeId;
-  String _number;
-  String _address;
-  String _userImage;
-  String _bio;
-  double _priceSum = 0;
+  String? _name;
+  String? _email;
+  String? _id;
+  String? _stripeId;
+  String? _number;
+  String? _address;
+  String? _userImage;
+  String? _bio;
+  double? _priceSum = 0;
 
 //  getters
-  String get name => _name;
+  String get name => _name!;
 
-  String get email => _email;
+  String get email => _email!;
 
-  String get id => _id;
+  String get id => _id!;
 
-  String get stripeId => _stripeId;
+  String get stripeId => _stripeId!;
 
-  String get number => _number;
+  String get number => _number!;
 
-  String get address => _address;
+  String get address => _address!;
 
-  String get userImage => _userImage;
+  String get userImage => _userImage!;
 
-  String get bio => _bio;
+  String get bio => _bio!;
 
-  List<CartItemModel> cart;
-  List<FavItemModel> fav;
-  double totalCartPrice;
+  List<CartItemModel>? cart;
+  List<FavItemModel>? fav;
+  double? totalCartPrice;
 
   UserModel.fromSnapshot(DocumentSnapshot snapshot) {
-    _name = snapshot.data()[NAME];
-    _email = snapshot.data()[EMAIL];
-    _id = snapshot.data()[ID];
-    _address = snapshot.data()[ADDRESS] ?? "";
-    _number = snapshot.data()[NUMBER] ?? '';
-    _userImage = snapshot.data()[USERIMAGE] ?? "";
-    _stripeId = snapshot.data()[STRIPE_ID] ?? "";
-    _bio = snapshot.data()[BIO] ?? "";
-    cart = _convertCartItems(snapshot.data()[CART] ?? []);
-    fav = _convertFavItems(snapshot.data()[FAV] ?? []);
-    totalCartPrice = snapshot.data()[CART] == null
+    _name = (snapshot.data()! as Map<String, dynamic>)[NAME];
+    _email = (snapshot.data()! as Map<String, dynamic>)[EMAIL];
+    _id = (snapshot.data()! as Map<String, dynamic>)[ID];
+    _address = (snapshot.data()! as Map<String, dynamic>)[ADDRESS] ?? "";
+    _number = (snapshot.data()! as Map<String, dynamic>)[NUMBER] ?? '';
+    _userImage = (snapshot.data()! as Map<String, dynamic>)[USERIMAGE] ?? "";
+    _stripeId = (snapshot.data()! as Map<String, dynamic>)[STRIPE_ID] ?? "";
+    _bio = (snapshot.data()! as Map<String, dynamic>)[BIO] ?? "";
+    cart = _convertCartItems((snapshot.data()! as Map<String, dynamic>)[CART] ?? []);
+    fav = _convertFavItems((snapshot.data()! as Map<String, dynamic>)[FAV] ?? []);
+    totalCartPrice = (snapshot.data()! as Map<String, dynamic>)[CART] == null
         ? 0
-        : getTotalPrice(cart: snapshot.data()[CART]);
+        : getTotalPrice(cart: (snapshot.data()! as Map<String, dynamic>)[CART]);
   }
 
   List<CartItemModel> _convertCartItems(List cart) {
@@ -78,15 +80,15 @@ class UserModel {
     return convertedFav;
   }
 
-  double getTotalPrice({List cart}) {
+  double getTotalPrice({List? cart}) {
     if (cart == null) {
       return 0;
     }
     for (Map cartItem in cart) {
-      _priceSum += cartItem["price"];
+      _priceSum = _priceSum! + cartItem["price"];
     }
 
-    double total = _priceSum;
-    return total;
+    double? total = _priceSum;
+    return total!;
   }
 }
