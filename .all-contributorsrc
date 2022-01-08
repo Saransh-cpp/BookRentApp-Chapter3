@@ -41,7 +41,9 @@
       "profile": "https://github.com/letsintegreat",
       "contributions": [
         "code",
-        "doc"
+        "doc",
+        "bug",
+        "platform"
       ]
     },
     {

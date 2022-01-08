@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class CartItemModel {
   static const ID = "id";
   static const NAME = "name";
@@ -15,17 +17,17 @@ class CartItemModel {
   //String _color;
   double? _price;
 
-  String? get id => _id;
+  String get id => _id!;
 
-  String? get name => _name;
+  String get name => _name!;
 
-  String? get image => _image;
+  String get image => _image!;
 
-  String? get productId => _productId;
+  String get productId => _productId!;
 
-  String? get size => _size;
+  String get size => _size!;
 
-  double? get price => _price;
+  double get price => _price!;
 
   CartItemModel.fromMap(Map data) {
     _id = data[ID];

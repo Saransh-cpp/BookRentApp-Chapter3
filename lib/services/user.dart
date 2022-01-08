@@ -1,11 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
-import 'package:test_app/model/cart_item.dart';
-import 'package:test_app/model/user.dart';
+import 'package:book_rent_app_chapter3/model/cart_item.dart';
+import 'package:book_rent_app_chapter3/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:test_app/model/fav.dart';
+import 'package:book_rent_app_chapter3/model/fav.dart';
 
 class UserServices {
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String collection = "users";
 
   createUser(Map<String, dynamic> data) async {
@@ -33,25 +35,25 @@ class UserServices {
         return UserModel.fromSnapshot(doc);
       });
 
-  void addToCart({String? userId, required CartItemModel cartItem}) {
+  void addToCart({required String userId,required CartItemModel cartItem}) {
     _firestore.collection(collection).doc(userId).update({
       "cart": FieldValue.arrayUnion([cartItem.toMap()])
     });
   }
 
-  void addToFav({String? userId, required FavItemModel favItem}) {
+  void addToFav({required String userId,required  FavItemModel favItem}) {
     _firestore.collection(collection).doc(userId).update({
       "fav": FieldValue.arrayUnion([favItem.toMap()])
     });
   }
 
-  void removeFromCart({String? userId, required CartItemModel cartItem}) {
+  void removeFromCart({required String userId,required CartItemModel cartItem}) {
     _firestore.collection(collection).doc(userId).update({
       "cart": FieldValue.arrayRemove([cartItem.toMap()])
     });
   }
 
-  void removeFromFav({String? userId, required FavItemModel favItem}) {
+  void removeFromFav({required String userId,required FavItemModel favItem}) {
     _firestore.collection(collection).doc(userId).update({
       "fav": FieldValue.arrayRemove([favItem.toMap()])
     });

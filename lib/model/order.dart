@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OrderModel {
@@ -16,27 +18,27 @@ class OrderModel {
   int? _createdAt;
   double? _total;
 
-  String? get id => _id;
+  String get id => _id!;
 
-  String? get description => _description;
+  String get description => _description!;
 
-  String? get userId => _userId;
+  String get userId => _userId!;
 
-  String? get status => _status;
+  String get status => _status!;
 
-  double? get total => _total;
+  double get total => _total!;
 
-  int? get createdAt => _createdAt;
+  int get createdAt => _createdAt!;
 
   List? cart;
 
   OrderModel.fromSnapshot(DocumentSnapshot snapshot) {
-    _id = snapshot.data()![ID];
-    _description = snapshot.data()![DESCRIPTION];
-    _total = snapshot.data()![TOTAL];
-    _status = snapshot.data()![STATUS];
-    _userId = snapshot.data()![USER_ID];
-    _createdAt = snapshot.data()![CREATED_AT];
-    cart = snapshot.data()![CART];
+    _id = (snapshot.data()! as Map<String, dynamic>)[ID];
+    _description = (snapshot.data()! as Map<String, dynamic>)[DESCRIPTION];
+    _total = (snapshot.data()! as Map<String, dynamic>)[TOTAL];
+    _status = (snapshot.data()! as Map<String, dynamic>)[STATUS];
+    _userId = (snapshot.data()! as Map<String, dynamic>)[USER_ID];
+    _createdAt = (snapshot.data()! as Map<String, dynamic>)[CREATED_AT];
+    cart = (snapshot.data()! as Map<String, dynamic>)[CART];
   }
 }
