@@ -12,6 +12,8 @@ import 'package:book_rent_app_chapter3/provider/product.dart';
 import 'package:book_rent_app_chapter3/provider/user.dart';
 import 'package:flutter/services.dart';
 import 'package:wiredash/wiredash.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 Future<void> main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +38,7 @@ Future<void> main() async {
   } else {
     Firebase.app();
   }
+  MobileAds.instance.initialize();
   runApp(MyApp());
 }
 
